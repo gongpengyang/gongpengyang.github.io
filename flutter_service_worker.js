@@ -66,6 +66,7 @@ const RESOURCES = {
 // start.
 const CORE = [
   "main.dart.js",
+  "main.dart.js_1.part.js",
 "index.html",
 "assets/NOTICES",
 "assets/AssetManifest.json",
