@@ -1,6 +1,6 @@
 {
-    "name": "recipe_app",
-    "short_name": "recipe_app",
+    "name": "ultimate_mine",
+    "short_name": "ultimate_mine",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
