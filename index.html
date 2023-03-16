@@ -104,6 +104,8 @@
     (function (window) {
         function _dispatchMessageFromNative(response) {
             const data = response.data;
+            alert("native 回调数据")
+            alert(response)
             // js侧弹窗
             alert("responseId: " + data.responseId + "\n" + "images: " + data.images)
             // 数据转 json String
