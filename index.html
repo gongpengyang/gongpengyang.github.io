@@ -34,7 +34,7 @@
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
   <script>
-    var serviceWorkerVersion = '4223525672';
+    var serviceWorkerVersion = '3443402162';
     var scriptLoaded = false;
     function loadMainDartJs() {
       if (scriptLoaded) {
@@ -97,5 +97,33 @@
       loadMainDartJs();
     }
   </script>
+
+  <script type="text/javascript">
+
+    /// 注册Native侧方法回调,Native侧Webview调用loadUrl后,会回调到此方法.
+    (function (window) {
+        function _dispatchMessageFromNative(response) {
+            const data = response.data;
+            // js侧弹窗
+            alert("responseId: " + data.responseId + "\n" + "images: " + data.images)
+            // 数据转 json String
+            const originalResponse = JSON.stringify(response);
+            // js侧将数据传到Flutter侧  该方法需要flutter提前注册
+            window.flutterFunc(originalResponse);
+        }
+
+        // 生命周期回调 暂不进行具体实现
+        function _dispatchLifeCircleFromNative(response){
+            var data = response.data
+            console.log("type: "+data.type)
+            const originalResponse = JSON.stringify(response);
+        }
+
+        window.ultimateApp = {_dispatchMessageFromNative,_dispatchLifeCircleFromNative}
+    })(window);
+
+</script>
+
+
 </body>
 </html>
