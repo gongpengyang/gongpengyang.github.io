@@ -78539,8 +78539,10 @@
   };
   F._MineHomePageState_initState_closure.prototype = {
     call$1(response) {
-      var t1 = this.$this;
-      t1._level = J.$index$asx(C.C_JsonCodec.decode$1(0, response), "data");
+      var params = C.C_JsonCodec.decode$1(0, response),
+        t1 = this.$this;
+      t1._level = J.$index$asx(params, "data");
+      P.print("web \u56de\u53c2:" + H.S(params));
       t1.setState$1(new F._MineHomePageState_initState__closure());
     },
     $signature: 6
