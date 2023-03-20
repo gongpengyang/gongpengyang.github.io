@@ -34,7 +34,7 @@
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
   <script>
-    var serviceWorkerVersion = '2774453301';
+    var serviceWorkerVersion = '3333387457';
     var scriptLoaded = false;
     function loadMainDartJs() {
       if (scriptLoaded) {
@@ -105,7 +105,7 @@
         function _dispatchMessageFromNative(response) {
             const data = response.data;
             // js侧弹窗
-            alert("js侧弹窗 -->  js侧接收到数据: " + data)
+            alert("js侧弹窗 -->  js侧接收到数据: " + response)
             // 数据转 json String
             const originalResponse = JSON.stringify(response);
             // js侧将数据传到Flutter侧  该方法需要flutter提前注册
