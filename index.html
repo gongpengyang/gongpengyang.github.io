@@ -34,7 +34,7 @@
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
   <script>
-    var serviceWorkerVersion = '1811037205';
+    var serviceWorkerVersion = '28856423';
     var scriptLoaded = false;
     function loadMainDartJs() {
       if (scriptLoaded) {
@@ -116,7 +116,7 @@
         function _dispatchLifeCircleFromNative(response){
             var data = response.data
             console.log("type: "+data.type)
-            const originalResponse = JSON.stringify(response);
+            const originalResponse = response;//JSON.stringify(response);
         }
 
         window.ultimateApp = {_dispatchMessageFromNative,_dispatchLifeCircleFromNative}
