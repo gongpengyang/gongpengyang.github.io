@@ -9741,31 +9741,30 @@ return s},
 Tf(a,b,c){return N.adP(a,b,c)},
 adP(a,b,c){var s=0,r=P.a8(t.T),q,p=2,o,n=[],m,l,k,j,i,h
 var $async$Tf=P.a2(function(d,e){if(d===1){o=e
-s=p}while(true)switch(s){case 0:k=null
-j=M.a1P(a,b)
-i=window.location
-i.href=j
+s=p}while(true)switch(s){case 0:j=null
+i=M.a1P(a,b)
 c.toString
-i=$.AQ.b
-if(i==null?$.AQ!=null:i!==$.AQ)H.j(H.fP($.AQ.a))
+l=$.AQ.b
+if(l==null?$.AQ!=null:l!==$.AQ)H.j(H.fP($.AQ.a))
 $.AQ.b=c
+window.location.href=i
 p=4
 s=7
 return P.ad(C.BT.iz(M.a1P(a,null),b,!1,t.z),$async$Tf)
 case 7:m=e
-k=m
+j=m
 p=2
 s=6
 break
 case 4:p=3
 h=o
-if(H.Y(h) instanceof F.m2)k=null
+if(H.Y(h) instanceof F.m2)j=null
 else throw h
 s=6
 break
 case 3:s=2
 break
-case 6:q=k
+case 6:q=j
 s=1
 break
 case 1:return P.a6(q,r)
