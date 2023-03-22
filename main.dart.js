@@ -801,7 +801,7 @@
         t4 = t1._customSemanticsActions,
         t5 = t1._actionsAsBits,
         t6 = t1._flags,
-        t7 = t1._semantics$_attributedLabel,
+        t7 = t1._attributedLabel,
         t8 = t1._semantics$_attributedValue,
         t9 = t1._semantics$_attributedDecreasedValue,
         t10 = t1._semantics$_attributedIncreasedValue,
@@ -989,7 +989,7 @@
       _._actionsAsBits = t7;
       _.tags = null;
       _._flags = t8;
-      _._semantics$_attributedLabel = t9;
+      _._attributedLabel = t9;
       _._semantics$_attributedValue = t10;
       _._semantics$_attributedDecreasedValue = t11;
       _._semantics$_attributedIncreasedValue = t12;
@@ -1072,7 +1072,7 @@
       _._currentValueLength = _._maxValueLength = _._platformViewId = _._scrollIndex = _._scrollChildCount = _._indexInParent = _._semantics$_sortKey = null;
       _._isMergingSemanticsOfDescendants = false;
       _._customSemanticsActions = t1;
-      _._semantics$_attributedLabel = t2;
+      _._attributedLabel = t2;
       _._semantics$_attributedValue = t3;
       _._semantics$_attributedDecreasedValue = t4;
       _._semantics$_attributedIncreasedValue = t5;
@@ -1709,7 +1709,7 @@
         D._debugPrintTask();
     },
     _debugPrintTask() {
-      var line, toZone,
+      var line,
         t1 = $._debugPrintScheduled = false,
         t2 = $.$get$_debugPrintStopwatch();
       if (P.Duration$(t2.get$elapsedMicroseconds(), 0)._duration > 1000000) {
@@ -1728,11 +1728,7 @@
           break;
         line = $.$get$_debugPrintBuffer().removeFirst$0();
         $._debugPrintedCharacters = $._debugPrintedCharacters + line.length;
-        toZone = $.printToZone;
-        if (toZone == null)
-          H.printString(line);
-        else
-          toZone.call$1(line);
+        H.printString(line);
       }
       t1 = $.$get$_debugPrintBuffer();
       if (!t1.get$isEmpty(t1)) {
@@ -1878,7 +1874,7 @@
     },
     _RenderAppBarTitleBox: function _RenderAppBarTitleBox(t0, t1, t2, t3) {
       var _ = this;
-      _._resolvedAlignment = null;
+      _._shifted_box$_resolvedAlignment = null;
       _._shifted_box$_alignment = t0;
       _._shifted_box$_textDirection = t1;
       _.RenderObjectWithChildMixin__child = t2;
@@ -1910,17 +1906,21 @@
       this._swatch = t0;
       this.value = t1;
     },
+    FloatingActionButton$(child, mini, onPressed, tooltip) {
+      return new E.FloatingActionButton(child, tooltip, onPressed, mini ? C._FloatingActionButtonType_1 : C._FloatingActionButtonType_0, null);
+    },
     _DefaultHeroTag: function _DefaultHeroTag() {
     },
     _FloatingActionButtonType: function _FloatingActionButtonType(t0) {
       this._floating_action_button$_name = t0;
     },
-    FloatingActionButton: function FloatingActionButton(t0, t1, t2, t3) {
+    FloatingActionButton: function FloatingActionButton(t0, t1, t2, t3, t4) {
       var _ = this;
       _.child = t0;
-      _.onPressed = t1;
-      _._floatingActionButtonType = t2;
-      _.key = t3;
+      _.tooltip = t1;
+      _.onPressed = t2;
+      _._floatingActionButtonType = t3;
+      _.key = t4;
     },
     _ChildOverflowBox: function _ChildOverflowBox(t0, t1) {
       this.child = t0;
@@ -1928,7 +1928,7 @@
     },
     _RenderChildOverflowBox: function _RenderChildOverflowBox(t0, t1, t2, t3) {
       var _ = this;
-      _._resolvedAlignment = null;
+      _._shifted_box$_resolvedAlignment = null;
       _._shifted_box$_alignment = t0;
       _._shifted_box$_textDirection = t1;
       _.RenderObjectWithChildMixin__child = t2;
@@ -1986,20 +1986,12 @@
     },
     ColorSwatch: function ColorSwatch() {
     },
-    ImageSizeInfo: function ImageSizeInfo(t0, t1, t2) {
-      this.source = t0;
-      this.displaySize = t1;
-      this.imageSize = t2;
-    },
     ImageCache: function ImageCache(t0, t1, t2) {
       var _ = this;
       _._pendingImages = t0;
       _._image_cache$_cache = t1;
       _._liveImages = t2;
       _._currentSizeBytes = 0;
-    },
-    _CachedImageBase_dispose_closure: function _CachedImageBase_dispose_closure(t0) {
-      this.$this = t0;
     },
     RenderConstrainedBox$(additionalConstraints) {
       var t1 = new E.RenderConstrainedBox(additionalConstraints, null, T.LayerHandle$());
@@ -2617,7 +2609,7 @@
       _._proxy_box$_maxValueLength = t23;
       _._proxy_box$_currentValueLength = t24;
       _._toggled = t25;
-      _._attributedLabel = t26;
+      _._proxy_box$_attributedLabel = t26;
       _._attributedValue = t27;
       _._attributedIncreasedValue = t28;
       _._attributedDecreasedValue = t29;
@@ -2975,19 +2967,6 @@
     Uint8Buffer: function Uint8Buffer(t0, t1) {
       this._typed_buffer$_buffer = t0;
       this._typed_buffer$_length = t1;
-    },
-    MinePageModel: function MinePageModel() {
-    },
-    MinePageLevelModel: function MinePageLevelModel(t0, t1, t2, t3, t4, t5, t6, t7) {
-      var _ = this;
-      _.levelType = t0;
-      _.level = t1;
-      _.score = t2;
-      _.cityOrder = t3;
-      _.scoreShare = t4;
-      _.serviceDetailUrl = t5;
-      _.serviceLevelContent = t6;
-      _.serviceLevelNew = t7;
     },
     Matrix4_tryInvert(other) {
       var r = new E.Matrix4(new Float64Array(16));
@@ -3799,8 +3778,8 @@
       _._verticalDirection = t5;
       _._textBaseline = t6;
       _._overflow = 0;
-      _._clipBehavior = t7;
-      _._clipRectLayer = t8;
+      _._flex$_clipBehavior = t7;
+      _._flex$_clipRectLayer = t8;
       _.DebugOverflowIndicatorMixin__indicatorLabel = t9;
       _.DebugOverflowIndicatorMixin__overflowReportNeeded = t10;
       _.ContainerRenderObjectMixin__childCount = t11;
@@ -3903,9 +3882,6 @@
     },
     __MediaQueryFromWindowState_State_WidgetsBindingObserver: function __MediaQueryFromWindowState_State_WidgetsBindingObserver() {
     },
-    ScrollController$() {
-      return new F.ScrollController(H._setArrayType([], type$.JSArray_ScrollPosition), P.List_List$filled(0, null, false, type$.nullable_void_Function));
-    },
     ScrollController: function ScrollController(t0, t1) {
       var _ = this;
       _._positions = t0;
@@ -3926,7 +3902,7 @@
         t2 = scrollable.get$position(scrollable);
         t3 = context.get$renderObject();
         t3.toString;
-        futures.push(t2.ensureVisible$6$alignment$alignmentPolicy$curve$duration$targetRenderObject(t3, alignment, alignmentPolicy, C.Cubic_JUR, C.Duration_0, targetRenderObject));
+        futures.push(t2.ensureVisible$6$alignment$alignmentPolicy$curve$duration$targetRenderObject(t3, alignment, alignmentPolicy, C.Cubic_JUR0, C.Duration_0, targetRenderObject));
         if (targetRenderObject == null)
           targetRenderObject = context.get$renderObject();
         context = scrollable.get$context(scrollable);
@@ -3964,32 +3940,18 @@
     MineHomePage: function MineHomePage(t0) {
       this.key = t0;
     },
-    _MineHomePageState: function _MineHomePageState(t0, t1, t2, t3, t4, t5) {
+    _MineHomePageState: function _MineHomePageState(t0) {
       var _ = this;
-      _._userName = "";
-      _._bannerList = t0;
-      _.model = t1;
-      _.levelModel = t2;
-      _._scrollController = t3;
-      _.AutomaticKeepAliveClientMixin__keepAliveHandle = t4;
+      _._level = "\u54d2\u54d2\u54d2\u52a0\u7279\u6797";
       _._widget = null;
-      _._debugLifecycleState = t5;
+      _._debugLifecycleState = t0;
       _._framework$_element = null;
-    },
-    _MineHomePageState_initBannerData_closure: function _MineHomePageState_initBannerData_closure(t0) {
-      this.$this = t0;
     },
     _MineHomePageState__getLevelData_closure: function _MineHomePageState__getLevelData_closure(t0) {
       this.$this = t0;
     },
     _MineHomePageState__getLevelData__closure: function _MineHomePageState__getLevelData__closure(t0) {
       this.$this = t0;
-    },
-    _MineHomePageState__getLevelData_closure0: function _MineHomePageState__getLevelData_closure0(t0, t1) {
-      this.$this = t0;
-      this.responseBean = t1;
-    },
-    __MineHomePageState_State_AutomaticKeepAliveClientMixin: function __MineHomePageState_State_AutomaticKeepAliveClientMixin() {
     },
     main() {
       var $async$goto = 0,
@@ -4634,12 +4596,6 @@
         return 1;
       return -1;
     },
-    toSkFilterMode(filterQuality) {
-      return filterQuality === C.FilterQuality_0 ? J.get$Nearest$x(J.get$FilterMode$x($.canvasKit._readField$0())) : J.get$Linear$x(J.get$FilterMode$x($.canvasKit._readField$0()));
-    },
-    toSkMipmapMode(filterQuality) {
-      return filterQuality === C.FilterQuality_2 ? J.get$Linear$x(J.get$MipmapMode$x($.canvasKit._readField$0())) : J.get$None$x(J.get$MipmapMode$x($.canvasKit._readField$0()));
-    },
     toSkMatrixFromFloat32(matrix4) {
       var i, matrix4Index,
         skMatrix = new Float32Array(9);
@@ -4725,9 +4681,6 @@
     },
     SkFontStyle$(receiver) {
       return new H.SkFontStyle();
-    },
-    SkTextShadow$(receiver) {
-      return new H.SkTextShadow();
     },
     ProductionCollector$() {
       var t1 = new H.ProductionCollector(H._setArrayType([], type$.JSArray_SkDeletable));
@@ -5054,7 +5007,7 @@
       return new H.IntervalTree(t1, $T._eval$1("IntervalTree<0>"));
     },
     CkPaint$() {
-      var t1 = new H.CkPaint(C.BlendMode_3, C.PaintingStyle_0, C.Color_4278190080, C.FilterQuality_0);
+      var t1 = new H.CkPaint(C.BlendMode_3, C.PaintingStyle_0, C.Color_4278190080);
       t1.ManagedSkiaObject$1(null, type$.SkPaint);
       return t1;
     },
@@ -5332,13 +5285,13 @@
       else
         zone.runGuarded$1(callback);
     },
-    invoke1(callback, zone, arg, $A) {
+    invoke1(callback, zone, arg) {
       if (callback == null)
         return;
       if (zone === $.Zone__current)
         callback.call$1(arg);
       else
-        zone.runUnaryGuarded$1$2(callback, arg, $A);
+        zone.runUnaryGuarded$2(callback, arg);
     },
     invoke2(callback, zone, arg1, arg2) {
       if (zone === $.Zone__current)
@@ -5405,7 +5358,7 @@
       if (now - $.$get$_frameTimingsLastSubmitTime() > 100000) {
         $._frameTimingsLastSubmitTime = now;
         t2 = $._frameTimings;
-        H.invoke1(t1._onReportTimings, t1._onReportTimingsZone, t2, type$.List_FrameTiming);
+        H.invoke1(t1._onReportTimings, t1._onReportTimingsZone, t2);
         $._frameTimings = H._setArrayType([], type$.JSArray_FrameTiming);
       }
     },
@@ -6027,10 +5980,6 @@
       this.dx = t0;
       this.dy = t1;
     },
-    CkScaleCommand: function CkScaleCommand(t0, t1) {
-      this.sx = t0;
-      this.sy = t1;
-    },
     CkTransformCommand: function CkTransformCommand(t0) {
       this.matrix4 = t0;
     },
@@ -6078,13 +6027,6 @@
       _.color = t1;
       _.elevation = t2;
       _.transparentOccluder = t3;
-    },
-    CkDrawImageRectCommand: function CkDrawImageRectCommand(t0, t1, t2, t3) {
-      var _ = this;
-      _.image = t0;
-      _.src = t1;
-      _.dst = t2;
-      _.paint = t3;
     },
     CkDrawParagraphCommand: function CkDrawParagraphCommand(t0, t1) {
       this.paragraph = t0;
@@ -6331,12 +6273,6 @@
     CanvasKitCanvas: function CanvasKitCanvas(t0) {
       this.__engine$_canvas = t0;
     },
-    ManagedSkColorFilter: function ManagedSkColorFilter(t0) {
-      this.colorFilter = t0;
-      this.rawSkiaObject = null;
-    },
-    CkBlendModeColorFilter: function CkBlendModeColorFilter() {
-    },
     HtmlViewEmbedder: function HtmlViewEmbedder(t0, t1, t2, t3, t4, t5, t6, t7, t8, t9) {
       var _ = this;
       _._backupPictureRecorder = null;
@@ -6452,11 +6388,6 @@
       this.family = t0;
       this.bytes = t1;
       this.typeface = t2;
-    },
-    CkImage: function CkImage(t0) {
-      this._debugStackTrace = null;
-      this.__CkImage_box = t0;
-      this._disposed = false;
     },
     initializeCanvasKit_closure: function initializeCanvasKit_closure(t0) {
       this.canvasKitCompleter = t0;
@@ -6614,16 +6545,14 @@
     CkNWayCanvas: function CkNWayCanvas(t0) {
       this._canvases = t0;
     },
-    CkPaint: function CkPaint(t0, t1, t2, t3) {
+    CkPaint: function CkPaint(t0, t1, t2) {
       var _ = this;
       _._blendMode = t0;
       _._style = t1;
       _._strokeWidth = 0;
       _._isAntiAlias = true;
       _._color = t2;
-      _._ckMaskFilter = _._maskFilter = _._shader = null;
-      _._filterQuality = t3;
-      _.rawSkiaObject = _._managedImageFilter = _._imageFilter = _._managedColorFilter = null;
+      _.rawSkiaObject = _._managedImageFilter = _._imageFilter = _._ckMaskFilter = _._maskFilter = _._shader = null;
     },
     CkPath: function CkPath(t0) {
       this._fillType = t0;
@@ -9024,9 +8953,6 @@
     getIsolateAffinityTag($name) {
       return init.getIsolateTag($name);
     },
-    JsLinkedHashMap_JsLinkedHashMap$es6($K, $V) {
-      return new H.JsLinkedHashMap($K._eval$1("@<0>")._bind$1($V)._eval$1("JsLinkedHashMap<1,2>"));
-    },
     defineProperty(obj, property, value) {
       Object.defineProperty(obj, property, {value: value, enumerable: false, writable: true, configurable: true});
     },
@@ -11301,9 +11227,6 @@
     get$ColorDodge$x(receiver) {
       return J.getInterceptor$x(receiver).get$ColorDodge(receiver);
     },
-    get$ColorFilter$x(receiver) {
-      return J.getInterceptor$x(receiver).get$ColorFilter(receiver);
-    },
     get$Darken$x(receiver) {
       return J.getInterceptor$x(receiver).get$Darken(receiver);
     },
@@ -11373,9 +11296,6 @@
     get$FillType$x(receiver) {
       return J.getInterceptor$x(receiver).get$FillType(receiver);
     },
-    get$FilterMode$x(receiver) {
-      return J.getInterceptor$x(receiver).get$FilterMode(receiver);
-    },
     get$FontMgr$x(receiver) {
       return J.getInterceptor$x(receiver).get$FontMgr(receiver);
     },
@@ -11424,9 +11344,6 @@
     get$LineThroughDecoration$x(receiver) {
       return J.getInterceptor$x(receiver).get$LineThroughDecoration(receiver);
     },
-    get$Linear$x(receiver) {
-      return J.getInterceptor$x(receiver).get$Linear(receiver);
-    },
     get$Luminosity$x(receiver) {
       return J.getInterceptor$x(receiver).get$Luminosity(receiver);
     },
@@ -11438,9 +11355,6 @@
     },
     get$Medium$x(receiver) {
       return J.getInterceptor$x(receiver).get$Medium(receiver);
-    },
-    get$MipmapMode$x(receiver) {
-      return J.getInterceptor$x(receiver).get$MipmapMode(receiver);
     },
     get$Mirror$x(receiver) {
       return J.getInterceptor$x(receiver).get$Mirror(receiver);
@@ -11454,14 +11368,8 @@
     get$Multiply$x(receiver) {
       return J.getInterceptor$x(receiver).get$Multiply(receiver);
     },
-    get$Nearest$x(receiver) {
-      return J.getInterceptor$x(receiver).get$Nearest(receiver);
-    },
     get$NoDecoration$x(receiver) {
       return J.getInterceptor$x(receiver).get$NoDecoration(receiver);
-    },
-    get$None$x(receiver) {
-      return J.getInterceptor$x(receiver).get$None(receiver);
     },
     get$Normal$x(receiver) {
       return J.getInterceptor$x(receiver).get$Normal(receiver);
@@ -11634,9 +11542,6 @@
     get$offset$x(receiver) {
       return J.getInterceptor$x(receiver).get$offset(receiver);
     },
-    get$parent$x(receiver) {
-      return J.getInterceptor$x(receiver).get$parent(receiver);
-    },
     get$runtimeType$(receiver) {
       return J.getInterceptor$(receiver).get$runtimeType(receiver);
     },
@@ -11694,9 +11599,6 @@
     },
     Make$0$x(receiver) {
       return J.getInterceptor$x(receiver).Make$0(receiver);
-    },
-    MakeBlend$2$x(receiver, a0, a1) {
-      return J.getInterceptor$x(receiver).MakeBlend$2(receiver, a0, a1);
     },
     MakeBlur$3$x(receiver, a0, a1, a2) {
       return J.getInterceptor$x(receiver).MakeBlur$3(receiver, a0, a1, a2);
@@ -11923,12 +11825,6 @@
     go$1$x(receiver, a0) {
       return J.getInterceptor$x(receiver).go$1(receiver, a0);
     },
-    height$0$x(receiver) {
-      return J.getInterceptor$x(receiver).height$0(receiver);
-    },
-    isAliasOf$1$x(receiver, a0) {
-      return J.getInterceptor$x(receiver).isAliasOf$1(receiver, a0);
-    },
     isDeleted$0$x(receiver) {
       return J.getInterceptor$x(receiver).isDeleted$0(receiver);
     },
@@ -12022,9 +11918,6 @@
     saveLayer$4$x(receiver, a0, a1, a2, a3) {
       return J.getInterceptor$x(receiver).saveLayer$4(receiver, a0, a1, a2, a3);
     },
-    scale$2$x(receiver, a0, a1) {
-      return J.getInterceptor$x(receiver).scale$2(receiver, a0, a1);
-    },
     select$0$x(receiver) {
       return J.getInterceptor$x(receiver).select$0(receiver);
     },
@@ -12033,9 +11926,6 @@
     },
     setBlendMode$1$x(receiver, a0) {
       return J.getInterceptor$x(receiver).setBlendMode$1(receiver, a0);
-    },
-    setColorFilter$1$x(receiver, a0) {
-      return J.getInterceptor$x(receiver).setColorFilter$1(receiver, a0);
     },
     setColorInt$1$x(receiver, a0) {
       return J.getInterceptor$x(receiver).setColorInt$1(receiver, a0);
@@ -12117,9 +12007,6 @@
     },
     unlock$0$x(receiver) {
       return J.getInterceptor$x(receiver).unlock$0(receiver);
-    },
-    width$0$x(receiver) {
-      return J.getInterceptor$x(receiver).width$0(receiver);
     },
     Interceptor: function Interceptor() {
     },
@@ -13288,20 +13175,6 @@
     }, FloatingLabelBehavior: function FloatingLabelBehavior() {
     }, InputDecorationTheme: function InputDecorationTheme() {
     }, _InputDecorationTheme_Object_Diagnosticable: function _InputDecorationTheme_Object_Diagnosticable() {
-    }, ImageInfo: function ImageInfo(t0, t1, t2) {
-      this.image = t0;
-      this.scale = t1;
-      this.debugLabel = t2;
-    }, ImageStreamListener: function ImageStreamListener(t0, t1, t2) {
-      this.onImage = t0;
-      this.onChunk = t1;
-      this.onError = t2;
-    }, ImageStream: function ImageStream() {
-      this._image_stream$_listeners = this._image_stream$_completer = null;
-    }, ImageStreamCompleter: function ImageStreamCompleter() {
-    }, ImageStreamCompleter_reportError_closure: function ImageStreamCompleter_reportError_closure() {
-    }, _ImageStream_Object_Diagnosticable: function _ImageStream_Object_Diagnosticable() {
-    }, _ImageStreamCompleter_Object_Diagnosticable: function _ImageStreamCompleter_Object_Diagnosticable() {
     }, RenderPerformanceOverlay: function RenderPerformanceOverlay(t0, t1, t2, t3, t4) {
       var _ = this;
       _._optionsMask = t0;
@@ -13542,8 +13415,8 @@
     DefaultTextStyle$(child, maxLines, overflow, softWrap, style, textAlign, textHeightBehavior, textWidthBasis) {
       return new L.DefaultTextStyle(style, textAlign, softWrap, overflow, maxLines, textWidthBasis, textHeightBehavior, child, null);
     },
-    Text$(data, style, textAlign, textDirection) {
-      return new L.Text(data, null, style, textAlign, textDirection, null);
+    Text$(data, style) {
+      return new L.Text(data, style, null);
     },
     DefaultTextStyle: function DefaultTextStyle(t0, t1, t2, t3, t4, t5, t6, t7, t8) {
       var _ = this;
@@ -13560,14 +13433,10 @@
     _NullWidget1: function _NullWidget1(t0) {
       this.key = t0;
     },
-    Text: function Text(t0, t1, t2, t3, t4, t5) {
-      var _ = this;
-      _.data = t0;
-      _.textSpan = t1;
-      _.style = t2;
-      _.textAlign = t3;
-      _.textDirection = t4;
-      _.key = t5;
+    Text: function Text(t0, t1, t2) {
+      this.data = t0;
+      this.style = t1;
+      this.key = t2;
     },
     JsUrlStrategy0: function JsUrlStrategy0() {
     }
@@ -13885,10 +13754,12 @@
       this.$this = t0;
       this.status = t1;
     },
-    Scaffold: function Scaffold(t0, t1, t2) {
-      this.appBar = t0;
-      this.body = t1;
-      this.key = t2;
+    Scaffold: function Scaffold(t0, t1, t2, t3) {
+      var _ = this;
+      _.appBar = t0;
+      _.body = t1;
+      _.floatingActionButton = t2;
+      _.key = t3;
     },
     ScaffoldState: function ScaffoldState(t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14) {
       var _ = this;
@@ -13962,47 +13833,6 @@
       _.textDirection = t3;
       _.size = t4;
       _.platform = t5;
-    },
-    ImageProvider_resolve_closure: function ImageProvider_resolve_closure(t0, t1, t2) {
-      this.$this = t0;
-      this.configuration = t1;
-      this.stream = t2;
-    },
-    ImageProvider_resolve_closure0: function ImageProvider_resolve_closure0(t0, t1, t2) {
-      this.$this = t0;
-      this.configuration = t1;
-      this.stream = t2;
-    },
-    ImageProvider__createErrorHandlerAndKey_handleError: function ImageProvider__createErrorHandlerAndKey_handleError(t0, t1) {
-      this._box_0 = t0;
-      this.errorCallback = t1;
-    },
-    ImageProvider__createErrorHandlerAndKey_closure: function ImageProvider__createErrorHandlerAndKey_closure(t0) {
-      this.handleError = t0;
-    },
-    ImageProvider__createErrorHandlerAndKey_closure0: function ImageProvider__createErrorHandlerAndKey_closure0(t0, t1, t2, t3, t4) {
-      var _ = this;
-      _._box_0 = t0;
-      _.$this = t1;
-      _.configuration = t2;
-      _.handleError = t3;
-      _.successCallback = t4;
-    },
-    ImageProvider__createErrorHandlerAndKey__closure: function ImageProvider__createErrorHandlerAndKey__closure(t0, t1, t2, t3) {
-      var _ = this;
-      _._box_0 = t0;
-      _.$this = t1;
-      _.successCallback = t2;
-      _.handleError = t3;
-    },
-    _ErrorImageCompleter: function _ErrorImageCompleter(t0, t1) {
-      var _ = this;
-      _._image_stream$_listeners = t0;
-      _.debugLabel = _._currentError = _._currentImage = null;
-      _._hadAtLeastOneListener = false;
-      _._keepAliveHandles = 0;
-      _._image_stream$_disposed = false;
-      _._onLastListenerRemovedCallbacks = t1;
     },
     TickerFuture$complete() {
       var t1 = new M.TickerFuture(new P._AsyncCompleter(new P._Future($.Zone__current, type$._Future_void), type$._AsyncCompleter_void));
@@ -14895,7 +14725,7 @@
     UltimateChannel_nativeCommunication$body(msg, flutterRouteMap, webResponse) {
       var $async$goto = 0,
         $async$completer = P._makeAsyncAwaitCompleter(type$.nullable_String),
-        $async$returnValue, requestId, pathAction, data, parameter;
+        $async$returnValue, requestId, pathAction, data;
       var $async$UltimateChannel_nativeCommunication = P._wrapJsFunctionForAsync(function($async$errorCode, $async$result) {
         if ($async$errorCode === 1)
           return P._asyncRethrow($async$result, $async$completer);
@@ -14904,14 +14734,12 @@
             case 0:
               // Function start
               data = null;
-              parameter = P.LinkedHashMap_LinkedHashMap$_empty(type$.String, type$.dynamic);
-              if (flutterRouteMap != null)
-                parameter = type$.Map_String_dynamic._as(flutterRouteMap);
+              type$.Map_String_dynamic._as(flutterRouteMap);
               requestId = C.C__JSRandom.nextInt$1(999999999);
-              J.$indexSet$ax(parameter, "requestId", "" + requestId);
+              flutterRouteMap.$indexSet(0, "requestId", "" + requestId);
               if (webResponse != null)
                 $.FlutterWebAppChannel_funcMapping.$indexSet(0, "" + requestId, webResponse);
-              pathAction = M.APageRouter_buildPathForNativeCommunication(msg, parameter);
+              pathAction = M.APageRouter_buildPathForNativeCommunication(msg, flutterRouteMap);
               window.location.href = pathAction;
               $async$returnValue = null;
               // goto return
@@ -14923,33 +14751,6 @@
           }
       });
       return P._asyncStartSync($async$UltimateChannel_nativeCommunication, $async$completer);
-    },
-    UltimateChannel_nativeToast(msg) {
-      var $async$goto = 0,
-        $async$completer = P._makeAsyncAwaitCompleter(type$.nullable_String),
-        $async$returnValue, t1;
-      var $async$UltimateChannel_nativeToast = P._wrapJsFunctionForAsync(function($async$errorCode, $async$result) {
-        if ($async$errorCode === 1)
-          return P._asyncRethrow($async$result, $async$completer);
-        while (true)
-          switch ($async$goto) {
-            case 0:
-              // Function start
-              t1 = type$.dynamic;
-              $async$goto = 3;
-              return P._asyncAwait(N.UltimateChannel_nativeCommunication("toast", P.LinkedHashMap_LinkedHashMap$_literal(["msg", msg, "type", C.JSInt_methods.toString$0(0)], t1, t1), null), $async$UltimateChannel_nativeToast);
-            case 3:
-              // returning from await.
-              $async$returnValue = $async$result;
-              // goto return
-              $async$goto = 1;
-              break;
-            case 1:
-              // return
-              return P._asyncReturn($async$returnValue, $async$completer);
-          }
-      });
-      return P._asyncStartSync($async$UltimateChannel_nativeToast, $async$completer);
     }
   },
   O = {SynchronousFuture: function SynchronousFuture(t0, t1) {
@@ -15351,10 +15152,10 @@
             }
         };
       }($function, 1);
-      return $.Zone__current.registerBinaryCallback$3$1(new P._wrapJsFunctionForAsync_closure($protected), type$.void, type$.int, type$.dynamic);
+      return $.Zone__current.registerBinaryCallback$1(new P._wrapJsFunctionForAsync_closure($protected));
     },
     _asyncStarHelper(object, bodyFunctionOrErrorCode, controller) {
-      var t1, error, stackTrace, replacement, stream;
+      var t1, stackTrace, t2, stream;
       if (bodyFunctionOrErrorCode === 0) {
         t1 = controller.cancelationFuture;
         if (t1 != null)
@@ -15367,18 +15168,13 @@
         if (t1 != null)
           t1._completeError$2(H.unwrapException(object), H.getTraceFromException(object));
         else {
-          error = H.unwrapException(object);
+          t1 = H.unwrapException(object);
           stackTrace = H.getTraceFromException(object);
-          t1 = controller.get$controller(controller);
-          H.checkNotNullable(error, "error", type$.Object);
-          if (t1._state >= 4)
-            H.throwExpression(t1._badEventState$0());
-          replacement = $.Zone__current.errorCallback$2(error, stackTrace);
-          if (replacement != null) {
-            error = replacement.error;
-            stackTrace = replacement.stackTrace;
-          }
-          t1._addError$2(error, stackTrace);
+          t2 = controller.get$controller(controller);
+          H.checkNotNullable(t1, "error", type$.Object);
+          if (t2._state >= 4)
+            H.throwExpression(t2._badEventState$0());
+          t2._addError$2(t1, stackTrace);
           controller.get$controller(controller).close$0(0);
         }
         return;
@@ -15454,16 +15250,9 @@
       return t2;
     },
     Future_Future$error(error, stackTrace, $T) {
-      var t1, replacement;
+      var t1;
       H.checkNotNullable(error, "error", type$.Object);
-      t1 = $.Zone__current;
-      if (t1 !== C.C__RootZone) {
-        replacement = t1.errorCallback$2(error, stackTrace);
-        if (replacement != null) {
-          error = replacement.error;
-          stackTrace = replacement.stackTrace;
-        }
-      }
+      $.Zone__current !== C.C__RootZone;
       if (stackTrace == null)
         stackTrace = P.AsyncError_defaultStackTrace(error);
       t1 = new P._Future($.Zone__current, $T._eval$1("_Future<0>"));
@@ -15518,11 +15307,7 @@
       return new P._AsyncCompleter(new P._Future($.Zone__current, $T._eval$1("_Future<0>")), $T._eval$1("_AsyncCompleter<0>"));
     },
     _completeWithErrorCallback(result, error, stackTrace) {
-      var replacement = $.Zone__current.errorCallback$2(error, stackTrace);
-      if (replacement != null) {
-        error = replacement.error;
-        stackTrace = replacement.stackTrace;
-      } else if (stackTrace == null)
+      if (stackTrace == null)
         stackTrace = P.AsyncError_defaultStackTrace(error);
       result._completeError$2(error, stackTrace);
     },
@@ -15551,8 +15336,8 @@
         hasError = !t4;
         if (listeners == null) {
           if (hasError && (t3 & 1) === 0) {
-            t2 = t1._resultOrListeners;
-            t1._zone.handleUncaughtError$2(t2.error, t2.stackTrace);
+            t1 = t1._resultOrListeners;
+            P._rootHandleError(t1.error, t1.stackTrace);
           }
           return;
         }
@@ -15576,14 +15361,12 @@
         if (t5) {
           zone = t1.result._zone;
           if (hasError) {
-            t1 = t3._zone;
-            t1 = !(t1 === zone || t1.get$errorZone() === zone.get$errorZone());
+            t3 = t3._zone === zone;
+            t3 = !(t3 || t3);
           } else
-            t1 = false;
-          if (t1) {
-            t1 = _box_1.source;
-            t2 = t1._resultOrListeners;
-            t1._zone.handleUncaughtError$2(t2.error, t2.stackTrace);
+            t3 = false;
+          if (t3) {
+            P._rootHandleError(sourceResult.error, sourceResult.stackTrace);
             return;
           }
           oldZone = $.Zone__current;
@@ -15591,7 +15374,7 @@
             $.Zone__current = zone;
           else
             oldZone = null;
-          t1 = _box_0.listener.state;
+          t1 = t1.state;
           if ((t1 & 15) === 8)
             new P._Future__propagateToListeners_handleWhenCompleteCallback(_box_0, _box_1, hasError).call$0();
           else if (t4) {
@@ -15644,9 +15427,9 @@
     },
     _registerErrorHandler(errorHandler, zone) {
       if (type$.dynamic_Function_Object_StackTrace._is(errorHandler))
-        return zone.registerBinaryCallback$3$1(errorHandler, type$.dynamic, type$.Object, type$.StackTrace);
+        return zone.registerBinaryCallback$1(errorHandler);
       if (type$.dynamic_Function_Object._is(errorHandler))
-        return zone.registerUnaryCallback$2$1(errorHandler, type$.dynamic, type$.Object);
+        return errorHandler;
       throw H.wrapException(P.ArgumentError$value(errorHandler, "onError", string$.Error_));
     },
     _microtaskLoop() {
@@ -15703,22 +15486,13 @@
       }
     },
     scheduleMicrotask(callback) {
-      var t1, _null = null,
+      var _null = null,
         currentZone = $.Zone__current;
       if (C.C__RootZone === currentZone) {
         P._rootScheduleMicrotask(_null, _null, C.C__RootZone, callback);
         return;
       }
-      if (C.C__RootZone === currentZone.get$_scheduleMicrotask().zone)
-        t1 = C.C__RootZone.get$errorZone() === currentZone.get$errorZone();
-      else
-        t1 = false;
-      if (t1) {
-        P._rootScheduleMicrotask(_null, _null, currentZone, currentZone.registerCallback$1$1(callback, type$.void));
-        return;
-      }
-      t1 = $.Zone__current;
-      t1.scheduleMicrotask$1(t1.bindCallbackGuarded$1(callback));
+      P._rootScheduleMicrotask(_null, _null, currentZone, currentZone.bindCallbackGuarded$1(callback));
     },
     Stream_Stream$fromIterable(elements, $T) {
       return new P._GeneratedStreamImpl(new P.Stream_Stream$fromIterable_closure(elements, $T), $T._eval$1("_GeneratedStreamImpl<0>"));
@@ -15726,9 +15500,6 @@
     StreamIterator_StreamIterator(stream) {
       H.checkNotNullable(stream, "stream", type$.Object);
       return new P._StreamIterator();
-    },
-    StreamController_StreamController(onCancel, onListen, onResume, $T) {
-      return new P._AsyncStreamController(onListen, null, onResume, onCancel, $T._eval$1("_AsyncStreamController<0>"));
     },
     _runGuarded(notificationHandler) {
       var e, s, exception;
@@ -15739,48 +15510,39 @@
       } catch (exception) {
         e = H.unwrapException(exception);
         s = H.getTraceFromException(exception);
-        $.Zone__current.handleUncaughtError$2(e, s);
+        P._rootHandleError(e, s);
       }
     },
     _BufferingStreamSubscription$(onData, onError, onDone, cancelOnError, $T) {
       var t1 = $.Zone__current,
         t2 = cancelOnError ? 1 : 0,
-        t3 = P._BufferingStreamSubscription__registerDataHandler(t1, onData, $T),
-        t4 = P._BufferingStreamSubscription__registerErrorHandler(t1, onError),
-        t5 = onDone == null ? P.async___nullDoneHandler$closure() : onDone;
-      return new P._BufferingStreamSubscription(t3, t4, t1.registerCallback$1$1(t5, type$.void), t1, t2, $T._eval$1("_BufferingStreamSubscription<0>"));
+        t3 = P._BufferingStreamSubscription__registerDataHandler(t1, onData),
+        t4 = P._BufferingStreamSubscription__registerErrorHandler(t1, onError);
+      return new P._BufferingStreamSubscription(t3, t4, onDone, t1, t2, $T._eval$1("_BufferingStreamSubscription<0>"));
     },
-    _BufferingStreamSubscription__registerDataHandler(zone, handleData, $T) {
-      var t1 = handleData == null ? P.async___nullDataHandler$closure() : handleData;
-      return zone.registerUnaryCallback$2$1(t1, type$.void, $T);
+    _BufferingStreamSubscription__registerDataHandler(zone, handleData) {
+      return handleData == null ? P.async___nullDataHandler$closure() : handleData;
     },
     _BufferingStreamSubscription__registerErrorHandler(zone, handleError) {
       if (type$.void_Function_Object_StackTrace._is(handleError))
-        return zone.registerBinaryCallback$3$1(handleError, type$.dynamic, type$.Object, type$.StackTrace);
+        return zone.registerBinaryCallback$1(handleError);
       if (type$.void_Function_Object._is(handleError))
-        return zone.registerUnaryCallback$2$1(handleError, type$.dynamic, type$.Object);
+        return handleError;
       throw H.wrapException(P.ArgumentError$("handleError callback must take either an Object (the error), or both an Object (the error) and a StackTrace.", null));
     },
     _nullDataHandler(value) {
     },
-    _nullDoneHandler() {
-    },
     Timer_Timer(duration, callback) {
       var t1 = $.Zone__current;
       if (t1 === C.C__RootZone)
-        return t1.createTimer$2(duration, callback);
-      return t1.createTimer$2(duration, t1.bindCallbackGuarded$1(callback));
+        return P.Timer__createTimer(duration, callback);
+      return P.Timer__createTimer(duration, t1.bindCallbackGuarded$1(callback));
     },
     Timer_Timer$periodic(duration, callback) {
-      var boundCallback,
-        t1 = $.Zone__current;
+      var t1 = $.Zone__current;
       if (t1 === C.C__RootZone)
-        return t1.createPeriodicTimer$2(duration, callback);
-      boundCallback = t1.bindUnaryCallbackGuarded$1$1(callback, type$.Timer);
-      return $.Zone__current.createPeriodicTimer$2(duration, boundCallback);
-    },
-    _rootHandleUncaughtError($self, $parent, zone, error, stackTrace) {
-      P._rootHandleError(error, stackTrace);
+        return P.Timer__createPeriodicTimer(duration, callback);
+      return P.Timer__createPeriodicTimer(duration, t1.bindUnaryCallbackGuarded$1$1(callback, type$.Timer));
     },
     _rootHandleError(error, stackTrace) {
       P._schedulePriorityAsyncCallback(new P._rootHandleError_closure(error, stackTrace));
@@ -15827,49 +15589,10 @@
         $.Zone__current = old;
       }
     },
-    _rootRegisterCallback($self, $parent, zone, f) {
-      return f;
-    },
-    _rootRegisterUnaryCallback($self, $parent, zone, f) {
-      return f;
-    },
-    _rootRegisterBinaryCallback($self, $parent, zone, f) {
-      return f;
-    },
-    _rootErrorCallback($self, $parent, zone, error, stackTrace) {
-      return null;
-    },
     _rootScheduleMicrotask($self, $parent, zone, f) {
-      var t1, t2;
-      if (C.C__RootZone !== zone) {
-        t1 = C.C__RootZone.get$errorZone();
-        t2 = zone.get$errorZone();
-        f = t1 !== t2 ? zone.bindCallbackGuarded$1(f) : zone.bindCallback$1$1(f, type$.void);
-      }
+      if (C.C__RootZone !== zone)
+        f = zone.bindCallbackGuarded$1(f);
       P._scheduleAsyncCallback(f);
-    },
-    _rootCreateTimer($self, $parent, zone, duration, callback) {
-      return P.Timer__createTimer(duration, C.C__RootZone !== zone ? zone.bindCallback$1$1(callback, type$.void) : callback);
-    },
-    _rootCreatePeriodicTimer($self, $parent, zone, duration, callback) {
-      return P.Timer__createPeriodicTimer(duration, C.C__RootZone !== zone ? zone.bindUnaryCallback$2$1(callback, type$.void, type$.Timer) : callback);
-    },
-    _rootPrint($self, $parent, zone, line) {
-      H.printString(line);
-    },
-    _printToZone(line) {
-      $.Zone__current.print$1(0, line);
-    },
-    _rootFork($self, $parent, zone, specification, zoneValues) {
-      var valueMap, t1, handleUncaughtError;
-      $.printToZone = P.async___printToZone$closure();
-      valueMap = zone.get$_async$_map();
-      valueMap = valueMap;
-      t1 = new P._CustomZone(zone.get$_run(), zone.get$_runUnary(), zone.get$_runBinary(), zone.get$_registerCallback(), zone.get$_registerUnaryCallback(), zone.get$_registerBinaryCallback(), zone.get$_errorCallback(), zone.get$_scheduleMicrotask(), zone.get$_createTimer(), zone.get$_createPeriodicTimer(), zone.get$_print(), zone.get$_fork(), zone.get$_handleUncaughtError(), zone, valueMap);
-      handleUncaughtError = specification.handleUncaughtError;
-      if (handleUncaughtError != null)
-        t1._handleUncaughtError = new P._ZoneFunction(t1, handleUncaughtError);
-      return t1;
     },
     _AsyncRun__initializeScheduleImmediate_internalCallback: function _AsyncRun__initializeScheduleImmediate_internalCallback(t0) {
       this._box_0 = t0;
@@ -15936,14 +15659,14 @@
     _AsyncStarStreamController__resumeBody_closure: function _AsyncStarStreamController__resumeBody_closure(t0) {
       this.body = t0;
     },
-    _AsyncStarStreamController_closure0: function _AsyncStarStreamController_closure0(t0) {
+    _AsyncStarStreamController_closure: function _AsyncStarStreamController_closure(t0) {
       this._resumeBody = t0;
     },
-    _AsyncStarStreamController_closure1: function _AsyncStarStreamController_closure1(t0, t1) {
+    _AsyncStarStreamController_closure0: function _AsyncStarStreamController_closure0(t0, t1) {
       this.$this = t0;
       this._resumeBody = t1;
     },
-    _AsyncStarStreamController_closure: function _AsyncStarStreamController_closure(t0, t1) {
+    _AsyncStarStreamController_closure1: function _AsyncStarStreamController_closure1(t0, t1) {
       this.$this = t0;
       this.body = t1;
     },
@@ -16188,111 +15911,13 @@
     },
     _StreamIterator: function _StreamIterator() {
     },
-    _ZoneFunction: function _ZoneFunction(t0, t1) {
-      this.zone = t0;
-      this.$function = t1;
-    },
-    _RunNullaryZoneFunction: function _RunNullaryZoneFunction(t0, t1) {
-      this.zone = t0;
-      this.$function = t1;
-    },
-    _RunUnaryZoneFunction: function _RunUnaryZoneFunction(t0, t1) {
-      this.zone = t0;
-      this.$function = t1;
-    },
-    _RunBinaryZoneFunction: function _RunBinaryZoneFunction(t0, t1) {
-      this.zone = t0;
-      this.$function = t1;
-    },
-    _RegisterNullaryZoneFunction: function _RegisterNullaryZoneFunction(t0, t1) {
-      this.zone = t0;
-      this.$function = t1;
-    },
-    _RegisterUnaryZoneFunction: function _RegisterUnaryZoneFunction(t0, t1) {
-      this.zone = t0;
-      this.$function = t1;
-    },
-    _RegisterBinaryZoneFunction: function _RegisterBinaryZoneFunction(t0, t1) {
-      this.zone = t0;
-      this.$function = t1;
-    },
-    _ZoneSpecification: function _ZoneSpecification(t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12) {
-      var _ = this;
-      _.handleUncaughtError = t0;
-      _.run = t1;
-      _.runUnary = t2;
-      _.runBinary = t3;
-      _.registerCallback = t4;
-      _.registerUnaryCallback = t5;
-      _.registerBinaryCallback = t6;
-      _.errorCallback = t7;
-      _.scheduleMicrotask = t8;
-      _.createTimer = t9;
-      _.createPeriodicTimer = t10;
-      _.print = t11;
-      _.fork = t12;
-    },
-    _ZoneDelegate: function _ZoneDelegate() {
-    },
     _Zone: function _Zone() {
-    },
-    _CustomZone: function _CustomZone(t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14) {
-      var _ = this;
-      _._run = t0;
-      _._runUnary = t1;
-      _._runBinary = t2;
-      _._registerCallback = t3;
-      _._registerUnaryCallback = t4;
-      _._registerBinaryCallback = t5;
-      _._errorCallback = t6;
-      _._scheduleMicrotask = t7;
-      _._createTimer = t8;
-      _._createPeriodicTimer = t9;
-      _._print = t10;
-      _._fork = t11;
-      _._handleUncaughtError = t12;
-      _._delegateCache = null;
-      _.parent = t13;
-      _._async$_map = t14;
-    },
-    _CustomZone_bindCallback_closure: function _CustomZone_bindCallback_closure(t0, t1, t2) {
-      this.$this = t0;
-      this.registered = t1;
-      this.R = t2;
-    },
-    _CustomZone_bindUnaryCallback_closure: function _CustomZone_bindUnaryCallback_closure(t0, t1, t2, t3) {
-      var _ = this;
-      _.$this = t0;
-      _.registered = t1;
-      _.T = t2;
-      _.R = t3;
-    },
-    _CustomZone_bindCallbackGuarded_closure: function _CustomZone_bindCallbackGuarded_closure(t0, t1) {
-      this.$this = t0;
-      this.registered = t1;
-    },
-    _CustomZone_bindUnaryCallbackGuarded_closure: function _CustomZone_bindUnaryCallbackGuarded_closure(t0, t1, t2) {
-      this.$this = t0;
-      this.registered = t1;
-      this.T = t2;
     },
     _rootHandleError_closure: function _rootHandleError_closure(t0, t1) {
       this.error = t0;
       this.stackTrace = t1;
     },
     _RootZone: function _RootZone() {
-    },
-    _RootZone_bindCallback_closure: function _RootZone_bindCallback_closure(t0, t1, t2) {
-      this.$this = t0;
-      this.f = t1;
-      this.R = t2;
-    },
-    _RootZone_bindUnaryCallback_closure: function _RootZone_bindUnaryCallback_closure(t0, t1, t2, t3) {
-      var _ = this;
-      _.$this = t0;
-      _.f = t1;
-      _.T = t2;
-      _.R = t3;
     },
     _RootZone_bindCallbackGuarded_closure: function _RootZone_bindCallbackGuarded_closure(t0, t1) {
       this.$this = t0;
@@ -16422,7 +16047,7 @@
     },
     _iterablePartsToStrings(iterable, parts) {
       var next, ultimateString, penultimateString, penultimate, ultimate, ultimate0, elision,
-        it = J.get$iterator$ax(iterable),
+        it = iterable.get$iterator(iterable),
         $length = 0, count = 0;
       while (true) {
         if (!($length < 80 || count < 3))
@@ -17275,12 +16900,7 @@
       return new H.CastMap(source, $K._eval$1("@<0>")._bind$1($V)._bind$1(K2)._bind$1(V2)._eval$1("CastMap<1,2,3,4>"));
     },
     print(object) {
-      var line = J.toString$0$(object),
-        toZone = $.printToZone;
-      if (toZone == null)
-        H.printString(line);
-      else
-        toZone.call$1(line);
+      H.printString(J.toString$0$(object));
     },
     Stopwatch$() {
       $.$get$Stopwatch__frequency();
@@ -21125,7 +20745,7 @@
       _._picture = null;
       _._layer$_debugDisposed = _._willChangeHint = _._isComplexHint = false;
       _._parentHandle = t1;
-      _._layer$_refCount = 0;
+      _._refCount = 0;
       _._needsAddToScene = true;
       _.debugCreator = _._previousSibling = _._nextSibling = _._engineLayer = null;
       _._node$_depth = 0;
@@ -21140,7 +20760,7 @@
       _.checkerboardOffscreenLayers = t4;
       _._layer$_debugDisposed = false;
       _._parentHandle = t5;
-      _._layer$_refCount = 0;
+      _._refCount = 0;
       _._needsAddToScene = true;
       _.debugCreator = _._previousSibling = _._nextSibling = _._engineLayer = null;
       _._node$_depth = 0;
@@ -21154,7 +20774,7 @@
       _._lastChild = _._firstChild = null;
       _._layer$_debugDisposed = false;
       _._parentHandle = t1;
-      _._layer$_refCount = 0;
+      _._refCount = 0;
       _._needsAddToScene = true;
       _.debugCreator = _._previousSibling = _._nextSibling = _._engineLayer = null;
       _._node$_depth = 0;
@@ -21167,7 +20787,7 @@
       _._lastChild = _._firstChild = null;
       _._layer$_debugDisposed = false;
       _._parentHandle = t1;
-      _._layer$_refCount = 0;
+      _._refCount = 0;
       _._needsAddToScene = true;
       _.debugCreator = _._previousSibling = _._nextSibling = _._engineLayer = null;
       _._node$_depth = 0;
@@ -21180,7 +20800,7 @@
       _._lastChild = _._firstChild = null;
       _._layer$_debugDisposed = false;
       _._parentHandle = t1;
-      _._layer$_refCount = 0;
+      _._refCount = 0;
       _._needsAddToScene = true;
       _.debugCreator = _._previousSibling = _._nextSibling = _._engineLayer = null;
       _._node$_depth = 0;
@@ -21195,7 +20815,7 @@
       _._lastChild = _._firstChild = null;
       _._layer$_debugDisposed = false;
       _._parentHandle = t2;
-      _._layer$_refCount = 0;
+      _._refCount = 0;
       _._needsAddToScene = true;
       _.debugCreator = _._previousSibling = _._nextSibling = _._engineLayer = null;
       _._node$_depth = 0;
@@ -21208,7 +20828,7 @@
       _._lastChild = _._firstChild = null;
       _._layer$_debugDisposed = false;
       _._parentHandle = t1;
-      _._layer$_refCount = 0;
+      _._refCount = 0;
       _._needsAddToScene = true;
       _.debugCreator = _._previousSibling = _._nextSibling = _._engineLayer = null;
       _._node$_depth = 0;
@@ -21221,7 +20841,7 @@
       _._lastChild = _._firstChild = _._layer$_shadowColor = _._layer$_color = _._layer$_elevation = null;
       _._layer$_debugDisposed = false;
       _._parentHandle = t1;
-      _._layer$_refCount = 0;
+      _._refCount = 0;
       _._needsAddToScene = true;
       _.debugCreator = _._previousSibling = _._nextSibling = _._engineLayer = null;
       _._node$_depth = 0;
@@ -21235,7 +20855,7 @@
       _._lastChild = _._firstChild = null;
       _._layer$_debugDisposed = false;
       _._parentHandle = t3;
-      _._layer$_refCount = 0;
+      _._refCount = 0;
       _._needsAddToScene = true;
       _.debugCreator = _._previousSibling = _._nextSibling = _._engineLayer = null;
       _._node$_depth = 0;
@@ -21287,7 +20907,7 @@
       var _ = this;
       _._widthFactor = t0;
       _._heightFactor = t1;
-      _._resolvedAlignment = null;
+      _._shifted_box$_resolvedAlignment = null;
       _._shifted_box$_alignment = t2;
       _._shifted_box$_textDirection = t3;
       _.RenderObjectWithChildMixin__child = t4;
@@ -21357,8 +20977,8 @@
     Opacity$(child, opacity) {
       return new T.Opacity(opacity, child, null);
     },
-    CustomPaint$(child, foregroundPainter, painter, size) {
-      return new T.CustomPaint(painter, foregroundPainter, size, child, null);
+    CustomPaint$(child, foregroundPainter, painter) {
+      return new T.CustomPaint(painter, foregroundPainter, child, null);
     },
     ClipPath$(child, clipBehavior, clipper) {
       return new T.ClipPath(clipper, clipBehavior, child, null);
@@ -21375,9 +20995,6 @@
     SizedBox$(child, height, width) {
       return new T.SizedBox(width, height, child, null);
     },
-    LimitedBox$(child, maxHeight, maxWidth) {
-      return new T.LimitedBox(maxWidth, maxHeight, child, null);
-    },
     Stack$(alignment, children, fit) {
       return new T.Stack(alignment, fit, children, null);
     },
@@ -21386,6 +21003,9 @@
     },
     Row$(children, crossAxisAlignment, mainAxisSize) {
       return new T.Row(C.Axis_0, C.MainAxisAlignment_0, mainAxisSize, crossAxisAlignment, null, C.VerticalDirection_1, null, children, null);
+    },
+    Column$(children, mainAxisAlignment) {
+      return new T.Column(C.Axis_1, mainAxisAlignment, C.MainAxisSize_1, C.CrossAxisAlignment_2, null, C.VerticalDirection_1, null, children, null);
     },
     RichText$(locale, maxLines, overflow, softWrap, strutStyle, text, textAlign, textDirection, textHeightBehavior, textScaleFactor, textWidthBasis) {
       return new T.RichText(text, textAlign, textDirection, softWrap, overflow, textScaleFactor, maxLines, locale, strutStyle, textWidthBasis, textHeightBehavior, T.RichText__extractChildren(text), null);
@@ -21403,9 +21023,9 @@
     MouseRegion$(child, cursor, onEnter, onExit, opaque) {
       return new T.MouseRegion(onEnter, onExit, cursor, true, child, null);
     },
-    Semantics$(button, child, container, enabled, explicitChildNodes, focusable, focused, header, image, label, namesRoute, onDismiss, onLongPress, onTap, scopesRoute, sortKey, tagForChildren, textDirection) {
+    Semantics$(button, child, container, enabled, explicitChildNodes, focusable, focused, header, label, namesRoute, onDismiss, onLongPress, onTap, scopesRoute, sortKey, tagForChildren, textDirection) {
       var _null = null;
-      return new T.Semantics(new A.SemanticsProperties(enabled, _null, _null, _null, button, _null, header, _null, _null, _null, _null, focusable, focused, _null, _null, _null, _null, scopesRoute, namesRoute, image, _null, _null, _null, label, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, textDirection, sortKey, tagForChildren, onTap, onLongPress, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, onDismiss, _null), container, explicitChildNodes, false, child, _null);
+      return new T.Semantics(new A.SemanticsProperties(enabled, _null, _null, _null, button, _null, header, _null, _null, _null, _null, focusable, focused, _null, _null, _null, _null, scopesRoute, namesRoute, _null, _null, _null, _null, label, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, textDirection, sortKey, tagForChildren, onTap, onLongPress, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, onDismiss, _null), container, explicitChildNodes, false, child, _null);
     },
     BlockSemantics$(child) {
       return new T.BlockSemantics(child, null);
@@ -21420,13 +21040,12 @@
       this.child = t1;
       this.key = t2;
     },
-    CustomPaint: function CustomPaint(t0, t1, t2, t3, t4) {
+    CustomPaint: function CustomPaint(t0, t1, t2, t3) {
       var _ = this;
       _.painter = t0;
       _.foregroundPainter = t1;
-      _.size = t2;
-      _.child = t3;
-      _.key = t4;
+      _.child = t2;
+      _.key = t3;
     },
     ClipRect: function ClipRect(t0, t1) {
       this.child = t0;
@@ -21580,6 +21199,18 @@
     Flex: function Flex() {
     },
     Row: function Row(t0, t1, t2, t3, t4, t5, t6, t7, t8) {
+      var _ = this;
+      _.direction = t0;
+      _.mainAxisAlignment = t1;
+      _.mainAxisSize = t2;
+      _.crossAxisAlignment = t3;
+      _.textDirection = t4;
+      _.verticalDirection = t5;
+      _.textBaseline = t6;
+      _.children = t7;
+      _.key = t8;
+    },
+    Column: function Column(t0, t1, t2, t3, t4, t5, t6, t7, t8) {
       var _ = this;
       _.direction = t0;
       _.mainAxisAlignment = t1;
@@ -21751,7 +21382,7 @@
     },
     _HeroState: function _HeroState(t0, t1) {
       var _ = this;
-      _._heroes$_key = t0;
+      _._key = t0;
       _._placeholderSize = null;
       _._shouldIncludeChild = true;
       _._widget = null;
@@ -21948,6 +21579,25 @@
     },
     _ModalRoute_TransitionRoute_LocalHistoryRoute: function _ModalRoute_TransitionRoute_LocalHistoryRoute() {
     },
+    FlutterWebAppChannel_registerJavaScript() {
+      var $async$goto = 0,
+        $async$completer = P._makeAsyncAwaitCompleter(type$.dynamic);
+      var $async$FlutterWebAppChannel_registerJavaScript = P._wrapJsFunctionForAsync(function($async$errorCode, $async$result) {
+        if ($async$errorCode === 1)
+          return P._asyncRethrow($async$result, $async$completer);
+        while (true)
+          switch ($async$goto) {
+            case 0:
+              // Function start
+              $.$get$_context().$indexSet(0, "flutterFunc", new T.FlutterWebAppChannel_registerJavaScript_closure());
+              // implicit return
+              return P._asyncReturn(null, $async$completer);
+          }
+      });
+      return P._asyncStartSync($async$FlutterWebAppChannel_registerJavaScript, $async$completer);
+    },
+    FlutterWebAppChannel_registerJavaScript_closure: function FlutterWebAppChannel_registerJavaScript_closure() {
+    },
     Gradient_lerp(a, b, t) {
       return null;
     },
@@ -22141,8 +21791,6 @@
       return stackTrace;
     },
     FlutterError_dumpErrorToConsole(details, forceReport) {
-      if (details.silent && true)
-        return;
       if ($.FlutterError__errorCount === 0 || false)
         U.debugPrintStack(J.toString$0$(details.exception), 100, details.stack);
       else
@@ -22196,8 +21844,8 @@
       t1 = H._setArrayType([], t2);
       for (t2 = removedPackagesAndClasses.get$entries(removedPackagesAndClasses), t2 = t2.get$iterator(t2); t2.moveNext$0();) {
         t3 = t2.get$current(t2);
-        if (t3.get$value(t3) > 0)
-          t1.push(t3.get$key(t3));
+        if (t3.value > 0)
+          t1.push(t3.key);
       }
       C.JSArray_methods.sort$0(t1);
       if (skipped === 1)
@@ -22500,69 +22148,6 @@
       _.tall = t4;
     },
     _Typography_Object_Diagnosticable: function _Typography_Object_Diagnosticable() {
-    },
-    applyBoxFit(fit, inputSize, outputSize) {
-      var destinationSize, sourceSize, t2, t3, t4, aspectRatio,
-        t1 = inputSize._dy;
-      if (t1 <= 0 || inputSize._dx <= 0 || outputSize._dy <= 0 || outputSize._dx <= 0)
-        return C.FittedSizes_46c;
-      switch (fit) {
-        case C.BoxFit_0:
-          destinationSize = outputSize;
-          sourceSize = inputSize;
-          break;
-        case C.BoxFit_1:
-          t2 = outputSize._dx;
-          t3 = outputSize._dy;
-          t4 = inputSize._dx;
-          destinationSize = t2 / t3 > t4 / t1 ? new P.Size(t4 * t3 / t1, t3) : new P.Size(t2, t1 * t2 / t4);
-          sourceSize = inputSize;
-          break;
-        case C.BoxFit_2:
-          t2 = outputSize._dx;
-          t3 = outputSize._dy;
-          t4 = inputSize._dx;
-          sourceSize = t2 / t3 > t4 / t1 ? new P.Size(t4, t4 * t3 / t2) : new P.Size(t1 * t2 / t3, t1);
-          destinationSize = outputSize;
-          break;
-        case C.BoxFit_3:
-          t1 = inputSize._dx;
-          t2 = outputSize._dx;
-          t3 = t1 * outputSize._dy / t2;
-          sourceSize = new P.Size(t1, t3);
-          destinationSize = new P.Size(t2, t3 * t2 / t1);
-          break;
-        case C.BoxFit_4:
-          t2 = outputSize._dy;
-          t3 = t1 * outputSize._dx / t2;
-          sourceSize = new P.Size(t3, t1);
-          destinationSize = new P.Size(t3 * t2 / t1, t2);
-          break;
-        case C.BoxFit_5:
-          sourceSize = new P.Size(Math.min(inputSize._dx, outputSize._dx), Math.min(t1, outputSize._dy));
-          destinationSize = sourceSize;
-          break;
-        case C.BoxFit_6:
-          aspectRatio = inputSize._dx / t1;
-          t2 = outputSize._dy;
-          destinationSize = t1 > t2 ? new P.Size(t2 * aspectRatio, t2) : inputSize;
-          t1 = outputSize._dx;
-          if (destinationSize._dx > t1)
-            destinationSize = new P.Size(t1, t1 / aspectRatio);
-          sourceSize = inputSize;
-          break;
-        default:
-          sourceSize = null;
-          destinationSize = null;
-      }
-      return new U.FittedSizes(sourceSize, destinationSize);
-    },
-    BoxFit: function BoxFit(t0) {
-      this._box_fit$_name = t0;
-    },
-    FittedSizes: function FittedSizes(t0, t1) {
-      this.source = t0;
-      this.destination = t1;
     },
     TextOverflow: function TextOverflow(t0) {
       this._text_painter$_name = t0;
@@ -22993,7 +22578,7 @@
       });
       return P._asyncStartSync($async$compute, $async$completer);
     },
-    createLocalImageConfiguration(context, size) {
+    createLocalImageConfiguration(context) {
       var t1, t2;
       context.dependOnInheritedWidgetOfExactType$1$0(type$.DefaultAssetBundle);
       t1 = $.$get$rootBundle();
@@ -23001,7 +22586,7 @@
       t2 = t2 == null ? null : t2.devicePixelRatio;
       if (t2 == null)
         t2 = 1;
-      return new M.ImageConfiguration(t1, t2, L.Localizations_maybeLocaleOf(context), T.Directionality_maybeOf(context), size, U.defaultTargetPlatform());
+      return new M.ImageConfiguration(t1, t2, L.Localizations_maybeLocaleOf(context), T.Directionality_maybeOf(context), null, U.defaultTargetPlatform());
     }
   },
   V = {AppBarTheme: function AppBarTheme(t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15) {
@@ -23265,7 +22850,7 @@
       properties.get$image(properties);
       config._setFlag$2(C.SemanticsFlag_16384, properties.get$image(properties));
       properties.get$label(properties);
-      config._semantics$_attributedLabel = new A.AttributedString(properties.get$label(properties), C.List_empty3);
+      config._attributedLabel = new A.AttributedString(properties.get$label(properties), C.List_empty3);
       config._hasBeenAnnotated = true;
       properties.get$value(properties);
       config._semantics$_attributedValue = new A.AttributedString(properties.get$value(properties), C.List_empty3);
@@ -24335,160 +23920,6 @@
     CircleBorder: function CircleBorder(t0) {
       this.side = t0;
     },
-    paintImage(alignment, canvas, centerSlice, colorFilter, debugImageLabel, filterQuality, fit, flipHorizontally, image, invertColors, isAntiAlias, opacity, rect, repeat, scale) {
-      var t1, t2, t3, t4, outputSize, t5, t6, fittedSizes, sourceSize, destinationSize, paint, t7, halfWidthDelta, t8, halfHeightDelta, destinationRect, sizeInfo, existingSizeInfo, needSave, dx, sourceRect;
-      if (rect.get$isEmpty(rect))
-        return;
-      t1 = rect.left;
-      t2 = rect.right - t1;
-      t3 = rect.top;
-      t4 = rect.bottom - t3;
-      outputSize = new P.Size(t2, t4);
-      t5 = image.get$width(image);
-      t6 = image.get$height(image);
-      if (fit == null)
-        fit = C.BoxFit_6;
-      fittedSizes = U.applyBoxFit(fit, new P.Size(t5, t6).$div(0, scale), outputSize);
-      sourceSize = fittedSizes.source.$mul(0, scale);
-      destinationSize = fittedSizes.destination;
-      if (repeat !== C.ImageRepeat_3 && destinationSize.$eq(0, outputSize))
-        repeat = C.ImageRepeat_3;
-      paint = H.CkPaint$();
-      paint.set$isAntiAlias(false);
-      if (colorFilter != null)
-        paint.set$colorFilter(colorFilter);
-      paint.set$color(0, new P.Color(((C.JSInt_methods._tdivFast$1(opacity * 255, 1) & 255) << 24 | 0) >>> 0));
-      paint.set$filterQuality(filterQuality);
-      paint.set$invertColors(invertColors);
-      t7 = destinationSize._dx;
-      halfWidthDelta = (t2 - t7) / 2;
-      t8 = destinationSize._dy;
-      halfHeightDelta = (t4 - t8) / 2;
-      t4 = alignment.x;
-      t4 = t1 + (halfWidthDelta + (flipHorizontally ? -t4 : t4) * halfWidthDelta);
-      t3 += halfHeightDelta + alignment.y * halfHeightDelta;
-      destinationRect = new P.Rect(t4, t3, t4 + t7, t3 + t8);
-      t3 = debugImageLabel == null ? "<Unknown Image(" + H.S(image.get$width(image)) + "\xd7" + H.S(image.get$height(image)) + ")>" : debugImageLabel;
-      sizeInfo = new E.ImageSizeInfo(t3, outputSize, new P.Size(image.get$width(image), image.get$height(image)));
-      if (!$._lastFrameImageSizeInfo.contains$1(0, sizeInfo)) {
-        existingSizeInfo = $._pendingImageSizeInfo.$index(0, t3);
-        if (existingSizeInfo == null || existingSizeInfo._sizeToBytes$1(existingSizeInfo.displaySize) < sizeInfo._sizeToBytes$1(outputSize))
-          $._pendingImageSizeInfo.$indexSet(0, t3, sizeInfo);
-        $.SchedulerBinding__instance.SchedulerBinding__postFrameCallbacks.push(new X.paintImage_closure());
-      }
-      needSave = repeat !== C.ImageRepeat_3 || flipHorizontally;
-      if (needSave)
-        canvas.save$0(0);
-      t3 = repeat === C.ImageRepeat_3;
-      if (!t3)
-        canvas.clipRect$1(0, rect);
-      if (flipHorizontally) {
-        dx = -(t1 + t2 / 2);
-        canvas.translate$2(0, -dx, 0);
-        canvas.scale$2(0, -1, 1);
-        canvas.translate$2(0, dx, 0);
-      }
-      sourceRect = alignment.inscribe$2(sourceSize, new P.Rect(0, 0, t5, t6));
-      if (t3)
-        canvas.drawImageRect$4(image, sourceRect, destinationRect, paint);
-      else
-        for (t1 = new P._SyncStarIterator(X._generateImageTileRects(rect, destinationRect, repeat)._outerHelper()); t1.moveNext$0();)
-          canvas.drawImageRect$4(image, sourceRect, t1.get$current(t1), paint);
-      if (needSave)
-        canvas.restore$0(0);
-    },
-    _generateImageTileRects($async$outputRect, $async$fundamentalRect, $async$repeat) {
-      return P._makeSyncStarIterable(function() {
-        var outputRect = $async$outputRect,
-          fundamentalRect = $async$fundamentalRect,
-          repeat = $async$repeat;
-        var $async$goto = 0, $async$handler = 1, $async$currentError, startX, stopX, startY, stopY, i, j, t1, t2, strideX, t3, t4, strideY, t5;
-        return function $async$_generateImageTileRects($async$errorCode, $async$result) {
-          if ($async$errorCode === 1) {
-            $async$currentError = $async$result;
-            $async$goto = $async$handler;
-          }
-          while (true)
-            switch ($async$goto) {
-              case 0:
-                // Function start
-                t1 = fundamentalRect.right;
-                t2 = fundamentalRect.left;
-                strideX = t1 - t2;
-                t3 = fundamentalRect.bottom;
-                t4 = fundamentalRect.top;
-                strideY = t3 - t4;
-                t5 = repeat !== C.ImageRepeat_0;
-                if (!t5 || repeat === C.ImageRepeat_1) {
-                  startX = C.JSNumber_methods.floor$0((outputRect.left - t2) / strideX);
-                  stopX = C.JSNumber_methods.ceil$0((outputRect.right - t1) / strideX);
-                } else {
-                  startX = 0;
-                  stopX = 0;
-                }
-                if (!t5 || repeat === C.ImageRepeat_2) {
-                  startY = C.JSNumber_methods.floor$0((outputRect.top - t4) / strideY);
-                  stopY = C.JSNumber_methods.ceil$0((outputRect.bottom - t3) / strideY);
-                } else {
-                  startY = 0;
-                  stopY = 0;
-                }
-                i = startX;
-              case 2:
-                // for condition
-                if (!(i <= stopX)) {
-                  // goto after for
-                  $async$goto = 4;
-                  break;
-                }
-                t1 = i * strideX, j = startY;
-              case 5:
-                // for condition
-                if (!(j <= stopY)) {
-                  // goto after for
-                  $async$goto = 7;
-                  break;
-                }
-                $async$goto = 8;
-                return fundamentalRect.shift$1(new P.Offset(t1, j * strideY));
-              case 8:
-                // after yield
-              case 6:
-                // for update
-                ++j;
-                // goto for condition
-                $async$goto = 5;
-                break;
-              case 7:
-                // after for
-              case 3:
-                // for update
-                ++i;
-                // goto for condition
-                $async$goto = 2;
-                break;
-              case 4:
-                // after for
-                // implicit return
-                return P._IterationMarker_endOfIteration();
-              case 1:
-                // rethrow
-                return P._IterationMarker_uncaughtError($async$currentError);
-            }
-        };
-      }, type$.Rect);
-    },
-    ImageRepeat: function ImageRepeat(t0) {
-      this._decoration_image$_name = t0;
-    },
-    DecorationImagePainter: function DecorationImagePainter(t0, t1) {
-      var _ = this;
-      _._details = t0;
-      _._onChanged = t1;
-      _._decoration_image$_image = _._imageStream = null;
-    },
-    paintImage_closure: function paintImage_closure() {
-    },
     RoundedRectangleBorder: function RoundedRectangleBorder(t0, t1) {
       this.borderRadius = t0;
       this.side = t1;
@@ -24619,7 +24050,7 @@
       _._maintainState = t1;
       _._mounted = false;
       _._overlay = null;
-      _._key = t2;
+      _._overlay$_key = t2;
       _.ChangeNotifier__count = 0;
       _.ChangeNotifier__listeners = t3;
       _.ChangeNotifier__reentrantlyRemovedListeners = _.ChangeNotifier__notificationCallStackDepth = 0;
@@ -24704,11 +24135,11 @@
     _RenderTheatre: function _RenderTheatre(t0, t1, t2, t3, t4, t5, t6, t7) {
       var _ = this;
       _._hasVisualOverflow = false;
-      _._overlay$_resolvedAlignment = null;
+      _._resolvedAlignment = null;
       _._overlay$_textDirection = t0;
       _._overlay$_skipCount = t1;
-      _._overlay$_clipBehavior = t2;
-      _._overlay$_clipRectLayer = t3;
+      _._clipBehavior = t2;
+      _._clipRectLayer = t3;
       _.ContainerRenderObjectMixin__childCount = t4;
       _.ContainerRenderObjectMixin__firstChild = t5;
       _.ContainerRenderObjectMixin__lastChild = t6;
@@ -25400,9 +24831,6 @@
       this.child = t2;
     },
     TextEditingAction: function TextEditingAction() {
-    },
-    EventBus: function EventBus(t0) {
-      this._emap = t0;
     }
   },
   Z = {ParametricCurve: function ParametricCurve() {
@@ -25602,7 +25030,7 @@
         $._hotRestartListeners[_i].call$0();
       return P.Future_Future$value(P.ServiceExtensionResponse$result("OK"), type$.ServiceExtensionResponse);
     },
-    $signature: 71
+    $signature: 85
   };
   H.initializeEngine_closure0.prototype = {
     call$0() {
@@ -25625,13 +25053,13 @@
       t2 = t1._onBeginFrame;
       if (t2 != null) {
         t3 = P.Duration$(highResTimeMicroseconds, 0);
-        H.invoke1(t2, t1._onBeginFrameZone, t3, type$.Duration);
+        H.invoke1(t2, t1._onBeginFrameZone, t3);
       }
       t2 = t1._onDrawFrame;
       if (t2 != null)
         H.invoke(t2, t1._onDrawFrameZone);
     },
-    $signature: 61
+    $signature: 60
   };
   H._addUrlStrategyListener_closure.prototype = {
     call$1(jsStrategy) {
@@ -25639,7 +25067,7 @@
       $._isUrlStrategySet = true;
       $._customUrlStrategy = t1;
     },
-    $signature: 97
+    $signature: 100
   };
   H._addUrlStrategyListener_closure0.prototype = {
     call$0() {
@@ -25795,7 +25223,7 @@
     call$1(e) {
       return J.$eq$(J.get$name$x(e), "assetBase");
     },
-    $signature: 82
+    $signature: 73
   };
   H.AssetManager__baseUrl_closure0.prototype = {
     call$0() {
@@ -25838,15 +25266,6 @@
     drawDRRect$3(_, outer, inner, paint) {
       J.drawDRRect$3$x(this.skCanvas, H.toSkRRect(outer), H.toSkRRect(inner), paint.get$skiaObject());
     },
-    drawImageRect$4(image, src, dst, paint) {
-      var filterQuality = paint._filterQuality,
-        t1 = this.skCanvas,
-        t2 = J.getInterceptor$x(t1);
-      if (filterQuality === C.FilterQuality_3)
-        t2.drawImageRectCubic$6(t1, image.get$box().get$skiaObject(), H.toSkRect(src), H.toSkRect(dst), 0.3333333333333333, 0.3333333333333333, paint.get$skiaObject());
-      else
-        t2.drawImageRectOptions$6(t1, image.get$box().get$skiaObject(), H.toSkRect(src), H.toSkRect(dst), H.toSkFilterMode(filterQuality), H.toSkMipmapMode(filterQuality), paint.get$skiaObject());
-    },
     drawPaint$1(_, paint) {
       J.drawPaint$1$x(this.skCanvas, paint.get$skiaObject());
     },
@@ -25888,9 +25307,6 @@
       var t1 = paint == null ? null : paint.get$skiaObject();
       J.saveLayer$4$x(this.skCanvas, t1, H.toSkRect(bounds), null, null);
     },
-    scale$2(_, sx, sy) {
-      J.scale$2$x(this.skCanvas, sx, sy);
-    },
     transform$1(_, matrix4) {
       J.concat$1$x(this.skCanvas, H.toSkMatrixFromFloat32(matrix4));
     },
@@ -25925,14 +25341,6 @@
     drawDRRect$3(_, outer, inner, paint) {
       this.super$CkCanvas$drawDRRect(0, outer, inner, paint);
       this.pictureSnapshot._commands.push(new H.CkDrawDRRectCommand(outer, inner, paint));
-    },
-    drawImageRect$4(image, src, dst, paint) {
-      var t1, t2;
-      this.super$CkCanvas$drawImageRect(image, src, dst, paint);
-      t1 = image.get$box();
-      t2 = new H.CkImage(t1);
-      t2.CkImage$cloneOf$1(t1);
-      this.pictureSnapshot._commands.push(new H.CkDrawImageRectCommand(t2, src, dst, paint));
     },
     drawPaint$1(_, paint) {
       this.super$CkCanvas$drawPaint(0, paint);
@@ -25978,10 +25386,6 @@
       this.super$CkCanvas$saveLayer(0, bounds, paint);
       this.pictureSnapshot._commands.push(new H.CkSaveLayerCommand(bounds, paint));
     },
-    scale$2(_, sx, sy) {
-      this.super$CkCanvas$scale(0, sx, sy);
-      this.pictureSnapshot._commands.push(new H.CkScaleCommand(sx, sy));
-    },
     transform$1(_, matrix4) {
       this.super$CkCanvas$transform(0, matrix4);
       this.pictureSnapshot._commands.push(new H.CkTransformCommand(matrix4));
@@ -26007,15 +25411,12 @@
       return skPicture;
     },
     dispose$0(_) {
-      var t1, t2, _i;
-      for (t1 = this._commands, t2 = t1.length, _i = 0; _i < t1.length; t1.length === t2 || (0, H.throwConcurrentModificationError)(t1), ++_i)
-        t1[_i].dispose$0(0);
+      var t1, _i;
+      for (t1 = this._commands.length, _i = 0; _i < t1; ++_i)
+        ;
     }
   };
-  H.CkPaintCommand.prototype = {
-    dispose$0(_) {
-    }
-  };
+  H.CkPaintCommand.prototype = {};
   H.CkClearCommand.prototype = {
     apply$1(canvas) {
       J.clear$1$ax(canvas, H._populateSkColor($.$get$_sharedSkColor1(), this.color));
@@ -26039,11 +25440,6 @@
   H.CkTranslateCommand.prototype = {
     apply$1(canvas) {
       J.translate$2$x(canvas, this.dx, this.dy);
-    }
-  };
-  H.CkScaleCommand.prototype = {
-    apply$1(canvas) {
-      J.scale$2$x(canvas, this.sx, this.sy);
     }
   };
   H.CkTransformCommand.prototype = {
@@ -26104,26 +25500,6 @@
       if (t1 == null)
         t1 = H.EnginePlatformDispatcher_browserDevicePixelRatio();
       H.drawSkShadow(canvas, _this.path, _this.color, _this.elevation, _this.transparentOccluder, t1);
-    }
-  };
-  H.CkDrawImageRectCommand.prototype = {
-    apply$1(canvas) {
-      var _this = this,
-        t1 = _this.paint,
-        filterQuality = t1._filterQuality,
-        t2 = J.getInterceptor$x(canvas),
-        t3 = _this.image,
-        t4 = _this.src,
-        t5 = _this.dst;
-      if (filterQuality === C.FilterQuality_3)
-        t2.drawImageRectCubic$6(canvas, t3.get$box().get$skiaObject(), H.toSkRect(t4), H.toSkRect(t5), 0.3333333333333333, 0.3333333333333333, t1.get$skiaObject());
-      else
-        t2.drawImageRectOptions$6(canvas, t3.get$box().get$skiaObject(), H.toSkRect(t4), H.toSkRect(t5), H.toSkFilterMode(filterQuality), H.toSkMipmapMode(filterQuality), t1.get$skiaObject());
-    },
-    dispose$0(_) {
-      var t1 = this.image;
-      t1._disposed = true;
-      t1.get$box().unref$1(t1);
     }
   };
   H.CkDrawParagraphCommand.prototype = {
@@ -26306,7 +25682,7 @@
       if (!J.isDeleted$0$x(deletable))
         this.$this.collect$1(deletable);
     },
-    $signature: 150
+    $signature: 157
   };
   H.ProductionCollector_collect_closure.prototype = {
     call$0() {
@@ -26342,11 +25718,6 @@
     },
     translate$2(_, dx, dy) {
       this.__engine$_canvas.translate$2(0, dx, dy);
-    },
-    scale$2(_, sx, sy) {
-      var t1 = sy == null ? sx : sy;
-      this.__engine$_canvas.scale$2(0, sx, t1);
-      return null;
     },
     transform$1(_, matrix4) {
       this.__engine$_canvas.transform$1(0, H.toMatrix32(matrix4));
@@ -26387,9 +25758,6 @@
     drawPath$2(_, path, paint) {
       this.__engine$_canvas.drawPath$2(0, type$.CkPath._as(path), type$.CkPaint._as(paint));
     },
-    drawImageRect$4(image, src, dst, paint) {
-      this.__engine$_canvas.drawImageRect$4(type$.CkImage._as(image), src, dst, type$.CkPaint._as(paint));
-    },
     drawParagraph$2(_, paragraph, offset) {
       this.__engine$_canvas.drawParagraph$2(0, type$.CkParagraph._as(paragraph), offset);
     },
@@ -26397,35 +25765,6 @@
       this.__engine$_canvas.drawShadow$4(0, type$.CkPath._as(path), color, elevation, transparentOccluder);
     }
   };
-  H.ManagedSkColorFilter.prototype = {
-    createDefault$0() {
-      return this.colorFilter._initRawColorFilter$0();
-    },
-    resurrect$0() {
-      return this.colorFilter._initRawColorFilter$0();
-    },
-    delete$0(_) {
-      var t1 = this.rawSkiaObject;
-      if (t1 != null)
-        J.delete$0$x(t1);
-    },
-    get$hashCode(_) {
-      var t1 = this.colorFilter;
-      return P.hashValues(t1.color, t1.blendMode, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd);
-    },
-    $eq(_, other) {
-      if (other == null)
-        return false;
-      if (H.getRuntimeType(this) !== J.get$runtimeType$(other))
-        return false;
-      return other instanceof H.ManagedSkColorFilter && other.colorFilter.$eq(0, this.colorFilter);
-    },
-    toString$0(_) {
-      var t1 = this.colorFilter;
-      return "ColorFilter.mode(" + H.S(t1.color) + ", " + t1.blendMode.toString$0(0) + ")";
-    }
-  };
-  H.CkBlendModeColorFilter.prototype = {$isCkBlendModeColorFilter: 1};
   H.HtmlViewEmbedder.prototype = {
     getCurrentCanvases$0() {
       var t1, t2, i,
@@ -26714,13 +26053,13 @@
     call$0() {
       return H._setArrayType([], type$.JSArray_CodeunitRange);
     },
-    $signature: 70
+    $signature: 69
   };
   H.FontFallbackData_ensureFontsSupportText_closure.prototype = {
     call$1(x) {
       return !x;
     },
-    $signature: 115
+    $signature: 117
   };
   H.FontFallbackData_registerFallbackFont_closure.prototype = {
     call$0() {
@@ -26732,7 +26071,7 @@
     call$0() {
       return H._setArrayType([], type$.JSArray_CodeunitRange);
     },
-    $signature: 70
+    $signature: 69
   };
   H._registerSymbolsAndEmoji_extractUrlFromCss.prototype = {
     call$1(css) {
@@ -26751,19 +26090,19 @@
       $.$get$printWarning().call$1("Unable to determine URL for Noto font");
       return null;
     },
-    $signature: 196
+    $signature: 208
   };
   H.findMinimumFontsForCodeUnits_closure.prototype = {
     call$1(font) {
       return C.JSArray_methods.contains$1($.$get$_cjkFonts(), font);
     },
-    $signature: 213
+    $signature: 217
   };
   H.findMinimumFontsForCodeUnits_closure0.prototype = {
     call$1(codeUnit) {
       return this._box_0.bestFont.resolvedFont.tree.root.containsDeep$1(codeUnit);
     },
-    $signature: 72
+    $signature: 71
   };
   H.NotoFont.prototype = {
     ensureResolved$0() {
@@ -27034,13 +26373,13 @@
     call$1(fetchResult) {
       return J.then$1$1$x(J.arrayBuffer$0$x(fetchResult), new H.NotoDownloader_downloadAsBytes__closure(), type$.ByteBuffer);
     },
-    $signature: 125
+    $signature: 127
   };
   H.NotoDownloader_downloadAsBytes__closure.prototype = {
     call$1(x) {
       return type$.ByteBuffer._as(x);
     },
-    $signature: 73
+    $signature: 77
   };
   H.NotoDownloader_downloadAsString_closure.prototype = {
     call$1(response) {
@@ -27052,7 +26391,7 @@
     call$1(x) {
       return H._asString(x);
     },
-    $signature: 190
+    $signature: 191
   };
   H.SkiaFontCollection.prototype = {
     ensureFontsLoaded$0() {
@@ -27306,64 +26645,21 @@
     call$0() {
       return H._setArrayType([], type$.JSArray_SkFont);
     },
-    $signature: 75
+    $signature: 72
   };
   H.SkiaFontCollection_ensureFontsLoaded_closure0.prototype = {
     call$0() {
       return H._setArrayType([], type$.JSArray_SkFont);
     },
-    $signature: 75
+    $signature: 72
   };
   H.SkiaFontCollection__getArrayBuffer_closure.prototype = {
     call$1(x) {
       return type$.ByteBuffer._as(x);
     },
-    $signature: 73
+    $signature: 77
   };
   H.RegisteredFont.prototype = {};
-  H.CkImage.prototype = {
-    CkImage$cloneOf$1(box) {
-      ++this.get$box()._refCount;
-    },
-    get$box() {
-      var t1 = this.__CkImage_box;
-      return t1 == null ? H.throwExpression(H.LateError$fieldNI("box")) : t1;
-    },
-    dispose$0(_) {
-      var t1, t2;
-      this._disposed = true;
-      t1 = this.get$box();
-      if (--t1._refCount === 0) {
-        t2 = t1._skDeletable;
-        if (t2 != null)
-          if ($.$get$browserSupportsFinalizationRegistry())
-            $.$get$Collector__instance().collect$1(t2);
-          else {
-            t1.delete$0(0);
-            t1.didDelete$0();
-          }
-        t1._resurrector = t1._skDeletable = t1.rawSkiaObject = null;
-        t1._isDeletedPermanently = true;
-      }
-    },
-    clone$0(_) {
-      var t1 = new H.CkImage(this.get$box());
-      ++t1.get$box()._refCount;
-      return t1;
-    },
-    isCloneOf$1(other) {
-      return other instanceof H.CkImage && J.isAliasOf$1$x(other.get$box().get$skiaObject(), this.get$box().get$skiaObject());
-    },
-    get$width(_) {
-      return J.width$0$x(this.get$box().get$skiaObject());
-    },
-    get$height(_) {
-      return J.height$0$x(this.get$box().get$skiaObject());
-    },
-    toString$0(_) {
-      return "[" + H.S(J.width$0$x(this.get$box().get$skiaObject())) + "\xd7" + H.S(J.height$0$x(this.get$box().get$skiaObject())) + "]";
-    }
-  };
   H.initializeCanvasKit_closure.prototype = {
     call$1(_) {
       J.then$1$x(self.window.CanvasKitInit({locateFile: P.allowInterop(new H.initializeCanvasKit__closure())}), P.allowInterop(new H.initializeCanvasKit__closure0(this.canvasKitCompleter)));
@@ -27376,7 +26672,7 @@
       t1.toString;
       return t1 + file;
     },
-    $signature: 219
+    $signature: 239
   };
   H.initializeCanvasKit__closure0.prototype = {
     call$1(ck) {
@@ -27384,7 +26680,7 @@
       self.window.flutterCanvasKit = $.canvasKit._readField$0();
       this.canvasKitCompleter.complete$0(0);
     },
-    $signature: 238
+    $signature: 261
   };
   H._startDownloadingCanvasKit_closure.prototype = {
     call$1(_) {
@@ -27408,7 +26704,7 @@
     call$1(value) {
       $.$get$_context().$indexSet(0, "_flutterWebCachedExports", value);
     },
-    $signature: 7
+    $signature: 6
   };
   H._startDownloadingCanvasKit_closure2.prototype = {
     call$0() {
@@ -27425,7 +26721,7 @@
     call$1(value) {
       $.$get$_context().$indexSet(0, "_flutterWebCachedModule", value);
     },
-    $signature: 7
+    $signature: 6
   };
   H.IntervalTree.prototype = {};
   H.IntervalTree_IntervalTree$createFromRanges_closure.prototype = {
@@ -27951,8 +27247,6 @@
       this._color = value;
       J.setColorInt$1$x(this.get$skiaObject(), value.get$value(value));
     },
-    set$invertColors(value) {
-    },
     set$shader(value) {
       var t1, t2, _this = this;
       if (_this._shader == value)
@@ -27979,27 +27273,6 @@
       t2 = _this._ckMaskFilter;
       J.setMaskFilter$1$x(t1, t2 == null ? null : t2.get$skiaObject());
     },
-    set$filterQuality(value) {
-      var t1, t2, _this = this;
-      if (_this._filterQuality === value)
-        return;
-      _this._filterQuality = value;
-      t1 = _this.get$skiaObject();
-      t2 = _this._shader;
-      J.setShader$1$x(t1, t2 == null ? null : t2.get$skiaObject());
-    },
-    set$colorFilter(value) {
-      var t2, _this = this,
-        t1 = _this._managedColorFilter;
-      if (J.$eq$(t1 == null ? null : t1.colorFilter, value))
-        return;
-      t1 = new H.ManagedSkColorFilter(value);
-      t1.ManagedSkiaObject$1(null, type$.SkColorFilter);
-      _this._managedColorFilter = t1;
-      t1 = _this.get$skiaObject();
-      t2 = _this._managedColorFilter;
-      J.setColorFilter$1$x(t1, t2 == null ? null : t2.get$skiaObject());
-    },
     createDefault$0() {
       var t2,
         paint = new self.window.flutterCanvasKit.Paint(),
@@ -28025,8 +27298,7 @@
       t2.setShader$1(paint, t1 == null ? _null : t1.get$skiaObject());
       t1 = _this._ckMaskFilter;
       t2.setMaskFilter$1(paint, t1 == null ? _null : t1.get$skiaObject());
-      t1 = _this._managedColorFilter;
-      t2.setColorFilter$1(paint, t1 == null ? _null : t1.get$skiaObject());
+      t2.setColorFilter$1(paint, _null);
       t1 = _this._managedImageFilter;
       t2.setImageFilter$1(paint, t1 == null ? _null : t1.get$skiaObject());
       t2.setStrokeCap$1(paint, $.$get$_skStrokeCaps()[0]);
@@ -28549,7 +27821,7 @@
       J.flush$0$x(t1._surface._surface);
       return true;
     },
-    $signature: 117
+    $signature: 118
   };
   H.CkSurface.prototype = {
     dispose$0(_) {
@@ -28583,7 +27855,7 @@
   };
   H.CkTextStyle_skTextStyle_closure.prototype = {
     call$0() {
-      var decorationValue, t2, ckShadows, _i, shadow, ckShadow, point,
+      var decorationValue, t2,
         t1 = this.$this,
         color = t1.color,
         decoration = t1.decoration,
@@ -28598,7 +27870,6 @@
         height = t1.height,
         background = t1.background,
         foreground = t1.foreground,
-        shadows = t1.shadows,
         properties = H.SkTextStyleProperties$(null);
       if (background != null)
         properties.backgroundColor = H.makeFreshSkColor(background._color);
@@ -28652,25 +27923,9 @@
         properties.fontStyle = H.toSkFontStyle(fontWeight, t1.fontStyle);
       if (foreground != null)
         properties.foregroundColor = H.makeFreshSkColor(foreground._color);
-      if (shadows != null) {
-        ckShadows = H._setArrayType([], type$.JSArray_SkTextShadow);
-        for (_i = 0; _i < 1; ++_i) {
-          shadow = shadows[_i];
-          ckShadow = H.SkTextShadow$(null);
-          ckShadow.color = H.makeFreshSkColor(shadow.color);
-          t1 = shadow.offset;
-          point = new Float32Array(2);
-          point[0] = t1._dx;
-          point[1] = t1._dy;
-          ckShadow.offset = point;
-          ckShadow.blurRadius = shadow.blurRadius;
-          ckShadows.push(ckShadow);
-        }
-        properties.shadows = ckShadows;
-      }
       return J.TextStyle$1$x($.canvasKit._readField$0(), properties);
     },
-    $signature: 118
+    $signature: 121
   };
   H.CkParagraph.prototype = {
     _ensureInitialized$1(constraints) {
@@ -28766,7 +28021,7 @@
     getBoxesForRange$4$boxHeightStyle$boxWidthStyle(start, end, boxHeightStyle, boxWidthStyle) {
       var t1, paragraph, t2;
       if (start < 0 || end < 0)
-        return C.List_empty9;
+        return C.List_empty10;
       t1 = this._lastLayoutConstraints;
       t1.toString;
       paragraph = this._ensureInitialized$1(t1);
@@ -28838,7 +28093,7 @@
       J.pop$0$x(this._paragraphBuilder);
     },
     pushStyle$1(_, style) {
-      var t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15, t16, t17, skStyle, foreground, background, _this = this, _null = null,
+      var t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15, t16, skStyle, foreground, background, _this = this, _null = null,
         t1 = _this._styleStack,
         baseStyle = C.JSArray_methods.get$last(t1);
       type$.CkTextStyle._as(style);
@@ -28887,10 +28142,7 @@
       t16 = style.foreground;
       if (t16 == null)
         t16 = baseStyle.foreground;
-      t17 = style.shadows;
-      if (t17 == null)
-        t17 = baseStyle.shadows;
-      skStyle = H.CkTextStyle_CkTextStyle(t15, t2, t3, t4, t5, t6, t9, t10, baseStyle.fontFeatures, t11, baseStyle.fontStyle, t7, t16, t14, baseStyle.leadingDistribution, t12, baseStyle.locale, t17, t8, t13);
+      skStyle = H.CkTextStyle_CkTextStyle(t15, t2, t3, t4, t5, t6, t9, t10, baseStyle.fontFeatures, t11, baseStyle.fontStyle, t7, t16, t14, baseStyle.leadingDistribution, t12, baseStyle.locale, baseStyle.shadows, t8, t13);
       t1.push(skStyle);
       _this._commands.push(new H._ParagraphCommand(C._ParagraphCommandType_2, _null, style, _null));
       t1 = skStyle.foreground;
@@ -28926,7 +28178,7 @@
     call$1(font) {
       return this.fontFamily === font;
     },
-    $signature: 46
+    $signature: 43
   };
   H.CanvasKitError.prototype = {
     toString$0(_) {
@@ -28955,7 +28207,7 @@
         this._box_0.errorEnvelopeEncoded = true;
       }
     },
-    $signature: 43
+    $signature: 49
   };
   H.ClipboardMessageHandler_setDataMethodCall_closure0.prototype = {
     call$1(_) {
@@ -28966,7 +28218,7 @@
         t1.call$1(C.C_JSONMessageCodec.encodeMessage$1(["copy_fail", "Clipboard.setData failed", null]));
       }
     },
-    $signature: 7
+    $signature: 6
   };
   H.ClipboardMessageHandler_getDataMethodCall_closure.prototype = {
     call$1(data) {
@@ -28975,7 +28227,7 @@
       t1.toString;
       t1.call$1(C.C_JSONMessageCodec.encodeMessage$1([map]));
     },
-    $signature: 157
+    $signature: 161
   };
   H.ClipboardMessageHandler_getDataMethodCall_closure0.prototype = {
     call$1(error) {
@@ -28989,7 +28241,7 @@
       t1.toString;
       t1.call$1(C.C_JSONMessageCodec.encodeMessage$1(["paste_fail", "Clipboard.getData failed", null]));
     },
-    $signature: 7
+    $signature: 6
   };
   H.ClipboardMessageHandler_getDataMethodCall__closure.prototype = {
     call$1(_) {
@@ -29355,26 +28607,26 @@
       } else if (t1 > 5)
         t.cancel$0(0);
     },
-    $signature: 184
+    $signature: 185
   };
   H.DomRenderer_setPreferredOrientation_closure.prototype = {
     call$1(_) {
       this.completer.complete$1(0, true);
     },
-    $signature: 7
+    $signature: 6
   };
   H.DomRenderer_setPreferredOrientation_closure0.prototype = {
     call$1(error) {
       this.completer.complete$1(0, false);
     },
-    $signature: 7
+    $signature: 6
   };
   H.sendFontChangeMessage_closure.prototype = {
     call$1(_) {
       $._fontChangeScheduled = false;
       $.$get$EnginePlatformDispatcher__instance().invokeOnPlatformMessage$3("flutter/system", $.$get$_fontChangeMessage(), new H.sendFontChangeMessage__closure());
     },
-    $signature: 61
+    $signature: 60
   };
   H.sendFontChangeMessage__closure.prototype = {
     call$1(_) {
@@ -29599,7 +28851,7 @@
       if ((t1 == null ? $.EngineSemanticsOwner__instance = H.EngineSemanticsOwner$_() : t1).receiveGlobalEvent$1($event))
         return this.handler.call$1($event);
     },
-    $signature: 92
+    $signature: 64
   };
   H.KeyboardBinding__onKeyData_closure.prototype = {
     call$1(handled) {
@@ -29758,7 +29010,7 @@
         t1 = _this.$this.onMacOs ? C.Duration_2000000 : C.Duration_1000000;
       return new P.KeyData(new P.Duration(_this.currentTimeStamp._duration + t1._duration), C.KeyEventType_1, _this.physicalKey, _this.logicalKey, null, true);
     },
-    $signature: 64
+    $signature: 63
   };
   H.KeyboardConverter__startGuardingKey_closure0.prototype = {
     call$0() {
@@ -29808,7 +29060,7 @@
     call$0() {
       return new P.KeyData(this.timeStamp, C.KeyEventType_1, this.physicalKey, this.logicalKey, null, true);
     },
-    $signature: 64
+    $signature: 63
   };
   H.KeyboardConverter_handleEvent_closure1.prototype = {
     call$0() {
@@ -29823,7 +29075,7 @@
       if (t2.containsValue$1(0, logicalKey) && !getModifier.call$1(this.event))
         t2.removeWhere$1(t2, new H.KeyboardConverter_handleEvent__closure(t1, logicalKey, this.timeStamp));
     },
-    $signature: 244
+    $signature: 271
   };
   H.KeyboardConverter_handleEvent__closure.prototype = {
     call$2(physicalKey, logicalRecord) {
@@ -29833,7 +29085,7 @@
       this.$this.dispatchKeyData.call$1(new P.KeyData(this.timeStamp, C.KeyEventType_1, physicalKey, t1, null, true));
       return true;
     },
-    $signature: 273
+    $signature: 97
   };
   H.MouseCursor.prototype = {};
   H.BrowserHistory.prototype = {
@@ -30474,7 +29726,7 @@
   };
   H.EnginePlatformDispatcher__zonedPlatformMessageResponseCallback_closure.prototype = {
     call$1(data) {
-      this.registrationZone.runUnaryGuarded$1$2(this.callback, data, type$.nullable_ByteData);
+      this.registrationZone.runUnaryGuarded$2(this.callback, data);
     },
     $signature: 11
   };
@@ -30482,14 +29734,14 @@
     call$1(assetData) {
       this.$this.replyToPlatformMessage$2(this.callback, assetData);
     },
-    $signature: 100
+    $signature: 103
   };
   H.EnginePlatformDispatcher__sendPlatformMessage_closure0.prototype = {
     call$1(error) {
       $.$get$printWarning().call$1("Error while trying to load an asset: " + H.S(error));
       this.$this.replyToPlatformMessage$2(this.callback, null);
     },
-    $signature: 7
+    $signature: 6
   };
   H.EnginePlatformDispatcher__sendPlatformMessage_closure1.prototype = {
     call$1(_) {
@@ -30501,7 +29753,7 @@
     call$1(success) {
       this.$this.replyToPlatformMessage$2(this.callback, C.C_JSONMessageCodec.encodeMessage$1([success]));
     },
-    $signature: 43
+    $signature: 49
   };
   H.EnginePlatformDispatcher__sendPlatformMessage_closure3.prototype = {
     call$1($content) {
@@ -30518,7 +29770,7 @@
       else if (t1 != null)
         t1.call$1(null);
     },
-    $signature: 43
+    $signature: 49
   };
   H.EnginePlatformDispatcher__addBrightnessMediaQueryListener_closure.prototype = {
     call$1($event) {
@@ -30607,7 +29859,7 @@
       wrapper.appendChild($content._readLocal$0());
       return wrapper;
     },
-    $signature: 109
+    $signature: 110
   };
   H.PlatformViewMessageHandler.prototype = {
     _createPlatformView$2(methodCall, callback) {
@@ -30666,7 +29918,7 @@
     _onPointerData$1(data) {
       var t1 = H._setArrayType(data.slice(0), H._arrayInstanceType(data)),
         t2 = $.$get$EnginePlatformDispatcher__instance();
-      H.invoke1(t2._onPointerDataPacket, t2._onPointerDataPacketZone, new P.PointerDataPacket(t1), type$.PointerDataPacket);
+      H.invoke1(t2._onPointerDataPacket, t2._onPointerDataPacketZone, new P.PointerDataPacket(t1));
     }
   };
   H.PointerSupportDetector.prototype = {
@@ -30693,7 +29945,7 @@
       if ((t1 == null ? $.EngineSemanticsOwner__instance = H.EngineSemanticsOwner$_() : t1).receiveGlobalEvent$1($event))
         this.handler.call$1($event);
     },
-    $signature: 92
+    $signature: 64
   };
   H._WheelEventListenerMixin.prototype = {
     _addWheelEventListener$1(handler) {
@@ -30906,7 +30158,7 @@
     call$0() {
       return new H._ButtonSanitizer();
     },
-    $signature: 113
+    $signature: 115
   };
   H._PointerAdapter__addPointerEventListener_closure.prototype = {
     call$1($event) {
@@ -31170,7 +30422,7 @@
       t1._convertEventsToPointerData$3$data$details$event(pointerData, t2.sanitizeDownEvent$2$button$buttons(t3, t4), $event);
       t1.__engine$_callback.call$1(pointerData);
     },
-    $signature: 57
+    $signature: 52
   };
   H._MouseAdapter_setup_closure0.prototype = {
     call$1($event) {
@@ -31188,7 +30440,7 @@
       t1._convertEventsToPointerData$3$data$details$event(pointerData, t2.sanitizeMoveEvent$1$buttons(t3), $event);
       t1.__engine$_callback.call$1(pointerData);
     },
-    $signature: 57
+    $signature: 52
   };
   H._MouseAdapter_setup_closure1.prototype = {
     call$1($event) {
@@ -31200,7 +30452,7 @@
         t1.__engine$_callback.call$1(pointerData);
       }
     },
-    $signature: 57
+    $signature: 52
   };
   H._MouseAdapter_setup_closure2.prototype = {
     call$1($event) {
@@ -31333,7 +30585,7 @@
     call$0() {
       return new H._PointerState(this.x, this.y);
     },
-    $signature: 121
+    $signature: 125
   };
   H.Profiler.prototype = {};
   H.AccessibilityAnnouncements.prototype = {
@@ -31609,7 +30861,7 @@
     call$1(mode) {
       this.$this.update$0(0);
     },
-    $signature: 89
+    $signature: 88
   };
   H.LabelAndValue.prototype = {
     update$0(_) {
@@ -31830,7 +31082,7 @@
     call$1(_) {
       this.$this._gestureModeDidChange$0();
     },
-    $signature: 89
+    $signature: 88
   };
   H.Scrollable_update_closure1.prototype = {
     call$1(_) {
@@ -31849,25 +31101,25 @@
     call$1(object) {
       return H.Incrementable$(object);
     },
-    $signature: 127
+    $signature: 128
   };
   H._roleFactories_closure0.prototype = {
     call$1(object) {
       return new H.Scrollable(object);
     },
-    $signature: 128
+    $signature: 129
   };
   H._roleFactories_closure1.prototype = {
     call$1(object) {
       return new H.LabelAndValue(object);
     },
-    $signature: 129
+    $signature: 130
   };
   H._roleFactories_closure2.prototype = {
     call$1(object) {
       return new H.Tappable(object);
     },
-    $signature: 130
+    $signature: 131
   };
   H._roleFactories_closure3.prototype = {
     call$1(object) {
@@ -31906,25 +31158,25 @@
       }
       return t1;
     },
-    $signature: 131
+    $signature: 137
   };
   H._roleFactories_closure4.prototype = {
     call$1(object) {
       return new H.Checkable(H._checkableKindFromSemanticsFlag(object), object);
     },
-    $signature: 137
+    $signature: 138
   };
   H._roleFactories_closure5.prototype = {
     call$1(object) {
       return new H.ImageRoleManager(object);
     },
-    $signature: 138
+    $signature: 144
   };
   H._roleFactories_closure6.prototype = {
     call$1(object) {
       return new H.LiveRegion(object);
     },
-    $signature: 144
+    $signature: 146
   };
   H.RoleManager.prototype = {};
   H.SemanticsObject.prototype = {
@@ -32464,7 +31716,7 @@
     call$0() {
       return new P.DateTime(Date.now(), false);
     },
-    $signature: 146
+    $signature: 150
   };
   H.EngineSemanticsOwner__getGestureModeClock_closure.prototype = {
     call$0() {
@@ -33496,7 +32748,7 @@
       t2.toString;
       this.subscriptions.push(W._EventStreamSubscription$(t2, "input", new H.EngineAutofillForm_addInputEventListeners_addSubscriptionForKey_closure(t1, key, t2), false, type$._ElementEventStreamImpl_Event._precomputed1));
     },
-    $signature: 78
+    $signature: 158
   };
   H.EngineAutofillForm_addInputEventListeners_addSubscriptionForKey_closure.prototype = {
     call$1(e) {
@@ -34110,7 +33362,7 @@
     call$1($event) {
       this.$this.handleChange$1($event);
     },
-    $signature: 161
+    $signature: 162
   };
   H.FirefoxTextEditingStrategy_addEventHandlers_closure0.prototype = {
     call$1(_) {
@@ -34205,7 +33457,7 @@
     call$2(identifier, form) {
       type$.InputElement._as(J.get$first$ax(form.getElementsByClassName("submitBtn"))).click();
     },
-    $signature: 162
+    $signature: 166
   };
   H.TextEditingChannel.prototype = {
     handleTextInput$2(data, callback) {
@@ -34346,7 +33598,7 @@
       t1 = t1._clientId;
       $.$get$EnginePlatformDispatcher__instance().invokeOnPlatformMessage$3("flutter/textinput", C.C_JSONMethodCodec.encodeMethodCall$1(new H.MethodCall0("TextInputClient.updateEditingState", [t1, editingState.toFlutter$0()])), H._engine___emptyCallback$closure());
     },
-    $signature: 166
+    $signature: 169
   };
   H.HybridTextEditing__startEditing_closure.prototype = {
     call$1(inputAction) {
@@ -34355,7 +33607,7 @@
       t1 = t1._clientId;
       $.$get$EnginePlatformDispatcher__instance().invokeOnPlatformMessage$3("flutter/textinput", C.C_JSONMethodCodec.encodeMethodCall$1(new H.MethodCall0("TextInputClient.performAction", [t1, inputAction])), H._engine___emptyCallback$closure());
     },
-    $signature: 169
+    $signature: 173
   };
   H.EditableTextStyle.prototype = {
     applyToDomElement$1(domElement) {
@@ -35014,7 +34266,7 @@
       });
       return P._asyncStartSync($async$call$0, $async$completer);
     },
-    $signature: 76
+    $signature: 74
   };
   H.EngineSingletonFlutterWindow.prototype = {};
   H.WindowPadding.prototype = {};
@@ -35097,7 +34349,6 @@
     $isSkShader: 1,
     $isSkPaint: 1,
     $isSkMaskFilter: 1,
-    $isSkColorFilter: 1,
     $isSkPath: 1,
     $isSkPicture: 1,
     $isSkTextStyle: 1,
@@ -35126,12 +34377,6 @@
     },
     get$TileMode(obj) {
       return obj.TileMode;
-    },
-    get$FilterMode(obj) {
-      return obj.FilterMode;
-    },
-    get$MipmapMode(obj) {
-      return obj.MipmapMode;
     },
     get$FillType(obj) {
       return obj.FillType;
@@ -35162,9 +34407,6 @@
     },
     get$MaskFilter(obj) {
       return obj.MaskFilter;
-    },
-    get$ColorFilter(obj) {
-      return obj.ColorFilter;
     },
     get$Path(obj) {
       return obj.Path;
@@ -35235,14 +34477,8 @@
     get$width(obj) {
       return obj.width;
     },
-    width$0(receiver) {
-      return receiver.width();
-    },
     get$height(obj) {
       return obj.height;
-    },
-    height$0(receiver) {
-      return receiver.height();
     },
     get$dispose(obj) {
       return obj.dispose;
@@ -35469,9 +34705,6 @@
     get$Bevel(obj) {
       return obj.Bevel;
     },
-    get$None(obj) {
-      return obj.None;
-    },
     get$Clamp(obj) {
       return obj.Clamp;
     },
@@ -35484,17 +34717,8 @@
     get$Decal(obj) {
       return obj.Decal;
     },
-    get$Nearest(obj) {
-      return obj.Nearest;
-    },
-    get$Linear(obj) {
-      return obj.Linear;
-    },
     isDeleted$0(receiver) {
       return receiver.isDeleted();
-    },
-    isAliasOf$1(receiver, p0) {
-      return receiver.isAliasOf(p0);
     },
     MakeLinearGradient$6(receiver, p0, p1, p2, p3, p4, p5) {
       return receiver.MakeLinearGradient(p0, p1, p2, p3, p4, p5);
@@ -35537,9 +34761,6 @@
     },
     setImageFilter$1(receiver, p0) {
       return receiver.setImageFilter(p0);
-    },
-    MakeBlend$2(receiver, p0, p1) {
-      return receiver.MakeBlend(p0, p1);
     },
     MakeFromCmds$1(receiver, p0) {
       return receiver.MakeFromCmds(p0);
@@ -35622,12 +34843,6 @@
     drawDRRect$3(receiver, p0, p1, p2) {
       return receiver.drawDRRect(p0, p1, p2);
     },
-    drawImageRectCubic$6(receiver, p0, p1, p2, p3, p4, p5) {
-      return receiver.drawImageRectCubic(p0, p1, p2, p3, p4, p5);
-    },
-    drawImageRectOptions$6(receiver, p0, p1, p2, p3, p4, p5) {
-      return receiver.drawImageRectOptions(p0, p1, p2, p3, p4, p5);
-    },
     drawPaint$1(receiver, p0) {
       return receiver.drawPaint(p0);
     },
@@ -35654,9 +34869,6 @@
     },
     restoreToCount$1(receiver, p0) {
       return receiver.restoreToCount(p0);
-    },
-    scale$2(receiver, p0, p1) {
-      return receiver.scale(p0, p1);
     },
     concat$1(receiver, p0) {
       return receiver.concat(p0);
@@ -36771,8 +35983,7 @@
       return J.get$isNotEmpty$asx(this._source);
     },
     get$entries(_) {
-      var t1 = J.get$entries$x(this._source);
-      return t1.map$1$1(t1, new H.CastMap_entries_closure(this), this.$ti._eval$1("MapEntry<3,4>"));
+      return J.get$entries$x(this._source).map$1$1(0, new H.CastMap_entries_closure(this), this.$ti._eval$1("MapEntry<3,4>"));
     }
   };
   H.CastMap_putIfAbsent_closure.prototype = {
@@ -36796,7 +36007,7 @@
     call$1(e) {
       var t1 = this.$this.$ti,
         t2 = t1._rest[3];
-      return new P.MapEntry(t1._rest[2]._as(e.get$key(e)), t2._as(e.get$value(e)), t1._eval$1("@<3>")._bind$1(t2)._eval$1("MapEntry<1,2>"));
+      return new P.MapEntry(t1._rest[2]._as(e.key), t2._as(e.value), t1._eval$1("@<3>")._bind$1(t2)._eval$1("MapEntry<1,2>"));
     },
     $signature() {
       return this.$this.$ti._eval$1("MapEntry<3,4>(MapEntry<1,2>)");
@@ -36820,7 +36031,7 @@
     call$0() {
       return P.Future_Future$value(null, type$.Null);
     },
-    $signature: 42
+    $signature: 56
   };
   H.EfficientLengthIterable.prototype = {};
   H.ListIterable.prototype = {
@@ -37476,7 +36687,7 @@
   H.ConstantMap_map_closure.prototype = {
     call$2(key, value) {
       var entry = this.transform.call$2(key, value);
-      this.result.$indexSet(0, entry.get$key(entry), entry.get$value(entry));
+      this.result.$indexSet(0, entry.key, entry.value);
     },
     $signature() {
       return H._instanceType(this.$this)._eval$1("~(1,2)");
@@ -38075,13 +37286,13 @@
     call$2(o, tag) {
       return this.getUnknownTag(o, tag);
     },
-    $signature: 199
+    $signature: 195
   };
   H.initHooks_closure1.prototype = {
     call$1(tag) {
       return this.prototypeForTag(tag);
     },
-    $signature: 200
+    $signature: 204
   };
   H.JSSyntaxRegExp.prototype = {
     toString$0(_) {
@@ -38439,7 +37650,7 @@
       t1.storedCallback = null;
       f.call$0();
     },
-    $signature: 7
+    $signature: 6
   };
   P._AsyncRun__initializeScheduleImmediate_closure.prototype = {
     call$1(callback) {
@@ -38449,7 +37660,7 @@
       t2 = this.span;
       t1.firstChild ? t1.removeChild(t2) : t1.appendChild(t2);
     },
-    $signature: 209
+    $signature: 207
   };
   P._AsyncRun__scheduleImmediateJsOverride_internalCallback.prototype = {
     call$0() {
@@ -38550,13 +37761,13 @@
     call$2(error, stackTrace) {
       this.bodyFunction.call$2(1, new H.ExceptionAndStackTrace(error, stackTrace));
     },
-    $signature: 214
+    $signature: 209
   };
   P._wrapJsFunctionForAsync_closure.prototype = {
     call$2(errorCode, result) {
       this.$protected(errorCode, result);
     },
-    $signature: 217
+    $signature: 212
   };
   P._asyncStarHelper_closure.prototype = {
     call$0() {
@@ -38576,7 +37787,7 @@
       var errorCode = this.controller.cancelationFuture != null ? 2 : 0;
       this.bodyFunction.call$2(errorCode, null);
     },
-    $signature: 7
+    $signature: 6
   };
   P._AsyncStarStreamController.prototype = {
     get$controller(_) {
@@ -38585,7 +37796,7 @@
     },
     _AsyncStarStreamController$1(body, $T) {
       var t1 = new P._AsyncStarStreamController__resumeBody(body);
-      this.___AsyncStarStreamController_controller = P.StreamController_StreamController(new P._AsyncStarStreamController_closure(this, body), new P._AsyncStarStreamController_closure0(t1), new P._AsyncStarStreamController_closure1(this, t1), $T);
+      this.___AsyncStarStreamController_controller = new P._AsyncStreamController(new P._AsyncStarStreamController_closure(t1), null, new P._AsyncStarStreamController_closure0(this, t1), new P._AsyncStarStreamController_closure1(this, body), $T._eval$1("_AsyncStreamController<0>"));
     }
   };
   P._AsyncStarStreamController__resumeBody.prototype = {
@@ -38600,13 +37811,13 @@
     },
     $signature: 0
   };
-  P._AsyncStarStreamController_closure0.prototype = {
+  P._AsyncStarStreamController_closure.prototype = {
     call$0() {
       this._resumeBody.call$0();
     },
     $signature: 0
   };
-  P._AsyncStarStreamController_closure1.prototype = {
+  P._AsyncStarStreamController_closure0.prototype = {
     call$0() {
       var t1 = this.$this;
       if (t1.isSuspended) {
@@ -38616,7 +37827,7 @@
     },
     $signature: 0
   };
-  P._AsyncStarStreamController_closure.prototype = {
+  P._AsyncStarStreamController_closure1.prototype = {
     call$0() {
       var t1 = this.$this;
       if ((t1.get$controller(t1)._state & 4) === 0) {
@@ -38628,7 +37839,7 @@
         return t1.cancelationFuture;
       }
     },
-    $signature: 218
+    $signature: 213
   };
   P._AsyncStarStreamController__closure.prototype = {
     call$0() {
@@ -38754,7 +37965,7 @@
       } else if (t2 === 0 && !_this.eagerError)
         _this._future._completeError$2(_this.error._readLocal$0(), _this.stackTrace._readLocal$0());
     },
-    $signature: 44
+    $signature: 51
   };
   P.Future_wait_closure.prototype = {
     call$1(value) {
@@ -38775,15 +37986,10 @@
   };
   P._Completer.prototype = {
     completeError$2(error, stackTrace) {
-      var replacement;
       H.checkNotNullable(error, "error", type$.Object);
       if ((this.future._state & 30) !== 0)
         throw H.wrapException(P.StateError$("Future already completed"));
-      replacement = $.Zone__current.errorCallback$2(error, stackTrace);
-      if (replacement != null) {
-        error = replacement.error;
-        stackTrace = replacement.stackTrace;
-      } else if (stackTrace == null)
+      if (stackTrace == null)
         stackTrace = P.AsyncError_defaultStackTrace(error);
       this._completeError$2(error, stackTrace);
     },
@@ -38809,20 +38015,18 @@
     matchesErrorTest$1(asyncError) {
       if ((this.state & 15) !== 6)
         return true;
-      return this.result._zone.runUnary$2$2(this.callback, asyncError.error, type$.bool, type$.Object);
+      return this.result._zone.runUnary$2(this.callback, asyncError.error);
     },
     handleError$1(asyncError) {
       var exception,
         errorCallback = this.errorCallback,
         result = null,
-        t1 = type$.dynamic,
-        t2 = type$.Object,
-        t3 = asyncError.error,
-        t4 = this.result._zone;
+        t1 = asyncError.error,
+        t2 = this.result._zone;
       if (type$.dynamic_Function_Object_StackTrace._is(errorCallback))
-        result = t4.runBinary$3$3(errorCallback, t3, asyncError.stackTrace, t1, t2, type$.StackTrace);
+        result = t2.runBinary$3(errorCallback, t1, asyncError.stackTrace);
       else
-        result = t4.runUnary$2$2(errorCallback, t3, t1, t2);
+        result = t2.runUnary$2(errorCallback, t1);
       try {
         t1 = result;
         return t1;
@@ -38843,12 +38047,9 @@
       if (currentZone === C.C__RootZone) {
         if (onError != null && !type$.dynamic_Function_Object_StackTrace._is(onError) && !type$.dynamic_Function_Object._is(onError))
           throw H.wrapException(P.ArgumentError$value(onError, "onError", string$.Error_));
-      } else {
-        f = currentZone.registerUnaryCallback$2$1(f, $R._eval$1("0/"), this.$ti._precomputed1);
-        if (onError != null)
-          onError = P._registerErrorHandler(onError, currentZone);
-      }
-      result = new P._Future($.Zone__current, $R._eval$1("_Future<0>"));
+      } else if (onError != null)
+        onError = P._registerErrorHandler(onError, currentZone);
+      result = new P._Future(currentZone, $R._eval$1("_Future<0>"));
       t1 = onError == null ? 1 : 3;
       this._addListener$1(new P._FutureListener(result, t1, f, onError, this.$ti._eval$1("@<1>")._bind$1($R)._eval$1("_FutureListener<1,2>")));
       return result;
@@ -38878,10 +38079,7 @@
     },
     whenComplete$1(action) {
       var t1 = this.$ti,
-        t2 = $.Zone__current,
-        result = new P._Future(t2, t1);
-      if (t2 !== C.C__RootZone)
-        action = t2.registerCallback$1$1(action, type$.dynamic);
+        result = new P._Future($.Zone__current, t1);
       this._addListener$1(new P._FutureListener(result, 8, action, null, t1._eval$1("@<1>")._bind$1(t1._precomputed1)._eval$1("_FutureListener<1,2>")));
       return result;
     },
@@ -38908,7 +38106,7 @@
           }
           _this._cloneResult$1(t1);
         }
-        _this._zone.scheduleMicrotask$1(new P._Future__addListener_closure(_this, listener));
+        P._rootScheduleMicrotask(null, null, _this._zone, new P._Future__addListener_closure(_this, listener));
       }
     },
     _prependListeners$1(listeners) {
@@ -38936,7 +38134,7 @@
           _this._cloneResult$1(t1);
         }
         _box_0.listeners = _this._reverseListeners$1(listeners);
-        _this._zone.scheduleMicrotask$1(new P._Future__prependListeners_closure(_box_0, _this));
+        P._rootScheduleMicrotask(null, null, _this._zone, new P._Future__prependListeners_closure(_box_0, _this));
       }
     },
     _removeListeners$0() {
@@ -38999,14 +38197,14 @@
     },
     _asyncCompleteWithValue$1(value) {
       this._state ^= 2;
-      this._zone.scheduleMicrotask$1(new P._Future__asyncCompleteWithValue_closure(this, value));
+      P._rootScheduleMicrotask(null, null, this._zone, new P._Future__asyncCompleteWithValue_closure(this, value));
     },
     _chainFuture$1(value) {
       var _this = this;
       if (_this.$ti._is(value)) {
         if ((value._state & 16) !== 0) {
           _this._state ^= 2;
-          _this._zone.scheduleMicrotask$1(new P._Future__chainFuture_closure(_this, value));
+          P._rootScheduleMicrotask(null, null, _this._zone, new P._Future__chainFuture_closure(_this, value));
         } else
           P._Future__chainCoreFuture(value, _this);
         return;
@@ -39015,7 +38213,7 @@
     },
     _asyncCompleteError$2(error, stackTrace) {
       this._state ^= 2;
-      this._zone.scheduleMicrotask$1(new P._Future__asyncCompleteError_closure(this, error, stackTrace));
+      P._rootScheduleMicrotask(null, null, this._zone, new P._Future__asyncCompleteError_closure(this, error, stackTrace));
     },
     $isFuture: 1
   };
@@ -39044,7 +38242,7 @@
         t1._completeError$2(error, stackTrace);
       }
     },
-    $signature: 7
+    $signature: 6
   };
   P._Future__chainForeignFuture_closure0.prototype = {
     call$2(error, stackTrace) {
@@ -39081,7 +38279,7 @@
       var e, s, t1, exception, t2, originalSource, _this = this, completeResult = null;
       try {
         t1 = _this._box_0.listener;
-        completeResult = t1.result._zone.run$1$1(t1.callback, type$.dynamic);
+        completeResult = t1.result._zone.run$1(t1.callback);
       } catch (exception) {
         e = H.unwrapException(exception);
         s = H.getTraceFromException(exception);
@@ -39115,16 +38313,15 @@
     call$1(_) {
       return this.originalSource;
     },
-    $signature: 235
+    $signature: 233
   };
   P._Future__propagateToListeners_handleValueCallback.prototype = {
     call$0() {
-      var e, s, t1, t2, t3, exception;
+      var e, s, t1, t2, exception;
       try {
         t1 = this._box_0;
         t2 = t1.listener;
-        t3 = t2.$ti;
-        t1.listenerValueOrError = t2.result._zone.runUnary$2$2(t2.callback, this.sourceResult, t3._eval$1("2/"), t3._precomputed1);
+        t1.listenerValueOrError = t2.result._zone.runUnary$2(t2.callback, this.sourceResult);
       } catch (exception) {
         e = H.unwrapException(exception);
         s = H.getTraceFromException(exception);
@@ -39284,16 +38481,14 @@
       addState.addStreamFuture._asyncComplete$1(null);
     },
     _subscribe$4(onData, onError, onDone, cancelOnError) {
-      var t1, t2, t3, t4, t5, t6, subscription, pendingEvents, addState, _this = this;
+      var t1, t2, t3, t4, subscription, pendingEvents, addState, _this = this;
       if ((_this._state & 3) !== 0)
         throw H.wrapException(P.StateError$("Stream has already been listened to."));
-      t1 = H._instanceType(_this);
-      t2 = $.Zone__current;
-      t3 = cancelOnError ? 1 : 0;
-      t4 = P._BufferingStreamSubscription__registerDataHandler(t2, onData, t1._precomputed1);
-      t5 = P._BufferingStreamSubscription__registerErrorHandler(t2, onError);
-      t6 = onDone == null ? P.async___nullDoneHandler$closure() : onDone;
-      subscription = new P._ControllerSubscription(_this, t4, t5, t2.registerCallback$1$1(t6, type$.void), t2, t3, t1._eval$1("_ControllerSubscription<1>"));
+      t1 = $.Zone__current;
+      t2 = cancelOnError ? 1 : 0;
+      t3 = P._BufferingStreamSubscription__registerDataHandler(t1, onData);
+      t4 = P._BufferingStreamSubscription__registerErrorHandler(t1, onError);
+      subscription = new P._ControllerSubscription(_this, t3, t4, onDone, t1, t2, H._instanceType(_this)._eval$1("_ControllerSubscription<1>"));
       pendingEvents = _this.get$_pendingEvents();
       t1 = _this._state |= 1;
       if ((t1 & 8) !== 0) {
@@ -39505,7 +38700,7 @@
       var _this = this,
         t1 = _this._state;
       _this._state = (t1 | 32) >>> 0;
-      _this._zone.runUnaryGuarded$1$2(_this._async$_onData, data, H._instanceType(_this)._precomputed1);
+      _this._zone.runUnaryGuarded$2(_this._async$_onData, data);
       _this._state = (_this._state & 4294967263) >>> 0;
       _this._checkState$1((t1 & 4) !== 0);
     },
@@ -39590,7 +38785,7 @@
   };
   P._BufferingStreamSubscription__sendError_sendError.prototype = {
     call$0() {
-      var onError, t3, t4,
+      var onError, t3,
         t1 = this.$this,
         t2 = t1._state;
       if ((t2 & 8) !== 0 && (t2 & 16) === 0)
@@ -39598,12 +38793,11 @@
       t1._state = (t2 | 32) >>> 0;
       onError = t1._onError;
       t2 = this.error;
-      t3 = type$.Object;
-      t4 = t1._zone;
+      t3 = t1._zone;
       if (type$.void_Function_Object_StackTrace._is(onError))
-        t4.runBinaryGuarded$2$3(onError, t2, this.stackTrace, t3, type$.StackTrace);
+        t3.runBinaryGuarded$3(onError, t2, this.stackTrace);
       else
-        t4.runUnaryGuarded$1$2(onError, t2, t3);
+        t3.runUnaryGuarded$2(onError, t2);
       t1._state = (t1._state & 4294967263) >>> 0;
     },
     $signature: 0
@@ -39622,7 +38816,7 @@
   };
   P._StreamImpl.prototype = {
     listen$4$cancelOnError$onDone$onError(onData, cancelOnError, onDone, onError) {
-      return this._createSubscription$4(onData, onError, onDone, cancelOnError === true);
+      return this._createSubscription$4(onData, onError, onDone, cancelOnError);
     },
     _createSubscription$4(onData, onError, onDone, cancelOnError) {
       return P._BufferingStreamSubscription$(onData, onError, onDone, cancelOnError, H._instanceType(this)._precomputed1);
@@ -39744,252 +38938,7 @@
     }
   };
   P._StreamIterator.prototype = {};
-  P._ZoneFunction.prototype = {};
-  P._RunNullaryZoneFunction.prototype = {};
-  P._RunUnaryZoneFunction.prototype = {};
-  P._RunBinaryZoneFunction.prototype = {};
-  P._RegisterNullaryZoneFunction.prototype = {};
-  P._RegisterUnaryZoneFunction.prototype = {};
-  P._RegisterBinaryZoneFunction.prototype = {};
-  P._ZoneSpecification.prototype = {$isZoneSpecification: 1};
-  P._ZoneDelegate.prototype = {$isZoneDelegate: 1};
-  P._Zone.prototype = {
-    _processUncaughtError$3(zone, error, stackTrace) {
-      var handler, parentDelegate, parentZone, currentZone, e, s, t1, exception,
-        implementation = this.get$_handleUncaughtError(),
-        implZone = implementation.zone;
-      if (implZone === C.C__RootZone) {
-        P._rootHandleError(error, stackTrace);
-        return;
-      }
-      handler = implementation.$function;
-      parentDelegate = implZone.get$_parentDelegate();
-      t1 = J.get$parent$x(implZone);
-      t1.toString;
-      parentZone = t1;
-      currentZone = $.Zone__current;
-      try {
-        $.Zone__current = parentZone;
-        handler.call$5(implZone, parentDelegate, zone, error, stackTrace);
-        $.Zone__current = currentZone;
-      } catch (exception) {
-        e = H.unwrapException(exception);
-        s = H.getTraceFromException(exception);
-        $.Zone__current = currentZone;
-        t1 = error === e ? stackTrace : s;
-        parentZone._processUncaughtError$3(implZone, e, t1);
-      }
-    },
-    $isZone: 1
-  };
-  P._CustomZone.prototype = {
-    get$_async$_delegate() {
-      var t1 = this._delegateCache;
-      return t1 == null ? this._delegateCache = new P._ZoneDelegate() : t1;
-    },
-    get$_parentDelegate() {
-      return this.parent.get$_async$_delegate();
-    },
-    get$errorZone() {
-      return this._handleUncaughtError.zone;
-    },
-    runGuarded$1(f) {
-      var e, s, exception;
-      try {
-        this.run$1$1(f, type$.void);
-      } catch (exception) {
-        e = H.unwrapException(exception);
-        s = H.getTraceFromException(exception);
-        this._processUncaughtError$3(this, e, s);
-      }
-    },
-    runUnaryGuarded$1$2(f, arg, $T) {
-      var e, s, exception;
-      try {
-        this.runUnary$2$2(f, arg, type$.void, $T);
-      } catch (exception) {
-        e = H.unwrapException(exception);
-        s = H.getTraceFromException(exception);
-        this._processUncaughtError$3(this, e, s);
-      }
-    },
-    runBinaryGuarded$2$3(f, arg1, arg2, T1, T2) {
-      var e, s, exception;
-      try {
-        this.runBinary$3$3(f, arg1, arg2, type$.void, T1, T2);
-      } catch (exception) {
-        e = H.unwrapException(exception);
-        s = H.getTraceFromException(exception);
-        this._processUncaughtError$3(this, e, s);
-      }
-    },
-    bindCallback$1$1(f, $R) {
-      return new P._CustomZone_bindCallback_closure(this, this.registerCallback$1$1(f, $R), $R);
-    },
-    bindUnaryCallback$2$1(f, $R, $T) {
-      return new P._CustomZone_bindUnaryCallback_closure(this, this.registerUnaryCallback$2$1(f, $R, $T), $T, $R);
-    },
-    bindCallbackGuarded$1(f) {
-      return new P._CustomZone_bindCallbackGuarded_closure(this, this.registerCallback$1$1(f, type$.void));
-    },
-    bindUnaryCallbackGuarded$1$1(f, $T) {
-      return new P._CustomZone_bindUnaryCallbackGuarded_closure(this, this.registerUnaryCallback$2$1(f, type$.void, $T), $T);
-    },
-    $index(_, key) {
-      var value,
-        t1 = this._async$_map,
-        result = t1.$index(0, key);
-      if (result != null || t1.containsKey$1(0, key))
-        return result;
-      value = this.parent.$index(0, key);
-      if (value != null)
-        t1.$indexSet(0, key, value);
-      return value;
-    },
-    handleUncaughtError$2(error, stackTrace) {
-      this._processUncaughtError$3(this, error, stackTrace);
-    },
-    fork$1$specification(specification) {
-      var implementation = this._fork,
-        t1 = implementation.zone;
-      return implementation.$function.call$5(t1, t1.get$_parentDelegate(), this, specification, null);
-    },
-    run$1$1(f) {
-      var implementation = this._run,
-        t1 = implementation.zone;
-      return implementation.$function.call$4(t1, t1.get$_parentDelegate(), this, f);
-    },
-    runUnary$2$2(f, arg) {
-      var implementation = this._runUnary,
-        t1 = implementation.zone;
-      return implementation.$function.call$5(t1, t1.get$_parentDelegate(), this, f, arg);
-    },
-    runBinary$3$3(f, arg1, arg2) {
-      var implementation = this._runBinary,
-        t1 = implementation.zone;
-      return implementation.$function.call$6(t1, t1.get$_parentDelegate(), this, f, arg1, arg2);
-    },
-    registerCallback$1$1(callback) {
-      var implementation = this._registerCallback,
-        t1 = implementation.zone;
-      return implementation.$function.call$4(t1, t1.get$_parentDelegate(), this, callback);
-    },
-    registerUnaryCallback$2$1(callback) {
-      var implementation = this._registerUnaryCallback,
-        t1 = implementation.zone;
-      return implementation.$function.call$4(t1, t1.get$_parentDelegate(), this, callback);
-    },
-    registerBinaryCallback$3$1(callback) {
-      var implementation = this._registerBinaryCallback,
-        t1 = implementation.zone;
-      return implementation.$function.call$4(t1, t1.get$_parentDelegate(), this, callback);
-    },
-    errorCallback$2(error, stackTrace) {
-      var implementation, implementationZone;
-      H.checkNotNullable(error, "error", type$.Object);
-      implementation = this._errorCallback;
-      implementationZone = implementation.zone;
-      if (implementationZone === C.C__RootZone)
-        return null;
-      return implementation.$function.call$5(implementationZone, implementationZone.get$_parentDelegate(), this, error, stackTrace);
-    },
-    scheduleMicrotask$1(f) {
-      var implementation = this._scheduleMicrotask,
-        t1 = implementation.zone;
-      return implementation.$function.call$4(t1, t1.get$_parentDelegate(), this, f);
-    },
-    createTimer$2(duration, f) {
-      var implementation = this._createTimer,
-        t1 = implementation.zone;
-      return implementation.$function.call$5(t1, t1.get$_parentDelegate(), this, duration, f);
-    },
-    createPeriodicTimer$2(duration, f) {
-      var implementation = this._createPeriodicTimer,
-        t1 = implementation.zone;
-      return implementation.$function.call$5(t1, t1.get$_parentDelegate(), this, duration, f);
-    },
-    print$1(_, line) {
-      var implementation = this._print,
-        t1 = implementation.zone;
-      return implementation.$function.call$4(t1, t1.get$_parentDelegate(), this, line);
-    },
-    get$_run() {
-      return this._run;
-    },
-    get$_runUnary() {
-      return this._runUnary;
-    },
-    get$_runBinary() {
-      return this._runBinary;
-    },
-    get$_registerCallback() {
-      return this._registerCallback;
-    },
-    get$_registerUnaryCallback() {
-      return this._registerUnaryCallback;
-    },
-    get$_registerBinaryCallback() {
-      return this._registerBinaryCallback;
-    },
-    get$_errorCallback() {
-      return this._errorCallback;
-    },
-    get$_scheduleMicrotask() {
-      return this._scheduleMicrotask;
-    },
-    get$_createTimer() {
-      return this._createTimer;
-    },
-    get$_createPeriodicTimer() {
-      return this._createPeriodicTimer;
-    },
-    get$_print() {
-      return this._print;
-    },
-    get$_fork() {
-      return this._fork;
-    },
-    get$_handleUncaughtError() {
-      return this._handleUncaughtError;
-    },
-    get$parent(receiver) {
-      return this.parent;
-    },
-    get$_async$_map() {
-      return this._async$_map;
-    }
-  };
-  P._CustomZone_bindCallback_closure.prototype = {
-    call$0() {
-      return this.$this.run$1$1(this.registered, this.R);
-    },
-    $signature() {
-      return this.R._eval$1("0()");
-    }
-  };
-  P._CustomZone_bindUnaryCallback_closure.prototype = {
-    call$1(arg) {
-      var _this = this;
-      return _this.$this.runUnary$2$2(_this.registered, arg, _this.R, _this.T);
-    },
-    $signature() {
-      return this.R._eval$1("@<0>")._bind$1(this.T)._eval$1("1(2)");
-    }
-  };
-  P._CustomZone_bindCallbackGuarded_closure.prototype = {
-    call$0() {
-      return this.$this.runGuarded$1(this.registered);
-    },
-    $signature: 0
-  };
-  P._CustomZone_bindUnaryCallbackGuarded_closure.prototype = {
-    call$1(arg) {
-      return this.$this.runUnaryGuarded$1$2(this.registered, arg, this.T);
-    },
-    $signature() {
-      return this.T._eval$1("~(0)");
-    }
-  };
+  P._Zone.prototype = {};
   P._rootHandleError_closure.prototype = {
     call$0() {
       var error = H.wrapException(this.error);
@@ -39999,62 +38948,6 @@
     $signature: 0
   };
   P._RootZone.prototype = {
-    get$_run() {
-      return C._RunNullaryZoneFunction__RootZone__rootRun;
-    },
-    get$_runUnary() {
-      return C._RunUnaryZoneFunction__RootZone__rootRunUnary;
-    },
-    get$_runBinary() {
-      return C._RunBinaryZoneFunction__RootZone__rootRunBinary;
-    },
-    get$_registerCallback() {
-      return C._RegisterNullaryZoneFunction__RootZone__rootRegisterCallback;
-    },
-    get$_registerUnaryCallback() {
-      return C._RegisterUnaryZoneFunction_Bqo;
-    },
-    get$_registerBinaryCallback() {
-      return C._RegisterBinaryZoneFunction_kGu;
-    },
-    get$_errorCallback() {
-      return C._ZoneFunction__RootZone__rootErrorCallback;
-    },
-    get$_scheduleMicrotask() {
-      return C._ZoneFunction__RootZone__rootScheduleMicrotask;
-    },
-    get$_createTimer() {
-      return C._ZoneFunction__RootZone__rootCreateTimer;
-    },
-    get$_createPeriodicTimer() {
-      return C._ZoneFunction_3bB;
-    },
-    get$_print() {
-      return C._ZoneFunction__RootZone__rootPrint;
-    },
-    get$_fork() {
-      return C._ZoneFunction__RootZone__rootFork;
-    },
-    get$_handleUncaughtError() {
-      return C._ZoneFunction_NMc;
-    },
-    get$parent(_) {
-      return null;
-    },
-    get$_async$_map() {
-      return $.$get$_RootZone__rootMap();
-    },
-    get$_async$_delegate() {
-      var t1 = $._RootZone__rootDelegate;
-      return t1 == null ? $._RootZone__rootDelegate = new P._ZoneDelegate() : t1;
-    },
-    get$_parentDelegate() {
-      var t1 = $._RootZone__rootDelegate;
-      return t1 == null ? $._RootZone__rootDelegate = new P._ZoneDelegate() : t1;
-    },
-    get$errorZone() {
-      return this;
-    },
     runGuarded$1(f) {
       var e, s, exception;
       try {
@@ -40083,6 +38976,9 @@
         P._rootHandleError(e, s);
       }
     },
+    runUnaryGuarded$2(f, arg) {
+      return this.runUnaryGuarded$1$2(f, arg, type$.dynamic);
+    },
     runBinaryGuarded$2$3(f, arg1, arg2) {
       var e, s, exception;
       try {
@@ -40097,11 +38993,8 @@
         P._rootHandleError(e, s);
       }
     },
-    bindCallback$1$1(f, $R) {
-      return new P._RootZone_bindCallback_closure(this, f, $R);
-    },
-    bindUnaryCallback$2$1(f, $R, $T) {
-      return new P._RootZone_bindUnaryCallback_closure(this, f, $T, $R);
+    runBinaryGuarded$3(f, arg1, arg2) {
+      return this.runBinaryGuarded$2$3(f, arg1, arg2, type$.dynamic, type$.dynamic);
     },
     bindCallbackGuarded$1(f) {
       return new P._RootZone_bindCallbackGuarded_closure(this, f);
@@ -40112,67 +39005,35 @@
     $index(_, key) {
       return null;
     },
-    handleUncaughtError$2(error, stackTrace) {
-      P._rootHandleError(error, stackTrace);
-    },
-    fork$1$specification(specification) {
-      return P._rootFork(null, null, this, specification, null);
-    },
     run$1$1(f) {
       if ($.Zone__current === C.C__RootZone)
         return f.call$0();
       return P._rootRun(null, null, this, f);
+    },
+    run$1(f) {
+      return this.run$1$1(f, type$.dynamic);
     },
     runUnary$2$2(f, arg) {
       if ($.Zone__current === C.C__RootZone)
         return f.call$1(arg);
       return P._rootRunUnary(null, null, this, f, arg);
     },
+    runUnary$2(f, arg) {
+      return this.runUnary$2$2(f, arg, type$.dynamic, type$.dynamic);
+    },
     runBinary$3$3(f, arg1, arg2) {
       if ($.Zone__current === C.C__RootZone)
         return f.call$2(arg1, arg2);
       return P._rootRunBinary(null, null, this, f, arg1, arg2);
     },
-    registerCallback$1$1(f) {
-      return f;
-    },
-    registerUnaryCallback$2$1(f) {
-      return f;
+    runBinary$3(f, arg1, arg2) {
+      return this.runBinary$3$3(f, arg1, arg2, type$.dynamic, type$.dynamic, type$.dynamic);
     },
     registerBinaryCallback$3$1(f) {
       return f;
     },
-    errorCallback$2(error, stackTrace) {
-      return null;
-    },
-    scheduleMicrotask$1(f) {
-      P._rootScheduleMicrotask(null, null, this, f);
-    },
-    createTimer$2(duration, f) {
-      return P.Timer__createTimer(duration, f);
-    },
-    createPeriodicTimer$2(duration, f) {
-      return P.Timer__createPeriodicTimer(duration, f);
-    },
-    print$1(_, line) {
-      H.printString(line);
-    }
-  };
-  P._RootZone_bindCallback_closure.prototype = {
-    call$0() {
-      return this.$this.run$1$1(this.f, this.R);
-    },
-    $signature() {
-      return this.R._eval$1("0()");
-    }
-  };
-  P._RootZone_bindUnaryCallback_closure.prototype = {
-    call$1(arg) {
-      var _this = this;
-      return _this.$this.runUnary$2$2(_this.f, arg, _this.R, _this.T);
-    },
-    $signature() {
-      return this.R._eval$1("@<0>")._bind$1(this.T)._eval$1("1(2)");
+    registerBinaryCallback$1(f) {
+      return this.registerBinaryCallback$3$1(f, type$.dynamic, type$.dynamic, type$.dynamic);
     }
   };
   P._RootZone_bindCallbackGuarded_closure.prototype = {
@@ -40183,7 +39044,7 @@
   };
   P._RootZone_bindUnaryCallbackGuarded_closure.prototype = {
     call$1(arg) {
-      return this.$this.runUnaryGuarded$1$2(this.f, arg, this.T);
+      return this.$this.runUnaryGuarded$2(this.f, arg);
     },
     $signature() {
       return this.T._eval$1("~(0)");
@@ -40523,7 +39384,7 @@
     call$1(v) {
       return this.K._is(v);
     },
-    $signature: 82
+    $signature: 73
   };
   P._HashSet.prototype = {
     _newSet$0() {
@@ -41263,7 +40124,7 @@
       t1._contents = t2 + ": ";
       t1._contents += H.S(v);
     },
-    $signature: 45
+    $signature: 50
   };
   P.MapMixin.prototype = {
     cast$2$0(receiver, RK, RV) {
@@ -41311,7 +40172,7 @@
       for (t1 = J.get$iterator$ax(this.get$keys(receiver)), t2 = H.instanceType(receiver)._eval$1("MapMixin.V"); t1.moveNext$0();) {
         key = t1.get$current(t1);
         entry = transform.call$2(key, t2._as(this.$index(receiver, key)));
-        result.$indexSet(0, entry.get$key(entry), entry.get$value(entry));
+        result.$indexSet(0, entry.key, entry.value);
       }
       return result;
     },
@@ -42050,7 +40911,7 @@
     call$1(each) {
       return this.$this.$index(0, each);
     },
-    $signature: 93
+    $signature: 90
   };
   P._JsonMapKeyIterable.prototype = {
     get$length(_) {
@@ -42437,7 +41298,7 @@
       t2.i = i + 1;
       t1[i] = value;
     },
-    $signature: 45
+    $signature: 50
   };
   P._JsonStringStringifier.prototype = {
     get$_partialResult() {
@@ -42696,7 +41557,7 @@
       t1._contents += P.Error_safeToString(value);
       t2.comma = ", ";
     },
-    $signature: 266
+    $signature: 268
   };
   P.Comparable.prototype = {};
   P.DateTime.prototype = {
@@ -42777,7 +41638,7 @@
         return "0000" + n;
       return "00000" + n;
     },
-    $signature: 65
+    $signature: 92
   };
   P.Duration_toString_twoDigits.prototype = {
     call$1(n) {
@@ -42785,7 +41646,7 @@
         return "" + n;
       return "0" + n;
     },
-    $signature: 65
+    $signature: 92
   };
   P.Error.prototype = {
     get$stackTrace() {
@@ -43152,12 +42013,6 @@
   P.MapEntry.prototype = {
     toString$0(_) {
       return "MapEntry(" + H.S(this.key) + ": " + H.S(this.value) + ")";
-    },
-    get$key(receiver) {
-      return this.key;
-    },
-    get$value(receiver) {
-      return this.value;
     }
   };
   P.Null.prototype = {
@@ -43259,7 +42114,7 @@
     call$2(msg, position) {
       throw H.wrapException(P.FormatException$("Illegal IPv4 address, " + msg, this.host, position));
     },
-    $signature: 276
+    $signature: 272
   };
   P.Uri_parseIPv6Address_error.prototype = {
     call$2(msg, position) {
@@ -43268,7 +42123,7 @@
     call$1(msg) {
       return this.call$2(msg, null);
     },
-    $signature: 277
+    $signature: 289
   };
   P.Uri_parseIPv6Address_parseHex.prototype = {
     call$2(start, end) {
@@ -43280,7 +42135,7 @@
         this.error.call$2("each part must be in the range of `0x0..0xFFFF`", start);
       return value;
     },
-    $signature: 294
+    $signature: 290
   };
   P._Uri.prototype = {
     get$_text() {
@@ -43450,7 +42305,7 @@
         t1._contents += P._Uri__uriEncode(C.List_nxB, value, C.C_Utf8Codec, true);
       }
     },
-    $signature: 295
+    $signature: 95
   };
   P._Uri__makeQuery_closure.prototype = {
     call$2(key, value) {
@@ -43500,7 +42355,7 @@
       for (t1 = chars.length, i = 0; i < t1; ++i)
         target[C.JSString_methods._codeUnitAt$1(chars, i) ^ 96] = transition;
     },
-    $signature: 66
+    $signature: 58
   };
   P._createTables_setRange.prototype = {
     call$3(target, range, transition) {
@@ -43508,7 +42363,7 @@
       for (i = C.JSString_methods._codeUnitAt$1(range, 0), n = C.JSString_methods._codeUnitAt$1(range, 1); i <= n; ++i)
         target[(i ^ 96) >>> 0] = transition;
     },
-    $signature: 66
+    $signature: 58
   };
   P._SimpleUri.prototype = {
     get$hasScheme() {
@@ -44879,13 +43734,13 @@
     call$2(k, v) {
       return this.keys.push(k);
     },
-    $signature: 68
+    $signature: 86
   };
   W.Storage_values_closure.prototype = {
     call$2(k, v) {
       return this.values.push(v);
     },
-    $signature: 68
+    $signature: 86
   };
   W.StyleElement.prototype = {};
   W.StyleSheet.prototype = {$isStyleSheet: 1};
@@ -45748,7 +44603,7 @@
     call$1(n) {
       return type$.Element._is(n);
     },
-    $signature: 103
+    $signature: 94
   };
   P.FilteredElementList__iterable_closure0.prototype = {
     call$1(n) {
@@ -45805,7 +44660,7 @@
       } else
         return P._convertToJS(o);
     },
-    $signature: 93
+    $signature: 90
   };
   P._convertToJS_closure.prototype = {
     call$1(o) {
@@ -46157,7 +45012,7 @@
   };
   P._StoredMessage.prototype = {
     invoke$1(dataArg) {
-      H.invoke1(this._callback, this._ui$_zone, dataArg, type$.nullable_ByteData);
+      H.invoke1(this._callback, this._ui$_zone, dataArg);
     }
   };
   P._Channel.prototype = {
@@ -46179,10 +45034,10 @@
       return result;
     },
     _dropOverflowMessages$1(lengthLimit) {
-      var t1, t2, result, message;
-      for (t1 = this._ui$_queue, t2 = type$.nullable_ByteData, result = false; (t1._tail - t1._head & t1._table.length - 1) >>> 0 > lengthLimit; result = true) {
+      var t1, result, message;
+      for (t1 = this._ui$_queue, result = false; (t1._tail - t1._head & t1._table.length - 1) >>> 0 > lengthLimit; result = true) {
         message = t1.removeFirst$0();
-        H.invoke1(message._callback, message._ui$_zone, null, t2);
+        H.invoke1(message._callback, message._ui$_zone, null);
       }
       return result;
     },
@@ -46225,13 +45080,13 @@
     call$0() {
       return new P._Channel(P.ListQueue$(1, type$._StoredMessage), 1);
     },
-    $signature: 69
+    $signature: 84
   };
   P.ChannelBuffers_setListener_closure.prototype = {
     call$0() {
       return new P._Channel(P.ListQueue$(1, type$._StoredMessage), 1);
     },
-    $signature: 69
+    $signature: 84
   };
   P.OffsetBase.prototype = {
     $eq(_, other) {
@@ -47344,11 +46199,8 @@
       return this.forward$1$from($receiver, null);
     },
     reverse$1$from(_, from) {
-      var _this = this;
-      _this._direction = C._AnimationDirection_1;
-      if (from != null)
-        _this.set$value(0, from);
-      return _this._animateToInternal$1(_this.lowerBound);
+      this._direction = C._AnimationDirection_1;
+      return this._animateToInternal$1(this.lowerBound);
     },
     reverse$0($receiver) {
       return this.reverse$1$from($receiver, null);
@@ -48224,7 +47076,7 @@
     call$0() {
       return D.CupertinoRouteTransitionMixin__isPopGestureEnabled(this.route);
     },
-    $signature: 74
+    $signature: 75
   };
   D.CupertinoRouteTransitionMixin_buildPageTransitions_closure0.prototype = {
     call$0() {
@@ -48371,7 +47223,7 @@
       t1.navigator.didStopUserGesture$0();
       t1.controller.removeStatusListener$1(this.animationStatusCallback._readLocal$0());
     },
-    $signature: 5
+    $signature: 4
   };
   D._CupertinoEdgeShadowDecoration.prototype = {
     lerpFrom$2(a, t) {
@@ -48424,7 +47276,7 @@
       t1.toString;
       return t1;
     },
-    $signature: 58
+    $signature: 82
   };
   D._CupertinoEdgeShadowDecoration_lerp_closure0.prototype = {
     call$1(color) {
@@ -48432,7 +47284,7 @@
       t1.toString;
       return t1;
     },
-    $signature: 58
+    $signature: 82
   };
   D._CupertinoEdgeShadowPainter.prototype = {
     paint$3(canvas, offset, configuration) {
@@ -48650,7 +47502,7 @@
     call$0() {
       return J.trimLeft$0$s(this.$this.exceptionAsString$0().split("\n")[0]);
     },
-    $signature: 48
+    $signature: 46
   };
   U.FlutterErrorDetails_summary_closure.prototype = {
     call$1(node) {
@@ -48694,13 +47546,13 @@
     call$1(value) {
       return value + 1;
     },
-    $signature: 85
+    $signature: 70
   };
   U.FlutterError_defaultStackFilter_closure0.prototype = {
     call$1(value) {
       return value + 1;
     },
-    $signature: 85
+    $signature: 70
   };
   U.FlutterError_toString_closure.prototype = {
     call$1(node) {
@@ -48712,7 +47564,7 @@
     call$1(line) {
       return C.JSString_methods.contains$1(line, "StackTrace.current") || C.JSString_methods.contains$1(line, "dart-sdk/lib/_internal") || C.JSString_methods.contains$1(line, "dart:sdk_internal");
     },
-    $signature: 46
+    $signature: 43
   };
   U.DiagnosticsStackTrace.prototype = {
     get$allowTruncate() {
@@ -48817,7 +47669,7 @@
       });
       return P._asyncStartSync($async$call$0, $async$completer);
     },
-    $signature: 86
+    $signature: 68
   };
   N.BindingBase_initServiceExtensions_closure0.prototype = {
     call$1(uri) {
@@ -48840,7 +47692,7 @@
       });
       return P._asyncStartSync($async$call$1, $async$completer);
     },
-    $signature: 87
+    $signature: 67
   };
   N.BindingBase_initServiceExtensions_closure1.prototype = {
     call$0() {
@@ -48866,7 +47718,7 @@
       });
       return P._asyncStartSync($async$call$0, $async$completer);
     },
-    $signature: 86
+    $signature: 68
   };
   N.BindingBase_initServiceExtensions_closure2.prototype = {
     call$1(serverAddress) {
@@ -48889,7 +47741,7 @@
       });
       return P._asyncStartSync($async$call$1, $async$completer);
     },
-    $signature: 87
+    $signature: 67
   };
   N.BindingBase_lockEvents_closure.prototype = {
     call$0() {
@@ -49143,7 +47995,7 @@
       });
       return P._asyncStartSync($async$call$2, $async$completer);
     },
-    $signature: 71
+    $signature: 85
   };
   N.BindingBase_registerServiceExtension__closure.prototype = {
     call$0() {
@@ -49470,7 +48322,7 @@
       }
       return index < t2[t1.currentChunk];
     },
-    $signature: 72
+    $signature: 71
   };
   Y._NoDefaultValue.prototype = {};
   Y.TextTreeRenderer.prototype = {
@@ -49715,7 +48567,7 @@
         ++t3.lines;
       }
     },
-    $signature: 59
+    $signature: 66
   };
   Y.TextTreeRenderer__debugRender_closure.prototype = {
     call$1(n) {
@@ -50176,15 +49028,9 @@
     call$1(line) {
       return line.length !== 0;
     },
-    $signature: 46
+    $signature: 43
   };
   O.SynchronousFuture.prototype = {
-    catchError$2$test(onError, test) {
-      return new P._Future($.Zone__current, this.$ti._eval$1("_Future<1>"));
-    },
-    catchError$1(onError) {
-      return this.catchError$2$test(onError, null);
-    },
     then$1$2$onError(_, onValue, onError, $R) {
       var result = onValue.call$1(this._synchronous_future$_value);
       if ($R._eval$1("Future<0>")._is(result))
@@ -51490,7 +50336,7 @@
     call$0() {
       return this.estimate.toString$0(0) + "; fling at " + this.velocity.toString$0(0) + ".";
     },
-    $signature: 48
+    $signature: 46
   };
   O.DragGestureRecognizer__checkEnd_closure0.prototype = {
     call$0() {
@@ -51499,7 +50345,7 @@
         return "Could not estimate velocity.";
       return t1.toString$0(0) + "; judged to not be a fling.";
     },
-    $signature: 48
+    $signature: 46
   };
   O.DragGestureRecognizer__checkEnd_closure1.prototype = {
     call$0() {
@@ -52313,7 +51159,7 @@
       }, type$.LocalizationsDelegate_dynamic);
     },
     _inspectorSelectButtonBuilder$2(context, onPressed) {
-      return new E.FloatingActionButton(C.Icon_IconData_58727_false_null, onPressed, C._FloatingActionButtonType_1, null);
+      return E.FloatingActionButton$(C.Icon_IconData_58727_false_null, true, onPressed, null);
     },
     _materialBuilder$2(context, child) {
       var t1, platformBrightness, useDarkTheme, highContrast, theme, _this = this, _null = null;
@@ -52381,7 +51227,7 @@
         return C.KeyEventResult_1;
       return S.Tooltip_dismissAllToolTips() ? C.KeyEventResult_0 : C.KeyEventResult_1;
     },
-    $signature: 63
+    $signature: 62
   };
   E._ToolbarContainerLayout.prototype = {
     getConstraintsForChild$1(constraints) {
@@ -52582,7 +51428,7 @@
         default:
           namesRoute = _null;
       }
-      title = T.Semantics$(_null, new E._AppBarTitleBox(title, _null), false, _null, false, _null, _null, true, _null, _null, namesRoute, _null, _null, _null, _null, _null, _null, _null);
+      title = T.Semantics$(_null, new E._AppBarTitleBox(title, _null), false, _null, false, _null, _null, true, _null, namesRoute, _null, _null, _null, _null, _null, _null, _null);
       titleTextStyle.toString;
       title = L.DefaultTextStyle$(title, _null, C.TextOverflow_2, false, titleTextStyle, _null, _null, C.TextWidthBasis_0);
       mediaQueryData = context.dependOnInheritedWidgetOfExactType$1$0(type$.MediaQuery).data;
@@ -52616,7 +51462,7 @@
       t2 = appBarTheme.shadowColor;
       if (t2 == null)
         t2 = C.Color_4278190080;
-      return T.Semantics$(_null, new X.AnnotatedRegion(overlayStyle, M.Material$(C.Duration_200000, T.Semantics$(_null, new T.Align(C.Alignment_0_m1, _null, _null, appBar, _null), false, _null, true, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null), C.Clip_0, backgroundColor, t1, _null, t2, appBarTheme.shape, _null, C.MaterialType_0), _null, type$.AnnotatedRegion_SystemUiOverlayStyle), true, _null, false, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null);
+      return T.Semantics$(_null, new X.AnnotatedRegion(overlayStyle, M.Material$(C.Duration_200000, T.Semantics$(_null, new T.Align(C.Alignment_0_m1, _null, _null, appBar, _null), false, _null, true, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null), C.Clip_0, backgroundColor, t1, _null, t2, appBarTheme.shape, _null, C.MaterialType_0), _null, type$.AnnotatedRegion_SystemUiOverlayStyle), true, _null, false, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null);
     }
   };
   E._AppBarState__handleScrollNotification_closure.prototype = {
@@ -53167,7 +52013,7 @@
         default:
           minSize = _null;
       }
-      return T.Semantics$(true, new Z._InputPadding(minSize, new T.ConstrainedBox(effectiveConstraints, t3, _null), _null), true, true, false, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null);
+      return T.Semantics$(true, new Z._InputPadding(minSize, new T.ConstrainedBox(effectiveConstraints, t3, _null), _null), true, true, false, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null);
     }
   };
   Z._InputPadding.prototype = {
@@ -53562,7 +52408,7 @@
   };
   E.FloatingActionButton.prototype = {
     build$1(_, context) {
-      var backgroundColor, focusColor, hoverColor, splashColor, elevation, focusElevation, hoverElevation, disabledElevation, highlightElevation, t1, extendedTextStyle, shape, resolvedChild, sizeConstraints, padding, _null = null,
+      var backgroundColor, focusColor, hoverColor, splashColor, elevation, focusElevation, hoverElevation, disabledElevation, highlightElevation, t1, extendedTextStyle, shape, resolvedChild, sizeConstraints, padding, result, _this = this, _null = null,
         theme = K.Theme_of(context),
         floatingActionButtonTheme = theme.floatingActionButtonTheme,
         foregroundColor = floatingActionButtonTheme.foregroundColor;
@@ -53600,8 +52446,8 @@
       shape = floatingActionButtonTheme.shape;
       if (shape == null)
         shape = C.CircleBorder_61T;
-      resolvedChild = this.child;
-      switch (this._floatingActionButtonType) {
+      resolvedChild = _this.child;
+      switch (_this._floatingActionButtonType) {
         case C._FloatingActionButtonType_0:
           sizeConstraints = floatingActionButtonTheme.sizeConstraints;
           if (sizeConstraints == null)
@@ -53632,7 +52478,11 @@
         default:
           sizeConstraints = _null;
       }
-      return new T.MergeSemantics(new T.Hero(C.C__DefaultHeroTag, new Z.RawMaterialButton(this.onPressed, _null, extendedTextStyle, backgroundColor, focusColor, hoverColor, splashColor, elevation, hoverElevation, focusElevation, highlightElevation, disabledElevation, sizeConstraints, shape, resolvedChild, theme.materialTapTargetSize, _null, false, C.Clip_0, true, _null), _null), _null);
+      result = new Z.RawMaterialButton(_this.onPressed, _null, extendedTextStyle, backgroundColor, focusColor, hoverColor, splashColor, elevation, hoverElevation, focusElevation, highlightElevation, disabledElevation, sizeConstraints, shape, resolvedChild, theme.materialTapTargetSize, _null, false, C.Clip_0, true, _null);
+      t1 = _this.tooltip;
+      if (t1 != null)
+        result = S.Tooltip$(result, t1);
+      return new T.MergeSemantics(new T.Hero(C.C__DefaultHeroTag, result, _null), _null);
     }
   };
   E._ChildOverflowBox.prototype = {
@@ -53806,7 +52656,7 @@
         t1 = _this.iconSize,
         result = S.Tooltip$(new T.ConstrainedBox(theme.visualDensity.effectiveConstraints$1(C.BoxConstraints_mlX), new T.Padding(C.EdgeInsets_8_8_8_8, T.SizedBox$(new T.Align(C.Alignment_0_0, _null, _null, Y.IconTheme_merge(_this.icon, new T.IconThemeData(_this.color, _null, t1)), _null), t1, t1), _null), _null), _this.tooltip);
       t1 = Math.max(35, (t1 + Math.min(C.EdgeInsets_8_8_8_8.get$horizontal(), C.EdgeInsets_8_8_8_8.get$_top(C.EdgeInsets_8_8_8_8) + C.EdgeInsets_8_8_8_8.get$_bottom(C.EdgeInsets_8_8_8_8))) * 0.7);
-      return T.Semantics$(true, R.InkResponse$(false, _null, true, result, false, _null, true, false, theme.focusColor, _null, theme.highlightColor, C.BoxShape_1, theme.hoverColor, _null, C.SystemMouseCursor_click, _null, _null, _null, _null, _null, _this.onPressed, _null, _null, _null, t1, theme.splashColor, _null), false, true, false, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null);
+      return T.Semantics$(true, R.InkResponse$(false, _null, true, result, false, _null, true, false, theme.focusColor, _null, theme.highlightColor, C.BoxShape_1, theme.hoverColor, _null, C.SystemMouseCursor_click, _null, _null, _null, _null, _null, _this.onPressed, _null, _null, _null, t1, theme.splashColor, _null), false, true, false, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null);
     }
   };
   Y.InkHighlight.prototype = {
@@ -54422,7 +53272,7 @@
       t6.toString;
       t6 = _this._isWidgetEnabled$1(t6) ? _this.get$_handleTapCancel() : _null;
       t7 = _this._widget;
-      return new R._ParentInkResponseProvider(_this, new U.Actions(t1, L.Focus$(false, t3, T.MouseRegion$(T.Semantics$(_null, D.GestureDetector$(C.HitTestBehavior_1, t7.child, C.DragStartBehavior_1, true, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, t5, t6, t4, _null, _null, _null), false, _null, false, _null, _null, _null, _null, _null, _null, _null, _null, _this.get$_simulateTap(), _null, _null, _null, _null), effectiveMouseCursor, _this.get$_handleMouseEnter(), _this.get$_handleMouseExit(), true), _null, true, t2, true, _null, _this.get$_handleFocusUpdate(), _null, _null, _null), _null), _null);
+      return new R._ParentInkResponseProvider(_this, new U.Actions(t1, L.Focus$(false, t3, T.MouseRegion$(T.Semantics$(_null, D.GestureDetector$(C.HitTestBehavior_1, t7.child, C.DragStartBehavior_1, true, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, t5, t6, t4, _null, _null, _null), false, _null, false, _null, _null, _null, _null, _null, _null, _null, _this.get$_simulateTap(), _null, _null, _null, _null), effectiveMouseCursor, _this.get$_handleMouseEnter(), _this.get$_handleMouseExit(), true), _null, true, t2, true, _null, _this.get$_handleFocusUpdate(), _null, _null, _null), _null), _null);
     },
     $is_ParentInkResponseState: 1
   };
@@ -54709,13 +53559,13 @@
     call$1(value) {
       return new R.Tween(H._asDouble(value), null, type$.Tween_double);
     },
-    $signature: 67
+    $signature: 91
   };
   M._MaterialInteriorState_forEachTween_closure0.prototype = {
     call$1(value) {
       return new R.ColorTween(type$.Color._as(value), null);
     },
-    $signature: 50
+    $signature: 55
   };
   M._MaterialInteriorState_forEachTween_closure1.prototype = {
     call$1(value) {
@@ -54726,7 +53576,7 @@
   M._ShapeBorderPaint.prototype = {
     build$1(_, context) {
       var t1 = T.Directionality_maybeOf(context);
-      return T.CustomPaint$(this.child, new M._ShapeBorderPainter(this.shape, t1, null), null, C.Size_0_0);
+      return T.CustomPaint$(this.child, new M._ShapeBorderPainter(this.shape, t1, null), null);
     }
   };
   M._ShapeBorderPainter.prototype = {
@@ -55222,23 +54072,44 @@
       t1.addStatusListener$1(_this.get$_handlePreviousAnimationStatusChanged());
       _this.___FloatingActionButtonTransitionState__previousController = t1;
       _this._updateAnimations$0();
-      _this._widget.geometryNotifier._updateWith$1$floatingActionButtonScale(0);
+      _this._widget.currentController.set$value(0, 1);
     },
     dispose$0(_) {
       this.get$_previousController().dispose$0(0);
       this.super$__FloatingActionButtonTransitionState_State_TickerProviderStateMixin$dispose(0);
     },
     didUpdateWidget$1(oldWidget) {
-      this.super$State$didUpdateWidget(oldWidget);
-      this._widget.toString;
-      return;
+      var t1, t2, currentValue, _this = this;
+      _this.super$State$didUpdateWidget(oldWidget);
+      t1 = _this._widget;
+      t2 = oldWidget.child;
+      t1 = t1.child;
+      t1 = J.$eq$(t2.key, t1.key);
+      if (t1)
+        return;
+      t1 = _this._widget;
+      if (oldWidget.fabMotionAnimator !== t1.fabMotionAnimator || oldWidget.fabMoveAnimation !== t1.fabMoveAnimation)
+        _this._updateAnimations$0();
+      if (_this.get$_previousController().get$_status() === C.AnimationStatus_0) {
+        currentValue = _this._widget.currentController.get$_animation_controller$_value();
+        if (currentValue === 0 || false) {
+          _this._previousChild = null;
+          _this._widget.currentController.forward$0(0);
+        } else {
+          _this._previousChild = t2;
+          t1 = _this.get$_previousController();
+          t1.set$value(0, currentValue);
+          t1.reverse$0(0);
+          _this._widget.currentController.set$value(0, 0);
+        }
+      }
     },
     _updateAnimations$0() {
       var t7, t8, t9, t10, moveScaleAnimation, t11, t12, moveRotationAnimation, _this = this, _null = null,
-        previousExitScaleAnimation = S.CurvedAnimation$(C.Cubic_JUR0, _this.get$_previousController(), _null),
+        previousExitScaleAnimation = S.CurvedAnimation$(C.Cubic_JUR, _this.get$_previousController(), _null),
         t1 = type$.Tween_double,
-        t2 = S.CurvedAnimation$(C.Cubic_JUR0, _this.get$_previousController(), _null),
-        currentEntranceScaleAnimation = S.CurvedAnimation$(C.Cubic_JUR0, _this._widget.currentController, _null),
+        t2 = S.CurvedAnimation$(C.Cubic_JUR, _this.get$_previousController(), _null),
+        currentEntranceScaleAnimation = S.CurvedAnimation$(C.Cubic_JUR, _this._widget.currentController, _null),
         t3 = _this._widget,
         t4 = t3.currentController,
         t5 = $.$get$_FloatingActionButtonTransitionState__entranceTurnTween(),
@@ -55314,7 +54185,7 @@
   M._FloatingActionButtonTransitionState__handlePreviousAnimationStatusChanged_closure.prototype = {
     call$0() {
       if (this.status === C.AnimationStatus_0)
-        this.$this._widget.toString;
+        this.$this._widget.currentController.forward$0(0);
     },
     $signature: 0
   };
@@ -55614,8 +54485,7 @@
       t2 = _this.get$_floatingActionButtonAnimator();
       t3 = _this.get$_geometryNotifier();
       t4 = _this.get$_floatingActionButtonVisibilityController();
-      _this._widget.toString;
-      _this._addIfNonNull$7$removeBottomPadding$removeLeftPadding$removeRightPadding$removeTopPadding(children, new M._FloatingActionButtonTransition(_null, t1, t2, t3, t4, _null), C._ScaffoldSlot_8, true, true, true, true);
+      _this._addIfNonNull$7$removeBottomPadding$removeLeftPadding$removeRightPadding$removeTopPadding(children, new M._FloatingActionButtonTransition(_this._widget.floatingActionButton, t1, t2, t3, t4, _null), C._ScaffoldSlot_8, true, true, true, true);
       switch (themeData.platform) {
         case C.TargetPlatform_2:
         case C.TargetPlatform_4:
@@ -55695,7 +54565,7 @@
     call$2(property, listener) {
       property.removeListener$1(0, listener);
     },
-    $signature: 51
+    $signature: 54
   };
   M._ScaffoldMessengerState_State_TickerProviderStateMixin.prototype = {
     dispose$0(_) {
@@ -57155,7 +56025,7 @@
         H.throwExpression(H.LateError$fieldNI("excludeFromSemantics"));
       t3 = _this._widget;
       t4 = t3.message;
-      result = D.GestureDetector$(C.HitTestBehavior_1, T.Semantics$(_null, t3.child, false, _null, false, _null, _null, _null, _null, t4, _null, _null, _null, _null, _null, _null, _null, _null), C.DragStartBehavior_1, true, _null, _null, _null, _null, _null, _null, t1, _null, _null, _null, t2, _null, _null, _null, _null, _null);
+      result = D.GestureDetector$(C.HitTestBehavior_1, T.Semantics$(_null, t3.child, false, _null, false, _null, _null, _null, t4, _null, _null, _null, _null, _null, _null, _null, _null), C.DragStartBehavior_1, true, _null, _null, _null, _null, _null, _null, t1, _null, _null, _null, t2, _null, _null, _null, _null, _null);
       return _this.get$_mouseIsConnected() ? T.MouseRegion$(result, C.C__DeferringMouseCursor, new S._TooltipState_build_closure(_this), new S._TooltipState_build_closure0(_this), true) : result;
     }
   };
@@ -57169,7 +56039,7 @@
     call$1($event) {
       return this.$this._showTooltip$0();
     },
-    $signature: 49
+    $signature: 57
   };
   S._TooltipState__createNewEntry_closure0.prototype = {
     call$1($event) {
@@ -57187,7 +56057,7 @@
     call$1($event) {
       return this.$this._showTooltip$0();
     },
-    $signature: 49
+    $signature: 57
   };
   S._TooltipState_build_closure0.prototype = {
     call$1($event) {
@@ -57211,7 +56081,7 @@
       var result, _this = this, _null = null,
         t1 = K.Theme_of(context).textTheme.bodyText2;
       t1.toString;
-      result = new T.IgnorePointer(true, _null, K.FadeTransition$(new T.ConstrainedBox(new S.BoxConstraints(0, 1 / 0, _this.height, 1 / 0), L.DefaultTextStyle$(M.Container$(_null, T.Center$(L.Text$(_this.message, _this.textStyle, _null, _null), 1, 1), _null, _this.decoration, _this.margin, _this.padding, _null), _null, C.TextOverflow_0, true, t1, _null, _null, C.TextWidthBasis_0), _null), _this.animation), _null);
+      result = new T.IgnorePointer(true, _null, K.FadeTransition$(new T.ConstrainedBox(new S.BoxConstraints(0, 1 / 0, _this.height, 1 / 0), L.DefaultTextStyle$(M.Container$(_null, T.Center$(L.Text$(_this.message, _this.textStyle), 1, 1), _null, _this.decoration, _this.margin, _this.padding, _null), _null, C.TextOverflow_0, true, t1, _null, _null, C.TextWidthBasis_0), _null), _this.animation), _null);
       t1 = _this.onEnter;
       if (t1 != null || _this.onExit != null)
         result = T.MouseRegion$(result, C.C__DeferringMouseCursor, t1, _this.onExit, true);
@@ -57352,17 +56222,6 @@
       var centerX = other._dx / 2,
         centerY = other._dy / 2;
       return new P.Offset(centerX + this.x * centerX, centerY + this.y * centerY);
-    },
-    inscribe$2(size, rect) {
-      var t1 = rect.left,
-        t2 = size._dx,
-        halfWidthDelta = (rect.right - t1 - t2) / 2,
-        t3 = rect.top,
-        t4 = size._dy,
-        halfHeightDelta = (rect.bottom - t3 - t4) / 2;
-      t1 = t1 + halfWidthDelta + this.x * halfWidthDelta;
-      t3 = t3 + halfHeightDelta + this.y * halfHeightDelta;
-      return new P.Rect(t1, t3, t1 + t2, t3 + t4);
     },
     resolve$1(direction) {
       return this;
@@ -58108,13 +56967,10 @@
         return false;
       if (other instanceof S.BoxDecoration)
         if (J.$eq$(other.color, _this.color))
-          if (J.$eq$(other.image, _this.image))
-            if (J.$eq$(other.border, _this.border))
-              if (J.$eq$(other.borderRadius, _this.borderRadius))
-                if (S.listEquals(other.boxShadow, _this.boxShadow))
-                  t1 = other.shape === _this.shape;
-                else
-                  t1 = false;
+          if (J.$eq$(other.border, _this.border))
+            if (J.$eq$(other.borderRadius, _this.borderRadius))
+              if (S.listEquals(other.boxShadow, _this.boxShadow))
+                t1 = other.shape === _this.shape;
               else
                 t1 = false;
             else
@@ -58180,44 +57036,9 @@
       }
     },
     _paintBackgroundImage$3(canvas, rect, configuration) {
-      var square, clipPath, _this = this,
-        t1 = _this._box_decoration$_decoration,
-        t2 = t1.image;
-      if (t2 == null)
-        return;
-      if (_this._imagePainter == null)
-        _this._imagePainter = new X.DecorationImagePainter(t2, _this.onChanged);
-      switch (t1.shape) {
-        case C.BoxShape_1:
-          square = P.Rect$fromCircle(rect.get$center(), rect.get$shortestSide() / 2);
-          clipPath = P.Path_Path();
-          clipPath.addOval$1(0, square);
-          break;
-        case C.BoxShape_0:
-          t1 = t1.borderRadius;
-          if (t1 != null) {
-            clipPath = P.Path_Path();
-            clipPath.addRRect$1(0, t1.resolve$1(configuration.textDirection).toRRect$1(rect));
-          } else
-            clipPath = null;
-          break;
-        default:
-          clipPath = null;
-      }
-      _this._imagePainter.paint$4(canvas, rect, clipPath, configuration);
+      return;
     },
     dispose$0(_) {
-      var t2,
-        t1 = this._imagePainter;
-      if (t1 != null) {
-        t2 = t1._imageStream;
-        if (t2 != null)
-          t2.removeListener$1(0, new L.ImageStreamListener(t1.get$_handleImage(), null, null));
-        t2 = t1._decoration_image$_image;
-        if (t2 != null)
-          t2.image.dispose$0(0);
-        t1._decoration_image$_image = null;
-      }
       this.super$BoxPainter$dispose(0);
     },
     paint$3(canvas, offset, configuration) {
@@ -58257,12 +57078,6 @@
       return "BoxPainter for " + this._box_decoration$_decoration.toString$0(0);
     }
   };
-  U.BoxFit.prototype = {
-    toString$0(_) {
-      return this._box_fit$_name;
-    }
-  };
-  U.FittedSizes.prototype = {};
   O.BoxShadow.prototype = {
     $eq(_, other) {
       var _this = this;
@@ -58398,39 +57213,6 @@
       return "ColorSwatch(primary value: " + this.super$Color$toString(0) + ")";
     }
   };
-  E.ImageSizeInfo.prototype = {
-    _sizeToBytes$1(size) {
-      return C.JSNumber_methods.toInt$0(size._dx * size._dy * 4 * 1.3333333333333333);
-    },
-    toJson$0() {
-      var t4, t5, _this = this,
-        t1 = type$.String,
-        t2 = type$.nullable_Object,
-        t3 = P.LinkedHashMap_LinkedHashMap$_empty(t1, t2);
-      t3.$indexSet(0, "source", _this.source);
-      t4 = _this.displaySize;
-      t3.$indexSet(0, "displaySize", P.LinkedHashMap_LinkedHashMap$_literal(["width", t4._dx, "height", t4._dy], t1, t2));
-      t5 = _this.imageSize;
-      t3.$indexSet(0, "imageSize", P.LinkedHashMap_LinkedHashMap$_literal(["width", t5._dx, "height", t5._dy], t1, t2));
-      t3.$indexSet(0, "displaySizeInBytes", _this._sizeToBytes$1(t4));
-      t3.$indexSet(0, "decodedSizeInBytes", _this._sizeToBytes$1(t5));
-      return t3;
-    },
-    $eq(_, other) {
-      var _this = this;
-      if (other == null)
-        return false;
-      if (J.get$runtimeType$(other) !== H.getRuntimeType(_this))
-        return false;
-      return other instanceof E.ImageSizeInfo && other.source === _this.source && other.imageSize.$eq(0, _this.imageSize) && other.displaySize.$eq(0, _this.displaySize);
-    },
-    get$hashCode(_) {
-      return P.hashValues(this.source, this.displaySize, this.imageSize, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd);
-    },
-    toString$0(_) {
-      return "ImageSizeInfo(" + this.source + ", imageSize: " + this.imageSize.toString$0(0) + ", displaySize: " + this.displaySize.toString$0(0) + ")";
-    }
-  };
   Z.Decoration.prototype = {
     toStringShort$0() {
       return "Decoration";
@@ -58456,96 +57238,6 @@
     }
   };
   Z._Decoration_Object_Diagnosticable.prototype = {};
-  X.ImageRepeat.prototype = {
-    toString$0(_) {
-      return this._decoration_image$_name;
-    }
-  };
-  X.DecorationImagePainter.prototype = {
-    paint$4(canvas, rect, clipPath, configuration) {
-      var t3, t4, t5, listener, _this = this, _null = null,
-        t1 = _this._details,
-        newImageStream = t1.image.resolve$1(configuration),
-        t2 = newImageStream._image_stream$_completer;
-      if (t2 == null)
-        t2 = newImageStream;
-      t3 = _this._imageStream;
-      t4 = t3 == null;
-      if (t4)
-        t5 = _null;
-      else {
-        t5 = t3._image_stream$_completer;
-        if (t5 == null)
-          t5 = t3;
-      }
-      if (t2 !== t5) {
-        listener = new L.ImageStreamListener(_this.get$_handleImage(), _null, _null);
-        if (!t4)
-          t3.removeListener$1(0, listener);
-        _this._imageStream = newImageStream;
-        newImageStream.addListener$1(0, listener);
-      }
-      if (_this._decoration_image$_image == null)
-        return;
-      t2 = clipPath != null;
-      if (t2) {
-        canvas.save$0(0);
-        canvas.clipPath$1(0, clipPath);
-      }
-      t3 = _this._decoration_image$_image;
-      t4 = t3.image;
-      X.paintImage(C.Alignment_0_0, canvas, _null, _null, t3.debugLabel, C.FilterQuality_1, t1.fit, false, t4, false, false, 1, rect, C.ImageRepeat_3, t3.scale);
-      if (t2)
-        canvas.restore$0(0);
-    },
-    _handleImage$2(value, synchronousCall) {
-      var t1, t2, _this = this;
-      if (J.$eq$(_this._decoration_image$_image, value))
-        return;
-      t1 = _this._decoration_image$_image;
-      if (t1 != null)
-        if (value.image.isCloneOf$1(t1.image)) {
-          t2 = t1.scale;
-          t1 = t2 === t2 && value.debugLabel == t1.debugLabel;
-        } else
-          t1 = false;
-      else
-        t1 = false;
-      if (t1) {
-        value.image.dispose$0(0);
-        return;
-      }
-      t1 = _this._decoration_image$_image;
-      if (t1 != null)
-        t1.image.dispose$0(0);
-      _this._decoration_image$_image = value;
-      if (!synchronousCall)
-        _this._onChanged.call$0();
-    },
-    toString$0(_) {
-      return "DecorationImagePainter(stream: " + H.S(this._imageStream) + ", image: " + H.S(this._decoration_image$_image) + ") for " + this._details.toString$0(0);
-    }
-  };
-  X.paintImage_closure.prototype = {
-    call$1(timeStamp) {
-      var t2, t3, t4,
-        t1 = $._pendingImageSizeInfo;
-      t1 = t1.get$values(t1);
-      $._lastFrameImageSizeInfo = P.LinkedHashSet_LinkedHashSet$of(t1, H._instanceType(t1)._eval$1("Iterable.E"));
-      t1 = $._pendingImageSizeInfo;
-      if (t1.get$isEmpty(t1))
-        return;
-      t1 = type$.String;
-      t2 = P.LinkedHashMap_LinkedHashMap$_empty(t1, type$.Object);
-      for (t3 = $._pendingImageSizeInfo, t3 = t3.get$values(t3), t3 = t3.get$iterator(t3); t3.moveNext$0();) {
-        t4 = t3.get$current(t3);
-        t2.$indexSet(0, t4.source, t4.toJson$0());
-      }
-      P.postEvent("Flutter.ImageSizesForFrame", t2);
-      $._pendingImageSizeInfo = P.LinkedHashMap_LinkedHashMap$_empty(t1, type$.ImageSizeInfo);
-    },
-    $signature: 4
-  };
   V.EdgeInsetsGeometry.prototype = {
     get$horizontal() {
       var _this = this;
@@ -58732,16 +57424,6 @@
       _this._currentSizeBytes = 0;
     }
   };
-  E._CachedImageBase_dispose_closure.prototype = {
-    call$1(timeStamp) {
-      var t1 = this.$this,
-        t2 = t1.handle;
-      if (t2 != null)
-        t2.dispose$0(0);
-      t1.handle = null;
-    },
-    $signature: 4
-  };
   M.ImageConfiguration.prototype = {
     $eq(_, other) {
       var _this = this;
@@ -58807,285 +57489,6 @@
       return t1.charCodeAt(0) == 0 ? t1 : t1;
     }
   };
-  M.ImageProvider_resolve_closure.prototype = {
-    call$2(key, errorHandler) {
-      this.$this.resolveStreamForKey$4(this.configuration, this.stream, key, errorHandler);
-    },
-    $signature() {
-      return H._instanceType(this.$this)._eval$1("~(ImageProvider.T,~(Object,StackTrace?))");
-    }
-  };
-  M.ImageProvider_resolve_closure0.prototype = {
-    call$3(key, exception, stack) {
-      return this.$call$body$ImageProvider_resolve_closure(key, exception, stack);
-    },
-    $call$body$ImageProvider_resolve_closure(key, exception, stack) {
-      var $async$goto = 0,
-        $async$completer = P._makeAsyncAwaitCompleter(type$.void),
-        $async$self = this, t1;
-      var $async$call$3 = P._wrapJsFunctionForAsync(function($async$errorCode, $async$result) {
-        if ($async$errorCode === 1)
-          return P._asyncRethrow($async$result, $async$completer);
-        while (true)
-          switch ($async$goto) {
-            case 0:
-              // Function start
-              $async$goto = 2;
-              return P._asyncAwait(null, $async$call$3);
-            case 2:
-              // returning from await.
-              t1 = $async$self.stream;
-              if (t1._image_stream$_completer == null)
-                t1.setCompleter$1(new M._ErrorImageCompleter(H._setArrayType([], type$.JSArray_ImageStreamListener), H._setArrayType([], type$.JSArray_of_void_Function)));
-              t1 = t1._image_stream$_completer;
-              t1.toString;
-              t1.reportError$5$context$exception$informationCollector$silent$stack(U.ErrorDescription$("while resolving an image"), exception, null, true, stack);
-              // implicit return
-              return P._asyncReturn(null, $async$completer);
-          }
-      });
-      return P._asyncStartSync($async$call$3, $async$completer);
-    },
-    $signature() {
-      return H._instanceType(this.$this)._eval$1("Future<~>(ImageProvider.T?,Object,StackTrace?)");
-    }
-  };
-  M.ImageProvider__createErrorHandlerAndKey_handleError.prototype = {
-    $call$body$ImageProvider__createErrorHandlerAndKey_handleError(exception, stack) {
-      var $async$goto = 0,
-        $async$completer = P._makeAsyncAwaitCompleter(type$.void),
-        $async$returnValue, $async$self = this, t1;
-      var $async$call$2 = P._wrapJsFunctionForAsync(function($async$errorCode, $async$result) {
-        if ($async$errorCode === 1)
-          return P._asyncRethrow($async$result, $async$completer);
-        while (true)
-          switch ($async$goto) {
-            case 0:
-              // Function start
-              t1 = $async$self._box_0;
-              if (t1.didError) {
-                // goto return
-                $async$goto = 1;
-                break;
-              }
-              $async$self.errorCallback.call$3(t1.obtainedKey, exception, stack);
-              t1.didError = true;
-            case 1:
-              // return
-              return P._asyncReturn($async$returnValue, $async$completer);
-          }
-      });
-      return P._asyncStartSync($async$call$2, $async$completer);
-    },
-    call$2(exception, stack) {
-      return this.$call$body$ImageProvider__createErrorHandlerAndKey_handleError(exception, stack);
-    },
-    $signature: 174
-  };
-  M.ImageProvider__createErrorHandlerAndKey_closure.prototype = {
-    call$5(zone, delegate, $parent, error, stackTrace) {
-      this.handleError.call$2(error, stackTrace);
-    },
-    $signature: 175
-  };
-  M.ImageProvider__createErrorHandlerAndKey_closure0.prototype = {
-    call$0() {
-      var error, stackTrace, exception, t1, _this = this, key = null;
-      try {
-        key = _this.$this.obtainKey$1(_this.configuration);
-      } catch (exception) {
-        error = H.unwrapException(exception);
-        stackTrace = H.getTraceFromException(exception);
-        _this.handleError.call$2(error, stackTrace);
-        return;
-      }
-      t1 = _this.handleError;
-      J.then$1$1$x(key, new M.ImageProvider__createErrorHandlerAndKey__closure(_this._box_0, _this.$this, _this.successCallback, t1), type$.void).catchError$1(t1);
-    },
-    $signature: 0
-  };
-  M.ImageProvider__createErrorHandlerAndKey__closure.prototype = {
-    call$1(key) {
-      var error, stackTrace, exception, _this = this;
-      _this._box_0.obtainedKey = key;
-      try {
-        _this.successCallback.call$2(key, _this.handleError);
-      } catch (exception) {
-        error = H.unwrapException(exception);
-        stackTrace = H.getTraceFromException(exception);
-        _this.handleError.call$2(error, stackTrace);
-      }
-    },
-    $signature() {
-      return H._instanceType(this.$this)._eval$1("Null(ImageProvider.T)");
-    }
-  };
-  M._ErrorImageCompleter.prototype = {};
-  L.ImageInfo.prototype = {
-    clone$0(_) {
-      return new L.ImageInfo(this.image.clone$0(0), this.scale, this.debugLabel);
-    },
-    toString$0(_) {
-      var t1 = this.debugLabel;
-      t1 = t1 != null ? t1 + " " : "";
-      return t1 + this.image.toString$0(0) + " @ " + E.debugFormatDouble(this.scale) + "x";
-    },
-    get$hashCode(_) {
-      return P.hashValues(this.image, this.scale, this.debugLabel, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd);
-    },
-    $eq(_, other) {
-      var _this = this;
-      if (other == null)
-        return false;
-      if (J.get$runtimeType$(other) !== H.getRuntimeType(_this))
-        return false;
-      return other instanceof L.ImageInfo && other.image === _this.image && other.scale === _this.scale && other.debugLabel == _this.debugLabel;
-    }
-  };
-  L.ImageStreamListener.prototype = {
-    get$hashCode(_) {
-      return P.hashValues(this.onImage, this.onChunk, this.onError, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd, C.C__HashEnd);
-    },
-    $eq(_, other) {
-      var _this = this;
-      if (other == null)
-        return false;
-      if (J.get$runtimeType$(other) !== H.getRuntimeType(_this))
-        return false;
-      return other instanceof L.ImageStreamListener && J.$eq$(other.onImage, _this.onImage) && J.$eq$(other.onChunk, _this.onChunk) && J.$eq$(other.onError, _this.onError);
-    }
-  };
-  L.ImageStream.prototype = {
-    setCompleter$1(value) {
-      var t1;
-      this._image_stream$_completer = value;
-      t1 = this._image_stream$_listeners;
-      if (t1 != null) {
-        this._image_stream$_listeners = null;
-        C.JSArray_methods.forEach$1(t1, value.get$addListener(value));
-      }
-    },
-    addListener$1(_, listener) {
-      var t1 = this._image_stream$_completer;
-      if (t1 != null)
-        return t1.addListener$1(0, listener);
-      t1 = this._image_stream$_listeners;
-      (t1 == null ? this._image_stream$_listeners = H._setArrayType([], type$.JSArray_ImageStreamListener) : t1).push(listener);
-    },
-    removeListener$1(_, listener) {
-      var i,
-        t1 = this._image_stream$_completer;
-      if (t1 != null)
-        return t1.removeListener$1(0, listener);
-      for (i = 0; t1 = this._image_stream$_listeners, i < t1.length; ++i)
-        if (J.$eq$(t1[i], listener)) {
-          t1 = this._image_stream$_listeners;
-          t1.toString;
-          C.JSArray_methods.removeAt$1(t1, i);
-          break;
-        }
-    }
-  };
-  L.ImageStreamCompleter.prototype = {
-    addListener$1(_, listener) {
-      var exception, stack, newException, newStack, t1, exception0, t2, _this = this;
-      if (_this._image_stream$_disposed)
-        H.throwExpression(P.StateError$(string$.Stream));
-      _this._hadAtLeastOneListener = true;
-      _this._image_stream$_listeners.push(listener);
-      t1 = _this._currentImage;
-      if (t1 != null)
-        try {
-          t1 = t1.clone$0(0);
-          listener.onImage.call$2(t1, true);
-        } catch (exception0) {
-          exception = H.unwrapException(exception0);
-          stack = H.getTraceFromException(exception0);
-          _this.reportError$3$context$exception$stack(U.ErrorDescription$("by a synchronously-called image listener"), exception, stack);
-        }
-      t1 = _this._currentError;
-      if (t1 != null && listener.onError != null)
-        try {
-          t2 = listener.onError;
-          t2.toString;
-          t2.call$2(t1.exception, t1.stack);
-        } catch (exception) {
-          newException = H.unwrapException(exception);
-          newStack = H.getTraceFromException(exception);
-          if (!J.$eq$(newException, _this._currentError.exception))
-            U.FlutterError_reportError(new U.FlutterErrorDetails(newException, newStack, "image resource service", U.ErrorDescription$("by a synchronously-called image error listener"), null, false));
-        }
-    },
-    removeListener$1(_, listener) {
-      var t1, i, callbacks, t2, _i, _this = this;
-      if (_this._image_stream$_disposed)
-        H.throwExpression(P.StateError$(string$.Stream));
-      for (t1 = _this._image_stream$_listeners, i = 0; i < t1.length; ++i)
-        if (J.$eq$(t1[i], listener)) {
-          C.JSArray_methods.removeAt$1(t1, i);
-          break;
-        }
-      if (t1.length === 0) {
-        t1 = _this._onLastListenerRemovedCallbacks;
-        callbacks = H._setArrayType(t1.slice(0), H._arrayInstanceType(t1));
-        for (t2 = callbacks.length, _i = 0; _i < callbacks.length; callbacks.length === t2 || (0, H.throwConcurrentModificationError)(callbacks), ++_i)
-          callbacks[_i].call$0();
-        C.JSArray_methods.set$length(t1, 0);
-        _this._maybeDispose$0();
-      }
-    },
-    _maybeDispose$0() {
-      var t1, _this = this;
-      if (!_this._hadAtLeastOneListener || _this._image_stream$_disposed || _this._image_stream$_listeners.length !== 0 || _this._keepAliveHandles !== 0)
-        return;
-      t1 = _this._currentImage;
-      if (t1 != null)
-        t1.image.dispose$0(0);
-      _this._currentImage = null;
-      _this._image_stream$_disposed = true;
-    },
-    reportError$5$context$exception$informationCollector$silent$stack(context, exception, informationCollector, silent, stack) {
-      var handled, errorListener, newException, newStack, t1, t2, localErrorListeners, _i, exception0, t3,
-        _s22_ = "image resource service";
-      this._currentError = new U.FlutterErrorDetails(exception, stack, _s22_, context, informationCollector, silent);
-      t1 = this._image_stream$_listeners;
-      t2 = type$.WhereTypeIterable_of_void_Function_2_Object_and_nullable_StackTrace;
-      localErrorListeners = P.List_List$of(new H.WhereTypeIterable(new H.MappedListIterable(t1, new L.ImageStreamCompleter_reportError_closure(), H._arrayInstanceType(t1)._eval$1("MappedListIterable<1,~(Object,StackTrace?)?>")), t2), true, t2._eval$1("Iterable.E"));
-      handled = false;
-      for (t1 = localErrorListeners.length, _i = 0; _i < t1; ++_i) {
-        errorListener = localErrorListeners[_i];
-        try {
-          errorListener.call$2(exception, stack);
-          handled = true;
-        } catch (exception0) {
-          newException = H.unwrapException(exception0);
-          newStack = H.getTraceFromException(exception0);
-          if (!J.$eq$(newException, exception)) {
-            t2 = U.ErrorDescription$("when reporting an error to an image listener");
-            t3 = $.$get$FlutterError_onError();
-            if (t3 != null)
-              t3.call$1(new U.FlutterErrorDetails(newException, newStack, _s22_, t2, null, false));
-          }
-        }
-      }
-      if (!handled) {
-        t1 = this._currentError;
-        t1.toString;
-        U.FlutterError_reportError(t1);
-      }
-    },
-    reportError$3$context$exception$stack(context, exception, stack) {
-      return this.reportError$5$context$exception$informationCollector$silent$stack(context, exception, null, false, stack);
-    }
-  };
-  L.ImageStreamCompleter_reportError_closure.prototype = {
-    call$1(listener) {
-      return listener.onError;
-    },
-    $signature: 177
-  };
-  L._ImageStream_Object_Diagnosticable.prototype = {};
-  L._ImageStreamCompleter_Object_Diagnosticable.prototype = {};
   G.Accumulator.prototype = {};
   G.InlineSpanSemanticsInformation.prototype = {
     $eq(_, other) {
@@ -59140,7 +57543,7 @@
       this._box_0.result = result;
       return result == null;
     },
-    $signature: 52
+    $signature: 53
   };
   X.RoundedRectangleBorder.prototype = {
     get$dimensions() {
@@ -59673,50 +58076,43 @@
         t20 = t1.shadows;
         builder.pushStyle$1(0, P.TextStyle_TextStyle(t19, t2, t3, t4, t5, t6, t11, t12, t1.fontFeatures, t13, t8, t7, t18, t16, t10, t14, t17, t20, t9, t15));
       }
-      t1 = this.text;
-      if (t1 != null)
-        try {
-          builder.addText$1(0, t1);
-        } catch (exception0) {
-          t1 = H.unwrapException(exception0);
-          if (t1 instanceof P.ArgumentError) {
-            exception = t1;
-            stack = H.getTraceFromException(exception0);
-            U.FlutterError_reportError(new U.FlutterErrorDetails(exception, stack, "painting library", U.ErrorDescription$("while building a TextSpan"), null, false));
-            builder.addText$1(0, "\ufffd");
-          } else
-            throw exception0;
-        }
+      try {
+        builder.addText$1(0, this.text);
+      } catch (exception0) {
+        t1 = H.unwrapException(exception0);
+        if (t1 instanceof P.ArgumentError) {
+          exception = t1;
+          stack = H.getTraceFromException(exception0);
+          U.FlutterError_reportError(new U.FlutterErrorDetails(exception, stack, "painting library", U.ErrorDescription$("while building a TextSpan"), null, false));
+          builder.addText$1(0, "\ufffd");
+        } else
+          throw exception0;
+      }
       t1 = this.children;
       if (t1 != null)
-        for (t2 = t1.length, _i = 0; _i < t1.length; t1.length === t2 || (0, H.throwConcurrentModificationError)(t1), ++_i)
+        for (_i = 0; _i < 1; ++_i)
           t1[_i].build$3$dimensions$textScaleFactor(0, builder, dimensions, textScaleFactor);
       if (hasStyle)
         builder.pop$0(0);
     },
     visitChildren$1(visitor) {
-      var t1, t2, _i;
-      if (this.text != null)
-        if (!visitor.call$1(this))
-          return false;
+      var t1, _i;
+      if (!visitor.call$1(this))
+        return false;
       t1 = this.children;
       if (t1 != null)
-        for (t2 = t1.length, _i = 0; _i < t1.length; t1.length === t2 || (0, H.throwConcurrentModificationError)(t1), ++_i)
+        for (_i = 0; _i < 1; ++_i)
           if (!t1[_i].visitChildren$1(visitor))
             return false;
       return true;
     },
     getSpanForPositionVisitor$2(position, offset) {
-      var affinity, targetOffset, t2, endOffset,
-        t1 = this.text;
-      if (t1 == null)
-        return null;
-      affinity = position.affinity;
-      targetOffset = position.offset;
-      t2 = offset._inline_span$_value;
-      endOffset = t2 + t1.length;
-      if (!(t2 === targetOffset && affinity === C.TextAffinity_1))
-        if (!(t2 < targetOffset && targetOffset < endOffset))
+      var affinity = position.affinity,
+        targetOffset = position.offset,
+        t1 = offset._inline_span$_value,
+        endOffset = t1 + this.text.length;
+      if (!(t1 === targetOffset && affinity === C.TextAffinity_1))
+        if (!(t1 < targetOffset && targetOffset < endOffset))
           t1 = endOffset === targetOffset && affinity === C.TextAffinity_0;
         else
           t1 = true;
@@ -59728,15 +58124,12 @@
       return null;
     },
     computeSemanticsInformation$3$inheritedLocale$inheritedSpellOut(collector, inheritedLocale, inheritedSpellOut) {
-      var t2, _i,
-        t1 = this.text;
-      if (t1 != null) {
-        t2 = H._setArrayType([], type$.JSArray_StringAttribute);
-        collector.push(G.InlineSpanSemanticsInformation$(t1, null, null, t2));
-      }
+      var _i,
+        t1 = H._setArrayType([], type$.JSArray_StringAttribute);
+      collector.push(G.InlineSpanSemanticsInformation$(this.text, null, null, t1));
       t1 = this.children;
       if (t1 != null)
-        for (t2 = t1.length, _i = 0; _i < t1.length; t1.length === t2 || (0, H.throwConcurrentModificationError)(t1), ++_i)
+        for (_i = 0; _i < 1; ++_i)
           t1[_i].computeSemanticsInformation$3$inheritedLocale$inheritedSpellOut(collector, inheritedLocale, false);
     },
     computeSemanticsInformation$1(collector) {
@@ -59748,11 +58141,9 @@
         return C.RenderComparison_0;
       if (H.getRuntimeType(other) !== H.getRuntimeType(_this))
         return C.RenderComparison_3;
-      if (other.text == _this.text) {
-        t1 = _this.children;
-        t1 = t1 == null ? null : t1.length;
-        t2 = other.children;
-        t1 = t1 != (t2 == null ? null : t2.length) || _this.style == null !== (other.style == null);
+      if (other.text === _this.text) {
+        t1 = _this.children == null ? null : 1;
+        t1 = t1 != (other.children == null ? null : 1) || _this.style == null !== (other.style == null);
       } else
         t1 = true;
       if (t1)
@@ -59769,9 +58160,9 @@
         result = C.RenderComparison_0;
       t1 = _this.children;
       if (t1 != null)
-        for (t2 = other.children, index = 0; index < t1.length; ++index) {
+        for (t2 = other.children, index = 0; index < 1; ++index) {
           candidate = t1[index].compareTo$1(0, t2[index]);
-          if (candidate.index > result.index)
+          if (candidate.get$index(candidate).$gt(0, result.index))
             result = candidate;
           if (result === C.RenderComparison_3)
             return result;
@@ -59789,7 +58180,7 @@
       if (!_this.super$InlineSpan$$eq(0, other))
         return false;
       if (other instanceof Q.TextSpan)
-        if (other.text == _this.text)
+        if (other.text === _this.text)
           t1 = _this.mouseCursor.$eq(0, other.mouseCursor) && S.listEquals(other.children, _this.children);
         else
           t1 = false;
@@ -59829,14 +58220,14 @@
       var t1 = Y.DiagnosticableTreeNode$(null, null, child);
       return t1;
     },
-    $signature: 179
+    $signature: 174
   };
   A.TextStyle.prototype = {
     get$fontFamilyFallback() {
       return this._text_style$_fontFamilyFallback;
     },
     copyWith$23$background$backgroundColor$color$debugLabel$decoration$decorationColor$decorationStyle$decorationThickness$fontFamily$fontFamilyFallback$fontFeatures$fontSize$fontStyle$fontWeight$foreground$height$leadingDistribution$letterSpacing$locale$overflow$shadows$textBaseline$wordSpacing(background, backgroundColor, color, debugLabel, decoration, decorationColor, decorationStyle, decorationThickness, fontFamily, fontFamilyFallback, fontFeatures, fontSize, fontStyle, fontWeight, foreground, height, leadingDistribution, letterSpacing, locale, overflow, shadows, textBaseline, wordSpacing) {
-      var t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15, t16, t17, _this = this, _null = null,
+      var t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15, t16, _this = this, _null = null,
         t1 = _this.foreground;
       if (t1 == null && foreground == null)
         t2 = color == null ? _this.color : color;
@@ -59857,21 +58248,20 @@
       t12 = height == null ? _this.height : height;
       t1 = foreground == null ? t1 : foreground;
       t3 = background == null ? t3 : background;
-      t13 = shadows == null ? _this.shadows : shadows;
-      t14 = decoration == null ? _this.decoration : decoration;
-      t15 = decorationColor == null ? _this.decorationColor : decorationColor;
-      t16 = decorationStyle == null ? _this.decorationStyle : decorationStyle;
-      t17 = decorationThickness == null ? _this.decorationThickness : decorationThickness;
-      return A.TextStyle$(t3, t4, t2, _null, t14, t15, t16, t17, t5, t6, _this.fontFeatures, t7, _this.fontStyle, t8, t1, t12, _this.inherit, _this.leadingDistribution, t9, _this.locale, _this.overflow, _null, t13, t11, t10);
+      t13 = decoration == null ? _this.decoration : decoration;
+      t14 = decorationColor == null ? _this.decorationColor : decorationColor;
+      t15 = decorationStyle == null ? _this.decorationStyle : decorationStyle;
+      t16 = decorationThickness == null ? _this.decorationThickness : decorationThickness;
+      return A.TextStyle$(t3, t4, t2, _null, t13, t14, t15, t16, t5, t6, _this.fontFeatures, t7, _this.fontStyle, t8, t1, t12, _this.inherit, _this.leadingDistribution, t9, _this.locale, _this.overflow, _null, _this.shadows, t11, t10);
+    },
+    copyWith$1$letterSpacing(letterSpacing) {
+      return this.copyWith$23$background$backgroundColor$color$debugLabel$decoration$decorationColor$decorationStyle$decorationThickness$fontFamily$fontFamilyFallback$fontFeatures$fontSize$fontStyle$fontWeight$foreground$height$leadingDistribution$letterSpacing$locale$overflow$shadows$textBaseline$wordSpacing(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, letterSpacing, null, null, null, null, null);
     },
     copyWith$1$color(color) {
       return this.copyWith$23$background$backgroundColor$color$debugLabel$decoration$decorationColor$decorationStyle$decorationThickness$fontFamily$fontFamilyFallback$fontFeatures$fontSize$fontStyle$fontWeight$foreground$height$leadingDistribution$letterSpacing$locale$overflow$shadows$textBaseline$wordSpacing(null, null, color, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     },
     copyWith$2$color$fontSize(color, fontSize) {
       return this.copyWith$23$background$backgroundColor$color$debugLabel$decoration$decorationColor$decorationStyle$decorationThickness$fontFamily$fontFamilyFallback$fontFeatures$fontSize$fontStyle$fontWeight$foreground$height$leadingDistribution$letterSpacing$locale$overflow$shadows$textBaseline$wordSpacing(null, null, color, null, null, null, null, null, null, null, null, fontSize, null, null, null, null, null, null, null, null, null, null, null);
-    },
-    copyWith$1$letterSpacing(letterSpacing) {
-      return this.copyWith$23$background$backgroundColor$color$debugLabel$decoration$decorationColor$decorationStyle$decorationThickness$fontFamily$fontFamilyFallback$fontFeatures$fontSize$fontStyle$fontWeight$foreground$height$leadingDistribution$letterSpacing$locale$overflow$shadows$textBaseline$wordSpacing(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, letterSpacing, null, null, null, null, null);
     },
     merge$1(other) {
       var t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15, t16, t17;
@@ -60090,7 +58480,7 @@
       t2.toString;
       t2.updateAllDevices$1(t1.get$_pipelineOwner()._rootNode.get$hitTestMouseTrackers());
     },
-    $signature: 4
+    $signature: 7
   };
   S.BoxConstraints.prototype = {
     copyWith$4$maxHeight$maxWidth$minHeight$minWidth(maxHeight, maxWidth, minHeight, minWidth) {
@@ -60202,7 +58592,7 @@
         return dim + "=" + C.JSNumber_methods.toStringAsFixed$1(min, 1);
       return C.JSNumber_methods.toStringAsFixed$1(min, 1) + "<=" + dim + "<=" + C.JSNumber_methods.toStringAsFixed$1(max, 1);
     },
-    $signature: 181
+    $signature: 176
   };
   S.BoxHitTestResult.prototype = {
     addWithPaintTransform$3$hitTest$position$transform(hitTest, position, transform) {
@@ -60380,13 +58770,13 @@
     call$0() {
       return this.$this.computeDryLayout$1(this.constraints);
     },
-    $signature: 182
+    $signature: 177
   };
   S.RenderBox_getDistanceToActualBaseline_closure.prototype = {
     call$0() {
       return this.$this.computeDistanceToActualBaseline$1(this.baseline);
     },
-    $signature: 183
+    $signature: 178
   };
   S.RenderBoxContainerDefaultsMixin.prototype = {
     defaultComputeDistanceToFirstActualBaseline$1(baseline) {
@@ -60710,8 +59100,8 @@
     },
     assembleSemanticsNode$3(node, config, children) {
       var t1, hasBackgroundSemantics, hasForegroundSemantics, t2, _this = this;
-      _this._backgroundSemanticsNodes = V.RenderCustomPaint__updateSemanticsChildren(_this._backgroundSemanticsNodes, C.List_empty10);
-      _this._foregroundSemanticsNodes = V.RenderCustomPaint__updateSemanticsChildren(_this._foregroundSemanticsNodes, C.List_empty10);
+      _this._backgroundSemanticsNodes = V.RenderCustomPaint__updateSemanticsChildren(_this._backgroundSemanticsNodes, C.List_empty9);
+      _this._foregroundSemanticsNodes = V.RenderCustomPaint__updateSemanticsChildren(_this._foregroundSemanticsNodes, C.List_empty9);
       t1 = _this._backgroundSemanticsNodes;
       hasBackgroundSemantics = t1 != null && !t1.get$isEmpty(t1);
       t1 = _this._foregroundSemanticsNodes;
@@ -61143,18 +59533,18 @@
       t1 = _this._size;
       if (t1.get$isEmpty(t1))
         return;
-      t1 = _this._clipRectLayer;
-      if (_this._clipBehavior === C.Clip_0) {
+      t1 = _this._flex$_clipRectLayer;
+      if (_this._flex$_clipBehavior === C.Clip_0) {
         t1.set$layer(0, null);
         _this.defaultPaint$2(context, offset);
       } else {
         t2 = _this.get$_needsCompositing();
         t3 = _this._size;
-        t1.set$layer(0, context.pushClipRect$6$clipBehavior$oldLayer(t2, offset, new P.Rect(0, 0, 0 + t3._dx, 0 + t3._dy), _this.get$defaultPaint(), _this._clipBehavior, t1._layer));
+        t1.set$layer(0, context.pushClipRect$6$clipBehavior$oldLayer(t2, offset, new P.Rect(0, 0, 0 + t3._dx, 0 + t3._dy), _this.get$defaultPaint(), _this._flex$_clipBehavior, t1._layer));
       }
     },
     dispose$0(_) {
-      this._clipRectLayer.set$layer(0, null);
+      this._flex$_clipRectLayer.set$layer(0, null);
       this.super$RenderObject$dispose(0);
     },
     describeApproximatePaintClip$1(child) {
@@ -61293,11 +59683,11 @@
       if (layer == t1)
         return;
       if (t1 != null)
-        if (--t1._layer$_refCount === 0)
+        if (--t1._refCount === 0)
           t1.dispose$0(0);
       this._layer = layer;
       if (layer != null)
-        ++layer._layer$_refCount;
+        ++layer._refCount;
     },
     toString$0(_) {
       var t1 = this._layer;
@@ -61748,7 +60138,7 @@
     call$1(annotation) {
       return annotation.get$cursor(annotation);
     },
-    $signature: 185
+    $signature: 180
   };
   A.MouseTracker_updateWithEvent_closure.prototype = {
     call$0() {
@@ -61806,13 +60196,13 @@
           t1.call$1(this.baseExitEvent.transformed$1(this.lastAnnotations.$index(0, annotation)));
         }
     },
-    $signature: 186
+    $signature: 181
   };
   A.MouseTracker__handleDeviceUpdateMouseEvents_closure0.prototype = {
     call$1(annotation) {
       return !this.lastAnnotations.containsKey$1(0, annotation);
     },
-    $signature: 187
+    $signature: 182
   };
   A.__MouseTrackerUpdateDetails_Object_Diagnosticable.prototype = {};
   K.ParentData.prototype = {
@@ -62617,7 +61007,7 @@
         t1.showOnScreen$4$curve$descendant$duration$rect(curve, descendant == null ? this : descendant, duration, rect);
     },
     showOnScreen$0() {
-      return this.showOnScreen$4$curve$descendant$duration$rect(C.Cubic_JUR, null, C.Duration_0, null);
+      return this.showOnScreen$4$curve$descendant$duration$rect(C.Cubic_JUR0, null, C.Duration_0, null);
     },
     $isDiagnosticableTree: 1,
     $isHitTestTarget: 1
@@ -62912,7 +61302,7 @@
         t4 = type$.nullable_PipelineOwner._as(B.AbstractNode.prototype.get$owner.call(t4))._semanticsOwner;
         t4.toString;
         t5 = $.$get$SemanticsNode__kEmptyConfig();
-        t5 = new A.SemanticsNode(null, 0, t3, C.Rect_0_0_0_0, t5._isMergingSemanticsOfDescendants, t5._actions, t5._customSemanticsActions, t5._actionsAsBits, t5._flags, t5._semantics$_attributedLabel, t5._semantics$_attributedValue, t5._semantics$_attributedDecreasedValue, t5._semantics$_attributedIncreasedValue, t5._semantics$_attributedHint, t5._semantics$_elevation, t5._thickness, t5._semantics$_textDirection);
+        t5 = new A.SemanticsNode(null, 0, t3, C.Rect_0_0_0_0, t5._isMergingSemanticsOfDescendants, t5._actions, t5._customSemanticsActions, t5._actionsAsBits, t5._flags, t5._attributedLabel, t5._semantics$_attributedValue, t5._semantics$_attributedDecreasedValue, t5._semantics$_attributedIncreasedValue, t5._semantics$_attributedHint, t5._semantics$_elevation, t5._thickness, t5._semantics$_textDirection);
         t5.attach$1(t4);
         t2._semantics = t5;
       }
@@ -63036,7 +61426,7 @@
         t2._isMergingSemanticsOfDescendants = t1._isMergingSemanticsOfDescendants;
         t2._semantics$_textDirection = t1._semantics$_textDirection;
         t2._semantics$_sortKey = t1._semantics$_sortKey;
-        t2._semantics$_attributedLabel = t1._semantics$_attributedLabel;
+        t2._attributedLabel = t1._attributedLabel;
         t2._semantics$_attributedIncreasedValue = t1._semantics$_attributedIncreasedValue;
         t2._semantics$_attributedValue = t1._semantics$_attributedValue;
         t2._semantics$_attributedDecreasedValue = t1._semantics$_attributedDecreasedValue;
@@ -63549,7 +61939,7 @@
           }
           t2 = _this._cachedAttributedLabel = new A.AttributedString(t4.charCodeAt(0) == 0 ? t4 : t4, attributes);
         }
-        config._semantics$_attributedLabel = t2;
+        config._attributedLabel = t2;
         config._hasBeenAnnotated = true;
         t1 = t1._text_painter$_textDirection;
         t1.toString;
@@ -63606,7 +61996,7 @@
         configuration._semantics$_textDirection = currentDirection;
         t7 = info.semanticsLabel;
         t2 = t7 == null ? t2 : t7;
-        configuration._semantics$_attributedLabel = new A.AttributedString(t2, info.stringAttributes);
+        configuration._attributedLabel = new A.AttributedString(t2, info.stringAttributes);
         t2 = _this._cachedChildNodes;
         newChild = (t2 == null ? _null : !t2.get$isEmpty(t2)) === true ? _this._cachedChildNodes.removeFirst$0() : A.SemanticsNode$(_null, _null);
         newChild.updateWith$1$config(0, configuration);
@@ -63639,7 +62029,7 @@
     call$1(span) {
       return true;
     },
-    $signature: 52
+    $signature: 53
   };
   Q.RenderParagraph_hitTestChildren_closure.prototype = {
     call$2(result, transformed) {
@@ -63659,7 +62049,7 @@
     call$1(info) {
       return false;
     },
-    $signature: 191
+    $signature: 186
   };
   Q._RenderParagraph_RenderBox_ContainerRenderObjectMixin.prototype = {
     attach$1(owner) {
@@ -64869,9 +63259,7 @@
       return;
     },
     set$image(_, value) {
-      if (this._image == value)
-        return;
-      this._image = value;
+      return;
     },
     set$liveRegion(value) {
       return;
@@ -64886,9 +63274,9 @@
       return;
     },
     set$attributedLabel(value) {
-      if (J.$eq$(this._attributedLabel, value))
+      if (J.$eq$(this._proxy_box$_attributedLabel, value))
         return;
-      this._attributedLabel = value;
+      this._proxy_box$_attributedLabel = value;
       this.markNeedsSemanticsUpdate$0();
     },
     set$attributedValue(value) {
@@ -65045,12 +63433,9 @@
       t1 = _this._focused;
       if (t1 != null)
         config._setFlag$2(C.SemanticsFlag_32, t1);
-      t1 = _this._image;
-      if (t1 != null)
-        config._setFlag$2(C.SemanticsFlag_16384, t1);
-      t1 = _this._attributedLabel;
+      t1 = _this._proxy_box$_attributedLabel;
       if (t1 != null) {
-        config._semantics$_attributedLabel = t1;
+        config._attributedLabel = t1;
         config._hasBeenAnnotated = true;
       }
       t1 = _this._attributedValue;
@@ -65337,16 +63722,16 @@
   T.RenderAligningShiftedBox.prototype = {
     _shifted_box$_resolve$0() {
       var _this = this;
-      if (_this._resolvedAlignment != null)
+      if (_this._shifted_box$_resolvedAlignment != null)
         return;
-      _this._resolvedAlignment = _this._shifted_box$_alignment.resolve$1(_this._shifted_box$_textDirection);
+      _this._shifted_box$_resolvedAlignment = _this._shifted_box$_alignment.resolve$1(_this._shifted_box$_textDirection);
     },
     set$alignment(value) {
       var _this = this;
       if (_this._shifted_box$_alignment.$eq(0, value))
         return;
       _this._shifted_box$_alignment = value;
-      _this._resolvedAlignment = null;
+      _this._shifted_box$_resolvedAlignment = null;
       _this.markNeedsLayout$0();
     },
     set$textDirection(_, value) {
@@ -65354,7 +63739,7 @@
       if (_this._shifted_box$_textDirection == value)
         return;
       _this._shifted_box$_textDirection = value;
-      _this._resolvedAlignment = null;
+      _this._shifted_box$_resolvedAlignment = null;
       _this.markNeedsLayout$0();
     },
     alignChild$0() {
@@ -65364,7 +63749,7 @@
       t2 = t1.parentData;
       t2.toString;
       type$.BoxParentData._as(t2);
-      t3 = _this._resolvedAlignment;
+      t3 = _this._shifted_box$_resolvedAlignment;
       t3.toString;
       t4 = _this._size;
       t4.toString;
@@ -66184,7 +64569,7 @@
       t1.SchedulerBinding__nextFrameCompleter.complete$0(0);
       t1.SchedulerBinding__nextFrameCompleter = null;
     },
-    $signature: 4
+    $signature: 7
   };
   N.SchedulerBinding_scheduleWarmUpFrame_closure.prototype = {
     call$0() {
@@ -66234,7 +64619,7 @@
       t1.SchedulerBinding__hasScheduledFrame = false;
       t1.scheduleFrame$0();
     },
-    $signature: 4
+    $signature: 7
   };
   N.SchedulerBinding_handleBeginFrame_closure.prototype = {
     call$2(id, callbackEntry) {
@@ -66247,7 +64632,7 @@
         t1._invokeFrameCallback$3(t2, t3, callbackEntry.debugStack);
       }
     },
-    $signature: 195
+    $signature: 190
   };
   V.Priority.prototype = {
     $add(_, offset) {
@@ -66352,12 +64737,6 @@
             t2.completeError$1(C.TickerCanceled_null);
       }
       _this._secondaryCompleter.future.then$1$2$onError(0, t1, t1, type$.void);
-    },
-    catchError$2$test(onError, test) {
-      return this._primaryCompleter.future.catchError$2$test(onError, test);
-    },
-    catchError$1(onError) {
-      return this.catchError$2$test(onError, null);
     },
     then$1$2$onError(_, onValue, onError, $R) {
       return this._primaryCompleter.future.then$1$2$onError(0, onValue, onError, $R);
@@ -66638,7 +65017,7 @@
       var t1, _this = this;
       if (config == null)
         config = $.$get$SemanticsNode__kEmptyConfig();
-      if (_this._semantics$_attributedLabel.$eq(0, config._semantics$_attributedLabel))
+      if (_this._attributedLabel.$eq(0, config._attributedLabel))
         if (_this._semantics$_attributedHint.$eq(0, config._semantics$_attributedHint))
           if (_this._semantics$_elevation === config._semantics$_elevation)
             if (_this._thickness === config._thickness)
@@ -66674,7 +65053,7 @@
         t1 = true;
       if (t1)
         _this._semantics$_markDirty$0();
-      _this._semantics$_attributedLabel = config._semantics$_attributedLabel;
+      _this._attributedLabel = config._attributedLabel;
       _this._semantics$_attributedValue = config._semantics$_attributedValue;
       _this._semantics$_attributedIncreasedValue = config._semantics$_attributedIncreasedValue;
       _this._semantics$_attributedDecreasedValue = config._semantics$_attributedDecreasedValue;
@@ -66708,7 +65087,7 @@
       var t1, elevation, customSemanticsActionIds, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15, t16, t17, t18, t19, t20, t21, t22, _this = this, _box_0 = {};
       _box_0.flags = _this._flags;
       _box_0.actions = _this._actionsAsBits;
-      _box_0.attributedLabel = _this._semantics$_attributedLabel;
+      _box_0.attributedLabel = _this._attributedLabel;
       _box_0.attributedValue = _this._semantics$_attributedValue;
       _box_0.attributedIncreasedValue = _this._semantics$_attributedIncreasedValue;
       _box_0.attributedDecreasedValue = _this._semantics$_attributedDecreasedValue;
@@ -66931,26 +65310,26 @@
       node._semantics$_hintOverrides != null;
       t2 = t1.attributedLabel;
       t3 = t1.textDirection;
-      t1.attributedLabel = A._concatAttributedString(node._semantics$_attributedLabel, node._semantics$_textDirection, t2, t3);
+      t1.attributedLabel = A._concatAttributedString(node._attributedLabel, node._semantics$_textDirection, t2, t3);
       t3 = t1.attributedHint;
       t2 = t1.textDirection;
       t1.attributedHint = A._concatAttributedString(node._semantics$_attributedHint, node._semantics$_textDirection, t3, t2);
       t1.thickness = Math.max(t1.thickness, node._thickness + node._semantics$_elevation);
       return true;
     },
-    $signature: 54
+    $signature: 48
   };
   A.SemanticsNode__childrenInTraversalOrder_closure.prototype = {
     call$1(sortNode) {
       return sortNode.node;
     },
-    $signature: 197
+    $signature: 192
   };
   A.SemanticsNode_debugDescribeChildren_closure.prototype = {
     call$1(node) {
       return A._SemanticsDiagnosticableNode$(this.childOrder, null, C.DiagnosticsTreeStyle_1, node);
     },
-    $signature: 198
+    $signature: 193
   };
   A._BoxEdge.prototype = {
     compareTo$1(_, other) {
@@ -67043,7 +65422,7 @@
     call$1(group) {
       return group.sortedWithinKnot$0();
     },
-    $signature: 77
+    $signature: 76
   };
   A._SemanticsSortGroup_sortedWithinKnot_closure.prototype = {
     call$2(a, b) {
@@ -67057,7 +65436,7 @@
         return -verticalDiff;
       return -C.JSNumber_methods.compareTo$1(aTopLeft._dx, bTopLeft._dx);
     },
-    $signature: 55
+    $signature: 47
   };
   A._SemanticsSortGroup_sortedWithinKnot_search.prototype = {
     call$1(id) {
@@ -67074,13 +65453,13 @@
       }
       _this.sortedIds.push(id);
     },
-    $signature: 60
+    $signature: 59
   };
   A._SemanticsSortGroup_sortedWithinKnot_closure0.prototype = {
     call$1(node) {
       return node._id;
     },
-    $signature: 201
+    $signature: 196
   };
   A._SemanticsSortGroup_sortedWithinKnot_closure1.prototype = {
     call$1(id) {
@@ -67088,13 +65467,13 @@
       t1.toString;
       return t1;
     },
-    $signature: 202
+    $signature: 197
   };
   A._childrenInDefaultOrder_closure.prototype = {
     call$1(group) {
       return group.sortedWithinVerticalGroup$0();
     },
-    $signature: 77
+    $signature: 76
   };
   A._TraversalSortNode.prototype = {
     compareTo$1(_, other) {
@@ -67195,19 +65574,19 @@
     call$1(node) {
       return !this.$this._detachedNodes.contains$1(0, node);
     },
-    $signature: 54
+    $signature: 48
   };
   A.SemanticsOwner_sendSemanticsUpdate_closure0.prototype = {
     call$2(a, b) {
       return a._node$_depth - b._node$_depth;
     },
-    $signature: 55
+    $signature: 47
   };
   A.SemanticsOwner_sendSemanticsUpdate_closure1.prototype = {
     call$2(a, b) {
       return a._node$_depth - b._node$_depth;
     },
-    $signature: 55
+    $signature: 47
   };
   A.SemanticsOwner__getSemanticsActionHandlerForId_closure.prototype = {
     call$1(node) {
@@ -67217,7 +65596,7 @@
       }
       return true;
     },
-    $signature: 54
+    $signature: 48
   };
   A.SemanticsConfiguration.prototype = {
     _addAction$2(action, handler) {
@@ -67356,8 +65735,8 @@
       }
       if (_this._semantics$_sortKey == null)
         _this._semantics$_sortKey = child._semantics$_sortKey;
-      t2 = _this._semantics$_attributedLabel;
-      _this._semantics$_attributedLabel = A._concatAttributedString(child._semantics$_attributedLabel, child._semantics$_textDirection, t2, t1);
+      t2 = _this._attributedLabel;
+      _this._attributedLabel = A._concatAttributedString(child._attributedLabel, child._semantics$_textDirection, t2, t1);
       t1 = _this._semantics$_attributedValue;
       if (t1.string === "")
         _this._semantics$_attributedValue = child._semantics$_attributedValue;
@@ -67383,7 +65762,7 @@
       t1._isMergingSemanticsOfDescendants = _this._isMergingSemanticsOfDescendants;
       t1._semantics$_textDirection = _this._semantics$_textDirection;
       t1._semantics$_sortKey = _this._semantics$_sortKey;
-      t1._semantics$_attributedLabel = _this._semantics$_attributedLabel;
+      t1._attributedLabel = _this._attributedLabel;
       t1._semantics$_attributedIncreasedValue = _this._semantics$_attributedIncreasedValue;
       t1._semantics$_attributedValue = _this._semantics$_attributedValue;
       t1._semantics$_attributedDecreasedValue = _this._semantics$_attributedDecreasedValue;
@@ -67804,7 +66183,7 @@
       });
       return P._asyncStartSync($async$call$0, $async$completer);
     },
-    $signature: 42
+    $signature: 56
   };
   N.ServicesBinding__addLicenses_closure0.prototype = {
     call$0() {
@@ -67832,7 +66211,7 @@
       });
       return P._asyncStartSync($async$call$0, $async$completer);
     },
-    $signature: 42
+    $signature: 56
   };
   N._DefaultBinaryMessenger.prototype = {
     send$2(_, channel, message) {
@@ -67924,7 +66303,7 @@
       });
       return P._asyncStartSync($async$call$2, $async$completer);
     },
-    $signature: 206
+    $signature: 201
   };
   Q.KeyboardLockMode.prototype = {};
   Q.KeyEvent.prototype = {};
@@ -68466,7 +66845,7 @@
       t1.writeValue$2(0, t2, key);
       t1.writeValue$2(0, t2, value);
     },
-    $signature: 45
+    $signature: 50
   };
   U.StandardMethodCodec0.prototype = {
     encodeMethodCall$1($call) {
@@ -68650,7 +67029,7 @@
       });
       return P._asyncStartSync($async$call$1, $async$completer);
     },
-    $signature: 79
+    $signature: 78
   };
   A.MethodChannel.prototype = {
     get$binaryMessenger() {
@@ -68789,7 +67168,7 @@
     call$1(message) {
       return this.$this._handleAsMethodCall$2(message, this.handler);
     },
-    $signature: 79
+    $signature: 78
   };
   A.OptionalMethodChannel.prototype = {
     invokeMethod$1$2(method, $arguments, $T) {
@@ -68874,7 +67253,7 @@
       t1 = H._asIntQ(t2.$index(t1, "metaState"));
       return new A.RawKeyEventDataWeb(t4, t3, t5, t1 == null ? 0 : t1);
     },
-    $signature: 210
+    $signature: 205
   };
   B.RawKeyDownEvent.prototype = {};
   B.RawKeyUpEvent.prototype = {};
@@ -68953,7 +67332,7 @@
     call$1(key) {
       return !this.anySideKeys.contains$1(0, key);
     },
-    $signature: 211
+    $signature: 206
   };
   B._ModifierSidePair.prototype = {
     $eq(_, other) {
@@ -69170,13 +67549,13 @@
     call$1(_) {
       this.$this._isReplacing = false;
     },
-    $signature: 4
+    $signature: 7
   };
   K.RestorationManager_scheduleSerializationFor_closure.prototype = {
     call$1(_) {
       return this.$this._doSerialization$0();
     },
-    $signature: 4
+    $signature: 7
   };
   K.RestorationBucket.prototype = {
     get$_rawChildren() {
@@ -69360,13 +67739,13 @@
     call$0() {
       return H._setArrayType([], type$.JSArray_RestorationBucket);
     },
-    $signature: 215
+    $signature: 210
   };
   K.RestorationBucket__visitChildren_closure.prototype = {
     call$1(buckets) {
       return buckets;
     },
-    $signature: 216
+    $signature: 211
   };
   X.ApplicationSwitcherDescription.prototype = {};
   X.SystemUiOverlayStyle.prototype = {
@@ -69465,7 +67844,7 @@
       this.parent.set$finalLocalValue(ancestor);
       return false;
     },
-    $signature: 56
+    $signature: 41
   };
   U.Intent.prototype = {};
   U.Action.prototype = {
@@ -69967,7 +68346,7 @@
   };
   T.CustomPaint.prototype = {
     createRenderObject$1(context) {
-      var t1 = new V.RenderCustomPaint(this.painter, this.foregroundPainter, this.size, false, false, null, T.LayerHandle$());
+      var t1 = new V.RenderCustomPaint(this.painter, this.foregroundPainter, C.Size_0_0, false, false, null, T.LayerHandle$());
       t1.get$isRepaintBoundary();
       t1.get$alwaysNeedsCompositing();
       t1.__RenderObject__needsCompositing = false;
@@ -69977,7 +68356,7 @@
     updateRenderObject$2(context, renderObject) {
       renderObject.set$painter(this.painter);
       renderObject.set$foregroundPainter(this.foregroundPainter);
-      renderObject.set$preferredSize(this.size);
+      renderObject.set$preferredSize(C.Size_0_0);
       renderObject.willChange = renderObject.isComplex = false;
     },
     didUnmountRenderObject$1(renderObject) {
@@ -70381,14 +68760,15 @@
         renderObject._verticalDirection = t1;
         renderObject.markNeedsLayout$0();
       }
-      if (C.Clip_0 !== renderObject._clipBehavior) {
-        renderObject._clipBehavior = C.Clip_0;
+      if (C.Clip_0 !== renderObject._flex$_clipBehavior) {
+        renderObject._flex$_clipBehavior = C.Clip_0;
         renderObject.markNeedsPaint$0();
         renderObject.markNeedsSemanticsUpdate$0();
       }
     }
   };
   T.Row.prototype = {};
+  T.Column.prototype = {};
   T.RichText.prototype = {
     createRenderObject$1(context) {
       var t3, t4, t5, _this = this, _null = null,
@@ -70439,7 +68819,7 @@
     call$1(span) {
       return true;
     },
-    $signature: 52
+    $signature: 53
   };
   T.Listener.prototype = {
     createRenderObject$1(context) {
@@ -70856,13 +69236,13 @@
       }
       return t1;
     },
-    $signature: 223
+    $signature: 218
   };
   N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_initInstances_closure.prototype = {
     call$1(timings) {
       J.forEach$1$ax(timings, this.$this.get$_profileFramePostEvent());
     },
-    $signature: 53
+    $signature: 42
   };
   N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_initServiceExtensions_closure.prototype = {
     call$0() {
@@ -70887,7 +69267,7 @@
       });
       return P._asyncStartSync($async$call$0, $async$completer);
     },
-    $signature: 224
+    $signature: 219
   };
   N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_initServiceExtensions_closure0.prototype = {
     call$1(value) {
@@ -70910,13 +69290,13 @@
       });
       return P._asyncStartSync($async$call$1, $async$completer);
     },
-    $signature: 225
+    $signature: 220
   };
   N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_ServicesBinding_initInstances_closure.prototype = {
     call$1(message) {
       return this.$this.handleSystemMessage$1(type$.Object._as(message));
     },
-    $signature: 226
+    $signature: 221
   };
   N.WidgetsBindingObserver.prototype = {
     didPopRoute$0() {
@@ -71248,7 +69628,7 @@
       });
       return P._asyncStartSync($async$call$1, $async$completer);
     },
-    $signature: 228
+    $signature: 223
   };
   N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_ServicesBinding_PaintingBinding_SemanticsBinding_RendererBinding_WidgetsBinding_initServiceExtensions_closure3.prototype = {
     call$0() {
@@ -71273,7 +69653,7 @@
       });
       return P._asyncStartSync($async$call$0, $async$completer);
     },
-    $signature: 76
+    $signature: 74
   };
   N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_ServicesBinding_PaintingBinding_SemanticsBinding_RendererBinding_WidgetsBinding_initServiceExtensions_closure4.prototype = {
     call$1(value) {
@@ -71297,7 +69677,7 @@
       });
       return P._asyncStartSync($async$call$1, $async$completer);
     },
-    $signature: 229
+    $signature: 224
   };
   N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_ServicesBinding_PaintingBinding_SemanticsBinding_RendererBinding_WidgetsBinding_drawFrame_closure.prototype = {
     call$1(timings) {
@@ -71316,7 +69696,7 @@
       t2.firstFrameCallback = null;
       this.$this.WidgetsBinding__firstFrameCompleter.complete$0(0);
     },
-    $signature: 53
+    $signature: 42
   };
   N.WidgetsBinding_scheduleAttachRootWidget_closure.prototype = {
     call$0() {
@@ -71721,7 +70101,7 @@
   };
   M.DecoratedBox.prototype = {
     createRenderObject$1(context) {
-      var t1 = new E.RenderDecoratedBox(this.decoration, this.position, U.createLocalImageConfiguration(context, null), null, T.LayerHandle$());
+      var t1 = new E.RenderDecoratedBox(this.decoration, this.position, U.createLocalImageConfiguration(context), null, T.LayerHandle$());
       t1.get$isRepaintBoundary();
       t1.get$alwaysNeedsCompositing();
       t1.__RenderObject__needsCompositing = false;
@@ -71730,7 +70110,7 @@
     },
     updateRenderObject$2(context, renderObject) {
       renderObject.set$decoration(0, this.decoration);
-      renderObject.set$configuration(U.createLocalImageConfiguration(context, null));
+      renderObject.set$configuration(U.createLocalImageConfiguration(context));
       renderObject.set$position(0, this.position);
     }
   };
@@ -71759,7 +70139,7 @@
       } else
         t1 = false;
       if (t1)
-        current = T.LimitedBox$(new T.ConstrainedBox(C.BoxConstraints_ALM, _null, _null), 0, 0);
+        current = new T.LimitedBox(0, 0, new T.ConstrainedBox(C.BoxConstraints_ALM, _null, _null), _null);
       t1 = _this.alignment;
       if (t1 != null)
         current = new T.Align(t1, _null, _null, current, _null);
@@ -72416,7 +70796,7 @@
     call$1(child) {
       return Y.DiagnosticableTreeNode$("Child " + this._box_0.count++, null, child);
     },
-    $signature: 231
+    $signature: 226
   };
   O.FocusScopeNode.prototype = {
     get$nearestScope() {
@@ -72806,7 +71186,7 @@
       t1 = _this._widget;
       child = t1.child;
       if (t1.includeSemantics)
-        child = T.Semantics$(_null, child, false, _null, false, _this._focus_scope$_canRequestFocus, _this._hasPrimaryFocus, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null);
+        child = T.Semantics$(_null, child, false, _null, false, _this._focus_scope$_canRequestFocus, _this._hasPrimaryFocus, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null);
       return L._FocusMarker$(child, _this.get$focusNode(_this));
     }
   };
@@ -72845,7 +71225,7 @@
       var t1, _this = this, _null = null;
       _this._focusAttachment.reparent$0();
       t1 = _this.get$focusNode(_this);
-      return T.Semantics$(_null, L._FocusMarker$(_this._widget.child, t1), false, _null, true, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null);
+      return T.Semantics$(_null, L._FocusMarker$(_this._widget.child, t1), false, _null, true, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null);
     }
   };
   L._FocusMarker.prototype = {};
@@ -72858,7 +71238,7 @@
       }
       return true;
     },
-    $signature: 56
+    $signature: 41
   };
   U._FocusTraversalGroupInfo.prototype = {};
   U.TraversalDirection.prototype = {
@@ -73013,7 +71393,7 @@
           t3.push(node);
       }
     },
-    $signature: 233
+    $signature: 228
   };
   U.FocusTraversalPolicy__sortAllDescendants_closure.prototype = {
     call$1(node) {
@@ -73234,7 +71614,7 @@
     call$1(entry) {
       return entry.node === this.node;
     },
-    $signature: 234
+    $signature: 229
   };
   U.DirectionalFocusTraversalPolicyMixin__sortAndFindInitial_closure.prototype = {
     call$2(a, b) {
@@ -73315,7 +71695,7 @@
       U._focusAndEnsureVisible(lastNode, alignmentPolicy);
       return true;
     },
-    $signature: 236
+    $signature: 231
   };
   U.DirectionalFocusTraversalPolicyMixin_inDirection_closure.prototype = {
     call$1(node) {
@@ -73362,7 +71742,7 @@
       var t1 = member.get$directionalAncestors();
       return P.LinkedHashSet_LinkedHashSet$from(t1, H._arrayInstanceType(t1)._precomputed1);
     },
-    $signature: 237
+    $signature: 232
   };
   U._ReadingOrderSortData_sortWithDirectionality_closure.prototype = {
     call$2(a, b) {
@@ -73373,7 +71753,7 @@
           return C.JSNumber_methods.compareTo$1(b.rect.right, a.rect.right);
       }
     },
-    $signature: 88
+    $signature: 87
   };
   U._ReadingOrderSortData_directionalAncestors_getDirectionalityAncestors.prototype = {
     call$1(context) {
@@ -73394,7 +71774,7 @@
       }
       return result;
     },
-    $signature: 239
+    $signature: 234
   };
   U._ReadingOrderDirectionalGroupData.prototype = {
     get$rect(_) {
@@ -73418,7 +71798,7 @@
     call$1(data) {
       return data.rect;
     },
-    $signature: 240
+    $signature: 235
   };
   U._ReadingOrderDirectionalGroupData_sortWithDirectionality_closure.prototype = {
     call$2(a, b) {
@@ -73429,7 +71809,7 @@
           return C.JSNumber_methods.compareTo$1(b.get$rect(b).right, a.get$rect(a).right);
       }
     },
-    $signature: 241
+    $signature: 236
   };
   U.ReadingOrderTraversalPolicy.prototype = {
     _collectDirectionalityGroups$1(candidates) {
@@ -73506,7 +71886,7 @@
     call$2(a, b) {
       return C.JSNumber_methods.compareTo$1(a.rect.top, b.rect.top);
     },
-    $signature: 88
+    $signature: 87
   };
   U.ReadingOrderTraversalPolicy__pickNext_inBand.prototype = {
     call$2(current, candidates) {
@@ -73514,14 +71894,14 @@
         t2 = H._arrayInstanceType(candidates)._eval$1("WhereIterable<1>");
       return P.List_List$of(new H.WhereIterable(candidates, new U.ReadingOrderTraversalPolicy__pickNext_inBand_closure(new P.Rect(-1 / 0, t1.top, 1 / 0, t1.bottom)), t2), true, t2._eval$1("Iterable.E"));
     },
-    $signature: 242
+    $signature: 237
   };
   U.ReadingOrderTraversalPolicy__pickNext_inBand_closure.prototype = {
     call$1(item) {
       var t1 = item.rect.intersect$1(this.band);
       return !t1.get$isEmpty(t1);
     },
-    $signature: 243
+    $signature: 238
   };
   U.FocusTraversalGroup.prototype = {
     createState$0() {
@@ -73676,8 +72056,6 @@
     },
     didUpdateWidget$1(oldWidget) {
     },
-    reassemble$0() {
-    },
     setState$1(fn) {
       fn.call$0();
       this._framework$_element.markNeedsBuild$0();
@@ -73764,7 +72142,7 @@
     call$1(child) {
       this.$this._unmount$1(child);
     },
-    $signature: 6
+    $signature: 5
   };
   N.BuildOwner.prototype = {
     scheduleBuildFor$1(element) {
@@ -74257,7 +72635,7 @@
       child._debugReassembleConfig = this.$this._debugReassembleConfig;
       child.reassemble$0();
     },
-    $signature: 6
+    $signature: 5
   };
   N.Element_renderObject_visit.prototype = {
     call$1(element) {
@@ -74268,7 +72646,7 @@
       else
         element.visitChildren$1(this);
     },
-    $signature: 6
+    $signature: 5
   };
   N.Element_updateSlotForChild_visit.prototype = {
     call$1(element) {
@@ -74276,31 +72654,31 @@
       if (!(element instanceof N.RenderObjectElement))
         element.visitChildren$1(this);
     },
-    $signature: 6
+    $signature: 5
   };
   N.Element__updateDepth_closure.prototype = {
     call$1(child) {
       child._updateDepth$1(this.expectedDepth);
     },
-    $signature: 6
+    $signature: 5
   };
   N.Element_detachRenderObject_closure.prototype = {
     call$1(child) {
       child.detachRenderObject$0();
     },
-    $signature: 6
+    $signature: 5
   };
   N.Element_attachRenderObject_closure.prototype = {
     call$1(child) {
       child.attachRenderObject$1(this.newSlot);
     },
-    $signature: 6
+    $signature: 5
   };
   N.Element_debugDescribeChildren_closure.prototype = {
     call$1(child) {
       this.children.push(child.toDiagnosticsNode$0());
     },
-    $signature: 6
+    $signature: 5
   };
   N._ElementDiagnosticableTreeNode.prototype = {};
   N.ErrorWidget.prototype = {
@@ -74440,7 +72818,7 @@
     reassemble$0() {
       var _this = this;
       if (N._debugShouldReassemble(_this._debugReassembleConfig, _this._widget))
-        _this._framework$_state.reassemble$0();
+        _this._framework$_state.toString;
       _this.super$Element$reassemble();
     },
     _firstBuild$0() {
@@ -74547,7 +72925,7 @@
       else
         child.visitChildren$1(this);
     },
-    $signature: 6
+    $signature: 5
   };
   N.InheritedElement.prototype = {
     get$widget() {
@@ -74804,13 +73182,13 @@
       var t1 = this.forgottenChildren.contains$1(0, child);
       return t1 ? null : child;
     },
-    $signature: 245
+    $signature: 240
   };
   N.RenderObjectElement_updateChildren_slotFor.prototype = {
     call$2(newChildIndex, previousChild) {
       return new N.IndexedSlot(previousChild, newChildIndex, type$.IndexedSlot_nullable_Element);
     },
-    $signature: 246
+    $signature: 241
   };
   N.RootRenderObjectElement.prototype = {
     mount$2($parent, newSlot) {
@@ -75014,7 +73392,7 @@
         t2 = P.HashSet_HashSet(t1);
       return new N.TapGestureRecognizer(C.Duration_100000, 18, C.GestureRecognizerState_0, P.LinkedHashMap_LinkedHashMap$_empty(t1, type$.GestureArenaEntry), t2, this.$this, null, P.LinkedHashMap_LinkedHashMap$_empty(t1, type$.PointerDeviceKind));
     },
-    $signature: 247
+    $signature: 242
   };
   D.GestureDetector_build_closure0.prototype = {
     call$1(instance) {
@@ -75025,14 +73403,14 @@
       instance.onTapCancel = t1.onTapCancel;
       instance.onTertiaryTapCancel = instance.onTertiaryTapUp = instance.onTertiaryTapDown = instance.onSecondaryTapCancel = instance.onSecondaryTapUp = instance.onSecondaryTapDown = instance.onSecondaryTap = null;
     },
-    $signature: 248
+    $signature: 243
   };
   D.GestureDetector_build_closure1.prototype = {
     call$0() {
       var t1 = type$.int;
       return new F.DoubleTapGestureRecognizer(P.LinkedHashMap_LinkedHashMap$_empty(t1, type$._TapTracker), this.$this, null, P.LinkedHashMap_LinkedHashMap$_empty(t1, type$.PointerDeviceKind));
     },
-    $signature: 249
+    $signature: 244
   };
   D.GestureDetector_build_closure2.prototype = {
     call$1(instance) {
@@ -75040,7 +73418,7 @@
       instance.onDoubleTap = this.$this.onDoubleTap;
       instance.onDoubleTapCancel = null;
     },
-    $signature: 250
+    $signature: 245
   };
   D.GestureDetector_build_closure3.prototype = {
     call$0() {
@@ -75048,7 +73426,7 @@
         t2 = P.HashSet_HashSet(t1);
       return new T.LongPressGestureRecognizer(C.Duration_500000, null, C.GestureRecognizerState_0, P.LinkedHashMap_LinkedHashMap$_empty(t1, type$.GestureArenaEntry), t2, this.$this, null, P.LinkedHashMap_LinkedHashMap$_empty(t1, type$.PointerDeviceKind));
     },
-    $signature: 251
+    $signature: 246
   };
   D.GestureDetector_build_closure4.prototype = {
     call$1(instance) {
@@ -75056,7 +73434,7 @@
       instance.onLongPress = this.$this.onLongPress;
       instance.onTertiaryLongPressEnd = instance.onTertiaryLongPressUp = instance.onTertiaryLongPressMoveUpdate = instance.onTertiaryLongPressStart = instance.onTertiaryLongPress = instance.onTertiaryLongPressCancel = instance.onTertiaryLongPressDown = instance.onSecondaryLongPressEnd = instance.onSecondaryLongPressUp = instance.onSecondaryLongPressMoveUpdate = instance.onSecondaryLongPressStart = instance.onSecondaryLongPress = instance.onSecondaryLongPressCancel = instance.onSecondaryLongPressDown = instance.onLongPressEnd = instance.onLongPressUp = instance.onLongPressMoveUpdate = instance.onLongPressStart = null;
     },
-    $signature: 252
+    $signature: 247
   };
   D.GestureDetector_build_closure5.prototype = {
     call$0() {
@@ -75064,7 +73442,7 @@
         t2 = P.HashSet_HashSet(t1);
       return new O.VerticalDragGestureRecognizer(C.DragStartBehavior_1, C._DragState_0, P.LinkedHashMap_LinkedHashMap$_empty(t1, type$.VelocityTracker), P.LinkedHashSet_LinkedHashSet$_empty(t1), P.LinkedHashMap_LinkedHashMap$_empty(t1, type$.GestureArenaEntry), t2, this.$this, null, P.LinkedHashMap_LinkedHashMap$_empty(t1, type$.PointerDeviceKind));
     },
-    $signature: 253
+    $signature: 248
   };
   D.GestureDetector_build_closure6.prototype = {
     call$1(instance) {
@@ -75077,13 +73455,13 @@
       instance.onCancel = null;
       instance.dragStartBehavior = t1.dragStartBehavior;
     },
-    $signature: 254
+    $signature: 249
   };
   D.GestureDetector_build_closure7.prototype = {
     call$0() {
       return O.HorizontalDragGestureRecognizer$(this.$this);
     },
-    $signature: 255
+    $signature: 250
   };
   D.GestureDetector_build_closure8.prototype = {
     call$1(instance) {
@@ -75095,7 +73473,7 @@
       instance.onCancel = t1.onHorizontalDragCancel;
       instance.dragStartBehavior = t1.dragStartBehavior;
     },
-    $signature: 256
+    $signature: 251
   };
   D.GestureDetector_build_closure9.prototype = {
     call$0() {
@@ -75103,7 +73481,7 @@
         t2 = P.HashSet_HashSet(t1);
       return new O.PanGestureRecognizer(C.DragStartBehavior_1, C._DragState_0, P.LinkedHashMap_LinkedHashMap$_empty(t1, type$.VelocityTracker), P.LinkedHashSet_LinkedHashSet$_empty(t1), P.LinkedHashMap_LinkedHashMap$_empty(t1, type$.GestureArenaEntry), t2, this.$this, null, P.LinkedHashMap_LinkedHashMap$_empty(t1, type$.PointerDeviceKind));
     },
-    $signature: 257
+    $signature: 252
   };
   D.GestureDetector_build_closure10.prototype = {
     call$1(instance) {
@@ -75115,7 +73493,7 @@
       instance.onCancel = null;
       instance.dragStartBehavior = t1.dragStartBehavior;
     },
-    $signature: 258
+    $signature: 253
   };
   D.RawGestureDetector.prototype = {
     createState$0() {
@@ -75404,7 +73782,7 @@
       else
         t1.endFlight$0();
     },
-    $signature: 260
+    $signature: 255
   };
   T.Hero__allHeroesFor_visitor.prototype = {
     call$1(element) {
@@ -75427,7 +73805,7 @@
       }
       element.visitChildren$1(_this);
     },
-    $signature: 6
+    $signature: 5
   };
   T._HeroState.prototype = {
     startFlight$1$shouldIncludedChildInPlaceholder(shouldIncludedChildInPlaceholder) {
@@ -75464,7 +73842,7 @@
       }
       t3 = t2 ? _null : t1._dx;
       t1 = t2 ? _null : t1._dy;
-      return T.SizedBox$(new T.Offstage(showPlaceholder, new U.TickerMode(t2, new T.KeyedSubtree(_this._widget.child, _this._heroes$_key), _null), _null), t1, t3);
+      return T.SizedBox$(new T.Offstage(showPlaceholder, new U.TickerMode(t2, new T.KeyedSubtree(_this._widget.child, _this._key), _null), _null), t1, t3);
     }
   };
   T._HeroState_startFlight_closure.prototype = {
@@ -75667,7 +74045,7 @@
       t1 = t1._heroOpacity;
       return T.Positioned$(t2._dy - t3.bottom, new T.IgnorePointer(true, _null, new T.RepaintBoundary(T.Opacity$(child, t1.get$value(t1)), _null), _null), _null, _null, t3.left, t2._dx - t3.right, t3.top, _null);
     },
-    $signature: 261
+    $signature: 256
   };
   T._HeroFlight__handleAnimationUpdate_delayedPerformAnimationUpdate.prototype = {
     call$0() {
@@ -75743,8 +74121,8 @@
       toHeroes = toSubtreeContext != null ? T.Hero__allHeroesFor(toSubtreeContext, isUserGestureTransition, $navigator) : C.Map_empty3;
       for (t1 = fromHeroes.get$entries(fromHeroes), t1 = t1.get$iterator(t1), t2 = _this.get$_defaultHeroFlightShuttleBuilder(), t3 = _this.createRectTween, t4 = _this._flights, t5 = type$.LabeledGlobalKey__OverlayEntryWidgetState, t6 = type$.nullable_void_Function, t7 = _this.get$_handleFlightEnded(), t8 = type$.JSArray_of_void_Function_AnimationStatus, t9 = type$.ObserverList_of_void_Function_AnimationStatus, t10 = type$.JSArray_of_void_Function, t11 = type$.ObserverList_of_void_Function, t12 = type$.Tween_double, t13 = type$.Animation_double, t14 = t12._eval$1("_AnimatedEvaluation<Animatable.T>"), t15 = type$.ReverseTween_nullable_Rect; t1.moveNext$0();) {
         t16 = t1.get$current(t1);
-        tag = t16.get$key(t16);
-        fromHero = t16.get$value(t16);
+        tag = t16.key;
+        fromHero = t16.value;
         toHero = toHeroes.$index(0, tag);
         existingFlight = t4.$index(0, tag);
         if (toHero == null)
@@ -75823,7 +74201,7 @@
               (t17 == null ? H.throwExpression(H.LateError$fieldNI(_s8_)) : t17).toHero.endFlight$1$keepPlaceholder(true);
               manifest.fromHero.startFlight$1$shouldIncludedChildInPlaceholder(t16 === C.HeroFlightDirection_0);
               manifest.toHero.startFlight$0();
-              t16 = existingFlight.overlayEntry._key.get$currentState();
+              t16 = existingFlight.overlayEntry._overlay$_key.get$currentState();
               if (t16 != null)
                 t16._markNeedsBuild$0();
             }
@@ -75901,14 +74279,14 @@
         t1 = false;
       return t1;
     },
-    $signature: 264
+    $signature: 259
   };
   T.HeroController__maybeStartHeroTransition_closure.prototype = {
     call$1(value) {
       var _this = this;
       _this.$this._startHeroTransition$5(_this.from, _this.to, _this.animation, _this.flightType, _this.isUserGestureTransition);
     },
-    $signature: 4
+    $signature: 7
   };
   L.Icon.prototype = {
     build$1(_, context) {
@@ -75933,7 +74311,7 @@
       iconSize = iconTheme.size;
       t1 = this.icon;
       if (t1 == null)
-        return T.Semantics$(_null, T.SizedBox$(_null, iconSize, iconSize), false, _null, false, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null);
+        return T.Semantics$(_null, T.SizedBox$(_null, iconSize, iconSize), false, _null, false, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null);
       iconOpacity = iconTheme.get$opacity(iconTheme);
       if (iconOpacity == null)
         iconOpacity = 1;
@@ -75955,7 +74333,7 @@
           case C.TextDirection_1:
             break;
         }
-      return T.Semantics$(_null, new T.ExcludeSemantics(true, T.SizedBox$(T.Center$(iconWidget, _null, _null), iconSize, iconSize), _null), false, _null, false, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null);
+      return T.Semantics$(_null, new T.ExcludeSemantics(true, T.SizedBox$(T.Center$(iconWidget, _null, _null), iconSize, iconSize), _null), false, _null, false, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null);
     }
   };
   X.IconData.prototype = {
@@ -75990,7 +74368,7 @@
     call$1(context) {
       return Y.IconTheme$(this.child, Y.IconTheme__getInheritedIconThemeData(context).merge$1(this.data), this.key);
     },
-    $signature: 265
+    $signature: 260
   };
   T.IconThemeData.prototype = {
     copyWith$3$color$opacity$size(color, opacity, size) {
@@ -76123,14 +74501,14 @@
           break;
       }
     },
-    $signature: 5
+    $signature: 4
   };
   G.ImplicitlyAnimatedWidgetState_didUpdateWidget_closure.prototype = {
     call$3(tween, targetValue, $constructor) {
       this.$this._updateTween$2(tween, targetValue);
       return tween;
     },
-    $signature: 90
+    $signature: 89
   };
   G.ImplicitlyAnimatedWidgetState__constructTweens_closure.prototype = {
     call$3(tween, targetValue, $constructor) {
@@ -76142,7 +74520,7 @@
         this._box_0.shouldStartAnimation = true;
       return tween;
     },
-    $signature: 90
+    $signature: 89
   };
   G.AnimatedWidgetBaseState.prototype = {
     initState$0() {
@@ -76184,7 +74562,7 @@
     call$1(value) {
       return new G.TextStyleTween(type$.TextStyle._as(value), null);
     },
-    $signature: 267
+    $signature: 262
   };
   G.AnimatedPhysicalModel.prototype = {
     createState$0() {
@@ -76227,25 +74605,25 @@
     call$1(value) {
       return new G.BorderRadiusTween(type$.BorderRadius._as(value), null);
     },
-    $signature: 268
+    $signature: 263
   };
   G._AnimatedPhysicalModelState_forEachTween_closure0.prototype = {
     call$1(value) {
       return new R.Tween(H._asDouble(value), null, type$.Tween_double);
     },
-    $signature: 67
+    $signature: 91
   };
   G._AnimatedPhysicalModelState_forEachTween_closure1.prototype = {
     call$1(value) {
       return new R.ColorTween(type$.Color._as(value), null);
     },
-    $signature: 50
+    $signature: 55
   };
   G._AnimatedPhysicalModelState_forEachTween_closure2.prototype = {
     call$1(value) {
       return new R.ColorTween(type$.Color._as(value), null);
     },
-    $signature: 50
+    $signature: 55
   };
   G._ImplicitlyAnimatedWidgetState_State_SingleTickerProviderStateMixin.prototype = {
     dispose$0(_) {
@@ -76325,7 +74703,7 @@
     call$1(p) {
       return p.futureValue;
     },
-    $signature: 269
+    $signature: 264
   };
   L._loadAll_closure1.prototype = {
     call$1(values) {
@@ -76334,7 +74712,7 @@
         t3.$indexSet(0, H.createRuntimeType(H._instanceType(t2.pendingList[i].delegate)._eval$1("LocalizationsDelegate.T")), t1.$index(values, i));
       return t3;
     },
-    $signature: 270
+    $signature: 265
   };
   L.LocalizationsDelegate.prototype = {
     toString$0(_) {
@@ -76437,14 +74815,14 @@
       _this._locale.toString;
       t2 = _this._typeToResources;
       t3 = _this.get$_localizations$_textDirection();
-      return T.Semantics$(_null, new L._LocalizationsScope(_this, t2, T.Directionality$(_this._widget.child, t3), _this._localizedResourcesScopeKey), false, _null, false, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, t1);
+      return T.Semantics$(_null, new L._LocalizationsScope(_this, t2, T.Directionality$(_this._widget.child, t3), _this._localizedResourcesScopeKey), false, _null, false, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, t1);
     }
   };
   L._LocalizationsState_load_closure.prototype = {
     call$1(value) {
       return this._box_0.typeToResources = value;
     },
-    $signature: 271
+    $signature: 266
   };
   L._LocalizationsState_load_closure0.prototype = {
     call$1(value) {
@@ -76453,7 +74831,7 @@
         t1.setState$1(new L._LocalizationsState_load__closure(t1, value, this.locale));
       $.RendererBinding__instance.allowFirstFrame$0();
     },
-    $signature: 272
+    $signature: 267
   };
   L._LocalizationsState_load__closure.prototype = {
     call$0() {
@@ -76625,7 +75003,7 @@
           break;
       }
       t1 = this.color;
-      return T.BlockSemantics$(new T.ExcludeSemantics(true, new X._ModalBarrierGestureDetector(T.Semantics$(_null, T.MouseRegion$(new T.ConstrainedBox(C.BoxConstraints_ALM, t1 == null ? _null : new T.ColoredBox(t1, _null, _null), _null), C.SystemMouseCursor_basic, _null, _null, true), false, _null, false, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null), new X.ModalBarrier_build_closure(this, new X.ModalBarrier_build_handleDismiss(context)), _null), _null));
+      return T.BlockSemantics$(new T.ExcludeSemantics(true, new X._ModalBarrierGestureDetector(T.Semantics$(_null, T.MouseRegion$(new T.ConstrainedBox(C.BoxConstraints_ALM, t1 == null ? _null : new T.ColoredBox(t1, _null, _null), _null), C.SystemMouseCursor_basic, _null, _null, true), false, _null, false, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null), new X.ModalBarrier_build_closure(this, new X.ModalBarrier_build_handleDismiss(context)), _null), _null));
     }
   };
   X.ModalBarrier_build_handleDismiss.prototype = {
@@ -76968,7 +75346,7 @@
     call$1(route) {
       return route == null;
     },
-    $signature: 274
+    $signature: 269
   };
   K._RouteLifecycle.prototype = {
     toString$0(_) {
@@ -77062,7 +75440,7 @@
     call$1(e) {
       return e._mounted;
     },
-    $signature: 275
+    $signature: 270
   };
   K._RouteEntry_dispose_closure0.prototype = {
     call$0() {
@@ -77675,7 +76053,7 @@
         t1 = null;
       return K._RouteEntry$(route, C._RouteLifecycle_1, t1);
     },
-    $signature: 278
+    $signature: 273
   };
   K.NavigatorState__flushHistoryUpdates_closure.prototype = {
     call$1(e) {
@@ -77693,7 +76071,7 @@
     call$1(object) {
       return H.S(object);
     },
-    $signature: 279
+    $signature: 274
   };
   K.NavigatorState_maybePop_closure.prototype = {
     call$1(e) {
@@ -77889,13 +76267,13 @@
     call$2(key, value) {
       return new P.MapEntry(H._asStringQ(key), P.List_List$from(type$.List_dynamic._as(value), true, type$.Object), type$.MapEntry_of_nullable_String_and_List_Object);
     },
-    $signature: 280
+    $signature: 275
   };
   K._NavigatorState_State_TickerProviderStateMixin_RestorationMixin_dispose_closure.prototype = {
     call$2(property, listener) {
       property.removeListener$1(0, listener);
     },
-    $signature: 51
+    $signature: 54
   };
   K._NavigatorState_State_TickerProviderStateMixin.prototype = {
     dispose$0(_) {
@@ -78008,7 +76386,7 @@
         t1._markDirty$0();
     },
     markNeedsBuild$0() {
-      var t1 = this._key.get$currentState();
+      var t1 = this._overlay$_key.get$currentState();
       if (t1 != null)
         t1._markNeedsBuild$0();
     },
@@ -78020,7 +76398,7 @@
     call$1(duration) {
       this.overlay._markDirty$0();
     },
-    $signature: 4
+    $signature: 7
   };
   X._OverlayEntryWidget.prototype = {
     createState$0() {
@@ -78105,10 +76483,10 @@
         entry = t1[i];
         if (onstage) {
           ++onstageCount;
-          children.push(new X._OverlayEntryWidget(entry, true, entry._key));
+          children.push(new X._OverlayEntryWidget(entry, true, entry._overlay$_key));
           onstage = !entry._opaque || false;
         } else if (entry._maintainState)
-          children.push(new X._OverlayEntryWidget(entry, false, entry._key));
+          children.push(new X._OverlayEntryWidget(entry, false, entry._overlay$_key));
       }
       t1 = children.length;
       this._widget.toString;
@@ -78184,8 +76562,8 @@
       t1.toString;
       renderObject.set$textDirection(0, t1.textDirection);
       t1 = this.clipBehavior;
-      if (t1 !== renderObject._overlay$_clipBehavior) {
-        renderObject._overlay$_clipBehavior = t1;
+      if (t1 !== renderObject._clipBehavior) {
+        renderObject._clipBehavior = t1;
         renderObject.markNeedsPaint$0();
         renderObject.markNeedsSemanticsUpdate$0();
       }
@@ -78205,16 +76583,16 @@
         child.parentData = new K.StackParentData(null, null, C.Offset_0_0);
     },
     _overlay$_resolve$0() {
-      if (this._overlay$_resolvedAlignment != null)
+      if (this._resolvedAlignment != null)
         return;
-      this._overlay$_resolvedAlignment = C.AlignmentDirectional_m1_m1.resolve$1(this._overlay$_textDirection);
+      this._resolvedAlignment = C.AlignmentDirectional_m1_m1.resolve$1(this._overlay$_textDirection);
     },
     set$textDirection(_, value) {
       var _this = this;
       if (_this._overlay$_textDirection === value)
         return;
       _this._overlay$_textDirection = value;
-      _this._overlay$_resolvedAlignment = null;
+      _this._resolvedAlignment = null;
       _this.markNeedsLayout$0();
     },
     get$_firstOnstageChild() {
@@ -78266,7 +76644,7 @@
         t1._as(t3);
         if (!t3.get$isPositioned()) {
           child.layout$2$parentUsesSize(0, nonPositionedConstraints, true);
-          t4 = _this._overlay$_resolvedAlignment;
+          t4 = _this._resolvedAlignment;
           t4.toString;
           t5 = _this._size;
           t5.toString;
@@ -78276,7 +76654,7 @@
         } else {
           t4 = _this._size;
           t4.toString;
-          t5 = _this._overlay$_resolvedAlignment;
+          t5 = _this._resolvedAlignment;
           t5.toString;
           _this._hasVisualOverflow = K.RenderStack_layoutPositionedChild(child, t3, t4, t5) || _this._hasVisualOverflow;
         }
@@ -78311,19 +76689,19 @@
     },
     paint$2(context, offset) {
       var t3, _this = this,
-        t1 = _this._hasVisualOverflow && _this._overlay$_clipBehavior !== C.Clip_0,
-        t2 = _this._overlay$_clipRectLayer;
+        t1 = _this._hasVisualOverflow && _this._clipBehavior !== C.Clip_0,
+        t2 = _this._clipRectLayer;
       if (t1) {
         t1 = _this.get$_needsCompositing();
         t3 = _this._size;
-        t2.set$layer(0, context.pushClipRect$6$clipBehavior$oldLayer(t1, offset, new P.Rect(0, 0, 0 + t3._dx, 0 + t3._dy), _this.get$paintStack(), _this._overlay$_clipBehavior, t2._layer));
+        t2.set$layer(0, context.pushClipRect$6$clipBehavior$oldLayer(t1, offset, new P.Rect(0, 0, 0 + t3._dx, 0 + t3._dy), _this.get$paintStack(), _this._clipBehavior, t2._layer));
       } else {
         t2.set$layer(0, null);
         _this.paintStack$2(context, offset);
       }
     },
     dispose$0(_) {
-      this._overlay$_clipRectLayer.set$layer(0, null);
+      this._clipRectLayer.set$layer(0, null);
       this.super$RenderObject$dispose(0);
     },
     visitChildrenForSemantics$1(visitor) {
@@ -78535,7 +76913,7 @@
       }
       $.RendererBinding__instance.allowFirstFrame$0();
     },
-    $signature: 281
+    $signature: 276
   };
   K._RootRestorationScopeState__loadRootBucketIfNecessary__closure.prototype = {
     call$0() {
@@ -78675,7 +77053,7 @@
     call$2(property, listener) {
       property.removeListener$1(0, listener);
     },
-    $signature: 51
+    $signature: 54
   };
   K.__RestorationScopeState_State_RestorationMixin.prototype = {
     didUpdateWidget$1(oldWidget) {
@@ -78999,7 +77377,7 @@
           break;
       }
     },
-    $signature: 5
+    $signature: 4
   };
   T.TransitionRoute__updateSecondaryAnimation_closure.prototype = {
     call$0() {
@@ -79033,7 +77411,7 @@
           t2.dispose$0(0);
       }
     },
-    $signature: 7
+    $signature: 6
   };
   T.LocalHistoryRoute.prototype = {
     get$willHandlePopInternally() {
@@ -79057,7 +77435,7 @@
   };
   T._ModalScope.prototype = {
     createState$0() {
-      return new T._ModalScopeState(O.FocusScopeNode$(true, C.Type__ModalScopeState_Yap.toString$0(0) + " Focus Scope", false), F.ScrollController$(), C._StateLifecycle_0, this.$ti._eval$1("_ModalScopeState<1>"));
+      return new T._ModalScopeState(O.FocusScopeNode$(true, C.Type__ModalScopeState_Yap.toString$0(0) + " Focus Scope", false), new F.ScrollController(H._setArrayType([], type$.JSArray_ScrollPosition), P.List_List$filled(0, null, false, type$.nullable_void_Function)), C._StateLifecycle_0, this.$ti._eval$1("_ModalScopeState<1>"));
     }
   };
   T._ModalScopeState.prototype = {
@@ -79127,7 +77505,7 @@
       child.toString;
       return new K.RestorationScope(child, t1, null);
     },
-    $signature: 283
+    $signature: 278
   };
   T._ModalScopeState_build_closure0.prototype = {
     call$1(context) {
@@ -79143,7 +77521,7 @@
         t5 = t2._page = new T.RepaintBoundary(new T.Builder(new T._ModalScopeState_build__closure(t2), _null), t2._widget.route._subtreeKey);
       return new U.Actions(t1, new E.PrimaryScrollController(t2.primaryScrollController, L.FocusScope$(false, new T.FocusTrap(t3, new T.RepaintBoundary(K.AnimatedBuilder$(t4, new T._ModalScopeState_build__closure0(t2), t5), _null), _null), _null, t3), _null), _null);
     },
-    $signature: 284
+    $signature: 279
   };
   T._ModalScopeState_build__closure0.prototype = {
     call$2(context, child) {
@@ -79166,7 +77544,7 @@
         matchingBuilder = C.C_FadeUpwardsPageTransitionsBuilder;
       return matchingBuilder.buildTransitions$1$5(t2, context, t3, t4, t1, t2.$ti._precomputed1);
     },
-    $signature: 94
+    $signature: 93
   };
   T._ModalScopeState_build___closure.prototype = {
     call$2(context, child) {
@@ -79175,7 +77553,7 @@
       t1.focusScopeNode.set$canRequestFocus(!ignoreEvents);
       return new T.IgnorePointer(ignoreEvents, null, child, null);
     },
-    $signature: 285
+    $signature: 280
   };
   T._ModalScopeState_build__closure.prototype = {
     call$1(context) {
@@ -79183,7 +77561,7 @@
         t1 = this.$this._widget.route;
       t1._animationProxy.toString;
       t1._secondaryAnimationProxy.toString;
-      return T.Semantics$(_null, t1.builder.call$1(context), false, _null, true, _null, _null, _null, _null, _null, _null, _null, _null, _null, true, _null, _null, _null);
+      return T.Semantics$(_null, t1.builder.call$1(context), false, _null, true, _null, _null, _null, _null, _null, _null, _null, _null, true, _null, _null, _null);
     },
     $signature: 19
   };
@@ -79315,7 +77693,7 @@
     _buildModalScope$1(context) {
       var _this = this, _null = null,
         t1 = _this._modalScopeCache;
-      return t1 == null ? _this._modalScopeCache = T.Semantics$(_null, new T._ModalScope(_this, _this._scopeKey, _this.$ti._eval$1("_ModalScope<1>")), false, _null, false, _null, _null, _null, _null, _null, _null, _null, _null, _null, _null, C.OrdinalSortKey_0_null, _null, _null) : t1;
+      return t1 == null ? _this._modalScopeCache = T.Semantics$(_null, new T._ModalScope(_this, _this._scopeKey, _this.$ti._eval$1("_ModalScope<1>")), false, _null, false, _null, _null, _null, _null, _null, _null, _null, _null, _null, C.OrdinalSortKey_0_null, _null, _null) : t1;
     },
     createOverlayEntries$0() {
       var $async$self = this;
@@ -79655,7 +78033,7 @@
       this.$this._notifyListeners$1(notification);
       return false;
     },
-    $signature: 286
+    $signature: 281
   };
   A.ScrollPositionAlignmentPolicy.prototype = {
     toString$0(_) {
@@ -79666,7 +78044,7 @@
     call$1(_) {
       return null;
     },
-    $signature: 287
+    $signature: 282
   };
   F.ScrollIncrementType.prototype = {
     toString$0(_) {
@@ -79880,13 +78258,13 @@
       for (; t1.moveNext$0();)
         J.add$1$ax(t2.putIfAbsent$2(0, t1.get$current(t1), new X.ShortcutManager__indexShortcuts__closure()), new X._ActivatorIntentPair(activator, intent));
     },
-    $signature: 288
+    $signature: 283
   };
   X.ShortcutManager__indexShortcuts__closure.prototype = {
     call$0() {
       return H._setArrayType([], type$.JSArray__ActivatorIntentPair);
     },
-    $signature: 289
+    $signature: 284
   };
   X.Shortcuts.prototype = {
     createState$0() {
@@ -79958,31 +78336,24 @@
   };
   L.Text.prototype = {
     build$1(_, context) {
-      var effectiveTextStyle, t2, t3, t4, t5, result, _this = this, _null = null,
+      var effectiveTextStyle, t2, t3, result, _null = null,
         t1 = context.dependOnInheritedWidgetOfExactType$1$0(type$.DefaultTextStyle);
       if (t1 == null)
         t1 = C.DefaultTextStyle_m7u;
-      effectiveTextStyle = _this.style;
+      effectiveTextStyle = this.style;
       if (effectiveTextStyle == null || effectiveTextStyle.inherit)
         effectiveTextStyle = t1.style.merge$1(effectiveTextStyle);
       t2 = F.MediaQuery_maybeOf(context);
       t2 = t2 == null ? _null : t2.boldText;
       if (t2 === true)
         effectiveTextStyle = effectiveTextStyle.merge$1(C.TextStyle_oqK);
-      t2 = _this.textAlign;
+      t2 = F.MediaQuery_maybeOf(context);
+      t2 = t2 == null ? _null : t2.textScaleFactor;
       if (t2 == null)
-        t2 = t1.textAlign;
-      if (t2 == null)
-        t2 = C.TextAlign_4;
-      t3 = F.MediaQuery_maybeOf(context);
-      t3 = t3 == null ? _null : t3.textScaleFactor;
-      if (t3 == null)
-        t3 = 1;
-      t4 = context.dependOnInheritedWidgetOfExactType$1$0(type$.DefaultTextHeightBehavior);
-      t4 = t4 == null ? _null : t4.get$textHeightBehavior(t4);
-      t5 = _this.textSpan;
-      t5 = t5 != null ? H._setArrayType([t5], type$.JSArray_InlineSpan) : _null;
-      result = T.RichText$(_null, t1.maxLines, t1.overflow, t1.softWrap, _null, Q.TextSpan$(t5, effectiveTextStyle, _this.data), t2, _this.textDirection, t4, t3, t1.textWidthBasis);
+        t2 = 1;
+      t3 = context.dependOnInheritedWidgetOfExactType$1$0(type$.DefaultTextHeightBehavior);
+      t3 = t3 == null ? _null : t3.get$textHeightBehavior(t3);
+      result = T.RichText$(_null, t1.maxLines, t1.overflow, t1.softWrap, _null, Q.TextSpan$(_null, effectiveTextStyle, this.data), C.TextAlign_4, _null, t3, t2, t1.textWidthBasis);
       return result;
     }
   };
@@ -80334,24 +78705,6 @@
   };
   E._IntBuffer0.prototype = {};
   E.Uint8Buffer.prototype = {};
-  E.MinePageModel.prototype = {
-    toJson$0() {
-      return P.LinkedHashMap_LinkedHashMap$_literal(["accountAmount", null, "data", null, "advertBanner", null, "evaluationNum", null, "orderNum", null, "praiseRate", null, "awardReceived", null, "sprintReward", null, "taskEntry", null, "taskEntryImg", null, "taskEntryUrl", null, "accountDetail", null, "serviceCity", "", "auntName", null, "auntImg", null, "serviceMark", null, "serviceUrl", null, "orderData", null, "userLabels", null, "medalNum", null, "level", null, "score", null, "backgroundURL", null], type$.String, type$.dynamic);
-    }
-  };
-  E.MinePageLevelModel.prototype = {
-    levelTypeDes$0() {
-      var t1 = this.levelType;
-      if (t1 > 5 || t1 < 0)
-        return 1;
-      else
-        return t1;
-    },
-    toJson$0() {
-      var _this = this;
-      return P.LinkedHashMap_LinkedHashMap$_literal(["levelType", _this.levelType, "level", _this.level, "score", _this.score, "cityOrder", _this.cityOrder, "scoreShare", _this.scoreShare, "serviceDetailUrl", _this.serviceDetailUrl, "serviceLevelContent", _this.serviceLevelContent, "serviceLevelNew", _this.serviceLevelNew], type$.String, type$.dynamic);
-    }
-  };
   F.MyApp.prototype = {
     build$1(_, context) {
       return new S.MaterialApp(C.MineHomePage_null, "Flutter Demo", X.ThemeData_ThemeData(C.Color_4278240168, null), null);
@@ -80359,28 +78712,22 @@
   };
   F.MineHomePage.prototype = {
     createState$0() {
-      return new F._MineHomePageState(H._setArrayType([], type$.JSArray_Widget), new E.MinePageModel(), new E.MinePageLevelModel(0, "\u670d\u52a1\u65b0\u4eba", 0, "", "0", "", "", ""), F.ScrollController$(), null, C._StateLifecycle_0);
+      return new F._MineHomePageState(C._StateLifecycle_0);
     }
   };
   F._MineHomePageState.prototype = {
     initState$0() {
-      this.super$__MineHomePageState_State_AutomaticKeepAliveClientMixin$initState();
-      this._getLevelData$0();
+      this.super$State$initState();
+      T.FlutterWebAppChannel_registerJavaScript();
     },
     build$1(_, context) {
       var _null = null;
-      this.super$AutomaticKeepAliveClientMixin$build(0, context);
-      this.initBannerData$0();
-      return new M.Scaffold(new E.AppBar(C.Text_RoU, C.Color_4278228675, new E._PreferredAppBarSize(_null, _null, 1 / 0, 56), _null), L.Text$(this._userName, _null, _null, _null), _null);
-    },
-    initBannerData$0() {
-      C.JSArray_methods.set$length(this._bannerList, 0);
-      this.setState$1(new F._MineHomePageState_initBannerData_closure(this));
+      return Q.SafeArea$(true, new M.Scaffold(new E.AppBar(C.Text_flutter_web_mine_null_null, C.Color_4278240168, new E._PreferredAppBarSize(_null, _null, 1 / 0, 56), _null), T.Center$(T.Column$(H._setArrayType([L.Text$(this._level, _null)], type$.JSArray_Widget), C.MainAxisAlignment_2), _null, _null), E.FloatingActionButton$(C.Icon_IconData_57415_false_null, false, this.get$_getLevelData(), "Increment"), _null), true);
     },
     _getLevelData$0() {
       var $async$goto = 0,
         $async$completer = P._makeAsyncAwaitCompleter(type$.dynamic),
-        $async$self = this, responseBean, t2, t1;
+        $async$self = this, t1;
       var $async$_getLevelData$0 = P._wrapJsFunctionForAsync(function($async$errorCode, $async$result) {
         if ($async$errorCode === 1)
           return P._asyncRethrow($async$result, $async$completer);
@@ -80391,108 +78738,26 @@
               t1 = $.WebMessageChannel__instance;
               if (t1 == null)
                 t1 = $.WebMessageChannel__instance = new E.WebMessageChannel();
-              t1 = t1.$get$3$webResponse(0, "https://auntapp.58.com/global/level", null, new F._MineHomePageState__getLevelData_closure($async$self));
-              $async$goto = 2;
-              return P._asyncAwait(t1, $async$_getLevelData$0);
-            case 2:
-              // returning from await.
-              responseBean = $async$result;
-              t1 = responseBean == null;
-              if ((t1 ? null : responseBean.code) === 0)
-                t2 = (t1 ? null : responseBean.result) != null;
-              else
-                t2 = false;
-              if (t2) {
-                if ($async$self._framework$_element != null)
-                  $async$self.setState$1(new F._MineHomePageState__getLevelData_closure0($async$self, responseBean));
-              } else {
-                t1 = t1 ? null : responseBean.msg;
-                N.UltimateChannel_nativeToast(t1 == null ? "" : t1);
-              }
+              t1.$get$3$webResponse(0, "https://auntapp.58.com/global/level", null, new F._MineHomePageState__getLevelData_closure($async$self));
               // implicit return
               return P._asyncReturn(null, $async$completer);
           }
       });
       return P._asyncStartSync($async$_getLevelData$0, $async$completer);
-    },
-    dispose$0(_) {
-      var _s30_ = "avatarAndServiceCityChangePush";
-      $.$get$bus().off$2(_s30_, _s30_);
-      this.super$State$dispose(0);
-    },
-    get$wantKeepAlive() {
-      return true;
     }
-  };
-  F._MineHomePageState_initBannerData_closure.prototype = {
-    call$0() {
-    },
-    $signature: 0
   };
   F._MineHomePageState__getLevelData_closure.prototype = {
     call$1(response) {
       var t1 = this.$this;
-      t1._userName = "gongpengyang";
-      J.$index$asx(J.$index$asx(response, "data"), "result");
-      if (t1._framework$_element != null)
-        t1.setState$1(new F._MineHomePageState__getLevelData__closure(t1));
+      t1.setState$1(new F._MineHomePageState__getLevelData__closure(t1));
     },
-    $signature: 291
+    $signature: 286
   };
   F._MineHomePageState__getLevelData__closure.prototype = {
     call$0() {
-      this.$this._userName = "gongpengyang";
+      this.$this._level = "response";
     },
     $signature: 0
-  };
-  F._MineHomePageState__getLevelData_closure0.prototype = {
-    call$0() {
-      var t2, t3, t4, t5, t6, t7, t8,
-        t1 = this.responseBean,
-        result = t1 == null ? null : t1.result;
-      type$.Map_String_dynamic._as(result);
-      t1 = J.getInterceptor$asx(result);
-      t2 = H._asIntQ(t1.$index(result, "levelType"));
-      if (t2 == null)
-        t2 = 0;
-      t3 = H._asStringQ(t1.$index(result, "level"));
-      if (t3 == null)
-        t3 = "\u670d\u52a1\u65b0\u4eba";
-      t4 = H._asIntQ(t1.$index(result, "score"));
-      if (t4 == null)
-        t4 = 0;
-      t5 = H._asStringQ(t1.$index(result, "cityOrder"));
-      if (t5 == null)
-        t5 = "";
-      t6 = H._asStringQ(t1.$index(result, "scoreShare"));
-      if (t6 == null)
-        t6 = "0";
-      t7 = H._asStringQ(t1.$index(result, "serviceDetailUrl"));
-      if (t7 == null)
-        t7 = "";
-      t8 = H._asStringQ(t1.$index(result, "serviceLevelContent"));
-      if (t8 == null)
-        t8 = "";
-      t1 = H._asStringQ(t1.$index(result, "serviceLevelNew"));
-      t1 = new E.MinePageLevelModel(t2, t3, t4, t5, t6, t7, t8, t1 == null ? "" : t1);
-      this.$this.levelModel = t1;
-      C.Map_wwENd.$index(0, t1.levelTypeDes$0()).toString;
-    },
-    $signature: 0
-  };
-  F.__MineHomePageState_State_AutomaticKeepAliveClientMixin.prototype = {
-    initState$0() {
-      this.super$State$initState();
-      this._ensureKeepAlive$0();
-    },
-    deactivate$0() {
-      var t1 = this.AutomaticKeepAliveClientMixin__keepAliveHandle;
-      if (t1 != null) {
-        t1.notifyListeners$0();
-        this.AutomaticKeepAliveClientMixin__keepAliveHandle = null;
-      }
-      this.super$State$deactivate();
-    }
   };
   A.hashObjects_closure.prototype = {
     call$2(h, i) {
@@ -80500,7 +78765,7 @@
       hash = hash + ((hash & 524287) << 10) & 536870911;
       return hash ^ hash >>> 6;
     },
-    $signature: 292
+    $signature: 287
   };
   E.Matrix4.prototype = {
     setFrom$1(arg) {
@@ -81031,13 +79296,23 @@
       t1[3] = t1[3] + argStorage[3];
     }
   };
-  Y.EventBus.prototype = {
-    off$2(eventName, key) {
-      var map = this._emap.$index(0, eventName);
-      if (map == null)
-        return;
-      J.remove$1$ax(map, key);
-    }
+  T.FlutterWebAppChannel_registerJavaScript_closure.prototype = {
+    call$1(response) {
+      var responseMap, t1, responseId, func;
+      P.print("_registerJavaScript:" + H.S(response));
+      responseMap = C.C_JsonCodec.decode$2$reviver(0, response, null);
+      t1 = J.getInterceptor$asx(responseMap);
+      if (J.$eq$(t1.$index(responseMap, "code"), "200")) {
+        responseId = J.$index$asx(t1.$index(responseMap, "data"), "responseId");
+        func = $.FlutterWebAppChannel_funcMapping.$index(0, responseId);
+        if (func != null) {
+          func.call$1(responseMap);
+          $.FlutterWebAppChannel_funcMapping.remove$1(0, responseId);
+        }
+      } else
+        P.print("_registerJavaScript99999");
+    },
+    $signature: 6
   };
   E.WebMessageChannel.prototype = {
     $get$3$webResponse(_, url, params, webResponse) {
@@ -81104,7 +79379,6 @@
     _.super$CkCanvas$clipRect = _.clipRect$3;
     _.super$CkCanvas$drawCircle = _.drawCircle$3;
     _.super$CkCanvas$drawDRRect = _.drawDRRect$3;
-    _.super$CkCanvas$drawImageRect = _.drawImageRect$4;
     _.super$CkCanvas$drawPaint = _.drawPaint$1;
     _.super$CkCanvas$drawParagraph = _.drawParagraph$2;
     _.super$CkCanvas$drawPath = _.drawPath$2;
@@ -81116,7 +79390,6 @@
     _.super$CkCanvas$restoreToCount = _.restoreToCount$1;
     _.super$CkCanvas$save = _.save$0;
     _.super$CkCanvas$saveLayer = _.saveLayer$2;
-    _.super$CkCanvas$scale = _.scale$2;
     _.super$CkCanvas$transform = _.transform$1;
     _.super$CkCanvas$translate = _.translate$2;
     _ = H.ContainerLayer.prototype;
@@ -81392,8 +79665,6 @@
     _.super$TransitionRoute$didPop = _.didPop$1;
     _ = T._ModalRoute_TransitionRoute_LocalHistoryRoute.prototype;
     _.super$_ModalRoute_TransitionRoute_LocalHistoryRoute$willPop = _.willPop$0;
-    _ = F.__MineHomePageState_State_AutomaticKeepAliveClientMixin.prototype;
-    _.super$__MineHomePageState_State_AutomaticKeepAliveClientMixin$initState = _.initState$0;
   })();
   (function installTearOffs() {
     var _static_0 = hunkHelpers._static_0,
@@ -81404,124 +79675,93 @@
       _instance_0_i = hunkHelpers._instance_0i,
       _instance_2_u = hunkHelpers._instance_2u,
       _static_2 = hunkHelpers._static_2,
-      _static = hunkHelpers.installStaticTearOff,
-      _instance = hunkHelpers.installInstanceTearOff;
+      _instance = hunkHelpers.installInstanceTearOff,
+      _static = hunkHelpers.installStaticTearOff;
     _static_0(H, "_engine_SkiaObjects_postFrameCleanUp$closure", "SkiaObjects_postFrameCleanUp", 0);
     _static_1(H, "_engine___noopCallback$closure", "_noopCallback", 11);
     _static_1(H, "_engine___emptyCallback$closure", "_emptyCallback", 14);
     _instance_0_u(H.AlarmClock.prototype, "get$_timerDidFire", "_timerDidFire$0", 0);
     _instance_0_u(H.FontFallbackData.prototype, "get$_ensureFallbackFonts", "_ensureFallbackFonts$0", 0);
     var _;
-    _instance_1_i(_ = H.FallbackFontDownloadQueue.prototype, "get$add", "add$1", 111);
+    _instance_1_i(_ = H.FallbackFontDownloadQueue.prototype, "get$add", "add$1", 113);
     _instance_0_u(_, "get$startDownloads", "startDownloads$0", 22);
-    _instance_1_u(H.SkiaFontCollection.prototype, "get$_getArrayBuffer", "_getArrayBuffer$1", 193);
+    _instance_1_u(H.SkiaFontCollection.prototype, "get$_getArrayBuffer", "_getArrayBuffer$1", 194);
     _instance_1_u(_ = H.Surface.prototype, "get$_contextRestoredListener", "_contextRestoredListener$1", 2);
     _instance_1_u(_, "get$_contextLostListener", "_contextLostListener$1", 2);
-    _instance_1_u(_ = H.DomRenderer.prototype, "get$_metricsDidChange", "_metricsDidChange$1", 158);
+    _instance_1_u(_ = H.DomRenderer.prototype, "get$_metricsDidChange", "_metricsDidChange$1", 183);
     _instance_1_u(_, "get$_languageDidChange", "_languageDidChange$1", 2);
-    _instance_1_u(H.KeyboardBinding.prototype, "get$_onKeyData", "_onKeyData$1", 91);
+    _instance_1_u(H.KeyboardBinding.prototype, "get$_onKeyData", "_onKeyData$1", 65);
     _instance_1_i(H.MultiEntriesBrowserHistory.prototype, "get$onPopState", "onPopState$1", 8);
     _instance_1_i(H.SingleEntryBrowserHistory.prototype, "get$onPopState", "onPopState$1", 8);
-    _instance_1_u(H.PointerBinding.prototype, "get$_onPointerData", "_onPointerData$1", 110);
+    _instance_1_u(H.PointerBinding.prototype, "get$_onPointerData", "_onPointerData$1", 111);
     _instance_0_i(H.RulerHost.prototype, "get$dispose", "dispose$0", 0);
     _instance_1_u(_ = H.DefaultTextEditingStrategy.prototype, "get$handleChange", "handleChange$1", 2);
     _instance_1_u(_, "get$maybeSendAction", "maybeSendAction$1", 2);
-    _instance_2_u(H.WebExperiments.prototype, "get$updateExperiment", "updateExperiment$2", 178);
-    _static_2(J, "_interceptors_JSArray__compareAny$closure", "JSArray__compareAny", 293);
+    _instance_2_u(H.WebExperiments.prototype, "get$updateExperiment", "updateExperiment$2", 179);
+    _static_2(J, "_interceptors_JSArray__compareAny$closure", "JSArray__compareAny", 288);
     _instance_1_i(H._CastIterableBase.prototype, "get$contains", "contains$1", 21);
-    _static_1(H, "_js_helper_GeneralConstantMap__constantMapHashCode$closure", "GeneralConstantMap__constantMapHashCode", 62);
+    _static_1(H, "_js_helper_GeneralConstantMap__constantMapHashCode$closure", "GeneralConstantMap__constantMapHashCode", 61);
     _static_0(H, "_js_helper_Primitives_dateNow$closure", "Primitives_dateNow", 32);
     _instance_1_i(H.JsLinkedHashMap.prototype, "get$remove", "remove$1", "2?(Object?)");
-    _static_1(P, "async__AsyncRun__scheduleImmediateJsOverride$closure", "_AsyncRun__scheduleImmediateJsOverride", 41);
-    _static_1(P, "async__AsyncRun__scheduleImmediateWithSetImmediate$closure", "_AsyncRun__scheduleImmediateWithSetImmediate", 41);
-    _static_1(P, "async__AsyncRun__scheduleImmediateWithTimer$closure", "_AsyncRun__scheduleImmediateWithTimer", 41);
+    _static_1(P, "async__AsyncRun__scheduleImmediateJsOverride$closure", "_AsyncRun__scheduleImmediateJsOverride", 45);
+    _static_1(P, "async__AsyncRun__scheduleImmediateWithSetImmediate$closure", "_AsyncRun__scheduleImmediateWithSetImmediate", 45);
+    _static_1(P, "async__AsyncRun__scheduleImmediateWithTimer$closure", "_AsyncRun__scheduleImmediateWithTimer", 45);
     _static_0(P, "async___startMicrotaskLoop$closure", "_startMicrotaskLoop", 0);
     _static_1(P, "async___nullDataHandler$closure", "_nullDataHandler", 14);
-    _static_0(P, "async___nullDoneHandler$closure", "_nullDoneHandler", 0);
-    _static(P, "async___rootHandleUncaughtError$closure", 5, null, ["call$5"], ["_rootHandleUncaughtError"], 296, 0);
-    _static(P, "async___rootRun$closure", 4, null, ["call$1$4", "call$4"], ["_rootRun", function($self, $parent, zone, f) {
-      return P._rootRun($self, $parent, zone, f, type$.dynamic);
-    }], 297, 1);
-    _static(P, "async___rootRunUnary$closure", 5, null, ["call$2$5", "call$5"], ["_rootRunUnary", function($self, $parent, zone, f, arg) {
-      return P._rootRunUnary($self, $parent, zone, f, arg, type$.dynamic, type$.dynamic);
-    }], 298, 1);
-    _static(P, "async___rootRunBinary$closure", 6, null, ["call$3$6", "call$6"], ["_rootRunBinary", function($self, $parent, zone, f, arg1, arg2) {
-      return P._rootRunBinary($self, $parent, zone, f, arg1, arg2, type$.dynamic, type$.dynamic, type$.dynamic);
-    }], 299, 1);
-    _static(P, "async___rootRegisterCallback$closure", 4, null, ["call$1$4", "call$4"], ["_rootRegisterCallback", function($self, $parent, zone, f) {
-      return P._rootRegisterCallback($self, $parent, zone, f, type$.dynamic);
-    }], 300, 0);
-    _static(P, "async___rootRegisterUnaryCallback$closure", 4, null, ["call$2$4", "call$4"], ["_rootRegisterUnaryCallback", function($self, $parent, zone, f) {
-      return P._rootRegisterUnaryCallback($self, $parent, zone, f, type$.dynamic, type$.dynamic);
-    }], 301, 0);
-    _static(P, "async___rootRegisterBinaryCallback$closure", 4, null, ["call$3$4", "call$4"], ["_rootRegisterBinaryCallback", function($self, $parent, zone, f) {
-      return P._rootRegisterBinaryCallback($self, $parent, zone, f, type$.dynamic, type$.dynamic, type$.dynamic);
-    }], 302, 0);
-    _static(P, "async___rootErrorCallback$closure", 5, null, ["call$5"], ["_rootErrorCallback"], 303, 0);
-    _static(P, "async___rootScheduleMicrotask$closure", 4, null, ["call$4"], ["_rootScheduleMicrotask"], 304, 0);
-    _static(P, "async___rootCreateTimer$closure", 5, null, ["call$5"], ["_rootCreateTimer"], 305, 0);
-    _static(P, "async___rootCreatePeriodicTimer$closure", 5, null, ["call$5"], ["_rootCreatePeriodicTimer"], 306, 0);
-    _static(P, "async___rootPrint$closure", 4, null, ["call$4"], ["_rootPrint"], 307, 0);
-    _static_1(P, "async___printToZone$closure", "_printToZone", 78);
-    _static(P, "async___rootFork$closure", 5, null, ["call$5"], ["_rootFork"], 308, 0);
-    _instance(P._Completer.prototype, "get$completeError", 0, 1, function() {
-      return [null];
-    }, ["call$2", "call$1"], ["completeError$2", "completeError$1"], 222, 0, 0);
-    _instance_2_u(P._Future.prototype, "get$_completeError", "_completeError$2", 44);
+    _instance(P._Completer.prototype, "get$completeError", 0, 1, null, ["call$2", "call$1"], ["completeError$2", "completeError$1"], 225, 0, 0);
+    _instance_2_u(P._Future.prototype, "get$_completeError", "_completeError$2", 51);
     _instance_1_i(_ = P._StreamController.prototype, "get$_async$_add", "_async$_add$1", 8);
-    _instance_2_u(_, "get$_addError", "_addError$2", 44);
+    _instance_2_u(_, "get$_addError", "_addError$2", 51);
     _instance_0_u(_, "get$_close", "_close$0", 0);
     _instance_0_u(_ = P._ControllerSubscription.prototype, "get$_onPause", "_onPause$0", 0);
     _instance_0_u(_, "get$_onResume", "_onResume$0", 0);
     _instance_0_u(_ = P._BufferingStreamSubscription.prototype, "get$_onPause", "_onPause$0", 0);
     _instance_0_u(_, "get$_onResume", "_onResume$0", 0);
-    _static_2(P, "collection___defaultEquals$closure", "_defaultEquals", 309);
-    _static_1(P, "collection___defaultHashCode$closure", "_defaultHashCode", 62);
+    _static_2(P, "collection___defaultEquals$closure", "_defaultEquals", 291);
+    _static_1(P, "collection___defaultHashCode$closure", "_defaultHashCode", 61);
     _instance_1_i(P._LinkedCustomHashMap.prototype, "get$remove", "remove$1", "2?(Object?)");
     _instance_1_i(P._HashSet.prototype, "get$contains", "contains$1", 21);
     _instance_1_i(P._LinkedHashSet.prototype, "get$contains", "contains$1", 21);
     _instance_1_i(P._UnmodifiableSet.prototype, "get$contains", "contains$1", 21);
     _static_1(P, "convert___defaultToEncodable$closure", "_defaultToEncodable", 25);
-    _static_1(P, "core_Uri_decodeComponent$closure", "Uri_decodeComponent", 310);
+    _static_1(P, "core_Uri_decodeComponent$closure", "Uri_decodeComponent", 292);
     _instance_1_i(P.Iterable.prototype, "get$contains", "contains$1", 21);
     _instance_1_u(W.Console.prototype, "get$warn", "warn$1", 8);
-    _static_1(P, "js___convertToJS$closure", "_convertToJS", 311);
-    _static_1(P, "js___convertToDart$closure", "_convertToDart", 312);
-    _static(P, "ui_Size_lerp$closure", 3, null, ["call$3"], ["Size_lerp"], 313, 0);
-    _static(P, "ui__lerpDouble$closure", 3, null, ["call$3"], ["lerpDouble"], 314, 0);
-    _static(P, "ui_Color_lerp$closure", 3, null, ["call$3"], ["Color_lerp"], 315, 0);
+    _static_1(P, "js___convertToJS$closure", "_convertToJS", 293);
+    _static_1(P, "js___convertToDart$closure", "_convertToDart", 294);
+    _static(P, "ui_Size_lerp$closure", 3, null, ["call$3"], ["Size_lerp"], 295, 0);
+    _static(P, "ui__lerpDouble$closure", 3, null, ["call$3"], ["lerpDouble"], 296, 0);
+    _static(P, "ui_Color_lerp$closure", 3, null, ["call$3"], ["Color_lerp"], 297, 0);
     _instance_1_u(P._StoredMessage.prototype, "get$invoke", "invoke$1", 11);
     _instance_0_u(P._Channel.prototype, "get$_drainStep", "_drainStep$0", 0);
-    _instance(_ = G.AnimationController.prototype, "get$reverse", 1, 0, function() {
-      return {from: null};
-    }, ["call$1$from", "call$0"], ["reverse$1$from", "reverse$0"], 95, 0, 0);
-    _instance_1_u(_, "get$_animation_controller$_tick", "_animation_controller$_tick$1", 4);
-    _instance_1_u(S.ReverseAnimation.prototype, "get$_statusChangeHandler", "_statusChangeHandler$1", 5);
-    _instance_1_u(S.CurvedAnimation.prototype, "get$_updateCurveDirection", "_updateCurveDirection$1", 5);
-    _instance_1_u(_ = S.TrainHoppingAnimation.prototype, "get$_statusChangeHandler", "_statusChangeHandler$1", 5);
+    _instance(_ = G.AnimationController.prototype, "get$reverse", 1, 0, null, ["call$1$from", "call$0"], ["reverse$1$from", "reverse$0"], 109, 0, 0);
+    _instance_1_u(_, "get$_animation_controller$_tick", "_animation_controller$_tick$1", 7);
+    _instance_1_u(S.ReverseAnimation.prototype, "get$_statusChangeHandler", "_statusChangeHandler$1", 4);
+    _instance_1_u(S.CurvedAnimation.prototype, "get$_updateCurveDirection", "_updateCurveDirection$1", 4);
+    _instance_1_u(_ = S.TrainHoppingAnimation.prototype, "get$_statusChangeHandler", "_statusChangeHandler$1", 4);
     _instance_0_u(_, "get$_valueChangeHandler", "_valueChangeHandler$0", 0);
-    _instance_1_u(_ = S.CompoundAnimation.prototype, "get$_maybeNotifyStatusListeners", "_maybeNotifyStatusListeners$1", 5);
+    _instance_1_u(_ = S.CompoundAnimation.prototype, "get$_maybeNotifyStatusListeners", "_maybeNotifyStatusListeners$1", 4);
     _instance_0_u(_, "get$_maybeNotifyListeners", "_maybeNotifyListeners$0", 0);
     _instance_0_u(S.AnimationLocalListenersMixin.prototype, "get$notifyListeners", "notifyListeners$0", 0);
-    _instance_1_u(S.AnimationLocalStatusListenersMixin.prototype, "get$notifyStatusListeners", "notifyStatusListeners$1", 5);
+    _instance_1_u(S.AnimationLocalStatusListenersMixin.prototype, "get$notifyStatusListeners", "notifyStatusListeners$1", 4);
     _instance_1_u(_ = D._CupertinoBackGestureDetectorState.prototype, "get$_handleDragStart", "_handleDragStart$1", 114);
     _instance_1_u(_, "get$_handleDragUpdate", "_handleDragUpdate$1", 16);
     _instance_1_u(_, "get$_handleDragEnd", "_handleDragEnd$1", 116);
     _instance_0_u(_, "get$_handleDragCancel", "_handleDragCancel$0", 0);
-    _instance_1_u(_, "get$_route$_handlePointerDown", "_route$_handlePointerDown$1", 47);
+    _instance_1_u(_, "get$_route$_handlePointerDown", "_route$_handlePointerDown$1", 44);
     _static(U, "assertions_FlutterError_dumpErrorToConsole$closure", 1, null, ["call$2$forceReport", "call$1"], ["FlutterError_dumpErrorToConsole", function(details) {
       return U.FlutterError_dumpErrorToConsole(details, false);
-    }], 316, 0);
-    _static_1(U, "assertions_DiagnosticsStackTrace__createStackFrame$closure", "DiagnosticsStackTrace__createStackFrame", 317);
-    _instance_1_i(Y.DiagnosticPropertiesBuilder.prototype, "get$add", "add$1", 59);
+    }], 298, 0);
+    _static_1(U, "assertions_DiagnosticsStackTrace__createStackFrame$closure", "DiagnosticsStackTrace__createStackFrame", 299);
+    _instance_1_i(Y.DiagnosticPropertiesBuilder.prototype, "get$add", "add$1", 66);
     _instance_1_u(B.AbstractNode.prototype, "get$redepthChild", "redepthChild$1", 133);
-    _static_1(R, "stack_frame_StackFrame_fromStackTraceLine$closure", "StackFrame_fromStackTraceLine", 318);
+    _static_1(R, "stack_frame_StackFrame_fromStackTraceLine$closure", "StackFrame_fromStackTraceLine", 300);
     _instance_1_u(_ = N.GestureBinding.prototype, "get$_handlePointerDataPacket", "_handlePointerDataPacket$1", 136);
-    _instance_1_u(_, "get$cancelPointer", "cancelPointer$1", 60);
+    _instance_1_u(_, "get$cancelPointer", "cancelPointer$1", 59);
     _instance_0_u(_, "get$_flushPointerEventQueue", "_flushPointerEventQueue$0", 0);
     _instance_1_u(_, "get$_handlePointerEventImmediately", "_handlePointerEventImmediately$1", 17);
     _instance_0_u(_, "get$_handleSampleTimeChanged", "_handleSampleTimeChanged$0", 0);
-    _static_1(O, "monodrag_DragGestureRecognizer__defaultBuilder$closure", "DragGestureRecognizer__defaultBuilder", 319);
+    _static_1(O, "monodrag_DragGestureRecognizer__defaultBuilder$closure", "DragGestureRecognizer__defaultBuilder", 301);
     _instance_1_u(O.DragGestureRecognizer.prototype, "get$handleEvent", "handleEvent$1", 17);
     _instance_0_u(F._CountdownZoned.prototype, "get$_onTimeout", "_onTimeout$0", 0);
     _instance_1_u(_ = F.DoubleTapGestureRecognizer.prototype, "get$_handleEvent", "_handleEvent$1", 17);
@@ -81529,12 +79769,12 @@
     _instance_0_u(_, "get$_multitap$_reset", "_multitap$_reset$0", 0);
     _instance_1_u(S.PrimaryPointerGestureRecognizer.prototype, "get$handleEvent", "handleEvent$1", 17);
     _instance_2_u(_ = S._MaterialAppState.prototype, "get$_inspectorSelectButtonBuilder", "_inspectorSelectButtonBuilder$2", 143);
-    _instance_2_u(_, "get$_materialBuilder", "_materialBuilder$2", 94);
+    _instance_2_u(_, "get$_materialBuilder", "_materialBuilder$2", 93);
     _instance_0_u(_ = E._AppBarState.prototype, "get$_handleDrawerButton", "_handleDrawerButton$0", 0);
     _instance_0_u(_, "get$_handleDrawerButtonEnd", "_handleDrawerButtonEnd$0", 0);
     _instance_1_u(_, "get$_handleScrollNotification", "_handleScrollNotification$1", 147);
-    _instance_1_u(Y.InkHighlight.prototype, "get$_handleAlphaStatusChanged", "_handleAlphaStatusChanged$1", 5);
-    _instance_1_u(U.InkSplash.prototype, "get$_ink_splash$_handleAlphaStatusChanged", "_ink_splash$_handleAlphaStatusChanged$1", 5);
+    _instance_1_u(Y.InkHighlight.prototype, "get$_handleAlphaStatusChanged", "_handleAlphaStatusChanged$1", 4);
+    _instance_1_u(U.InkSplash.prototype, "get$_ink_splash$_handleAlphaStatusChanged", "_ink_splash$_handleAlphaStatusChanged$1", 4);
     _instance_1_u(_ = R.InkResponse.prototype, "get$getRectCallback", "getRectCallback$1", 152);
     _instance_1_u(_, "get$debugCheckContext", "debugCheckContext$1", 153);
     _instance(_ = R._InkResponseState.prototype, "get$_simulateTap", 0, 0, function() {
@@ -81545,30 +79785,28 @@
     _instance_1_u(_, "get$_handleTapDown", "_handleTapDown$1", 156);
     _instance_0_u(_, "get$_handleTap", "_handleTap$0", 0);
     _instance_0_u(_, "get$_handleTapCancel", "_handleTapCancel$0", 0);
-    _instance_1_u(_, "get$_handleMouseEnter", "_handleMouseEnter$1", 49);
+    _instance_1_u(_, "get$_handleMouseEnter", "_handleMouseEnter$1", 57);
     _instance_1_u(_, "get$_handleMouseExit", "_handleMouseExit$1", 34);
-    _instance_1_u(_ = M._FloatingActionButtonTransitionState.prototype, "get$_handlePreviousAnimationStatusChanged", "_handlePreviousAnimationStatusChanged$1", 5);
+    _instance_1_u(_ = M._FloatingActionButtonTransitionState.prototype, "get$_handlePreviousAnimationStatusChanged", "_handlePreviousAnimationStatusChanged$1", 4);
     _instance_0_u(_, "get$_onProgressChanged", "_onProgressChanged$0", 0);
     _instance_0_u(M.ScaffoldState.prototype, "get$_handleStatusBarTap", "_handleStatusBarTap$0", 0);
     _instance_0_u(_ = S._TooltipState.prototype, "get$_handleMouseTrackerChange", "_handleMouseTrackerChange$0", 0);
-    _instance_1_u(_, "get$_tooltip$_handleStatusChanged", "_tooltip$_handleStatusChanged$1", 5);
-    _instance_0_u(_, "get$ensureTooltipVisible", "ensureTooltipVisible$0", 74);
+    _instance_1_u(_, "get$_tooltip$_handleStatusChanged", "_tooltip$_handleStatusChanged$1", 4);
+    _instance_0_u(_, "get$ensureTooltipVisible", "ensureTooltipVisible$0", 75);
     _instance_1_u(_, "get$_tooltip$_handlePointerEvent", "_tooltip$_handlePointerEvent$1", 17);
     _instance_0_u(_, "get$_handlePress", "_handlePress$0", 0);
-    _instance_2_u(X.DecorationImagePainter.prototype, "get$_handleImage", "_handleImage$2", 173);
-    _static(V, "edge_insets_EdgeInsetsGeometry_lerp$closure", 3, null, ["call$3"], ["EdgeInsetsGeometry_lerp"], 320, 0);
-    _instance_1_i(L.ImageStreamCompleter.prototype, "get$addListener", "addListener$1", 176);
-    _static(A, "text_style_TextStyle_lerp$closure", 3, null, ["call$3"], ["TextStyle_lerp"], 321, 0);
+    _static(V, "edge_insets_EdgeInsetsGeometry_lerp$closure", 3, null, ["call$3"], ["EdgeInsetsGeometry_lerp"], 302, 0);
+    _static(A, "text_style_TextStyle_lerp$closure", 3, null, ["call$3"], ["TextStyle_lerp"], 303, 0);
     _instance_0_u(_ = N.RendererBinding.prototype, "get$_handleSemanticsEnabledChanged", "_handleSemanticsEnabledChanged$0", 0);
-    _instance_1_u(_, "get$_handleWebFirstFrame", "_handleWebFirstFrame$1", 4);
-    _instance(_, "get$_handleSemanticsAction", 0, 3, null, ["call$3"], ["_handleSemanticsAction$3"], 180, 0, 0);
+    _instance_1_u(_, "get$_handleWebFirstFrame", "_handleWebFirstFrame$1", 7);
+    _instance(_, "get$_handleSemanticsAction", 0, 3, null, ["call$3"], ["_handleSemanticsAction$3"], 175, 0, 0);
     _instance_0_u(_, "get$_handleSemanticsOwnerCreated", "_handleSemanticsOwnerCreated$0", 0);
     _instance_0_u(_, "get$_handleSemanticsOwnerDisposed", "_handleSemanticsOwnerDisposed$0", 0);
-    _instance_1_u(_, "get$_handlePersistentFrameCallback", "_handlePersistentFrameCallback$1", 4);
+    _instance_1_u(_, "get$_handlePersistentFrameCallback", "_handlePersistentFrameCallback$1", 7);
     _instance_2_u(S.RenderBoxContainerDefaultsMixin.prototype, "get$defaultPaint", "defaultPaint$2", 27);
     _static_1(K, "object_RenderObject__cleanChildRelayoutBoundary$closure", "RenderObject__cleanChildRelayoutBoundary", 28);
     _instance_0_u(_ = K.RenderObject.prototype, "get$markNeedsPaint", "markNeedsPaint$0", 0);
-    _instance(_, "get$showOnScreen", 0, 0, null, ["call$4$curve$descendant$duration$rect", "call$0"], ["showOnScreen$4$curve$descendant$duration$rect", "showOnScreen$0"], 189, 0, 0);
+    _instance(_, "get$showOnScreen", 0, 0, null, ["call$4$curve$descendant$duration$rect", "call$0"], ["showOnScreen$4$curve$descendant$duration$rect", "showOnScreen$0"], 184, 0, 0);
     _instance_0_u(Q.RenderParagraph.prototype, "get$systemFontsDidChange", "systemFontsDidChange$0", 0);
     _instance(E.RenderProxyBoxMixin.prototype, "get$paint", 0, 2, null, ["call$2"], ["paint$2"], 27, 0, 1);
     _instance_0_u(E.RenderAnimatedOpacityMixin.prototype, "get$_updateOpacity", "_updateOpacity$0", 0);
@@ -81581,56 +79819,56 @@
     _instance_0_u(_, "get$_performLongPress", "_performLongPress$0", 0);
     _instance_0_u(_, "get$_performDismiss", "_performDismiss$0", 0);
     _instance_2_u(K.RenderStack.prototype, "get$paintStack", "paintStack$2", 27);
-    _instance_1_u(A.RenderView.prototype, "get$hitTestMouseTrackers", "hitTestMouseTrackers$1", 192);
-    _static_2(N, "binding_SchedulerBinding__taskSorter$closure", "SchedulerBinding__taskSorter", 322);
-    _static(N, "binding__defaultSchedulingStrategy$closure", 0, null, ["call$2$priority$scheduler"], ["defaultSchedulingStrategy"], 323, 0);
-    _instance_1_u(_ = N.SchedulerBinding.prototype, "get$_executeTimingsCallbacks", "_executeTimingsCallbacks$1", 53);
+    _instance_1_u(A.RenderView.prototype, "get$hitTestMouseTrackers", "hitTestMouseTrackers$1", 187);
+    _static_2(N, "binding_SchedulerBinding__taskSorter$closure", "SchedulerBinding__taskSorter", 304);
+    _static(N, "binding__defaultSchedulingStrategy$closure", 0, null, ["call$2$priority$scheduler"], ["defaultSchedulingStrategy"], 305, 0);
+    _instance_1_u(_ = N.SchedulerBinding.prototype, "get$_executeTimingsCallbacks", "_executeTimingsCallbacks$1", 42);
     _instance_0_u(_, "get$_runTasks", "_runTasks$0", 0);
     _instance_0_u(_, "get$ensureVisualUpdate", "ensureVisualUpdate$0", 0);
-    _instance_1_u(_, "get$_handleBeginFrame", "_handleBeginFrame$1", 4);
+    _instance_1_u(_, "get$_handleBeginFrame", "_handleBeginFrame$1", 7);
     _instance_0_u(_, "get$_handleDrawFrame", "_handleDrawFrame$0", 0);
-    _instance_1_u(_, "get$_profileFramePostEvent", "_profileFramePostEvent$1", 194);
-    _instance_1_u(M.Ticker.prototype, "get$_ticker$_tick", "_ticker$_tick$1", 4);
-    _static_1(Q, "asset_bundle_AssetBundle__utf8decode$closure", "AssetBundle__utf8decode", 324);
-    _static_1(N, "binding0_ServicesBinding__parseLicenses$closure", "ServicesBinding__parseLicenses", 325);
-    _instance_0_u(_ = N.ServicesBinding.prototype, "get$_addLicenses", "_addLicenses$0", 203);
-    _instance_1_u(_, "get$_handleLifecycleMessage", "_handleLifecycleMessage$1", 204);
-    _instance_1_u(_, "get$_handlePlatformMessage", "_handlePlatformMessage$1", 205);
-    _instance_1_u(_ = Q.KeyEventManager.prototype, "get$handleKeyData", "handleKeyData$1", 91);
-    _instance_1_u(_, "get$handleRawKeyMessage", "handleRawKeyMessage$1", 207);
-    _instance_1_u(_, "get$_convertRawEventAndStore", "_convertRawEventAndStore$1", 208);
-    _instance_1_u(K.RestorationManager.prototype, "get$_methodHandler", "_methodHandler$1", 212);
+    _instance_1_u(_, "get$_profileFramePostEvent", "_profileFramePostEvent$1", 189);
+    _instance_1_u(M.Ticker.prototype, "get$_ticker$_tick", "_ticker$_tick$1", 7);
+    _static_1(Q, "asset_bundle_AssetBundle__utf8decode$closure", "AssetBundle__utf8decode", 306);
+    _static_1(N, "binding0_ServicesBinding__parseLicenses$closure", "ServicesBinding__parseLicenses", 307);
+    _instance_0_u(_ = N.ServicesBinding.prototype, "get$_addLicenses", "_addLicenses$0", 198);
+    _instance_1_u(_, "get$_handleLifecycleMessage", "_handleLifecycleMessage$1", 199);
+    _instance_1_u(_, "get$_handlePlatformMessage", "_handlePlatformMessage$1", 200);
+    _instance_1_u(_ = Q.KeyEventManager.prototype, "get$handleKeyData", "handleKeyData$1", 65);
+    _instance_1_u(_, "get$handleRawKeyMessage", "handleRawKeyMessage$1", 202);
+    _instance_1_u(_, "get$_convertRawEventAndStore", "_convertRawEventAndStore$1", 203);
+    _instance_1_u(K.RestorationManager.prototype, "get$_methodHandler", "_methodHandler$1", 311);
     _instance_1_u(_ = K.RestorationBucket.prototype, "get$_dropChild", "_dropChild$1", 80);
     _instance_1_u(_, "get$_recursivelyUpdateManager", "_recursivelyUpdateManager$1", 80);
-    _instance_1_u(U._ActionsState.prototype, "get$_handleActionChanged", "_handleActionChanged$1", 329);
-    _instance_1_u(_ = S._WidgetsAppState.prototype, "get$_onGenerateRoute", "_onGenerateRoute$1", 220);
-    _instance_1_u(_, "get$_onUnknownRoute", "_onUnknownRoute$1", 221);
+    _instance_1_u(U._ActionsState.prototype, "get$_handleActionChanged", "_handleActionChanged$1", 214);
+    _instance_1_u(_ = S._WidgetsAppState.prototype, "get$_onGenerateRoute", "_onGenerateRoute$1", 215);
+    _instance_1_u(_, "get$_onUnknownRoute", "_onUnknownRoute$1", 216);
     _instance_1_u(T._MouseRegionState.prototype, "get$handleExit", "handleExit$1", 34);
     _instance_0_u(_ = N.WidgetsBinding.prototype, "get$handleLocaleChanged", "handleLocaleChanged$0", 0);
-    _instance_1_u(_, "get$_handleNavigationInvocation", "_handleNavigationInvocation$1", 227);
+    _instance_1_u(_, "get$_handleNavigationInvocation", "_handleNavigationInvocation$1", 222);
     _instance_0_u(_, "get$_handleBuildScheduled", "_handleBuildScheduled$0", 0);
     _instance_0_u(_ = N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_ServicesBinding_PaintingBinding_SemanticsBinding_RendererBinding_WidgetsBinding.prototype, "get$handleMetricsChanged", "handleMetricsChanged$0", 0);
     _instance_0_u(_, "get$handlePlatformBrightnessChanged", "handlePlatformBrightnessChanged$0", 0);
     _instance_0_u(_, "get$performReassemble", "performReassemble$0", 22);
     _instance_1_u(_ = O.FocusManager.prototype, "get$_focus_manager$_handlePointerEvent", "_focus_manager$_handlePointerEvent$1", 17);
-    _instance_1_u(_, "get$_handleKeyMessage", "_handleKeyMessage$1", 232);
+    _instance_1_u(_, "get$_handleKeyMessage", "_handleKeyMessage$1", 227);
     _instance_0_u(_, "get$_applyFocusChange", "_applyFocusChange$0", 0);
     _instance_0_u(_ = L._FocusState.prototype, "get$_handleAutofocus", "_handleAutofocus$0", 0);
     _instance_0_u(_, "get$_handleFocusChanged", "_handleFocusChanged$0", 0);
-    _static_1(N, "framework__InactiveElements__deactivateRecursively$closure", "_InactiveElements__deactivateRecursively", 6);
-    _static_2(N, "framework_Element__sort$closure", "Element__sort", 326);
-    _static_1(N, "framework_Element__activateRecursively$closure", "Element__activateRecursively", 6);
-    _instance_1_u(N._InactiveElements.prototype, "get$_unmount", "_unmount$1", 6);
-    _instance_1_u(_ = D.RawGestureDetectorState.prototype, "get$_handlePointerDown", "_handlePointerDown$1", 47);
-    _instance_1_u(_, "get$_updateSemanticsForRenderObject", "_updateSemanticsForRenderObject$1", 259);
+    _static_1(N, "framework__InactiveElements__deactivateRecursively$closure", "_InactiveElements__deactivateRecursively", 5);
+    _static_2(N, "framework_Element__sort$closure", "Element__sort", 308);
+    _static_1(N, "framework_Element__activateRecursively$closure", "Element__activateRecursively", 5);
+    _instance_1_u(N._InactiveElements.prototype, "get$_unmount", "_unmount$1", 5);
+    _instance_1_u(_ = D.RawGestureDetectorState.prototype, "get$_handlePointerDown", "_handlePointerDown$1", 44);
+    _instance_1_u(_, "get$_updateSemanticsForRenderObject", "_updateSemanticsForRenderObject$1", 254);
     _instance_1_u(_ = T._HeroFlight.prototype, "get$_buildOverlay", "_buildOverlay$1", 19);
-    _instance_1_u(_, "get$_handleAnimationUpdate", "_handleAnimationUpdate$1", 5);
+    _instance_1_u(_, "get$_handleAnimationUpdate", "_handleAnimationUpdate$1", 4);
     _instance_0_u(_, "get$onTick", "onTick$0", 0);
-    _instance_1_u(_ = T.HeroController.prototype, "get$_handleFlightEnded", "_handleFlightEnded$1", 262);
-    _instance(_, "get$_defaultHeroFlightShuttleBuilder", 0, 5, null, ["call$5"], ["_defaultHeroFlightShuttleBuilder$5"], 263, 0, 0);
+    _instance_1_u(_ = T.HeroController.prototype, "get$_handleFlightEnded", "_handleFlightEnded$1", 257);
+    _instance(_, "get$_defaultHeroFlightShuttleBuilder", 0, 5, null, ["call$5"], ["_defaultHeroFlightShuttleBuilder$5"], 258, 0, 0);
     _instance_0_u(G.AnimatedWidgetBaseState.prototype, "get$_handleAnimationChanged", "_handleAnimationChanged$0", 0);
     _instance_0_u(S._InheritedNotifierElement.prototype, "get$_handleUpdate", "_handleUpdate$0", 0);
-    _static_2(K, "navigator_Navigator_defaultGenerateInitialRoutes$closure", "Navigator_defaultGenerateInitialRoutes", 327);
+    _static_2(K, "navigator_Navigator_defaultGenerateInitialRoutes$closure", "Navigator_defaultGenerateInitialRoutes", 309);
     _static_1(K, "navigator__RouteEntry_isPresentPredicate$closure", "_RouteEntry_isPresentPredicate", 31);
     _static_1(K, "navigator__RouteEntry_suitableForTransitionAnimationPredicate$closure", "_RouteEntry_suitableForTransitionAnimationPredicate", 31);
     _static_1(K, "navigator__RouteEntry_willBePresentPredicate$closure", "_RouteEntry_willBePresentPredicate", 31);
@@ -81638,45 +79876,46 @@
     _instance_1_u(K._NavigatorPopObservation.prototype, "get$notify", "notify$1", 35);
     _instance_1_u(K._NavigatorRemoveObservation.prototype, "get$notify", "notify$1", 35);
     _instance_1_u(K._NavigatorReplaceObservation.prototype, "get$notify", "notify$1", 35);
-    _instance_1_u(_ = K.NavigatorState.prototype, "get$_navigator$_handlePointerDown", "_navigator$_handlePointerDown$1", 47);
+    _instance_1_u(_ = K.NavigatorState.prototype, "get$_navigator$_handlePointerDown", "_navigator$_handlePointerDown$1", 44);
     _instance_1_u(_, "get$_handlePointerUpOrCancel", "_handlePointerUpOrCancel$1", 17);
-    _instance_1_u(U.Notification0.prototype, "get$visitAncestor", "visitAncestor$1", 56);
+    _instance_1_u(U.Notification0.prototype, "get$visitAncestor", "visitAncestor$1", 41);
     _instance_2_u(X._RenderTheatre.prototype, "get$paintStack", "paintStack$2", 27);
     _instance_0_u(K._RootRestorationScopeState.prototype, "get$_replaceRootBucket", "_replaceRootBucket$0", 0);
-    _instance_1_u(K.RestorationMixin.prototype, "get$_updateProperty", "_updateProperty$1", 282);
-    _instance_1_u(T.TransitionRoute.prototype, "get$_handleStatusChanged", "_handleStatusChanged$1", 5);
+    _instance_1_u(K.RestorationMixin.prototype, "get$_updateProperty", "_updateProperty$1", 277);
+    _instance_1_u(T.TransitionRoute.prototype, "get$_handleStatusChanged", "_handleStatusChanged$1", 4);
     _instance_1_u(_ = T.ModalRoute.prototype, "get$_buildModalBarrier", "_buildModalBarrier$1", 19);
     _instance_1_u(_, "get$_buildModalScope", "_buildModalScope$1", 19);
-    _instance_2_u(X._ShortcutsState.prototype, "get$_handleOnKey", "_handleOnKey$2", 63);
+    _instance_2_u(X._ShortcutsState.prototype, "get$_handleOnKey", "_handleOnKey$2", 62);
     _instance_0_u(K._AnimatedState.prototype, "get$_handleChange", "_handleChange$0", 0);
-    _instance(D.Registrar.prototype, "get$handleFrameworkMessage", 0, 3, null, ["call$3"], ["handleFrameworkMessage$3"], 290, 0, 0);
+    _instance(D.Registrar.prototype, "get$handleFrameworkMessage", 0, 3, null, ["call$3"], ["handleFrameworkMessage$3"], 285, 0, 0);
+    _instance_0_u(F._MineHomePageState.prototype, "get$_getLevelData", "_getLevelData$0", 0);
     _static(D, "print__debugPrintThrottled$closure", 1, null, ["call$2$wrapWidth", "call$1"], ["debugPrintThrottled", function(message) {
       return D.debugPrintThrottled(message, null);
-    }], 328, 0);
+    }], 310, 0);
     _static_0(D, "print___debugPrintTask$closure", "_debugPrintTask", 0);
-    _static_2(N, "layout_helper_ChildLayoutHelper_dryLayoutChild$closure", "ChildLayoutHelper_dryLayoutChild", 84);
-    _static_2(N, "layout_helper_ChildLayoutHelper_layoutChild$closure", "ChildLayoutHelper_layoutChild", 84);
+    _static_2(N, "layout_helper_ChildLayoutHelper_dryLayoutChild$closure", "ChildLayoutHelper_dryLayoutChild", 79);
+    _static_2(N, "layout_helper_ChildLayoutHelper_layoutChild$closure", "ChildLayoutHelper_layoutChild", 79);
   })();
   (function inheritance() {
     var _mixin = hunkHelpers.mixin,
-      _inheritMany = hunkHelpers.inheritMany,
-      _inherit = hunkHelpers.inherit;
-    _inheritMany(null, [P.Object, H.CkBlendModeColorFilter]);
-    _inheritMany(P.Object, [H.Closure, H.AlarmClock, H.AssetManager, H.AssetManagerException, H.BrowserEngine, H.OperatingSystem, H.CkCanvas, H.CkPictureSnapshot, H.CkPaintCommand, J.Interceptor, H.ProductionCollector, H.SkiaObjectCollectionError, H.CanvasKitCanvas, H.SkiaObject, H.HtmlViewEmbedder, H.MutatorType, H.Mutator, P.Iterable, H.FontFallbackData, H.NotoFont, H.CodeunitRange, H._ResolvedNotoFont, H._ResolvedNotoSubset, H.FallbackFontDownloadQueue, H.NotoDownloader, H.SkiaFontCollection, H.RegisteredFont, H.CkImage, H.IntervalTree, H.IntervalTreeNode, H.Layer, H.PrerollContext, H.PaintContext, H.LayerScene, H.LayerSceneBuilder, H.LayerTree, H.Frame, H.CompositorContext, H.CkNWayCanvas, H.CkPictureRecorder, H.Rasterizer, H.SkiaObjectCache, H.SynchronousSkiaObjectCache, H.SurfaceFrame, H.Surface, H.CkSurface, H.SurfaceFactory, H.CkParagraphStyle, H.CkTextStyle, H.CkParagraphBuilder, H._ParagraphCommand, H._ParagraphCommandType, P.Error, H.ClipboardMessageHandler, H.ClipboardAPICopyStrategy, H.ClipboardAPIPasteStrategy, H.ExecCommandCopyStrategy, H.ExecCommandPasteStrategy, H.DomRenderer, H.ShadowDomHostNode, H.ElementHostNode, H.Keyboard, H.KeyboardBinding, H.FlutterHtmlKeyboardEvent, H.KeyboardConverter, H.MouseCursor, H.BrowserHistory, H.UrlStrategy, H.PlatformLocation, P.PlatformDispatcher, H.PlatformViewManager, H.PlatformViewMessageHandler, H.PointerBinding, H.PointerSupportDetector, H._BaseAdapter, H._WheelEventListenerMixin, H._SanitizedDetails, H._ButtonSanitizer, H._PointerState, H.PointerDataConverter, H.Profiler, H.AccessibilityAnnouncements, H._CheckableKind, H.RoleManager, H.SemanticsUpdate, H.SemanticsNodeUpdate, H.Role, H.SemanticsObject, H.AccessibilityMode, H.GestureMode, H.EngineSemanticsOwner, H.EnabledState, H.SemanticsHelper, H.SemanticsEnabler, H.DefaultTextEditingStrategy, P._ListBase_Object_ListMixin, H.MethodCall0, H.JSONMessageCodec, H.JSONMethodCodec, H.StandardMessageCodec, H.StandardMethodCodec, H.WriteBuffer0, H.ReadBuffer0, H.LineCharProperty, H.RulerHost, H.UnicodeRange, H.UnicodePropertyLookup, H.BrowserAutofillHints, H.EngineInputType, H.TextCapitalization, H.TextCapitalizationConfig, H.EngineAutofillForm, H.AutofillInfo, H.EditingState, H.InputConfiguration, H.TextInputCommand, H.TextEditingChannel, H.HybridTextEditing, H.EditableTextStyle, H.EditableTextGeometry, H.TransformKind, H.Matrix40, H.WebExperiments, P.FlutterView, H.WindowPadding, H.JS_CONST, J.ArrayIterator, H.CastIterator, P.MapMixin, H.ListIterator, P.Iterator, H.ExpandIterator, H.EmptyIterator, H.FollowedByIterator, H.WhereTypeIterator, H.FixedLengthListMixin, H.UnmodifiableListMixin, H.Symbol, P.MapView, H.ConstantMap, H.JSInvocationMirror, H.TypeErrorDecoder, H.NullThrownFromJavaScriptException, H.ExceptionAndStackTrace, H._StackTrace, H._Required, H.LinkedHashMapCell, H.LinkedHashMapKeyIterator, H.JSSyntaxRegExp, H._MatchImplementation, H.StringMatch, H._StringAllMatchesIterator, H._Cell, H.Rti, H._FunctionParameters, H._Type, P._TimerImpl, P._AsyncAwaitCompleter, P._AsyncStarStreamController, P._IterationMarker, P._SyncStarIterator, P.AsyncError, P._Completer, P._FutureListener, P._Future, P._AsyncCallbackEntry, P.Stream, P.StreamSubscription, P.StreamTransformerBase, P._StreamController, P._AsyncStreamControllerDispatch, P._BufferingStreamSubscription, P._AddStreamState, P._PendingEvents, P._DelayedEvent, P._DelayedDone, P._StreamIterator, P._ZoneFunction, P._RunNullaryZoneFunction, P._RunUnaryZoneFunction, P._RunBinaryZoneFunction, P._RegisterNullaryZoneFunction, P._RegisterUnaryZoneFunction, P._RegisterBinaryZoneFunction, P._ZoneSpecification, P._ZoneDelegate, P._Zone, P._HashMapKeyIterator, P.__SetBase_Object_SetMixin, P._HashSetIterator, P._LinkedHashSetCell, P._LinkedHashSetIterator, P._LinkedListIterator, P.LinkedListEntry, P.ListMixin, P._MapBaseValueIterator, P._UnmodifiableMapMixin, P._DoubleLink, P._DoubleLinkedQueueIterator, P._ListQueueIterator, P.SetMixin, P._UnmodifiableSetMixin, P.Codec, P._JsonStringifier, P._Utf8Encoder, P._Utf8Decoder, P.Comparable, P.DateTime, P.Duration, P.OutOfMemoryError, P.StackOverflowError, P._Exception, P.FormatException, P.Expando, P.MapEntry, P.Null, P._StringStackTrace, P.Stopwatch, P.RuneIterator, P.StringBuffer, P._Uri, P.UriData, P._SimpleUri, P._FakeUserTag, P.ServiceExtensionResponse, W.CssStyleDeclarationBase, W.EventStreamProvider, W.ImmutableListMixin, W.FixedSizeListIterator, W.Console, W._DOMWindowCrossFrame, P._StructuredClone, P._AcceptStructuredClone, P.JsObject, P.NullRejectionException, P._JSRandom, P.Point, P.Endian, P.ClipOp, P.PathFillType, P._ChannelCallbackRecord, P._StoredMessage, P._Channel, P.ChannelBuffers, P.OffsetBase, P.Rect, P.Radius, P.RRect, P._HashEnd, P.KeyEventType, P.KeyData, P.Color, P.StrokeCap, P.StrokeJoin, P.PaintingStyle, P.BlendMode, P.Clip, P.BlurStyle, P.MaskFilter, P.FilterQuality, P.Shadow, P.PlatformConfiguration, P.ViewConfiguration0, P.FrameTiming, P.AppLifecycleState, P.Locale, P.PointerChange, P.PointerDeviceKind, P.PointerSignalKind, P.PointerData, P.PointerDataPacket, P.SemanticsAction, P.SemanticsFlag, P.SemanticsUpdateBuilder, P.PlaceholderAlignment, P.FontWeight, P.TextAlign, P.TextBaseline, P.TextDecoration, P.TextDecorationStyle, P.TextLeadingDistribution, P.TextDirection, P.TextBox, P.TextAffinity, P.TextPosition, P.TextRange, P.ParagraphConstraints, P.BoxHeightStyle, P.BoxWidthStyle, P.TileMode, P.AccessibilityFeatures, P.Brightness, P.CallbackHandle, P.GestureSettings, Y.HeapPriorityQueue, X.AnimationStatus, B.Listenable, G._AnimationDirection, G.AnimationBehavior, T.Simulation, S.AnimationWithParentMixin, S._TrainHoppingMode, Z.ParametricCurve, S.AnimationLazyListenerMixin, S.AnimationEagerListenerMixin, S.AnimationLocalListenersMixin, S.AnimationLocalStatusListenersMixin, R.Animatable, T._IconThemeData_Object_Diagnosticable, K.CupertinoUserInterfaceLevelData, L.LocalizationsDelegate, L.DefaultCupertinoLocalizations, Y._DiagnosticableTree_Object_Diagnosticable, N._State_Object_Diagnosticable, D._CupertinoBackGestureController, Z._Decoration_Object_Diagnosticable, Z.BoxPainter, K.NoDefaultCupertinoThemeData, K._CupertinoThemeDefaults, K._CupertinoTextThemeDefaults, Y.DiagnosticsNode, U._FlutterErrorDetails_Object_Diagnosticable, N.BindingBase, N.DebugReassembleConfig, B.ChangeNotifier, Y.DiagnosticLevel, Y.DiagnosticsTreeStyle, Y.TextTreeConfiguration, Y._WordWrapParseMode, Y._PrefixedStringBuilder, Y._NoDefaultValue, Y.TextTreeRenderer, Y.DiagnosticPropertiesBuilder, Y.Diagnosticable, Y.DiagnosticableTreeMixin, D.Key, D._TypeLiteral, F.LicenseEntry, B.AbstractNode, T.TargetPlatform, G.WriteBuffer, G.ReadBuffer, R.StackFrame, O.SynchronousFuture, D.GestureDisposition, D.GestureArenaMember, D.GestureArenaEntry, D._GestureArena, D.GestureArenaManager, N._Resampler, N.GestureBinding, O.DragDownDetails, O.DragStartDetails, O.DragUpdateDetails, O.DragEndDetails, F._PointerEvent_Object_Diagnosticable, F._PointerEventDescription, F._AbstractPointerEvent, F._CopyPointerAddedEvent, F._CopyPointerRemovedEvent, F._CopyPointerHoverEvent, F._CopyPointerEnterEvent, F._CopyPointerExitEvent, F._CopyPointerDownEvent, F._CopyPointerMoveEvent, F._CopyPointerUpEvent, F._CopyPointerScrollEvent, F._CopyPointerCancelEvent, O.HitTestEntry, O._TransformPart, O.HitTestResult, B._Vector, B._Matrix, B.PolynomialFit, B.LeastSquaresSolver, O._DragState, F._CountdownZoned, F._TapTracker, O.PointerRouter, G.PointerSignalResolver, S.DragStartBehavior, S.GestureRecognizerState, S.OffsetPair, N.TapDownDetails, R.Velocity, R.VelocityEstimate, R._PointAtTime, R.VelocityTracker, S.ThemeMode, K.ScrollBehavior, T.SingleChildLayoutDelegate, V._AppBarTheme_Object_Diagnosticable, D._CornerId, D._Diagonal, Q._MaterialBannerThemeData_Object_Diagnosticable, D._BottomAppBarTheme_Object_Diagnosticable, M._BottomNavigationBarThemeData_Object_Diagnosticable, X._BottomSheetThemeData_Object_Diagnosticable, M._ButtonBarThemeData_Object_Diagnosticable, A._ButtonStyle_Object_Diagnosticable, A._LerpProperties3, A._LerpSides, A._LerpShapes, M.ButtonTextTheme, M._ButtonThemeData_Object_Diagnosticable, A._CardTheme_Object_Diagnosticable, F._CheckboxThemeData_Object_Diagnosticable, F._LerpProperties1, K._ChipThemeData_Object_Diagnosticable, A._ColorScheme_Object_Diagnosticable, Z._DataTableThemeData_Object_Diagnosticable, Z._LerpProperties2, Y._DialogTheme_Object_Diagnosticable, G._DividerThemeData_Object_Diagnosticable, T._ElevatedButtonThemeData_Object_Diagnosticable, E._DefaultHeroTag, E._FloatingActionButtonType, A.FloatingActionButtonLocation, A.FabFloatOffsetY, A.FabEndOffsetX, A.FloatingActionButtonAnimator, S._FloatingActionButtonThemeData_Object_Diagnosticable, M.InkFeature, R.InteractiveInkFeatureFactory, R._HighlightType, L.FloatingLabelBehavior, L._InputDecorationTheme_Object_Diagnosticable, M.MaterialType, U.DefaultMaterialLocalizations, V.MaterialState, A._MouseCursor_Object_Diagnosticable, O.MaterialStateMixin, E._NavigationRailThemeData_Object_Diagnosticable, U._OutlinedButtonThemeData_Object_Diagnosticable, K.Route, V.MaterialRouteTransitionMixin, K.PageTransitionsBuilder, K._PageTransitionsTheme_Object_Diagnosticable, R._PopupMenuThemeData_Object_Diagnosticable, B._ProgressIndicatorThemeData_Object_Diagnosticable, T._RadioThemeData_Object_Diagnosticable, T._LerpProperties0, M._ScaffoldSlot, M.ScaffoldPrelayoutGeometry, M.ScaffoldGeometry, K.Constraints, B.MultiChildLayoutDelegate, X._ScrollbarThemeData_Object_Diagnosticable, X._LerpProperties4, Q._SliderThemeData_Object_Diagnosticable, N.SnackBarClosedReason, K._SnackBarThemeData_Object_Diagnosticable, R._SwitchThemeData_Object_Diagnosticable, R._LerpProperties, U._TabBarTheme_Object_Diagnosticable, T._TextButtonThemeData_Object_Diagnosticable, R._TextSelectionThemeData_Object_Diagnosticable, R._TextTheme_Object_Diagnosticable, X.MaterialTapTargetSize, X._ThemeData_Object_Diagnosticable, X._IdentityThemeDataCacheKey, X._FifoCache, X._VisualDensity_Object_Diagnosticable, A._TimePickerThemeData_Object_Diagnosticable, S._ToggleButtonsThemeData_Object_Diagnosticable, T._TooltipThemeData_Object_Diagnosticable, T.TooltipTriggerMode, U.ScriptCategory, U._Typography_Object_Diagnosticable, K.AlignmentGeometry, G.RenderComparison, G.Axis, G.VerticalDirection, G.AxisDirection, N.PaintingBinding, K.BorderRadiusGeometry, Y.BorderStyle, Y.BorderSide, Y.ShapeBorder, F.BoxShape, U.BoxFit, U.FittedSizes, Z.ClipContext, E.ImageSizeInfo, X.ImageRepeat, X.DecorationImagePainter, V.EdgeInsetsGeometry, E.ImageCache, M.ImageConfiguration, L._ImageStreamCompleter_Object_Diagnosticable, L.ImageInfo, L.ImageStreamListener, L._ImageStream_Object_Diagnosticable, G.Accumulator, G.InlineSpanSemanticsInformation, D.ShaderWarmUp, U.TextOverflow, U.PlaceholderDimensions, U.TextWidthBasis, U.TextPainter, A._TextStyle_Object_Diagnosticable, N.Tolerance, N.RendererBinding, K.ParentData, S.RenderBoxContainerDefaultsMixin, T.DebugOverflowIndicatorMixin, F.FlexFit, F.MainAxisSize, F.MainAxisAlignment, F.CrossAxisAlignment, F._LayoutSizes, T.AnnotationEntry, T.AnnotationResult, T.LayerHandle, A._MouseState, A.__MouseTrackerUpdateDetails_Object_Diagnosticable, K.SemanticsHandle, K.PipelineOwner, K.RenderObjectWithChildMixin, K.ContainerParentDataMixin, K.ContainerRenderObjectMixin, K.RelayoutWhenSystemFontsChangeMixin, K._SemanticsFragment, K._SemanticsGeometry, E.RenderProxyBoxMixin, E.HitTestBehavior, E.RenderAnimatedOpacityMixin, E.DecorationPosition, K.RelativeRect, K.StackFit, K.Overflow, A.ViewConfiguration, N._TaskEntry, N._FrameCallbackEntry, N.SchedulerPhase, N.SchedulerBinding, V.Priority, M.Ticker, M.TickerFuture, M.TickerCanceled, N.SemanticsBinding, A.AttributedString, A._SemanticsData_Object_Diagnosticable, A._BoxEdge, A._TraversalSortNode, A.SemanticsConfiguration, A.DebugSemanticsDumpOrder, A._SemanticsSortKey_Object_Diagnosticable, E.SemanticsEvent, Q.AssetBundle, Q.BinaryMessenger, N.ServicesBinding, Q.KeyboardLockMode, Q._KeyEvent_Object_Diagnosticable, Q.HardwareKeyboard, Q.KeyDataTransitMode, Q.KeyMessage, Q.KeyEventManager, G._KeyboardKey_Object_Diagnosticable, F.MethodCall, F.PlatformException, F.MissingPluginException, U.StringCodec, U.JSONMessageCodec0, U.JSONMethodCodec0, U.StandardMessageCodec0, U.StandardMethodCodec0, A.MouseCursorManager, A.MouseCursorSession, A.BasicMessageChannel, A.MethodChannel, B.KeyboardSide, B.ModifierKey, B._RawKeyEventData_Object_Diagnosticable, B._RawKeyEvent_Object_Diagnosticable, B.RawKeyboard, B._ModifierSidePair, K.RestorationBucket, X.ApplicationSwitcherDescription, X.SystemUiOverlayStyle, V.SystemSoundType, N.SelectionChangedCause, U._Intent_Object_Diagnosticable, U._Action_Object_Diagnosticable, U._ActionDispatcher_Object_Diagnosticable, U.Notification0, L.AutomaticKeepAliveClientMixin, N.WidgetsBindingObserver, N.WidgetsBinding, O.KeyEventResult, O._Autofocus, O.FocusAttachment, O.UnfocusDisposition, O._FocusNode_Object_DiagnosticableTreeMixin, O.FocusHighlightMode, O.FocusHighlightStrategy, O._FocusManager_Object_DiagnosticableTreeMixin, U._FocusTraversalGroupInfo, U.TraversalDirection, U._FocusTraversalPolicy_Object_Diagnosticable, U._DirectionalPolicyDataEntry, U._DirectionalPolicyData, U.DirectionalFocusTraversalPolicyMixin, U.__ReadingOrderSortData_Object_Diagnosticable, U.__ReadingOrderDirectionalGroupData_Object_Diagnosticable, N._StateLifecycle, N._ElementLifecycle, N._InactiveElements, N.BuildOwner, N.DebugCreator, N.IndexedSlot, D.GestureRecognizerFactory, D.SemanticsGestureDelegate, T.HeroFlightDirection, T._HeroFlightManifest, T._HeroFlight, K.NavigatorObserver, X.IconData, L._Pending, L.DefaultWidgetsLocalizations, F.MediaQueryData, F.NavigationMode, E._ToolbarSlot, K.RoutePopDisposition, K.RouteSettings, K.RouteTransitionRecord, K.TransitionDelegate, K._RouteLifecycle, K._NavigatorObservation, K._RouteRestorationType, K._RestorationInformation, S.PageStorageBucket, K.RestorationMixin, Z.RouteInformation, T.LocalHistoryRoute, A.ScrollPositionAlignmentPolicy, F.ScrollIncrementType, F.ScrollIncrementDetails, X._SingleActivator_Object_Diagnosticable, X.__ActivatorIntentPair_Object_Diagnosticable, U.SingleTickerProviderStateMixin, U.TickerProviderStateMixin, E.SharedPreferencesStorePlatform, E.MinePageModel, E.MinePageLevelModel, E.Matrix4, E.Vector3, E.Vector4, Y.EventBus, E.WebMessageChannel]);
-    _inheritMany(H.Closure, [H.Closure2Args, H.Closure0Args, H.initializeEngine__closure, H._addUrlStrategyListener_closure, H.AssetManager__baseUrl_closure, H.ProductionCollector_closure, H.FontFallbackData_ensureFontsSupportText_closure, H._registerSymbolsAndEmoji_extractUrlFromCss, H.findMinimumFontsForCodeUnits_closure, H.findMinimumFontsForCodeUnits_closure0, H.NotoDownloader_downloadAsBytes_closure, H.NotoDownloader_downloadAsBytes__closure, H.NotoDownloader_downloadAsString_closure, H.NotoDownloader_downloadAsString__closure, H.SkiaFontCollection__getArrayBuffer_closure, H.initializeCanvasKit_closure, H.initializeCanvasKit__closure0, H._startDownloadingCanvasKit_closure, H._startDownloadingCanvasKit_closure1, H._startDownloadingCanvasKit_closure3, H.IntervalTree_IntervalTree$createFromRanges__makeBalancedTree, H.IntervalTree_IntervalTree$createFromRanges__computeHigh, H._getEffectiveFontFamilies_closure, H.ClipboardMessageHandler_setDataMethodCall_closure, H.ClipboardMessageHandler_setDataMethodCall_closure0, H.ClipboardMessageHandler_getDataMethodCall_closure, H.ClipboardMessageHandler_getDataMethodCall_closure0, H.ClipboardMessageHandler_getDataMethodCall__closure, H.DomRenderer_reset_closure, H.DomRenderer_setPreferredOrientation_closure, H.DomRenderer_setPreferredOrientation_closure0, H.sendFontChangeMessage_closure, H.sendFontChangeMessage__closure, H.Keyboard$__closure, H.Keyboard$__closure0, H.Keyboard__handleHtmlEvent_closure0, H._kLogicalKeyToModifierGetter_closure, H._kLogicalKeyToModifierGetter_closure0, H._kLogicalKeyToModifierGetter_closure1, H._kLogicalKeyToModifierGetter_closure2, H._kLogicalKeyToModifierGetter_closure3, H._kLogicalKeyToModifierGetter_closure4, H._kLogicalKeyToModifierGetter_closure5, H._kLogicalKeyToModifierGetter_closure6, H.KeyboardBinding__addEventListener_loggedHandler, H.KeyboardBinding__onKeyData_closure, H.KeyboardBinding__setup_closure, H.KeyboardBinding__setup_closure0, H.KeyboardConverter__scheduleAsyncEvent_closure, H.MultiEntriesBrowserHistory_onPopState_closure, H.SingleEntryBrowserHistory_onPopState_closure, H.SingleEntryBrowserHistory_onPopState_closure0, H.HashUrlStrategy__waitForPopState_closure, H.EnginePlatformDispatcher__zonedPlatformMessageResponseCallback_closure, H.EnginePlatformDispatcher__sendPlatformMessage_closure, H.EnginePlatformDispatcher__sendPlatformMessage_closure0, H.EnginePlatformDispatcher__sendPlatformMessage_closure1, H.EnginePlatformDispatcher__sendPlatformMessage_closure2, H.EnginePlatformDispatcher__sendPlatformMessage_closure3, H.EnginePlatformDispatcher__sendPlatformMessage_closure4, H.EnginePlatformDispatcher__addBrightnessMediaQueryListener_closure, H.EnginePlatformDispatcher_replyToPlatformMessage_closure, H._BaseAdapter_addEventListener_loggedHandler, H._WheelEventListenerMixin__addWheelEventListener_closure, H._PointerAdapter__addPointerEventListener_closure, H._PointerAdapter_setup_closure, H._PointerAdapter_setup_closure0, H._PointerAdapter_setup_closure1, H._PointerAdapter_setup_closure2, H._PointerAdapter_setup_closure3, H._TouchAdapter__addTouchEventListener_closure, H._TouchAdapter_setup_closure, H._TouchAdapter_setup_closure0, H._TouchAdapter_setup_closure1, H._TouchAdapter_setup_closure2, H._MouseAdapter__addMouseEventListener_closure, H._MouseAdapter_setup_closure, H._MouseAdapter_setup_closure0, H._MouseAdapter_setup_closure1, H._MouseAdapter_setup_closure2, H.Incrementable_closure, H.Incrementable_closure0, H.Scrollable_update_closure0, H.Scrollable_update_closure1, H._roleFactories_closure, H._roleFactories_closure0, H._roleFactories_closure1, H._roleFactories_closure2, H._roleFactories_closure3, H._roleFactories_closure4, H._roleFactories_closure5, H._roleFactories_closure6, H.DesktopSemanticsEnabler_prepareAccessibilityPlaceholder_closure, H.MobileSemanticsEnabler_prepareAccessibilityPlaceholder_closure, H.Tappable_update_closure, H.TextField__initializeForBlink_closure, H.TextField__initializeForWebkit_closure, H.TextField__initializeForWebkit_closure0, H.EngineAutofillForm_fromFrameworkMessage_closure, H.EngineAutofillForm_addInputEventListeners_addSubscriptionForKey, H.EngineAutofillForm_addInputEventListeners_addSubscriptionForKey_closure, H.DefaultTextEditingStrategy_addEventHandlers_closure, H.DefaultTextEditingStrategy_preventDefaultForMouseEvents_closure, H.DefaultTextEditingStrategy_preventDefaultForMouseEvents_closure0, H.DefaultTextEditingStrategy_preventDefaultForMouseEvents_closure1, H.IOSTextEditingStrategy_addEventHandlers_closure, H.IOSTextEditingStrategy_addEventHandlers_closure0, H.IOSTextEditingStrategy__addTapListener_closure, H.AndroidTextEditingStrategy_addEventHandlers_closure, H.FirefoxTextEditingStrategy_addEventHandlers_closure, H.FirefoxTextEditingStrategy_addEventHandlers_closure0, H.HybridTextEditing__startEditing_closure0, H.HybridTextEditing__startEditing_closure, H.CastMap_entries_closure, H.ConstantStringMap_values_closure, H.GeneralConstantMap__typeTest_closure, H.TearOffClosure, H.JsLinkedHashMap_values_closure, H.JsLinkedHashMap_containsValue_closure, H.initHooks_closure, H.initHooks_closure1, P._AsyncRun__initializeScheduleImmediate_internalCallback, P._AsyncRun__initializeScheduleImmediate_closure, P._awaitOnObject_closure, P._asyncStarHelper_closure0, P.Future_wait_closure, P._Future__chainForeignFuture_closure, P._Future__propagateToListeners_handleWhenCompleteCallback_closure, P.Stream_length_closure, P._CustomZone_bindUnaryCallback_closure, P._CustomZone_bindUnaryCallbackGuarded_closure, P._RootZone_bindUnaryCallback_closure, P._RootZone_bindUnaryCallbackGuarded_closure, P._HashMap_values_closure, P._LinkedCustomHashMap_closure, P.MapMixin_entries_closure, P._JsonMap_values_closure, P.Duration_toString_sixDigits, P.Duration_toString_twoDigits, P.Uri_parseIPv6Address_error, P._createTables_setChars, P._createTables_setRange, W.Entry_remove_closure0, W.HttpRequest_request_closure, W._EventStreamSubscription_closure, P._convertDartToNative_Value_closure, P.FilteredElementList__iterable_closure, P.FilteredElementList__iterable_closure0, P.FilteredElementList_removeRange_closure, P.JsObject__convertDataTree__convert, P._convertToJS_closure, P._convertToJS_closure0, P._wrapToDart_closure, P._wrapToDart_closure0, P._wrapToDart_closure1, P.promiseToFuture_closure, P.promiseToFuture_closure0, D._CupertinoBackGestureController_dragEnd_closure, D._CupertinoEdgeShadowDecoration_lerp_closure, D._CupertinoEdgeShadowDecoration_lerp_closure0, U.FlutterErrorDetails_summary_closure, U.FlutterErrorDetails_debugFillProperties_closure, U.FlutterError_FlutterError_closure, U.FlutterError_defaultStackFilter_closure, U.FlutterError_defaultStackFilter_closure0, U.FlutterError_toString_closure, U.debugPrintStack_closure, N.BindingBase_initServiceExtensions_closure0, N.BindingBase_initServiceExtensions_closure2, N.BindingBase_registerBoolServiceExtension_closure, N.BindingBase_registerNumericServiceExtension_closure, N.BindingBase_registerStringServiceExtension_closure, Y._PrefixedStringBuilder__wordWrapLine_noWrap, Y.TextTreeRenderer__debugRender_visitor, Y.TextTreeRenderer__debugRender_closure, R.StackFrame_fromStackString_closure, O.SynchronousFuture_whenComplete_closure, D._GestureArena_toString_closure, S._MaterialAppState__buildWidgetApp_closure, D.MaterialRectArcTween__initialize_closure, R._InkResponseState_highlightsExist_closure, M._MaterialState_build_closure, M._MaterialInteriorState_forEachTween_closure, M._MaterialInteriorState_forEachTween_closure0, M._MaterialInteriorState_forEachTween_closure1, O.MaterialStateMixin_updateMaterialState_closure, K.PageTransitionsTheme__all_closure, M.ScaffoldMessengerState_hideCurrentSnackBar_closure, M.ScaffoldState_hideCurrentSnackBar_closure, K._AnimatedThemeState_forEachTween_closure, S._TooltipState__createNewEntry_closure, S._TooltipState__createNewEntry_closure0, S._TooltipState__createNewEntry_closure1, S._TooltipState_build_closure, S._TooltipState_build_closure0, Y._CompoundBorder_scale_closure, Y._CompoundBorder_toString_closure, Z.ClipContext_clipPathAndPaint_closure, Z.ClipContext_clipRectAndPaint_closure, X.paintImage_closure, E._CachedImageBase_dispose_closure, M.ImageProvider_resolve_closure0, M.ImageProvider__createErrorHandlerAndKey_closure, M.ImageProvider__createErrorHandlerAndKey__closure, L.ImageStreamCompleter_reportError_closure, G.InlineSpan_getSpanForPosition_closure, Q.TextSpan_debugDescribeChildren_closure, N.RendererBinding__scheduleMouseTrackerUpdate_closure, S.BoxConstraints_toString_describe, A.MouseTracker__handleDeviceUpdate_closure, A.MouseTracker__handleDeviceUpdateMouseEvents_closure0, K.RenderObject_reassemble_closure, K.RenderObject__updateCompositingBits_closure, K.RenderObject_clearSemantics_closure, K.RenderObject__getSemanticsForParent_closure, Q.RenderParagraph__extractPlaceholderSpans_closure, Q.RenderParagraph_describeSemanticsConfiguration_closure, N.SchedulerBinding_endOfFrame_closure, N.SchedulerBinding__handleDrawFrame_closure, M.TickerFuture_whenCompleteOrCancel_thunk, A.SemanticsNode_getSemanticsData_closure, A.SemanticsNode__childrenInTraversalOrder_closure, A.SemanticsNode_debugDescribeChildren_closure, A._SemanticsSortGroup_sortedWithinVerticalGroup_closure, A._SemanticsSortGroup_sortedWithinKnot_search, A._SemanticsSortGroup_sortedWithinKnot_closure0, A._SemanticsSortGroup_sortedWithinKnot_closure1, A._childrenInDefaultOrder_closure, A.SemanticsOwner_sendSemanticsUpdate_closure, A.SemanticsOwner__getSemanticsActionHandlerForId_closure, A.SemanticsConfiguration__addArgumentlessAction_closure, A.SemanticsConfiguration_onMoveCursorForwardByCharacter_closure, A.SemanticsConfiguration_onMoveCursorBackwardByCharacter_closure, A.SemanticsConfiguration_onMoveCursorForwardByWord_closure, A.SemanticsConfiguration_onMoveCursorBackwardByWord_closure, A.SemanticsConfiguration_onSetSelection_closure, A.SemanticsConfiguration_onSetText_closure, N._DefaultBinaryMessenger_send_closure, A.BasicMessageChannel_setMessageHandler_closure, A.MethodChannel_setMethodCallHandler_closure, B.RawKeyboard__synchronizeModifiers_closure, K.RestorationManager_handleRestorationUpdateFromEngine_closure, K.RestorationManager_scheduleSerializationFor_closure, K.RestorationBucket__visitChildren_closure, U._getParent_closure, U.Actions__findDispatcher_closure, U.Actions_maybeFind_closure, S._WidgetsAppState__onGenerateRoute_closure, S._WidgetsAppState_build_closure, T.RichText__extractChildren_closure, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_ServicesBinding_PaintingBinding_SemanticsBinding_RendererBinding_initServiceExtensions_closure, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_ServicesBinding_PaintingBinding_SemanticsBinding_RendererBinding_initServiceExtensions_closure0, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_ServicesBinding_PaintingBinding_SemanticsBinding_RendererBinding_initServiceExtensions_closure1, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_initInstances_closure, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_initServiceExtensions_closure0, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_ServicesBinding_initInstances_closure, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_ServicesBinding_PaintingBinding_SemanticsBinding_RendererBinding_WidgetsBinding_initServiceExtensions_closure, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_ServicesBinding_PaintingBinding_SemanticsBinding_RendererBinding_WidgetsBinding_initServiceExtensions_closure0, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_ServicesBinding_PaintingBinding_SemanticsBinding_RendererBinding_WidgetsBinding_initServiceExtensions_closure1, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_ServicesBinding_PaintingBinding_SemanticsBinding_RendererBinding_WidgetsBinding_initServiceExtensions_closure2, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_ServicesBinding_PaintingBinding_SemanticsBinding_RendererBinding_WidgetsBinding_initServiceExtensions_closure4, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_ServicesBinding_PaintingBinding_SemanticsBinding_RendererBinding_WidgetsBinding_drawFrame_closure, O.FocusNode_traversalDescendants_closure, O.FocusNode_debugDescribeChildren_closure, U._getAncestor_closure, U.FocusTraversalPolicy__sortAllDescendants_visitGroups, U.FocusTraversalPolicy__sortAllDescendants_closure, U._ReadingOrderTraversalPolicy_FocusTraversalPolicy_DirectionalFocusTraversalPolicyMixin_changedScope_closure, U.DirectionalFocusTraversalPolicyMixin__sortAndFilterHorizontally_closure0, U.DirectionalFocusTraversalPolicyMixin__sortAndFilterHorizontally_closure1, U.DirectionalFocusTraversalPolicyMixin__sortAndFilterVertically_closure0, U.DirectionalFocusTraversalPolicyMixin__sortAndFilterVertically_closure1, U.DirectionalFocusTraversalPolicyMixin__popPolicyDataIfNeeded_popOrInvalidate, U.DirectionalFocusTraversalPolicyMixin_inDirection_closure, U.DirectionalFocusTraversalPolicyMixin_inDirection_closure1, U._ReadingOrderSortData_commonDirectionalityOf_closure, U._ReadingOrderSortData_directionalAncestors_getDirectionalityAncestors, U._ReadingOrderDirectionalGroupData_rect_closure, U.ReadingOrderTraversalPolicy__pickNext_inBand_closure, N._InactiveElements__unmount_closure, N.Element_reassemble_closure, N.Element_renderObject_visit, N.Element_updateSlotForChild_visit, N.Element__updateDepth_closure, N.Element_detachRenderObject_closure, N.Element_attachRenderObject_closure, N.Element_debugDescribeChildren_closure, N.ParentDataElement__applyParentData_applyParentDataToChild, N.RenderObjectElement_updateChildren_replaceWithNullIfForgotten, D.GestureDetector_build_closure0, D.GestureDetector_build_closure2, D.GestureDetector_build_closure4, D.GestureDetector_build_closure6, D.GestureDetector_build_closure8, D.GestureDetector_build_closure10, D._DefaultSemanticsGestureDelegate__getHorizontalDragUpdateHandler_closure, D._DefaultSemanticsGestureDelegate__getHorizontalDragUpdateHandler_closure0, D._DefaultSemanticsGestureDelegate__getHorizontalDragUpdateHandler_closure1, D._DefaultSemanticsGestureDelegate__getVerticalDragUpdateHandler_closure, D._DefaultSemanticsGestureDelegate__getVerticalDragUpdateHandler_closure0, D._DefaultSemanticsGestureDelegate__getVerticalDragUpdateHandler_closure1, T.Hero__allHeroesFor_visitor, T.HeroController_didStopUserGesture_isInvalidFlight, T.HeroController__maybeStartHeroTransition_closure, Y.IconTheme_merge_closure, G.ImplicitlyAnimatedWidgetState_initState_closure, G.ImplicitlyAnimatedWidgetState_didUpdateWidget_closure, G.ImplicitlyAnimatedWidgetState__constructTweens_closure, G._AnimatedDefaultTextStyleState_forEachTween_closure, G._AnimatedPhysicalModelState_forEachTween_closure, G._AnimatedPhysicalModelState_forEachTween_closure0, G._AnimatedPhysicalModelState_forEachTween_closure1, G._AnimatedPhysicalModelState_forEachTween_closure2, L._loadAll_closure, L._loadAll_closure0, L._loadAll_closure1, L._LocalizationsState_load_closure, L._LocalizationsState_load_closure0, K.Route_didPush_closure, K.Route_didAdd_closure, K.Route_isCurrent_closure, K.Route_isFirst_closure, K.Route_isActive_closure, K.Navigator_defaultGenerateInitialRoutes_closure, K._RouteEntry_dispose_closure, K._RouteEntry_isRoutePredicate_closure, K.NavigatorState_restoreState_closure, K.NavigatorState__flushHistoryUpdates_closure, K.NavigatorState__afterNavigation_closure, K.NavigatorState_maybePop_closure, K.NavigatorState_maybePop_closure1, X.OverlayEntry_remove_closure, K._RootRestorationScopeState__loadRootBucketIfNecessary_closure, T.TransitionRoute__updateSecondaryAnimation__jumpOnAnimationEnd, T.TransitionRoute__setSecondaryAnimation_closure, T._ModalScopeState_build_closure0, T._ModalScopeState_build__closure, Q.ScrollNotificationObserverState_build_closure, F.Scrollable_ensureVisible_closure, F._MineHomePageState__getLevelData_closure]);
-    _inheritMany(H.Closure2Args, [H.initializeEngine_closure, H.initializeCanvasKit__closure, H.IntervalTree_IntervalTree$createFromRanges_closure, H.IntervalTree_IntervalTree$createFromRanges_closure0, H.Surface_acquireFrame_closure, H.KeyboardConverter_handleEvent_closure2, H.KeyboardConverter_handleEvent__closure, H.StandardMessageCodec_writeValue_closure0, H.saveForms_closure, H.CastMap_forEach_closure, H.ConstantMap_map_closure, H.Primitives_functionNoSuchMethod_closure, H.JsLinkedHashMap_addAll_closure, H.initHooks_closure0, P._awaitOnObject_closure0, P._wrapJsFunctionForAsync_closure, P.Future_wait_handleError, P._Future__chainForeignFuture_closure0, P.HashMap_HashMap$from_closure, P.LinkedHashMap_LinkedHashMap$from_closure, P.MapBase_mapToString_closure, P._JsonStringifier_writeMap_closure, P.NoSuchMethodError_toString_closure, P.Uri__parseIPv4Address_error, P.Uri_parseIPv6Address_parseHex, P._Uri__makeQuery_writeParameter, P._Uri__makeQuery_closure, P._createTables_build, W.MidiInputMap_keys_closure, W.MidiInputMap_values_closure, W.MidiOutputMap_keys_closure, W.MidiOutputMap_values_closure, W.RtcStatsReport_keys_closure, W.RtcStatsReport_values_closure, W.Storage_keys_closure, W.Storage_values_closure, P._StructuredClone_walk_closure, P._StructuredClone_walk_closure0, P._AcceptStructuredClone_walk_closure, P.convertDartToNative_Dictionary_closure, P.AudioParamMap_keys_closure, P.AudioParamMap_values_closure, E.CupertinoDynamicColor_toString_toString, N.BindingBase_registerServiceExtension_closure, O.PointerRouter__dispatchEventToRoutes_closure, S.MaterialApp_createMaterialHeroController_closure, S._MaterialAppState_build_closure, Z._RenderInputPadding_hitTest_closure, M.ScaffoldState_build_closure, M._ScaffoldState_State_TickerProviderStateMixin_RestorationMixin_dispose_closure, Y._CompoundBorder_dimensions_closure, M.ImageProvider_resolve_closure, M.ImageProvider__createErrorHandlerAndKey_handleError, S.RenderBoxContainerDefaultsMixin_defaultHitTestChildren_closure, A.MouseTracker__handleDeviceUpdateMouseEvents_closure, K.PipelineOwner_flushLayout_closure, K.PipelineOwner_flushCompositingBits_closure, K.PipelineOwner_flushPaint_closure, K.PipelineOwner_flushSemantics_closure, Q.RenderParagraph_hitTestChildren_closure, Q.RenderParagraph_paint_closure, E.RenderTransform_hitTestChildren_closure, E.RenderFractionalTranslation_hitTestChildren_closure, T.RenderShiftedBox_hitTestChildren_closure, N.SchedulerBinding_handleBeginFrame_closure, A._SemanticsSortGroup_sortedWithinKnot_closure, A.SemanticsOwner_sendSemanticsUpdate_closure0, A.SemanticsOwner_sendSemanticsUpdate_closure1, N._DefaultBinaryMessenger_setMessageHandler_closure, U.StandardMessageCodec_writeValue_closure, U.DirectionalFocusTraversalPolicyMixin__sortAndFindInitial_closure, U.DirectionalFocusTraversalPolicyMixin__sortAndFilterHorizontally_closure, U.DirectionalFocusTraversalPolicyMixin__sortAndFilterVertically_closure, U.DirectionalFocusTraversalPolicyMixin_inDirection_closure0, U.DirectionalFocusTraversalPolicyMixin_inDirection_closure2, U._ReadingOrderSortData_sortWithDirectionality_closure, U._ReadingOrderDirectionalGroupData_sortWithDirectionality_closure, U.ReadingOrderTraversalPolicy__pickNext_closure, U.ReadingOrderTraversalPolicy__pickNext_inBand, N.RenderObjectElement_updateChildren_slotFor, T.Hero__allHeroesFor_inviteHero, T._HeroFlight__buildOverlay_closure, K._HistoryProperty_fromPrimitives_closure, K._NavigatorState_State_TickerProviderStateMixin_RestorationMixin_dispose_closure, X._RenderTheatre_hitTestChildren_closure, K.__RestorationScopeState_State_RestorationMixin_dispose_closure, T._ModalScopeState_build_closure, T._ModalScopeState_build__closure0, T._ModalScopeState_build___closure, X.ShortcutManager__indexShortcuts_closure, A.hashObjects_closure]);
-    _inheritMany(H.Closure0Args, [H.initializeEngine_closure0, H._addUrlStrategyListener_closure0, H.AssetManager__baseUrl_closure0, H.ProductionCollector_collect_closure, H.FontFallbackData_createNotoFontTree_closure, H.FontFallbackData_registerFallbackFont_closure, H._makeResolvedNotoFontFromCss_closure, H.FallbackFontDownloadQueue_startDownloads_closure, H.SkiaFontCollection_ensureFontsLoaded_closure, H.SkiaFontCollection_ensureFontsLoaded_closure0, H._startDownloadingCanvasKit_closure0, H._startDownloadingCanvasKit_closure2, H.Frame_raster_closure, H.Frame_raster_closure0, H.CkTextStyle_skTextStyle_closure, H.Keyboard$__closure1, H.Keyboard__handleHtmlEvent_closure, H.KeyboardConverter__scheduleAsyncEvent_closure0, H.KeyboardConverter__startGuardingKey_closure, H.KeyboardConverter__startGuardingKey_closure0, H.KeyboardConverter_handleEvent_closure, H.KeyboardConverter_handleEvent_closure0, H.KeyboardConverter_handleEvent_closure1, H.HashUrlStrategy_addPopStateListener_closure, H.EnginePlatformDispatcher_invokeOnKeyData_closure, H.EnginePlatformDispatcher__addBrightnessMediaQueryListener_closure0, H.invoke2_closure, H.invoke3_closure, H.PlatformViewManager_renderContent_closure, H._PointerAdapter__ensureSanitizer_closure, H.PointerDataConverter__ensureStateForPointer_closure, H.AccessibilityAnnouncements$__closure, H.AccessibilityAnnouncements_handleMessage_closure, H.Scrollable_update_closure, H.EngineSemanticsOwner$__closure, H.EngineSemanticsOwner__now_closure, H.EngineSemanticsOwner__getGestureModeClock_closure, H.MobileSemanticsEnabler_tryEnableSemantics_closure, H.TextField_update_closure, H.IOSTextEditingStrategy__schedulePlacement_closure, H.FirefoxTextEditingStrategy__postponeFocus_closure, H.TextEditingChannel_handleTextInput_closure, H.WebExperiments$__closure, H.EngineFlutterWindow_handleNavigationMessage_closure, H.CastMap_putIfAbsent_closure, H.nullFuture_closure, H.Primitives_initTicker_closure, P._AsyncRun__scheduleImmediateJsOverride_internalCallback, P._AsyncRun__scheduleImmediateWithSetImmediate_internalCallback, P._TimerImpl_internalCallback, P._TimerImpl$periodic_closure, P._asyncStarHelper_closure, P._AsyncStarStreamController__resumeBody, P._AsyncStarStreamController__resumeBody_closure, P._AsyncStarStreamController_closure0, P._AsyncStarStreamController_closure1, P._AsyncStarStreamController_closure, P._AsyncStarStreamController__closure, P.Future_Future_closure, P.Future_Future$delayed_closure, P._Future__addListener_closure, P._Future__prependListeners_closure, P._Future__chainForeignFuture_closure1, P._Future__asyncCompleteWithValue_closure, P._Future__chainFuture_closure, P._Future__asyncCompleteError_closure, P._Future__propagateToListeners_handleWhenCompleteCallback, P._Future__propagateToListeners_handleValueCallback, P._Future__propagateToListeners_handleError, P.Stream_Stream$fromIterable_closure, P.Stream_length_closure0, P._StreamController__subscribe_closure, P._StreamController__recordCancel_complete, P._AddStreamState_cancel_closure, P._BufferingStreamSubscription__sendError_sendError, P._BufferingStreamSubscription__sendDone_sendDone, P._PendingEvents_schedule_closure, P._CustomZone_bindCallback_closure, P._CustomZone_bindCallbackGuarded_closure, P._rootHandleError_closure, P._RootZone_bindCallback_closure, P._RootZone_bindCallbackGuarded_closure, P.Utf8Decoder__decoder_closure, P.Utf8Decoder__decoderNonfatal_closure, W.Entry_remove_closure, P.ChannelBuffers_push_closure, P.ChannelBuffers_setListener_closure, P.webOnlyInitializePlatform_closure, D.CupertinoRouteTransitionMixin_buildPageTransitions_closure, D.CupertinoRouteTransitionMixin_buildPageTransitions_closure0, U._testPlatform_closure, U._browserPlatform_closure, U.FlutterErrorDetails_summary_formatException, U.FlutterErrorDetails_summary_closure0, N.BindingBase_initServiceExtensions_closure, N.BindingBase_initServiceExtensions_closure1, N.BindingBase_lockEvents_closure, N.BindingBase_registerServiceExtension__closure, B.ChangeNotifier_notifyListeners_closure, D.GestureArenaManager_add_closure, D.GestureArenaManager__tryToResolveArena_closure, N.GestureBinding_dispatchEvent_closure, N.GestureBinding_dispatchEvent_closure0, O.DragGestureRecognizer__checkDown_closure, O.DragGestureRecognizer__checkStart_closure, O.DragGestureRecognizer__checkUpdate_closure, O.DragGestureRecognizer__checkEnd_closure, O.DragGestureRecognizer__checkEnd_closure0, O.DragGestureRecognizer__checkEnd_closure1, O.PointerRouter_addRoute_closure, S.PrimaryPointerGestureRecognizer_addAllowedPointer_closure, N.TapGestureRecognizer_handleTapDown_closure, E._AppBarState__handleScrollNotification_closure, D.MaterialPointArcTween__initialize_sweepAngle, R.BackButton_build_closure, U._getClipCallback_closure, R._InkResponseState_updateHighlight_handleInkRemoval, R._InkResponseState__createInkFeature_onRemoved, R._InkResponseState__handleFocusHighlightModeChange_closure, O.MaterialStateMixin_addMaterialState_closure, O.MaterialStateMixin_removeMaterialState_closure, M._FloatingActionButtonTransitionState__handlePreviousAnimationStatusChanged_closure, M.ScaffoldState__updateSnackBar_closure, M.ScaffoldState__updateMaterialBanner_closure, X.ThemeData_localize_closure, S._TooltipState__handleMouseTrackerChange_closure, M.ImageProvider__createErrorHandlerAndKey_closure0, S.RenderBox_getDryLayout_closure, S.RenderBox_getDistanceToActualBaseline_closure, A.MouseTracker_updateWithEvent_closure, A.MouseTracker_updateWithEvent__closure, A.MouseTracker_updateAllDevices_closure, K.PaintingContext_pushClipRect_closure, K.PaintingContext_pushClipPath_closure, K.RenderObject__debugReportException_closure, N._TaskEntry_run_closure, N.SchedulerBinding_scheduleWarmUpFrame_closure, N.SchedulerBinding_scheduleWarmUpFrame_closure0, N.SchedulerBinding_scheduleWarmUpFrame_closure1, N.ServicesBinding__addLicenses_closure, N.ServicesBinding__addLicenses_closure0, Q.HardwareKeyboard__dispatchKeyEvent_closure, B.RawKeyEvent_RawKeyEvent$fromMessage__dataFromWeb, K.RestorationBucket__rawChildren_closure, K.RestorationBucket__rawValues_closure, K.RestorationBucket__addChildData_closure, X.SystemChrome_setSystemUIOverlayStyle_closure, U._ActionsState__handleActionChanged_closure, S._WidgetsAppState_didChangeLocales_closure, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_ServicesBinding_PaintingBinding_SemanticsBinding_RendererBinding_dispatchEvent_closure, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_initServiceExtensions_closure, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_ServicesBinding_PaintingBinding_SemanticsBinding_RendererBinding_WidgetsBinding_initServiceExtensions_closure3, N.WidgetsBinding_scheduleAttachRootWidget_closure, N.RenderObjectToWidgetAdapter_attachToRenderTree_closure, N.RenderObjectToWidgetAdapter_attachToRenderTree_closure0, L._FocusState__handleFocusChanged_closure, L._FocusState__handleFocusChanged_closure0, L._FocusState__handleFocusChanged_closure1, N.BuildOwner_buildScope_closure, N.BuildOwner_finalizeTree_closure, N.ComponentElement_performRebuild_closure, N.ComponentElement_performRebuild_closure0, D.GestureDetector_build_closure, D.GestureDetector_build_closure1, D.GestureDetector_build_closure3, D.GestureDetector_build_closure5, D.GestureDetector_build_closure7, D.GestureDetector_build_closure9, D._DefaultSemanticsGestureDelegate__getTapHandler_closure, D._DefaultSemanticsGestureDelegate__getLongPressHandler_closure, T._HeroState_startFlight_closure, T._HeroState_endFlight_closure, T._HeroFlight__handleAnimationUpdate_delayedPerformAnimationUpdate, G.AnimatedWidgetBaseState__handleAnimationChanged_closure, L._LocalizationsState_load__closure, F._MediaQueryFromWindowState_didChangeMetrics_closure, F._MediaQueryFromWindowState_didChangePlatformBrightness_closure, X.ModalBarrier_build_handleDismiss, X.ModalBarrier_build_closure, K.Route_isCurrent_closure0, K.Route_isFirst_closure0, K.Route_isActive_closure0, K._RouteEntry_handlePush_closure, K._RouteEntry_dispose_closure0, K.NavigatorState__flushHistoryUpdates_closure0, K.NavigatorState_maybePop_closure0, K.NavigatorState_maybePop_closure2, K.NavigatorState__cancelActivePointers_closure, X._OverlayEntryWidgetState__markNeedsBuild_closure, X.OverlayState_insert_closure, X.OverlayState_insertAll_closure, X.OverlayState_rearrange_closure, X.OverlayState__markDirty_closure, X.OverlayState__didChangeEntryOpacity_closure, K._RootRestorationScopeState__loadRootBucketIfNecessary__closure, K.RestorationMixin_registerForRestoration_listener, T.TransitionRoute__updateSecondaryAnimation_closure, T.TransitionRoute__updateSecondaryAnimation_closure0, T._ModalScopeState__forceRebuildPage_closure, T.ModalRoute_offstage_closure, T.ModalRoute_changedInternalState_closure, Q.ScrollNotificationObserverState__notifyListeners_closure, X.ShortcutManager__indexShortcuts__closure, K._AnimatedState__handleChange_closure, F._MineHomePageState_initBannerData_closure, F._MineHomePageState__getLevelData__closure, F._MineHomePageState__getLevelData_closure0]);
+      _inherit = hunkHelpers.inherit,
+      _inheritMany = hunkHelpers.inheritMany;
+    _inherit(P.Object, null);
+    _inheritMany(P.Object, [H.Closure, H.AlarmClock, H.AssetManager, H.AssetManagerException, H.BrowserEngine, H.OperatingSystem, H.CkCanvas, H.CkPictureSnapshot, H.CkPaintCommand, J.Interceptor, H.ProductionCollector, H.SkiaObjectCollectionError, H.CanvasKitCanvas, H.HtmlViewEmbedder, H.MutatorType, H.Mutator, P.Iterable, H.FontFallbackData, H.NotoFont, H.CodeunitRange, H._ResolvedNotoFont, H._ResolvedNotoSubset, H.FallbackFontDownloadQueue, H.NotoDownloader, H.SkiaFontCollection, H.RegisteredFont, H.IntervalTree, H.IntervalTreeNode, H.Layer, H.PrerollContext, H.PaintContext, H.LayerScene, H.LayerSceneBuilder, H.LayerTree, H.Frame, H.CompositorContext, H.SkiaObject, H.CkNWayCanvas, H.CkPictureRecorder, H.Rasterizer, H.SkiaObjectCache, H.SynchronousSkiaObjectCache, H.SurfaceFrame, H.Surface, H.CkSurface, H.SurfaceFactory, H.CkParagraphStyle, H.CkTextStyle, H.CkParagraphBuilder, H._ParagraphCommand, H._ParagraphCommandType, P.Error, H.ClipboardMessageHandler, H.ClipboardAPICopyStrategy, H.ClipboardAPIPasteStrategy, H.ExecCommandCopyStrategy, H.ExecCommandPasteStrategy, H.DomRenderer, H.ShadowDomHostNode, H.ElementHostNode, H.Keyboard, H.KeyboardBinding, H.FlutterHtmlKeyboardEvent, H.KeyboardConverter, H.MouseCursor, H.BrowserHistory, H.UrlStrategy, H.PlatformLocation, P.PlatformDispatcher, H.PlatformViewManager, H.PlatformViewMessageHandler, H.PointerBinding, H.PointerSupportDetector, H._BaseAdapter, H._WheelEventListenerMixin, H._SanitizedDetails, H._ButtonSanitizer, H._PointerState, H.PointerDataConverter, H.Profiler, H.AccessibilityAnnouncements, H._CheckableKind, H.RoleManager, H.SemanticsUpdate, H.SemanticsNodeUpdate, H.Role, H.SemanticsObject, H.AccessibilityMode, H.GestureMode, H.EngineSemanticsOwner, H.EnabledState, H.SemanticsHelper, H.SemanticsEnabler, H.DefaultTextEditingStrategy, P._ListBase_Object_ListMixin, H.MethodCall0, H.JSONMessageCodec, H.JSONMethodCodec, H.StandardMessageCodec, H.StandardMethodCodec, H.WriteBuffer0, H.ReadBuffer0, H.LineCharProperty, H.RulerHost, H.UnicodeRange, H.UnicodePropertyLookup, H.BrowserAutofillHints, H.EngineInputType, H.TextCapitalization, H.TextCapitalizationConfig, H.EngineAutofillForm, H.AutofillInfo, H.EditingState, H.InputConfiguration, H.TextInputCommand, H.TextEditingChannel, H.HybridTextEditing, H.EditableTextStyle, H.EditableTextGeometry, H.TransformKind, H.Matrix40, H.WebExperiments, P.FlutterView, H.WindowPadding, H.JS_CONST, J.ArrayIterator, H.CastIterator, P.MapMixin, H.ListIterator, P.Iterator, H.ExpandIterator, H.EmptyIterator, H.FollowedByIterator, H.WhereTypeIterator, H.FixedLengthListMixin, H.UnmodifiableListMixin, H.Symbol, P.MapView, H.ConstantMap, H.JSInvocationMirror, H.TypeErrorDecoder, H.NullThrownFromJavaScriptException, H.ExceptionAndStackTrace, H._StackTrace, H._Required, H.LinkedHashMapCell, H.LinkedHashMapKeyIterator, H.JSSyntaxRegExp, H._MatchImplementation, H.StringMatch, H._StringAllMatchesIterator, H._Cell, H.Rti, H._FunctionParameters, H._Type, P._TimerImpl, P._AsyncAwaitCompleter, P._AsyncStarStreamController, P._IterationMarker, P._SyncStarIterator, P.AsyncError, P._Completer, P._FutureListener, P._Future, P._AsyncCallbackEntry, P.Stream, P.StreamSubscription, P.StreamTransformerBase, P._StreamController, P._AsyncStreamControllerDispatch, P._BufferingStreamSubscription, P._AddStreamState, P._PendingEvents, P._DelayedEvent, P._DelayedDone, P._StreamIterator, P._Zone, P._HashMapKeyIterator, P.__SetBase_Object_SetMixin, P._HashSetIterator, P._LinkedHashSetCell, P._LinkedHashSetIterator, P._LinkedListIterator, P.LinkedListEntry, P.ListMixin, P._MapBaseValueIterator, P._UnmodifiableMapMixin, P._DoubleLink, P._DoubleLinkedQueueIterator, P._ListQueueIterator, P.SetMixin, P._UnmodifiableSetMixin, P.Codec, P._JsonStringifier, P._Utf8Encoder, P._Utf8Decoder, P.Comparable, P.DateTime, P.Duration, P.OutOfMemoryError, P.StackOverflowError, P._Exception, P.FormatException, P.Expando, P.MapEntry, P.Null, P._StringStackTrace, P.Stopwatch, P.RuneIterator, P.StringBuffer, P._Uri, P.UriData, P._SimpleUri, P._FakeUserTag, P.ServiceExtensionResponse, W.CssStyleDeclarationBase, W.EventStreamProvider, W.ImmutableListMixin, W.FixedSizeListIterator, W.Console, W._DOMWindowCrossFrame, P._StructuredClone, P._AcceptStructuredClone, P.JsObject, P.NullRejectionException, P._JSRandom, P.Point, P.Endian, P.ClipOp, P.PathFillType, P._ChannelCallbackRecord, P._StoredMessage, P._Channel, P.ChannelBuffers, P.OffsetBase, P.Rect, P.Radius, P.RRect, P._HashEnd, P.KeyEventType, P.KeyData, P.Color, P.StrokeCap, P.StrokeJoin, P.PaintingStyle, P.BlendMode, P.Clip, P.BlurStyle, P.MaskFilter, P.FilterQuality, P.Shadow, P.PlatformConfiguration, P.ViewConfiguration0, P.FrameTiming, P.AppLifecycleState, P.Locale, P.PointerChange, P.PointerDeviceKind, P.PointerSignalKind, P.PointerData, P.PointerDataPacket, P.SemanticsAction, P.SemanticsFlag, P.SemanticsUpdateBuilder, P.PlaceholderAlignment, P.FontWeight, P.TextAlign, P.TextBaseline, P.TextDecoration, P.TextDecorationStyle, P.TextLeadingDistribution, P.TextDirection, P.TextBox, P.TextAffinity, P.TextPosition, P.TextRange, P.ParagraphConstraints, P.BoxHeightStyle, P.BoxWidthStyle, P.TileMode, P.AccessibilityFeatures, P.Brightness, P.CallbackHandle, P.GestureSettings, Y.HeapPriorityQueue, X.AnimationStatus, B.Listenable, G._AnimationDirection, G.AnimationBehavior, T.Simulation, S.AnimationWithParentMixin, S._TrainHoppingMode, Z.ParametricCurve, S.AnimationLazyListenerMixin, S.AnimationEagerListenerMixin, S.AnimationLocalListenersMixin, S.AnimationLocalStatusListenersMixin, R.Animatable, T._IconThemeData_Object_Diagnosticable, K.CupertinoUserInterfaceLevelData, L.LocalizationsDelegate, L.DefaultCupertinoLocalizations, Y._DiagnosticableTree_Object_Diagnosticable, N._State_Object_Diagnosticable, D._CupertinoBackGestureController, Z._Decoration_Object_Diagnosticable, Z.BoxPainter, K.NoDefaultCupertinoThemeData, K._CupertinoThemeDefaults, K._CupertinoTextThemeDefaults, Y.DiagnosticsNode, U._FlutterErrorDetails_Object_Diagnosticable, N.BindingBase, N.DebugReassembleConfig, B.ChangeNotifier, Y.DiagnosticLevel, Y.DiagnosticsTreeStyle, Y.TextTreeConfiguration, Y._WordWrapParseMode, Y._PrefixedStringBuilder, Y._NoDefaultValue, Y.TextTreeRenderer, Y.DiagnosticPropertiesBuilder, Y.Diagnosticable, Y.DiagnosticableTreeMixin, D.Key, D._TypeLiteral, F.LicenseEntry, B.AbstractNode, T.TargetPlatform, G.WriteBuffer, G.ReadBuffer, R.StackFrame, O.SynchronousFuture, D.GestureDisposition, D.GestureArenaMember, D.GestureArenaEntry, D._GestureArena, D.GestureArenaManager, N._Resampler, N.GestureBinding, O.DragDownDetails, O.DragStartDetails, O.DragUpdateDetails, O.DragEndDetails, F._PointerEvent_Object_Diagnosticable, F._PointerEventDescription, F._AbstractPointerEvent, F._CopyPointerAddedEvent, F._CopyPointerRemovedEvent, F._CopyPointerHoverEvent, F._CopyPointerEnterEvent, F._CopyPointerExitEvent, F._CopyPointerDownEvent, F._CopyPointerMoveEvent, F._CopyPointerUpEvent, F._CopyPointerScrollEvent, F._CopyPointerCancelEvent, O.HitTestEntry, O._TransformPart, O.HitTestResult, B._Vector, B._Matrix, B.PolynomialFit, B.LeastSquaresSolver, O._DragState, F._CountdownZoned, F._TapTracker, O.PointerRouter, G.PointerSignalResolver, S.DragStartBehavior, S.GestureRecognizerState, S.OffsetPair, N.TapDownDetails, R.Velocity, R.VelocityEstimate, R._PointAtTime, R.VelocityTracker, S.ThemeMode, K.ScrollBehavior, T.SingleChildLayoutDelegate, V._AppBarTheme_Object_Diagnosticable, D._CornerId, D._Diagonal, Q._MaterialBannerThemeData_Object_Diagnosticable, D._BottomAppBarTheme_Object_Diagnosticable, M._BottomNavigationBarThemeData_Object_Diagnosticable, X._BottomSheetThemeData_Object_Diagnosticable, M._ButtonBarThemeData_Object_Diagnosticable, A._ButtonStyle_Object_Diagnosticable, A._LerpProperties3, A._LerpSides, A._LerpShapes, M.ButtonTextTheme, M._ButtonThemeData_Object_Diagnosticable, A._CardTheme_Object_Diagnosticable, F._CheckboxThemeData_Object_Diagnosticable, F._LerpProperties1, K._ChipThemeData_Object_Diagnosticable, A._ColorScheme_Object_Diagnosticable, Z._DataTableThemeData_Object_Diagnosticable, Z._LerpProperties2, Y._DialogTheme_Object_Diagnosticable, G._DividerThemeData_Object_Diagnosticable, T._ElevatedButtonThemeData_Object_Diagnosticable, E._DefaultHeroTag, E._FloatingActionButtonType, A.FloatingActionButtonLocation, A.FabFloatOffsetY, A.FabEndOffsetX, A.FloatingActionButtonAnimator, S._FloatingActionButtonThemeData_Object_Diagnosticable, M.InkFeature, R.InteractiveInkFeatureFactory, R._HighlightType, L.FloatingLabelBehavior, L._InputDecorationTheme_Object_Diagnosticable, M.MaterialType, U.DefaultMaterialLocalizations, V.MaterialState, A._MouseCursor_Object_Diagnosticable, O.MaterialStateMixin, E._NavigationRailThemeData_Object_Diagnosticable, U._OutlinedButtonThemeData_Object_Diagnosticable, K.Route, V.MaterialRouteTransitionMixin, K.PageTransitionsBuilder, K._PageTransitionsTheme_Object_Diagnosticable, R._PopupMenuThemeData_Object_Diagnosticable, B._ProgressIndicatorThemeData_Object_Diagnosticable, T._RadioThemeData_Object_Diagnosticable, T._LerpProperties0, M._ScaffoldSlot, M.ScaffoldPrelayoutGeometry, M.ScaffoldGeometry, K.Constraints, B.MultiChildLayoutDelegate, X._ScrollbarThemeData_Object_Diagnosticable, X._LerpProperties4, Q._SliderThemeData_Object_Diagnosticable, N.SnackBarClosedReason, K._SnackBarThemeData_Object_Diagnosticable, R._SwitchThemeData_Object_Diagnosticable, R._LerpProperties, U._TabBarTheme_Object_Diagnosticable, T._TextButtonThemeData_Object_Diagnosticable, R._TextSelectionThemeData_Object_Diagnosticable, R._TextTheme_Object_Diagnosticable, X.MaterialTapTargetSize, X._ThemeData_Object_Diagnosticable, X._IdentityThemeDataCacheKey, X._FifoCache, X._VisualDensity_Object_Diagnosticable, A._TimePickerThemeData_Object_Diagnosticable, S._ToggleButtonsThemeData_Object_Diagnosticable, T._TooltipThemeData_Object_Diagnosticable, T.TooltipTriggerMode, U.ScriptCategory, U._Typography_Object_Diagnosticable, K.AlignmentGeometry, G.RenderComparison, G.Axis, G.VerticalDirection, G.AxisDirection, N.PaintingBinding, K.BorderRadiusGeometry, Y.BorderStyle, Y.BorderSide, Y.ShapeBorder, F.BoxShape, Z.ClipContext, V.EdgeInsetsGeometry, E.ImageCache, M.ImageConfiguration, G.Accumulator, G.InlineSpanSemanticsInformation, D.ShaderWarmUp, U.TextOverflow, U.PlaceholderDimensions, U.TextWidthBasis, U.TextPainter, A._TextStyle_Object_Diagnosticable, N.Tolerance, N.RendererBinding, K.ParentData, S.RenderBoxContainerDefaultsMixin, T.DebugOverflowIndicatorMixin, F.FlexFit, F.MainAxisSize, F.MainAxisAlignment, F.CrossAxisAlignment, F._LayoutSizes, T.AnnotationEntry, T.AnnotationResult, T.LayerHandle, A._MouseState, A.__MouseTrackerUpdateDetails_Object_Diagnosticable, K.SemanticsHandle, K.PipelineOwner, K.RenderObjectWithChildMixin, K.ContainerParentDataMixin, K.ContainerRenderObjectMixin, K.RelayoutWhenSystemFontsChangeMixin, K._SemanticsFragment, K._SemanticsGeometry, E.RenderProxyBoxMixin, E.HitTestBehavior, E.RenderAnimatedOpacityMixin, E.DecorationPosition, K.RelativeRect, K.StackFit, K.Overflow, A.ViewConfiguration, N._TaskEntry, N._FrameCallbackEntry, N.SchedulerPhase, N.SchedulerBinding, V.Priority, M.Ticker, M.TickerFuture, M.TickerCanceled, N.SemanticsBinding, A.AttributedString, A._SemanticsData_Object_Diagnosticable, A._BoxEdge, A._TraversalSortNode, A.SemanticsConfiguration, A.DebugSemanticsDumpOrder, A._SemanticsSortKey_Object_Diagnosticable, E.SemanticsEvent, Q.AssetBundle, Q.BinaryMessenger, N.ServicesBinding, Q.KeyboardLockMode, Q._KeyEvent_Object_Diagnosticable, Q.HardwareKeyboard, Q.KeyDataTransitMode, Q.KeyMessage, Q.KeyEventManager, G._KeyboardKey_Object_Diagnosticable, F.MethodCall, F.PlatformException, F.MissingPluginException, U.StringCodec, U.JSONMessageCodec0, U.JSONMethodCodec0, U.StandardMessageCodec0, U.StandardMethodCodec0, A.MouseCursorManager, A.MouseCursorSession, A.BasicMessageChannel, A.MethodChannel, B.KeyboardSide, B.ModifierKey, B._RawKeyEventData_Object_Diagnosticable, B._RawKeyEvent_Object_Diagnosticable, B.RawKeyboard, B._ModifierSidePair, K.RestorationBucket, X.ApplicationSwitcherDescription, X.SystemUiOverlayStyle, V.SystemSoundType, N.SelectionChangedCause, U._Intent_Object_Diagnosticable, U._Action_Object_Diagnosticable, U._ActionDispatcher_Object_Diagnosticable, U.Notification0, L.AutomaticKeepAliveClientMixin, N.WidgetsBindingObserver, N.WidgetsBinding, O.KeyEventResult, O._Autofocus, O.FocusAttachment, O.UnfocusDisposition, O._FocusNode_Object_DiagnosticableTreeMixin, O.FocusHighlightMode, O.FocusHighlightStrategy, O._FocusManager_Object_DiagnosticableTreeMixin, U._FocusTraversalGroupInfo, U.TraversalDirection, U._FocusTraversalPolicy_Object_Diagnosticable, U._DirectionalPolicyDataEntry, U._DirectionalPolicyData, U.DirectionalFocusTraversalPolicyMixin, U.__ReadingOrderSortData_Object_Diagnosticable, U.__ReadingOrderDirectionalGroupData_Object_Diagnosticable, N._StateLifecycle, N._ElementLifecycle, N._InactiveElements, N.BuildOwner, N.DebugCreator, N.IndexedSlot, D.GestureRecognizerFactory, D.SemanticsGestureDelegate, T.HeroFlightDirection, T._HeroFlightManifest, T._HeroFlight, K.NavigatorObserver, X.IconData, L._Pending, L.DefaultWidgetsLocalizations, F.MediaQueryData, F.NavigationMode, E._ToolbarSlot, K.RoutePopDisposition, K.RouteSettings, K.RouteTransitionRecord, K.TransitionDelegate, K._RouteLifecycle, K._NavigatorObservation, K._RouteRestorationType, K._RestorationInformation, S.PageStorageBucket, K.RestorationMixin, Z.RouteInformation, T.LocalHistoryRoute, A.ScrollPositionAlignmentPolicy, F.ScrollIncrementType, F.ScrollIncrementDetails, X._SingleActivator_Object_Diagnosticable, X.__ActivatorIntentPair_Object_Diagnosticable, U.SingleTickerProviderStateMixin, U.TickerProviderStateMixin, E.SharedPreferencesStorePlatform, E.Matrix4, E.Vector3, E.Vector4, E.WebMessageChannel]);
+    _inheritMany(H.Closure, [H.Closure2Args, H.Closure0Args, H.initializeEngine__closure, H._addUrlStrategyListener_closure, H.AssetManager__baseUrl_closure, H.ProductionCollector_closure, H.FontFallbackData_ensureFontsSupportText_closure, H._registerSymbolsAndEmoji_extractUrlFromCss, H.findMinimumFontsForCodeUnits_closure, H.findMinimumFontsForCodeUnits_closure0, H.NotoDownloader_downloadAsBytes_closure, H.NotoDownloader_downloadAsBytes__closure, H.NotoDownloader_downloadAsString_closure, H.NotoDownloader_downloadAsString__closure, H.SkiaFontCollection__getArrayBuffer_closure, H.initializeCanvasKit_closure, H.initializeCanvasKit__closure0, H._startDownloadingCanvasKit_closure, H._startDownloadingCanvasKit_closure1, H._startDownloadingCanvasKit_closure3, H.IntervalTree_IntervalTree$createFromRanges__makeBalancedTree, H.IntervalTree_IntervalTree$createFromRanges__computeHigh, H._getEffectiveFontFamilies_closure, H.ClipboardMessageHandler_setDataMethodCall_closure, H.ClipboardMessageHandler_setDataMethodCall_closure0, H.ClipboardMessageHandler_getDataMethodCall_closure, H.ClipboardMessageHandler_getDataMethodCall_closure0, H.ClipboardMessageHandler_getDataMethodCall__closure, H.DomRenderer_reset_closure, H.DomRenderer_setPreferredOrientation_closure, H.DomRenderer_setPreferredOrientation_closure0, H.sendFontChangeMessage_closure, H.sendFontChangeMessage__closure, H.Keyboard$__closure, H.Keyboard$__closure0, H.Keyboard__handleHtmlEvent_closure0, H._kLogicalKeyToModifierGetter_closure, H._kLogicalKeyToModifierGetter_closure0, H._kLogicalKeyToModifierGetter_closure1, H._kLogicalKeyToModifierGetter_closure2, H._kLogicalKeyToModifierGetter_closure3, H._kLogicalKeyToModifierGetter_closure4, H._kLogicalKeyToModifierGetter_closure5, H._kLogicalKeyToModifierGetter_closure6, H.KeyboardBinding__addEventListener_loggedHandler, H.KeyboardBinding__onKeyData_closure, H.KeyboardBinding__setup_closure, H.KeyboardBinding__setup_closure0, H.KeyboardConverter__scheduleAsyncEvent_closure, H.MultiEntriesBrowserHistory_onPopState_closure, H.SingleEntryBrowserHistory_onPopState_closure, H.SingleEntryBrowserHistory_onPopState_closure0, H.HashUrlStrategy__waitForPopState_closure, H.EnginePlatformDispatcher__zonedPlatformMessageResponseCallback_closure, H.EnginePlatformDispatcher__sendPlatformMessage_closure, H.EnginePlatformDispatcher__sendPlatformMessage_closure0, H.EnginePlatformDispatcher__sendPlatformMessage_closure1, H.EnginePlatformDispatcher__sendPlatformMessage_closure2, H.EnginePlatformDispatcher__sendPlatformMessage_closure3, H.EnginePlatformDispatcher__sendPlatformMessage_closure4, H.EnginePlatformDispatcher__addBrightnessMediaQueryListener_closure, H.EnginePlatformDispatcher_replyToPlatformMessage_closure, H._BaseAdapter_addEventListener_loggedHandler, H._WheelEventListenerMixin__addWheelEventListener_closure, H._PointerAdapter__addPointerEventListener_closure, H._PointerAdapter_setup_closure, H._PointerAdapter_setup_closure0, H._PointerAdapter_setup_closure1, H._PointerAdapter_setup_closure2, H._PointerAdapter_setup_closure3, H._TouchAdapter__addTouchEventListener_closure, H._TouchAdapter_setup_closure, H._TouchAdapter_setup_closure0, H._TouchAdapter_setup_closure1, H._TouchAdapter_setup_closure2, H._MouseAdapter__addMouseEventListener_closure, H._MouseAdapter_setup_closure, H._MouseAdapter_setup_closure0, H._MouseAdapter_setup_closure1, H._MouseAdapter_setup_closure2, H.Incrementable_closure, H.Incrementable_closure0, H.Scrollable_update_closure0, H.Scrollable_update_closure1, H._roleFactories_closure, H._roleFactories_closure0, H._roleFactories_closure1, H._roleFactories_closure2, H._roleFactories_closure3, H._roleFactories_closure4, H._roleFactories_closure5, H._roleFactories_closure6, H.DesktopSemanticsEnabler_prepareAccessibilityPlaceholder_closure, H.MobileSemanticsEnabler_prepareAccessibilityPlaceholder_closure, H.Tappable_update_closure, H.TextField__initializeForBlink_closure, H.TextField__initializeForWebkit_closure, H.TextField__initializeForWebkit_closure0, H.EngineAutofillForm_fromFrameworkMessage_closure, H.EngineAutofillForm_addInputEventListeners_addSubscriptionForKey, H.EngineAutofillForm_addInputEventListeners_addSubscriptionForKey_closure, H.DefaultTextEditingStrategy_addEventHandlers_closure, H.DefaultTextEditingStrategy_preventDefaultForMouseEvents_closure, H.DefaultTextEditingStrategy_preventDefaultForMouseEvents_closure0, H.DefaultTextEditingStrategy_preventDefaultForMouseEvents_closure1, H.IOSTextEditingStrategy_addEventHandlers_closure, H.IOSTextEditingStrategy_addEventHandlers_closure0, H.IOSTextEditingStrategy__addTapListener_closure, H.AndroidTextEditingStrategy_addEventHandlers_closure, H.FirefoxTextEditingStrategy_addEventHandlers_closure, H.FirefoxTextEditingStrategy_addEventHandlers_closure0, H.HybridTextEditing__startEditing_closure0, H.HybridTextEditing__startEditing_closure, H.CastMap_entries_closure, H.ConstantStringMap_values_closure, H.GeneralConstantMap__typeTest_closure, H.TearOffClosure, H.JsLinkedHashMap_values_closure, H.JsLinkedHashMap_containsValue_closure, H.initHooks_closure, H.initHooks_closure1, P._AsyncRun__initializeScheduleImmediate_internalCallback, P._AsyncRun__initializeScheduleImmediate_closure, P._awaitOnObject_closure, P._asyncStarHelper_closure0, P.Future_wait_closure, P._Future__chainForeignFuture_closure, P._Future__propagateToListeners_handleWhenCompleteCallback_closure, P.Stream_length_closure, P._RootZone_bindUnaryCallbackGuarded_closure, P._HashMap_values_closure, P._LinkedCustomHashMap_closure, P.MapMixin_entries_closure, P._JsonMap_values_closure, P.Duration_toString_sixDigits, P.Duration_toString_twoDigits, P.Uri_parseIPv6Address_error, P._createTables_setChars, P._createTables_setRange, W.Entry_remove_closure0, W.HttpRequest_request_closure, W._EventStreamSubscription_closure, P._convertDartToNative_Value_closure, P.FilteredElementList__iterable_closure, P.FilteredElementList__iterable_closure0, P.FilteredElementList_removeRange_closure, P.JsObject__convertDataTree__convert, P._convertToJS_closure, P._convertToJS_closure0, P._wrapToDart_closure, P._wrapToDart_closure0, P._wrapToDart_closure1, P.promiseToFuture_closure, P.promiseToFuture_closure0, D._CupertinoBackGestureController_dragEnd_closure, D._CupertinoEdgeShadowDecoration_lerp_closure, D._CupertinoEdgeShadowDecoration_lerp_closure0, U.FlutterErrorDetails_summary_closure, U.FlutterErrorDetails_debugFillProperties_closure, U.FlutterError_FlutterError_closure, U.FlutterError_defaultStackFilter_closure, U.FlutterError_defaultStackFilter_closure0, U.FlutterError_toString_closure, U.debugPrintStack_closure, N.BindingBase_initServiceExtensions_closure0, N.BindingBase_initServiceExtensions_closure2, N.BindingBase_registerBoolServiceExtension_closure, N.BindingBase_registerNumericServiceExtension_closure, N.BindingBase_registerStringServiceExtension_closure, Y._PrefixedStringBuilder__wordWrapLine_noWrap, Y.TextTreeRenderer__debugRender_visitor, Y.TextTreeRenderer__debugRender_closure, R.StackFrame_fromStackString_closure, O.SynchronousFuture_whenComplete_closure, D._GestureArena_toString_closure, S._MaterialAppState__buildWidgetApp_closure, D.MaterialRectArcTween__initialize_closure, R._InkResponseState_highlightsExist_closure, M._MaterialState_build_closure, M._MaterialInteriorState_forEachTween_closure, M._MaterialInteriorState_forEachTween_closure0, M._MaterialInteriorState_forEachTween_closure1, O.MaterialStateMixin_updateMaterialState_closure, K.PageTransitionsTheme__all_closure, M.ScaffoldMessengerState_hideCurrentSnackBar_closure, M.ScaffoldState_hideCurrentSnackBar_closure, K._AnimatedThemeState_forEachTween_closure, S._TooltipState__createNewEntry_closure, S._TooltipState__createNewEntry_closure0, S._TooltipState__createNewEntry_closure1, S._TooltipState_build_closure, S._TooltipState_build_closure0, Y._CompoundBorder_scale_closure, Y._CompoundBorder_toString_closure, Z.ClipContext_clipPathAndPaint_closure, Z.ClipContext_clipRectAndPaint_closure, G.InlineSpan_getSpanForPosition_closure, Q.TextSpan_debugDescribeChildren_closure, N.RendererBinding__scheduleMouseTrackerUpdate_closure, S.BoxConstraints_toString_describe, A.MouseTracker__handleDeviceUpdate_closure, A.MouseTracker__handleDeviceUpdateMouseEvents_closure0, K.RenderObject_reassemble_closure, K.RenderObject__updateCompositingBits_closure, K.RenderObject_clearSemantics_closure, K.RenderObject__getSemanticsForParent_closure, Q.RenderParagraph__extractPlaceholderSpans_closure, Q.RenderParagraph_describeSemanticsConfiguration_closure, N.SchedulerBinding_endOfFrame_closure, N.SchedulerBinding__handleDrawFrame_closure, M.TickerFuture_whenCompleteOrCancel_thunk, A.SemanticsNode_getSemanticsData_closure, A.SemanticsNode__childrenInTraversalOrder_closure, A.SemanticsNode_debugDescribeChildren_closure, A._SemanticsSortGroup_sortedWithinVerticalGroup_closure, A._SemanticsSortGroup_sortedWithinKnot_search, A._SemanticsSortGroup_sortedWithinKnot_closure0, A._SemanticsSortGroup_sortedWithinKnot_closure1, A._childrenInDefaultOrder_closure, A.SemanticsOwner_sendSemanticsUpdate_closure, A.SemanticsOwner__getSemanticsActionHandlerForId_closure, A.SemanticsConfiguration__addArgumentlessAction_closure, A.SemanticsConfiguration_onMoveCursorForwardByCharacter_closure, A.SemanticsConfiguration_onMoveCursorBackwardByCharacter_closure, A.SemanticsConfiguration_onMoveCursorForwardByWord_closure, A.SemanticsConfiguration_onMoveCursorBackwardByWord_closure, A.SemanticsConfiguration_onSetSelection_closure, A.SemanticsConfiguration_onSetText_closure, N._DefaultBinaryMessenger_send_closure, A.BasicMessageChannel_setMessageHandler_closure, A.MethodChannel_setMethodCallHandler_closure, B.RawKeyboard__synchronizeModifiers_closure, K.RestorationManager_handleRestorationUpdateFromEngine_closure, K.RestorationManager_scheduleSerializationFor_closure, K.RestorationBucket__visitChildren_closure, U._getParent_closure, U.Actions__findDispatcher_closure, U.Actions_maybeFind_closure, S._WidgetsAppState__onGenerateRoute_closure, S._WidgetsAppState_build_closure, T.RichText__extractChildren_closure, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_ServicesBinding_PaintingBinding_SemanticsBinding_RendererBinding_initServiceExtensions_closure, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_ServicesBinding_PaintingBinding_SemanticsBinding_RendererBinding_initServiceExtensions_closure0, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_ServicesBinding_PaintingBinding_SemanticsBinding_RendererBinding_initServiceExtensions_closure1, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_initInstances_closure, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_initServiceExtensions_closure0, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_ServicesBinding_initInstances_closure, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_ServicesBinding_PaintingBinding_SemanticsBinding_RendererBinding_WidgetsBinding_initServiceExtensions_closure, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_ServicesBinding_PaintingBinding_SemanticsBinding_RendererBinding_WidgetsBinding_initServiceExtensions_closure0, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_ServicesBinding_PaintingBinding_SemanticsBinding_RendererBinding_WidgetsBinding_initServiceExtensions_closure1, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_ServicesBinding_PaintingBinding_SemanticsBinding_RendererBinding_WidgetsBinding_initServiceExtensions_closure2, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_ServicesBinding_PaintingBinding_SemanticsBinding_RendererBinding_WidgetsBinding_initServiceExtensions_closure4, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_ServicesBinding_PaintingBinding_SemanticsBinding_RendererBinding_WidgetsBinding_drawFrame_closure, O.FocusNode_traversalDescendants_closure, O.FocusNode_debugDescribeChildren_closure, U._getAncestor_closure, U.FocusTraversalPolicy__sortAllDescendants_visitGroups, U.FocusTraversalPolicy__sortAllDescendants_closure, U._ReadingOrderTraversalPolicy_FocusTraversalPolicy_DirectionalFocusTraversalPolicyMixin_changedScope_closure, U.DirectionalFocusTraversalPolicyMixin__sortAndFilterHorizontally_closure0, U.DirectionalFocusTraversalPolicyMixin__sortAndFilterHorizontally_closure1, U.DirectionalFocusTraversalPolicyMixin__sortAndFilterVertically_closure0, U.DirectionalFocusTraversalPolicyMixin__sortAndFilterVertically_closure1, U.DirectionalFocusTraversalPolicyMixin__popPolicyDataIfNeeded_popOrInvalidate, U.DirectionalFocusTraversalPolicyMixin_inDirection_closure, U.DirectionalFocusTraversalPolicyMixin_inDirection_closure1, U._ReadingOrderSortData_commonDirectionalityOf_closure, U._ReadingOrderSortData_directionalAncestors_getDirectionalityAncestors, U._ReadingOrderDirectionalGroupData_rect_closure, U.ReadingOrderTraversalPolicy__pickNext_inBand_closure, N._InactiveElements__unmount_closure, N.Element_reassemble_closure, N.Element_renderObject_visit, N.Element_updateSlotForChild_visit, N.Element__updateDepth_closure, N.Element_detachRenderObject_closure, N.Element_attachRenderObject_closure, N.Element_debugDescribeChildren_closure, N.ParentDataElement__applyParentData_applyParentDataToChild, N.RenderObjectElement_updateChildren_replaceWithNullIfForgotten, D.GestureDetector_build_closure0, D.GestureDetector_build_closure2, D.GestureDetector_build_closure4, D.GestureDetector_build_closure6, D.GestureDetector_build_closure8, D.GestureDetector_build_closure10, D._DefaultSemanticsGestureDelegate__getHorizontalDragUpdateHandler_closure, D._DefaultSemanticsGestureDelegate__getHorizontalDragUpdateHandler_closure0, D._DefaultSemanticsGestureDelegate__getHorizontalDragUpdateHandler_closure1, D._DefaultSemanticsGestureDelegate__getVerticalDragUpdateHandler_closure, D._DefaultSemanticsGestureDelegate__getVerticalDragUpdateHandler_closure0, D._DefaultSemanticsGestureDelegate__getVerticalDragUpdateHandler_closure1, T.Hero__allHeroesFor_visitor, T.HeroController_didStopUserGesture_isInvalidFlight, T.HeroController__maybeStartHeroTransition_closure, Y.IconTheme_merge_closure, G.ImplicitlyAnimatedWidgetState_initState_closure, G.ImplicitlyAnimatedWidgetState_didUpdateWidget_closure, G.ImplicitlyAnimatedWidgetState__constructTweens_closure, G._AnimatedDefaultTextStyleState_forEachTween_closure, G._AnimatedPhysicalModelState_forEachTween_closure, G._AnimatedPhysicalModelState_forEachTween_closure0, G._AnimatedPhysicalModelState_forEachTween_closure1, G._AnimatedPhysicalModelState_forEachTween_closure2, L._loadAll_closure, L._loadAll_closure0, L._loadAll_closure1, L._LocalizationsState_load_closure, L._LocalizationsState_load_closure0, K.Route_didPush_closure, K.Route_didAdd_closure, K.Route_isCurrent_closure, K.Route_isFirst_closure, K.Route_isActive_closure, K.Navigator_defaultGenerateInitialRoutes_closure, K._RouteEntry_dispose_closure, K._RouteEntry_isRoutePredicate_closure, K.NavigatorState_restoreState_closure, K.NavigatorState__flushHistoryUpdates_closure, K.NavigatorState__afterNavigation_closure, K.NavigatorState_maybePop_closure, K.NavigatorState_maybePop_closure1, X.OverlayEntry_remove_closure, K._RootRestorationScopeState__loadRootBucketIfNecessary_closure, T.TransitionRoute__updateSecondaryAnimation__jumpOnAnimationEnd, T.TransitionRoute__setSecondaryAnimation_closure, T._ModalScopeState_build_closure0, T._ModalScopeState_build__closure, Q.ScrollNotificationObserverState_build_closure, F.Scrollable_ensureVisible_closure, F._MineHomePageState__getLevelData_closure, T.FlutterWebAppChannel_registerJavaScript_closure]);
+    _inheritMany(H.Closure2Args, [H.initializeEngine_closure, H.initializeCanvasKit__closure, H.IntervalTree_IntervalTree$createFromRanges_closure, H.IntervalTree_IntervalTree$createFromRanges_closure0, H.Surface_acquireFrame_closure, H.KeyboardConverter_handleEvent_closure2, H.KeyboardConverter_handleEvent__closure, H.StandardMessageCodec_writeValue_closure0, H.saveForms_closure, H.CastMap_forEach_closure, H.ConstantMap_map_closure, H.Primitives_functionNoSuchMethod_closure, H.JsLinkedHashMap_addAll_closure, H.initHooks_closure0, P._awaitOnObject_closure0, P._wrapJsFunctionForAsync_closure, P.Future_wait_handleError, P._Future__chainForeignFuture_closure0, P.HashMap_HashMap$from_closure, P.LinkedHashMap_LinkedHashMap$from_closure, P.MapBase_mapToString_closure, P._JsonStringifier_writeMap_closure, P.NoSuchMethodError_toString_closure, P.Uri__parseIPv4Address_error, P.Uri_parseIPv6Address_parseHex, P._Uri__makeQuery_writeParameter, P._Uri__makeQuery_closure, P._createTables_build, W.MidiInputMap_keys_closure, W.MidiInputMap_values_closure, W.MidiOutputMap_keys_closure, W.MidiOutputMap_values_closure, W.RtcStatsReport_keys_closure, W.RtcStatsReport_values_closure, W.Storage_keys_closure, W.Storage_values_closure, P._StructuredClone_walk_closure, P._StructuredClone_walk_closure0, P._AcceptStructuredClone_walk_closure, P.convertDartToNative_Dictionary_closure, P.AudioParamMap_keys_closure, P.AudioParamMap_values_closure, E.CupertinoDynamicColor_toString_toString, N.BindingBase_registerServiceExtension_closure, O.PointerRouter__dispatchEventToRoutes_closure, S.MaterialApp_createMaterialHeroController_closure, S._MaterialAppState_build_closure, Z._RenderInputPadding_hitTest_closure, M.ScaffoldState_build_closure, M._ScaffoldState_State_TickerProviderStateMixin_RestorationMixin_dispose_closure, Y._CompoundBorder_dimensions_closure, S.RenderBoxContainerDefaultsMixin_defaultHitTestChildren_closure, A.MouseTracker__handleDeviceUpdateMouseEvents_closure, K.PipelineOwner_flushLayout_closure, K.PipelineOwner_flushCompositingBits_closure, K.PipelineOwner_flushPaint_closure, K.PipelineOwner_flushSemantics_closure, Q.RenderParagraph_hitTestChildren_closure, Q.RenderParagraph_paint_closure, E.RenderTransform_hitTestChildren_closure, E.RenderFractionalTranslation_hitTestChildren_closure, T.RenderShiftedBox_hitTestChildren_closure, N.SchedulerBinding_handleBeginFrame_closure, A._SemanticsSortGroup_sortedWithinKnot_closure, A.SemanticsOwner_sendSemanticsUpdate_closure0, A.SemanticsOwner_sendSemanticsUpdate_closure1, N._DefaultBinaryMessenger_setMessageHandler_closure, U.StandardMessageCodec_writeValue_closure, U.DirectionalFocusTraversalPolicyMixin__sortAndFindInitial_closure, U.DirectionalFocusTraversalPolicyMixin__sortAndFilterHorizontally_closure, U.DirectionalFocusTraversalPolicyMixin__sortAndFilterVertically_closure, U.DirectionalFocusTraversalPolicyMixin_inDirection_closure0, U.DirectionalFocusTraversalPolicyMixin_inDirection_closure2, U._ReadingOrderSortData_sortWithDirectionality_closure, U._ReadingOrderDirectionalGroupData_sortWithDirectionality_closure, U.ReadingOrderTraversalPolicy__pickNext_closure, U.ReadingOrderTraversalPolicy__pickNext_inBand, N.RenderObjectElement_updateChildren_slotFor, T.Hero__allHeroesFor_inviteHero, T._HeroFlight__buildOverlay_closure, K._HistoryProperty_fromPrimitives_closure, K._NavigatorState_State_TickerProviderStateMixin_RestorationMixin_dispose_closure, X._RenderTheatre_hitTestChildren_closure, K.__RestorationScopeState_State_RestorationMixin_dispose_closure, T._ModalScopeState_build_closure, T._ModalScopeState_build__closure0, T._ModalScopeState_build___closure, X.ShortcutManager__indexShortcuts_closure, A.hashObjects_closure]);
+    _inheritMany(H.Closure0Args, [H.initializeEngine_closure0, H._addUrlStrategyListener_closure0, H.AssetManager__baseUrl_closure0, H.ProductionCollector_collect_closure, H.FontFallbackData_createNotoFontTree_closure, H.FontFallbackData_registerFallbackFont_closure, H._makeResolvedNotoFontFromCss_closure, H.FallbackFontDownloadQueue_startDownloads_closure, H.SkiaFontCollection_ensureFontsLoaded_closure, H.SkiaFontCollection_ensureFontsLoaded_closure0, H._startDownloadingCanvasKit_closure0, H._startDownloadingCanvasKit_closure2, H.Frame_raster_closure, H.Frame_raster_closure0, H.CkTextStyle_skTextStyle_closure, H.Keyboard$__closure1, H.Keyboard__handleHtmlEvent_closure, H.KeyboardConverter__scheduleAsyncEvent_closure0, H.KeyboardConverter__startGuardingKey_closure, H.KeyboardConverter__startGuardingKey_closure0, H.KeyboardConverter_handleEvent_closure, H.KeyboardConverter_handleEvent_closure0, H.KeyboardConverter_handleEvent_closure1, H.HashUrlStrategy_addPopStateListener_closure, H.EnginePlatformDispatcher_invokeOnKeyData_closure, H.EnginePlatformDispatcher__addBrightnessMediaQueryListener_closure0, H.invoke2_closure, H.invoke3_closure, H.PlatformViewManager_renderContent_closure, H._PointerAdapter__ensureSanitizer_closure, H.PointerDataConverter__ensureStateForPointer_closure, H.AccessibilityAnnouncements$__closure, H.AccessibilityAnnouncements_handleMessage_closure, H.Scrollable_update_closure, H.EngineSemanticsOwner$__closure, H.EngineSemanticsOwner__now_closure, H.EngineSemanticsOwner__getGestureModeClock_closure, H.MobileSemanticsEnabler_tryEnableSemantics_closure, H.TextField_update_closure, H.IOSTextEditingStrategy__schedulePlacement_closure, H.FirefoxTextEditingStrategy__postponeFocus_closure, H.TextEditingChannel_handleTextInput_closure, H.WebExperiments$__closure, H.EngineFlutterWindow_handleNavigationMessage_closure, H.CastMap_putIfAbsent_closure, H.nullFuture_closure, H.Primitives_initTicker_closure, P._AsyncRun__scheduleImmediateJsOverride_internalCallback, P._AsyncRun__scheduleImmediateWithSetImmediate_internalCallback, P._TimerImpl_internalCallback, P._TimerImpl$periodic_closure, P._asyncStarHelper_closure, P._AsyncStarStreamController__resumeBody, P._AsyncStarStreamController__resumeBody_closure, P._AsyncStarStreamController_closure, P._AsyncStarStreamController_closure0, P._AsyncStarStreamController_closure1, P._AsyncStarStreamController__closure, P.Future_Future_closure, P.Future_Future$delayed_closure, P._Future__addListener_closure, P._Future__prependListeners_closure, P._Future__chainForeignFuture_closure1, P._Future__asyncCompleteWithValue_closure, P._Future__chainFuture_closure, P._Future__asyncCompleteError_closure, P._Future__propagateToListeners_handleWhenCompleteCallback, P._Future__propagateToListeners_handleValueCallback, P._Future__propagateToListeners_handleError, P.Stream_Stream$fromIterable_closure, P.Stream_length_closure0, P._StreamController__subscribe_closure, P._StreamController__recordCancel_complete, P._AddStreamState_cancel_closure, P._BufferingStreamSubscription__sendError_sendError, P._BufferingStreamSubscription__sendDone_sendDone, P._PendingEvents_schedule_closure, P._rootHandleError_closure, P._RootZone_bindCallbackGuarded_closure, P.Utf8Decoder__decoder_closure, P.Utf8Decoder__decoderNonfatal_closure, W.Entry_remove_closure, P.ChannelBuffers_push_closure, P.ChannelBuffers_setListener_closure, P.webOnlyInitializePlatform_closure, D.CupertinoRouteTransitionMixin_buildPageTransitions_closure, D.CupertinoRouteTransitionMixin_buildPageTransitions_closure0, U._testPlatform_closure, U._browserPlatform_closure, U.FlutterErrorDetails_summary_formatException, U.FlutterErrorDetails_summary_closure0, N.BindingBase_initServiceExtensions_closure, N.BindingBase_initServiceExtensions_closure1, N.BindingBase_lockEvents_closure, N.BindingBase_registerServiceExtension__closure, B.ChangeNotifier_notifyListeners_closure, D.GestureArenaManager_add_closure, D.GestureArenaManager__tryToResolveArena_closure, N.GestureBinding_dispatchEvent_closure, N.GestureBinding_dispatchEvent_closure0, O.DragGestureRecognizer__checkDown_closure, O.DragGestureRecognizer__checkStart_closure, O.DragGestureRecognizer__checkUpdate_closure, O.DragGestureRecognizer__checkEnd_closure, O.DragGestureRecognizer__checkEnd_closure0, O.DragGestureRecognizer__checkEnd_closure1, O.PointerRouter_addRoute_closure, S.PrimaryPointerGestureRecognizer_addAllowedPointer_closure, N.TapGestureRecognizer_handleTapDown_closure, E._AppBarState__handleScrollNotification_closure, D.MaterialPointArcTween__initialize_sweepAngle, R.BackButton_build_closure, U._getClipCallback_closure, R._InkResponseState_updateHighlight_handleInkRemoval, R._InkResponseState__createInkFeature_onRemoved, R._InkResponseState__handleFocusHighlightModeChange_closure, O.MaterialStateMixin_addMaterialState_closure, O.MaterialStateMixin_removeMaterialState_closure, M._FloatingActionButtonTransitionState__handlePreviousAnimationStatusChanged_closure, M.ScaffoldState__updateSnackBar_closure, M.ScaffoldState__updateMaterialBanner_closure, X.ThemeData_localize_closure, S._TooltipState__handleMouseTrackerChange_closure, S.RenderBox_getDryLayout_closure, S.RenderBox_getDistanceToActualBaseline_closure, A.MouseTracker_updateWithEvent_closure, A.MouseTracker_updateWithEvent__closure, A.MouseTracker_updateAllDevices_closure, K.PaintingContext_pushClipRect_closure, K.PaintingContext_pushClipPath_closure, K.RenderObject__debugReportException_closure, N._TaskEntry_run_closure, N.SchedulerBinding_scheduleWarmUpFrame_closure, N.SchedulerBinding_scheduleWarmUpFrame_closure0, N.SchedulerBinding_scheduleWarmUpFrame_closure1, N.ServicesBinding__addLicenses_closure, N.ServicesBinding__addLicenses_closure0, Q.HardwareKeyboard__dispatchKeyEvent_closure, B.RawKeyEvent_RawKeyEvent$fromMessage__dataFromWeb, K.RestorationBucket__rawChildren_closure, K.RestorationBucket__rawValues_closure, K.RestorationBucket__addChildData_closure, X.SystemChrome_setSystemUIOverlayStyle_closure, U._ActionsState__handleActionChanged_closure, S._WidgetsAppState_didChangeLocales_closure, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_ServicesBinding_PaintingBinding_SemanticsBinding_RendererBinding_dispatchEvent_closure, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_initServiceExtensions_closure, N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding_ServicesBinding_PaintingBinding_SemanticsBinding_RendererBinding_WidgetsBinding_initServiceExtensions_closure3, N.WidgetsBinding_scheduleAttachRootWidget_closure, N.RenderObjectToWidgetAdapter_attachToRenderTree_closure, N.RenderObjectToWidgetAdapter_attachToRenderTree_closure0, L._FocusState__handleFocusChanged_closure, L._FocusState__handleFocusChanged_closure0, L._FocusState__handleFocusChanged_closure1, N.BuildOwner_buildScope_closure, N.BuildOwner_finalizeTree_closure, N.ComponentElement_performRebuild_closure, N.ComponentElement_performRebuild_closure0, D.GestureDetector_build_closure, D.GestureDetector_build_closure1, D.GestureDetector_build_closure3, D.GestureDetector_build_closure5, D.GestureDetector_build_closure7, D.GestureDetector_build_closure9, D._DefaultSemanticsGestureDelegate__getTapHandler_closure, D._DefaultSemanticsGestureDelegate__getLongPressHandler_closure, T._HeroState_startFlight_closure, T._HeroState_endFlight_closure, T._HeroFlight__handleAnimationUpdate_delayedPerformAnimationUpdate, G.AnimatedWidgetBaseState__handleAnimationChanged_closure, L._LocalizationsState_load__closure, F._MediaQueryFromWindowState_didChangeMetrics_closure, F._MediaQueryFromWindowState_didChangePlatformBrightness_closure, X.ModalBarrier_build_handleDismiss, X.ModalBarrier_build_closure, K.Route_isCurrent_closure0, K.Route_isFirst_closure0, K.Route_isActive_closure0, K._RouteEntry_handlePush_closure, K._RouteEntry_dispose_closure0, K.NavigatorState__flushHistoryUpdates_closure0, K.NavigatorState_maybePop_closure0, K.NavigatorState_maybePop_closure2, K.NavigatorState__cancelActivePointers_closure, X._OverlayEntryWidgetState__markNeedsBuild_closure, X.OverlayState_insert_closure, X.OverlayState_insertAll_closure, X.OverlayState_rearrange_closure, X.OverlayState__markDirty_closure, X.OverlayState__didChangeEntryOpacity_closure, K._RootRestorationScopeState__loadRootBucketIfNecessary__closure, K.RestorationMixin_registerForRestoration_listener, T.TransitionRoute__updateSecondaryAnimation_closure, T.TransitionRoute__updateSecondaryAnimation_closure0, T._ModalScopeState__forceRebuildPage_closure, T.ModalRoute_offstage_closure, T.ModalRoute_changedInternalState_closure, Q.ScrollNotificationObserverState__notifyListeners_closure, X.ShortcutManager__indexShortcuts__closure, K._AnimatedState__handleChange_closure, F._MineHomePageState__getLevelData__closure]);
     _inherit(H.RecordingCkCanvas, H.CkCanvas);
-    _inheritMany(H.CkPaintCommand, [H.CkClearCommand, H.CkSaveCommand, H.CkRestoreCommand, H.CkRestoreToCountCommand, H.CkTranslateCommand, H.CkScaleCommand, H.CkTransformCommand, H.CkClipRectCommand, H.CkClipRRectCommand, H.CkClipPathCommand, H.CkDrawPaintCommand, H.CkDrawRectCommand, H.CkDrawRRectCommand, H.CkDrawDRRectCommand, H.CkDrawCircleCommand, H.CkDrawPathCommand, H.CkDrawShadowCommand, H.CkDrawImageRectCommand, H.CkDrawParagraphCommand, H.CkDrawPictureCommand, H.CkSaveLayerCommand]);
+    _inheritMany(H.CkPaintCommand, [H.CkClearCommand, H.CkSaveCommand, H.CkRestoreCommand, H.CkRestoreToCountCommand, H.CkTranslateCommand, H.CkTransformCommand, H.CkClipRectCommand, H.CkClipRRectCommand, H.CkClipPathCommand, H.CkDrawPaintCommand, H.CkDrawRectCommand, H.CkDrawRRectCommand, H.CkDrawDRRectCommand, H.CkDrawCircleCommand, H.CkDrawPathCommand, H.CkDrawShadowCommand, H.CkDrawParagraphCommand, H.CkDrawPictureCommand, H.CkSaveLayerCommand]);
     _inheritMany(J.Interceptor, [J.JavaScriptObject, J.JSBool, J.JSNull, J.JSArray, J.JSNumber, J.JSString, H.NativeByteBuffer, H.NativeTypedData, W.EventTarget, W.AccessibleNodeList, W.Blob, W.Body, W.Credential, W.CredentialUserData, W.CssRule, W.CssTransformComponent, W._CssStyleDeclaration_Interceptor_CssStyleDeclarationBase, W.StyleSheet, W.CssStyleValue, W.DataTransferItemList, W.DomError, W.DomException, W._DomRectList_Interceptor_ListMixin, W.DomRectReadOnly, W._DomStringList_Interceptor_ListMixin, W.DomTokenList, W.Entry, W.Event, W._FileList_Interceptor_ListMixin, W.FileSystem, W.Gamepad, W.History, W._HtmlCollection_Interceptor_ListMixin, W.ImageData, W.Location, W.MediaList, W._MidiInputMap_Interceptor_MapMixin, W._MidiOutputMap_Interceptor_MapMixin, W.MimeType, W._MimeTypeArray_Interceptor_ListMixin, W.NavigatorUserMediaError, W._NodeList_Interceptor_ListMixin, W.OverconstrainedError, W.PerformanceEntry, W.PerformanceServerTiming, W.Plugin, W._PluginArray_Interceptor_ListMixin, W.PushMessageData, W._RtcStatsReport_Interceptor_MapMixin, W.SpeechGrammar, W._SpeechGrammarList_Interceptor_ListMixin, W.SpeechRecognitionResult, W.SpeechSynthesisVoice, W._Storage_Interceptor_MapMixin, W._TextTrackCueList_Interceptor_ListMixin, W.TimeRanges, W.Touch, W._TouchList_Interceptor_ListMixin, W.TrackDefaultList, W.Url, W.__CssRuleList_Interceptor_ListMixin, W.__GamepadList_Interceptor_ListMixin, W.__NamedNodeMap_Interceptor_ListMixin, W.__SpeechRecognitionResultList_Interceptor_ListMixin, W.__StyleSheetList_Interceptor_ListMixin, P.Index, P.KeyRange, P.ObjectStore, P.Length, P._LengthList_Interceptor_ListMixin, P.Number, P._NumberList_Interceptor_ListMixin, P.PointList, P._StringList_Interceptor_ListMixin, P.Transform0, P._TransformList_Interceptor_ListMixin, P.AudioBuffer, P._AudioParamMap_Interceptor_MapMixin, P.ActiveInfo, P._SqlResultSetRowList_Interceptor_ListMixin]);
     _inheritMany(J.JavaScriptObject, [H.CanvasKit, H.CanvasKitInitOptions, H.CanvasKitInitPromise, H.ColorSpace, H.SkWebGLContextOptions, H.SkSurface, H.SkGrContext, H.SkFontSlantEnum, H.SkFontSlant, H.SkFontWeightEnum, H.SkFontWeight, H.SkAffinityEnum, H.SkAffinity, H.SkTextDirectionEnum, H.SkTextDirection, H.SkTextAlignEnum, H.SkTextAlign, H.SkTextHeightBehaviorEnum, H.SkTextHeightBehavior, H.SkRectHeightStyleEnum, H.SkRectHeightStyle, H.SkRectWidthStyleEnum, H.SkRectWidthStyle, H.SkVertexModeEnum, H.SkVertexMode, H.SkPointModeEnum, H.SkPointMode, H.SkClipOpEnum, H.SkClipOp, H.SkFillTypeEnum, H.SkFillType, H.SkPathOpEnum, H.SkPathOp, H.SkBlurStyleEnum, H.SkBlurStyle, H.SkStrokeCapEnum, H.SkStrokeCap, H.SkPaintStyleEnum, H.SkPaintStyle, H.SkBlendModeEnum, H.SkBlendMode, H.SkStrokeJoinEnum, H.SkStrokeJoin, H.SkFilterQualityEnum, H.SkFilterQuality, H.SkTileModeEnum, H.SkTileMode, H.SkFilterModeEnum, H.SkFilterMode, H.SkMipmapModeEnum, H.SkMipmapMode, H.SkAlphaTypeEnum, H.SkAlphaType, H.SkColorTypeEnum, H.SkColorType, H.SkAnimatedImage, H.SkImage, H.SkShaderNamespace, H.SkShader, H.SkMaskFilterNamespace, H.SkPaint, H.SkMaskFilter, H.SkColorFilterNamespace, H.SkColorFilter, H.SkImageFilterNamespace, H.SkImageFilter, H.SkPathNamespace, H._NativeFloat32ArrayType, H.SkFloat32List, H.SkPath, H.SkContourMeasureIter, H.SkContourMeasure, H.SkPictureRecorder, H.SkCanvas, H.SkPicture, H.SkParagraphBuilderNamespace, H.SkParagraphBuilder, H.SkParagraphStyle, H.SkParagraphStyleProperties, H.SkTextStyle, H.SkTextDecorationStyleEnum, H.SkTextDecorationStyle, H.SkTextBaselineEnum, H.SkTextBaseline, H.SkPlaceholderAlignmentEnum, H.SkPlaceholderAlignment, H.SkTextStyleProperties, H.SkStrutStyleProperties, H.SkFontStyle, H.SkTextShadow, H.SkFontFeature, H.SkTypeface, H.SkFont, H.SkFontMgr, H.SkLineMetrics, H.SkParagraph, H.SkTextPosition, H.SkTextRange, H.SkVertices, H.SkTonalColors, H.SkFontMgrNamespace, H.TypefaceFontProviderNamespace, H.SkDeletable, H.JsConstructor, H.SkObjectFinalizationRegistry, H.SkData, H.SkImageInfo, H.JsUrlStrategy, J.PlainJavaScriptObject, J.UnknownJavaScriptObject, J.JavaScriptFunction, L.JsUrlStrategy0]);
     _inherit(H.TypefaceFontProvider, H.SkFontMgr);
-    _inheritMany(H.SkiaObject, [H.ManagedSkiaObject, H.CkParagraph]);
-    _inheritMany(H.ManagedSkiaObject, [H.ManagedSkColorFilter, H.CkMaskFilter, H.CkPaint, H.CkPath, H.CkPicture, H.CkShader]);
     _inheritMany(P.Iterable, [H.MutatorsStack, H._CastIterableBase, H.EfficientLengthIterable, H.MappedIterable, H.WhereIterable, H.ExpandIterable, H.TakeIterable, H.SkipIterable, H.SkipWhileIterable, H.FollowedByIterable, H.WhereTypeIterable, H._ConstantMapKeyIterable, H._StringAllMatchesIterable, P.IterableBase, P.LinkedList, P.DoubleLinkedQueue, R.ObserverList, R.HashedObserverList]);
     _inheritMany(H.Layer, [H.ContainerLayer, H.PictureLayer0]);
     _inheritMany(H.ContainerLayer, [H.RootLayer, H.ClipPathEngineLayer, H.ClipRectEngineLayer, H.OpacityEngineLayer, H.TransformEngineLayer, H.PhysicalShapeEngineLayer]);
     _inherit(H.OffsetEngineLayer, H.TransformEngineLayer);
+    _inheritMany(H.SkiaObject, [H.ManagedSkiaObject, H.CkParagraph]);
+    _inheritMany(H.ManagedSkiaObject, [H.CkMaskFilter, H.CkPaint, H.CkPath, H.CkPicture, H.CkShader]);
     _inherit(H.CkGradientLinear, H.CkShader);
     _inheritMany(P.Error, [H.CanvasKitError, H.LateError, P.TypeError, H.JsNoSuchMethodError, H.UnknownJsTypeError, H.RuntimeError, H._Error, P.JsonUnsupportedObjectError, P.AssertionError, P.NullThrownError, P.ArgumentError, P.NoSuchMethodError, P.UnsupportedError, P.UnimplementedError, P.StateError, P.ConcurrentModificationError, P.CyclicInitializationError, U._FlutterError_Error_DiagnosticableTreeMixin]);
     _inheritMany(H.BrowserHistory, [H.MultiEntriesBrowserHistory, H.SingleEntryBrowserHistory]);
@@ -81740,7 +79979,7 @@
     _inherit(P._StreamControllerAddStreamState, P._AddStreamState);
     _inheritMany(P._PendingEvents, [P._IterablePendingEvents, P._StreamImplEvents]);
     _inheritMany(P._DelayedEvent, [P._DelayedData, P._DelayedError]);
-    _inheritMany(P._Zone, [P._CustomZone, P._RootZone]);
+    _inherit(P._RootZone, P._Zone);
     _inherit(P._IdentityHashMap, P._HashMap);
     _inheritMany(H.JsLinkedHashMap, [P._LinkedIdentityHashMap, P._LinkedCustomHashMap]);
     _inherit(P._SetBase, P.__SetBase_Object_SetMixin);
@@ -81868,7 +80107,7 @@
     _inheritMany(N.StatelessWidget, [D.CupertinoPageTransition, K.CupertinoTheme, R.BackButtonIcon, R.BackButton, E.FloatingActionButton, B.IconButton, R.InkResponse, M._ShapeBorderPaint, K._FadeUpwardsPageTransition, M._BodyBuilder, K.Theme, S._TooltipOverlay, L._NullWidget0, T.PositionedDirectional, T.KeyedSubtree, T.Builder, M.Container, D.GestureDetector, L.Icon, X.ModalBarrier, X._ModalBarrierGestureDetector, E.NavigationToolbar, U.NotificationListener, S.PageStorage, Q.SafeArea, L._NullWidget1, L.Text, U.TickerMode, U.Title, F.MyApp]);
     _inheritMany(N.StatefulWidget, [D._CupertinoBackGestureDetector, S.MaterialApp, E.AppBar, Z.RawMaterialButton, R._InkResponseStateWidget, M.Material, G.ImplicitlyAnimatedWidget, M.ScaffoldMessenger, M._FloatingActionButtonTransition, M.Scaffold, S.Tooltip, U.Actions, S.WidgetsApp, T.MouseRegion, X.Shortcuts, L.Focus, U.FocusTraversalGroup, D.RawGestureDetector, T.Hero, L.Localizations, F._MediaQueryFromWindow, K.Navigator, X._OverlayEntryWidget, X.Overlay, K.RestorationScope, K.RootRestorationScope, T._ModalScope, Q.ScrollNotificationObserver, K.AnimatedWidget, F.MineHomePage]);
     _inherit(N.State, N._State_Object_Diagnosticable);
-    _inheritMany(N.State, [D._CupertinoBackGestureDetectorState, S._MaterialAppState, E._AppBarState, Z.__RawMaterialButtonState_State_MaterialStateMixin, R.__InkResponseState_State_AutomaticKeepAliveClientMixin, M.__MaterialState_State_TickerProviderStateMixin, G._ImplicitlyAnimatedWidgetState_State_SingleTickerProviderStateMixin, M._ScaffoldMessengerState_State_TickerProviderStateMixin, M.__FloatingActionButtonTransitionState_State_TickerProviderStateMixin, M._ScaffoldState_State_TickerProviderStateMixin, S.__TooltipState_State_SingleTickerProviderStateMixin, U._ActionsState, S.__WidgetsAppState_State_WidgetsBindingObserver, T._MouseRegionState, L._FocusState, U._FocusTraversalGroupState, D.RawGestureDetectorState, T._HeroState, L._LocalizationsState, F.__MediaQueryFromWindowState_State_WidgetsBindingObserver, K._NavigatorState_State_TickerProviderStateMixin, X._OverlayEntryWidgetState, X._OverlayState_State_TickerProviderStateMixin, K.__RestorationScopeState_State_RestorationMixin, K._RootRestorationScopeState, T._ModalScopeState, Q.ScrollNotificationObserverState, X._ShortcutsState, K._AnimatedState, F.__MineHomePageState_State_AutomaticKeepAliveClientMixin]);
+    _inheritMany(N.State, [D._CupertinoBackGestureDetectorState, S._MaterialAppState, E._AppBarState, Z.__RawMaterialButtonState_State_MaterialStateMixin, R.__InkResponseState_State_AutomaticKeepAliveClientMixin, M.__MaterialState_State_TickerProviderStateMixin, G._ImplicitlyAnimatedWidgetState_State_SingleTickerProviderStateMixin, M._ScaffoldMessengerState_State_TickerProviderStateMixin, M.__FloatingActionButtonTransitionState_State_TickerProviderStateMixin, M._ScaffoldState_State_TickerProviderStateMixin, S.__TooltipState_State_SingleTickerProviderStateMixin, U._ActionsState, S.__WidgetsAppState_State_WidgetsBindingObserver, T._MouseRegionState, L._FocusState, U._FocusTraversalGroupState, D.RawGestureDetectorState, T._HeroState, L._LocalizationsState, F.__MediaQueryFromWindowState_State_WidgetsBindingObserver, K._NavigatorState_State_TickerProviderStateMixin, X._OverlayEntryWidgetState, X._OverlayState_State_TickerProviderStateMixin, K.__RestorationScopeState_State_RestorationMixin, K._RootRestorationScopeState, T._ModalScopeState, Q.ScrollNotificationObserverState, X._ShortcutsState, K._AnimatedState, F._MineHomePageState]);
     _inherit(Z.Decoration, Z._Decoration_Object_Diagnosticable);
     _inheritMany(Z.Decoration, [D._CupertinoEdgeShadowDecoration, S.BoxDecoration]);
     _inheritMany(Z.BoxPainter, [D._CupertinoEdgeShadowPainter, S._BoxDecorationPainter]);
@@ -82033,9 +80272,6 @@
     _inherit(O.BoxShadow, P.Shadow);
     _inheritMany(Y.OutlinedBorder, [X.CircleBorder, X.RoundedRectangleBorder, X._RoundedRectangleToCircleBorder]);
     _inheritMany(V.EdgeInsetsGeometry, [V.EdgeInsets, V.EdgeInsetsDirectional, V._MixedEdgeInsets]);
-    _inherit(L.ImageStreamCompleter, L._ImageStreamCompleter_Object_Diagnosticable);
-    _inherit(M._ErrorImageCompleter, L.ImageStreamCompleter);
-    _inherit(L.ImageStream, L._ImageStream_Object_Diagnosticable);
     _inherit(D.DefaultShaderWarmUp, D.ShaderWarmUp);
     _inherit(Q.TextSpan, G.InlineSpan);
     _inherit(A.TextStyle, A._TextStyle_Object_Diagnosticable);
@@ -82103,7 +80339,7 @@
     _inheritMany(N.Element, [N.RenderObjectElement, N.ComponentElement, N._NullElement]);
     _inheritMany(N.RenderObjectElement, [N.SingleChildRenderObjectElement, N.RootRenderObjectElement, N.LeafRenderObjectElement, N.MultiChildRenderObjectElement]);
     _inherit(T._OffstageElement, N.SingleChildRenderObjectElement);
-    _inherit(T.Row, T.Flex);
+    _inheritMany(T.Flex, [T.Row, T.Column]);
     _inherit(N.RenderObjectToWidgetElement, N.RootRenderObjectElement);
     _inherit(N._WidgetsFlutterBinding_BindingBase_GestureBinding, N.BindingBase);
     _inherit(N._WidgetsFlutterBinding_BindingBase_GestureBinding_SchedulerBinding, N._WidgetsFlutterBinding_BindingBase_GestureBinding);
@@ -82169,7 +80405,6 @@
     _inherit(V.SharedPreferencesPlugin, E.SharedPreferencesStorePlatform);
     _inherit(E._IntBuffer0, E.TypedDataBuffer);
     _inherit(E.Uint8Buffer, E._IntBuffer0);
-    _inherit(F._MineHomePageState, F.__MineHomePageState_State_AutomaticKeepAliveClientMixin);
     _mixin(H.__MouseAdapter__BaseAdapter__WheelEventListenerMixin, H._WheelEventListenerMixin);
     _mixin(H.__PointerAdapter__BaseAdapter__WheelEventListenerMixin, H._WheelEventListenerMixin);
     _mixin(H.UnmodifiableListBase, H.UnmodifiableListMixin);
@@ -82340,8 +80575,6 @@
     _mixin(T._TooltipThemeData_Object_Diagnosticable, Y.Diagnosticable);
     _mixin(U._Typography_Object_Diagnosticable, Y.Diagnosticable);
     _mixin(Z._Decoration_Object_Diagnosticable, Y.Diagnosticable);
-    _mixin(L._ImageStream_Object_Diagnosticable, Y.Diagnosticable);
-    _mixin(L._ImageStreamCompleter_Object_Diagnosticable, Y.Diagnosticable);
     _mixin(A._TextStyle_Object_Diagnosticable, Y.Diagnosticable);
     _mixin(S._ContainerBoxParentData_BoxParentData_ContainerParentDataMixin, K.ContainerParentDataMixin);
     _mixin(B._RenderCustomMultiChildLayoutBox_RenderBox_ContainerRenderObjectMixin, K.ContainerRenderObjectMixin);
@@ -82405,42 +80638,21 @@
     _mixin(X._ShortcutManager_ChangeNotifier_Diagnosticable, Y.Diagnosticable);
     _mixin(X._SingleActivator_Object_Diagnosticable, Y.Diagnosticable);
     _mixin(X.__ActivatorIntentPair_Object_Diagnosticable, Y.Diagnosticable);
-    _mixin(F.__MineHomePageState_State_AutomaticKeepAliveClientMixin, L.AutomaticKeepAliveClientMixin);
   })();
   var init = {
-    deferredInitialized: Object.create(null),
-    isHunkLoaded: function(hash) {
-      return !!$__dart_deferred_initializers__[hash];
-    },
-    isHunkInitialized: function(hash) {
-      return !!init.deferredInitialized[hash];
-    },
-    initializeLoadedHunk: function(hash) {
-      var hunk = $__dart_deferred_initializers__[hash];
-      if (hunk == null)
-        throw "DeferredLoading state error: code with hash '" + hash + "' was not loaded";
-      initializeDeferredHunk(hunk);
-      init.deferredInitialized[hash] = true;
-    },
-    deferredLibraryParts: {
-      deferredBox: []
-    },
-    deferredPartUris: [],
-    deferredPartHashes: [],
     typeUniverse: {eC: new Map(), tR: {}, eT: {}, tPV: {}, sEA: []},
     mangledGlobalNames: {int: "int", double: "double", num: "num", String: "String", bool: "bool", Null: "Null", List: "List"},
     mangledNames: {},
-    types: ["~()", "Null()", "~(Event)", "Null(Event)", "~(Duration)", "~(AnimationStatus)", "~(Element)", "Null(@)", "~(Object?)", "~(String,@)", "Null(~)", "~(ByteData?)", "Iterable<DiagnosticsNode>()", "bool(FlutterHtmlKeyboardEvent)", "~(@)", "bool(FocusNode)", "~(DragUpdateDetails)", "~(PointerEvent0)", "bool(BoxHitTestResult,Offset?)", "Widget(BuildContext)", "bool(_RouteEntry?)", "bool(Object?)", "Future<~>()", "~(bool)", "~(@,@)", "@(@)", "Future<Map<String,@>>(Map<String,String>)", "~(PaintingContext,Offset)", "~(RenderObject)", "int(FocusNode,FocusNode)", "~(MouseEvent)", "bool(_RouteEntry)", "int()", "@(Event)", "~(PointerExitEvent)", "~(NavigatorObserver)", "int(RenderObject,RenderObject)", "Null(PointerEvent)", "Future<Map<String,Object>>(Map<String,String>)", "Null(TouchEvent)", "@()", "~(~())", "Future<Null>()", "Null(bool)", "~(Object,StackTrace)", "~(Object?,Object?)", "bool(String)", "~(PointerDownEvent)", "String()", "~(PointerEnterEvent)", "ColorTween(@)", "~(RestorableProperty<Object?>,~())", "bool(InlineSpan)", "~(List<FrameTiming>)", "bool(SemanticsNode)", "int(SemanticsNode,SemanticsNode)", "bool(Element)", "Null(MouseEvent)", "Color(Color)", "~(DiagnosticsNode)", "~(int)", "~(num)", "int(Object?)", "KeyEventResult(FocusNode,RawKeyEvent)", "KeyData()", "String(int)", "~(Uint8List,String,int)", "Tween<double>(@)", "~(String,String)", "_Channel()", "List<CodeunitRange>()", "Future<ServiceExtensionResponse>(String,Map<String,String>)", "bool(int)", "ByteBuffer(@)", "bool()", "List<SkFont>()", "Future<bool>()", "List<SemanticsNode>(_SemanticsSortGroup)", "~(String)", "Future<ByteData?>(ByteData?)", "~(RestorationBucket)", "Map<Object?,Object?>()", "bool(@)", "bool(InheritedElement)", "Size(RenderBox,BoxConstraints)", "int(int)", "Future<String>()", "Future<~>(String)", "int(_ReadingOrderSortData,_ReadingOrderSortData)", "~(GestureMode)", "Tween<@>?(Tween<@>?,@,Tween<@>(@))", "bool(KeyData)", "@(Event)?(Event)", "@(Object?)", "Widget(BuildContext,Widget?)", "TickerFuture({from:double?})", "Uint8List(@,@)", "~(JsUrlStrategy?)", "~(DomException)", "~(ProgressEvent)", "Null(ByteData)", "Null(@,@)", "@(@,@)", "bool(Node)", "Element0(Node)", "JsFunction(@)", "JsArray<@>(@)", "JsObject(@)", "~(Element0)", "Element0()", "~(Iterable<PointerData>)", "~(_ResolvedNotoSubset)", "String(String,Color)", "_ButtonSanitizer()", "~(DragStartDetails)", "bool(bool)", "~(DragEndDetails)", "bool(SurfaceFrame,CkCanvas)", "SkTextStyle()", "TargetPlatform?()", "TargetPlatform()", "_PointerState()", "bool(DiagnosticsNode?)", "bool(StackFrame)", "ErrorDescription(String)", "ByteBuffer/(@)", "String(DiagnosticsNode)", "Incrementable(SemanticsObject)", "Scrollable(SemanticsObject)", "LabelAndValue(SemanticsObject)", "Tappable(SemanticsObject)", "TextField(SemanticsObject)", "bool(DiagnosticsNode)", "~(AbstractNode)", "String(GestureArenaMember)", "_GestureArena()", "~(PointerDataPacket)", "Checkable(SemanticsObject)", "ImageRoleManager(SemanticsObject)", "~(_TapTracker)", "Map<~(PointerEvent0),Matrix4?>()", "~(~(PointerEvent0),Matrix4?)", "MaterialRectArcTween(Rect?,Rect?)", "Widget(BuildContext,~())", "LiveRegion(SemanticsObject)", "MaterialPageRoute<0^>(RouteSettings,Widget(BuildContext))<Object?>", "DateTime()", "~(ScrollNotification)", "double()", "double(_Diagonal)", "Null(SkDeletable)", "Rect()", "Rect()?(RenderBox)", "bool(BuildContext)", "~([Intent?])", "~(FocusHighlightMode)", "~(TapDownDetails)", "Null(String)", "~(Event?)", "bool(InkHighlight?)", "bool(LayoutChangedNotification)", "~(KeyboardEvent)", "~(String,FormElement)", "ShapeBorderTween(@)", "PageTransitionsBuilder?(TargetPlatform)", "CustomMultiChildLayout(BuildContext,Widget?)", "~(EditingState?)", "ThemeDataTween(@)", "ThemeData()", "~(String?)", "EdgeInsetsGeometry(EdgeInsetsGeometry,ShapeBorder)", "ShapeBorder(ShapeBorder)", "String(ShapeBorder)", "~(ImageInfo,bool)", "Future<~>(Object,StackTrace?)", "~(Zone,ZoneDelegate,Zone,Object,StackTrace)", "~(ImageStreamListener)", "~(Object,StackTrace?)?(ImageStreamListener)", "~(String,bool?)", "DiagnosticsNode(InlineSpan)", "~(int,SemanticsAction,ByteData?)", "String(double,double,String)", "Size()", "double?()", "~(Timer)", "MouseCursor0(MouseTrackerAnnotation)", "~(MouseTrackerAnnotation,Matrix4)", "bool(MouseTrackerAnnotation)", "String/(@)", "~({curve:Curve,descendant:RenderObject?,duration:Duration,rect:Rect?})", "String(@)", "bool(InlineSpanSemanticsInformation)", "HitTestResult(Offset)", "Future<ByteBuffer>(@)", "~(FrameTiming)", "~(int,_FrameCallbackEntry)", "String?(String)", "SemanticsNode(_TraversalSortNode)", "DiagnosticsNode(SemanticsNode)", "@(@,String)", "@(String)", "int(SemanticsNode)", "SemanticsNode(int)", "Stream<LicenseEntry>()", "Future<String?>(String?)", "Future<~>(MethodCall)", "Future<~>(ByteData?,~(ByteData?))", "Future<Map<String,@>>(@)", "~(RawKeyEvent)", "Null(~())", "RawKeyEventData()", "bool(PhysicalKeyboardKey)", "Future<Object?>(MethodCall)", "bool(NotoFont)", "Null(@,StackTrace)", "List<RestorationBucket>()", "List<RestorationBucket>(List<RestorationBucket>)", "~(int,@)", "_Future<@>?()", "String(String,String)", "Route<@>?(RouteSettings)", "Route<@>(RouteSettings)", "~(Object[StackTrace?])", "HitTestResult()", "Future<double>()", "Future<~>(double)", "Future<~>(@)", "Future<@>(MethodCall)", "Future<Map<String,String>>(Map<String,Object>)", "Future<~>(bool)", "Null(Object,StackTrace)", "DiagnosticsNode(FocusNode)", "bool(KeyMessage)", "~(_FocusTraversalGroupInfo)", "bool(_DirectionalPolicyDataEntry)", "_Future<@>(@)", "bool(TraversalDirection)", "Set<Directionality>(_ReadingOrderSortData)", "~(CanvasKit)", "List<Directionality>(BuildContext)", "Rect(_ReadingOrderSortData)", "int(_ReadingOrderDirectionalGroupData,_ReadingOrderDirectionalGroupData)", "List<_ReadingOrderSortData>(_ReadingOrderSortData,Iterable<_ReadingOrderSortData>)", "bool(_ReadingOrderSortData)", "~(int,bool(FlutterHtmlKeyboardEvent))", "Element?(Element)", "Object?(int,Element?)", "TapGestureRecognizer()", "~(TapGestureRecognizer)", "DoubleTapGestureRecognizer()", "~(DoubleTapGestureRecognizer)", "LongPressGestureRecognizer()", "~(LongPressGestureRecognizer)", "VerticalDragGestureRecognizer()", "~(VerticalDragGestureRecognizer)", "HorizontalDragGestureRecognizer()", "~(HorizontalDragGestureRecognizer)", "PanGestureRecognizer()", "~(PanGestureRecognizer)", "~(RenderSemanticsGestureHandler)", "~(StatefulElement,Object)", "Positioned(BuildContext,Widget?)", "~(_HeroFlight)", "Widget(BuildContext,Animation0<double>,HeroFlightDirection,BuildContext,BuildContext)", "bool(_HeroFlight)", "IconTheme(BuildContext)", "~(Symbol0,@)", "TextStyleTween(@)", "BorderRadiusTween(@)", "Future<@>(_Pending)", "Map<Type,@>(List<@>)", "Map<Type,@>(Map<Type,@>)", "Null(Map<Type,@>)", "bool(int,int)", "bool(Route<@>?)", "bool(OverlayEntry)", "~(String,int)", "~(String[@])", "_RouteEntry(Route<@>)", "String(Object?)", "MapEntry<String?,List<Object>>(@,@)", "Null(RestorationBucket?)", "~(RestorableProperty<Object?>)", "RestorationScope(BuildContext,Widget?)", "Actions(BuildContext)", "IgnorePointer(BuildContext,Widget?)", "bool(ScrollNotification)", "Null(List<~>)", "~(ShortcutActivator,Intent)", "List<_ActivatorIntentPair>()", "Future<~>(String,ByteData?,~(ByteData?)?)", "~(Map<@,@>)", "int(int,Object)", "int(@,@)", "int(int,int)", "~(String,String?)", "~(Zone?,ZoneDelegate?,Zone,Object,StackTrace)", "0^(Zone?,ZoneDelegate?,Zone,0^())<Object?>", "0^(Zone?,ZoneDelegate?,Zone,0^(1^),1^)<Object?Object?>", "0^(Zone?,ZoneDelegate?,Zone,0^(1^,2^),1^,2^)<Object?Object?Object?>", "0^()(Zone,ZoneDelegate,Zone,0^())<Object?>", "0^(1^)(Zone,ZoneDelegate,Zone,0^(1^))<Object?Object?>", "0^(1^,2^)(Zone,ZoneDelegate,Zone,0^(1^,2^))<Object?Object?Object?>", "AsyncError?(Zone,ZoneDelegate,Zone,Object,StackTrace?)", "~(Zone?,ZoneDelegate?,Zone,~())", "Timer(Zone,ZoneDelegate,Zone,Duration,~())", "Timer(Zone,ZoneDelegate,Zone,Duration,~(Timer))", "~(Zone,ZoneDelegate,Zone,String)", "Zone(Zone?,ZoneDelegate?,Zone,ZoneSpecification?,Map<Object?,Object?>?)", "bool(Object?,Object?)", "String(String)", "Object?(Object?)", "Object?(@)", "Size?(Size?,Size?,double)", "double?(num?,num?,double)", "Color?(Color?,Color?,double)", "~(FlutterErrorDetails{forceReport:bool})", "DiagnosticsNode(String)", "StackFrame?(String)", "VelocityTracker(PointerEvent0)", "EdgeInsetsGeometry?(EdgeInsetsGeometry?,EdgeInsetsGeometry?,double)", "TextStyle?(TextStyle?,TextStyle?,double)", "int(_TaskEntry<@>,_TaskEntry<@>)", "bool({priority!int,scheduler!SchedulerBinding})", "String(ByteData)", "List<LicenseEntry>(String)", "int(Element,Element)", "List<Route<@>>(NavigatorState,String)", "~(String?{wrapWidth:int?})", "~(Action<Intent>)"],
+    types: ["~()", "Null()", "~(Event)", "Null(Event)", "~(AnimationStatus)", "~(Element)", "Null(@)", "~(Duration)", "~(Object?)", "~(String,@)", "Null(~)", "~(ByteData?)", "Iterable<DiagnosticsNode>()", "bool(FlutterHtmlKeyboardEvent)", "~(@)", "bool(FocusNode)", "~(DragUpdateDetails)", "~(PointerEvent0)", "bool(BoxHitTestResult,Offset?)", "Widget(BuildContext)", "bool(_RouteEntry?)", "bool(Object?)", "Future<~>()", "~(bool)", "~(@,@)", "@(@)", "Future<Map<String,@>>(Map<String,String>)", "~(PaintingContext,Offset)", "~(RenderObject)", "int(FocusNode,FocusNode)", "~(MouseEvent)", "bool(_RouteEntry)", "int()", "@(Event)", "~(PointerExitEvent)", "~(NavigatorObserver)", "int(RenderObject,RenderObject)", "Null(PointerEvent)", "Future<Map<String,Object>>(Map<String,String>)", "Null(TouchEvent)", "@()", "bool(Element)", "~(List<FrameTiming>)", "bool(String)", "~(PointerDownEvent)", "~(~())", "String()", "int(SemanticsNode,SemanticsNode)", "bool(SemanticsNode)", "Null(bool)", "~(Object?,Object?)", "~(Object,StackTrace)", "Null(MouseEvent)", "bool(InlineSpan)", "~(RestorableProperty<Object?>,~())", "ColorTween(@)", "Future<Null>()", "~(PointerEnterEvent)", "~(Uint8List,String,int)", "~(int)", "~(num)", "int(Object?)", "KeyEventResult(FocusNode,RawKeyEvent)", "KeyData()", "@(Event)?(Event)", "bool(KeyData)", "~(DiagnosticsNode)", "Future<~>(String)", "Future<String>()", "List<CodeunitRange>()", "int(int)", "bool(int)", "List<SkFont>()", "bool(@)", "Future<bool>()", "bool()", "List<SemanticsNode>(_SemanticsSortGroup)", "ByteBuffer(@)", "Future<ByteData?>(ByteData?)", "Size(RenderBox,BoxConstraints)", "~(RestorationBucket)", "Map<Object?,Object?>()", "Color(Color)", "bool(InheritedElement)", "_Channel()", "Future<ServiceExtensionResponse>(String,Map<String,String>)", "~(String,String)", "int(_ReadingOrderSortData,_ReadingOrderSortData)", "~(GestureMode)", "Tween<@>?(Tween<@>?,@,Tween<@>(@))", "@(Object?)", "Tween<double>(@)", "String(int)", "Widget(BuildContext,Widget?)", "bool(Node)", "~(String,String?)", "Uint8List(@,@)", "bool(int,int)", "~(DomException)", "~(ProgressEvent)", "~(JsUrlStrategy?)", "Null(@,@)", "@(@,@)", "Null(ByteData)", "Element0(Node)", "JsFunction(@)", "JsArray<@>(@)", "JsObject(@)", "~(Element0)", "TickerFuture({from:double?})", "Element0()", "~(Iterable<PointerData>)", "String(String,Color)", "~(_ResolvedNotoSubset)", "~(DragStartDetails)", "_ButtonSanitizer()", "~(DragEndDetails)", "bool(bool)", "bool(SurfaceFrame,CkCanvas)", "TargetPlatform?()", "TargetPlatform()", "SkTextStyle()", "bool(DiagnosticsNode?)", "bool(StackFrame)", "ErrorDescription(String)", "_PointerState()", "String(DiagnosticsNode)", "ByteBuffer/(@)", "Incrementable(SemanticsObject)", "Scrollable(SemanticsObject)", "LabelAndValue(SemanticsObject)", "Tappable(SemanticsObject)", "bool(DiagnosticsNode)", "~(AbstractNode)", "String(GestureArenaMember)", "_GestureArena()", "~(PointerDataPacket)", "TextField(SemanticsObject)", "Checkable(SemanticsObject)", "~(_TapTracker)", "Map<~(PointerEvent0),Matrix4?>()", "~(~(PointerEvent0),Matrix4?)", "MaterialRectArcTween(Rect?,Rect?)", "Widget(BuildContext,~())", "ImageRoleManager(SemanticsObject)", "MaterialPageRoute<0^>(RouteSettings,Widget(BuildContext))<Object?>", "LiveRegion(SemanticsObject)", "~(ScrollNotification)", "double()", "double(_Diagonal)", "DateTime()", "Rect()", "Rect()?(RenderBox)", "bool(BuildContext)", "~([Intent?])", "~(FocusHighlightMode)", "~(TapDownDetails)", "Null(SkDeletable)", "~(String)", "bool(InkHighlight?)", "bool(LayoutChangedNotification)", "Null(String)", "~(KeyboardEvent)", "ShapeBorderTween(@)", "PageTransitionsBuilder?(TargetPlatform)", "CustomMultiChildLayout(BuildContext,Widget?)", "~(String,FormElement)", "ThemeDataTween(@)", "ThemeData()", "~(EditingState?)", "EdgeInsetsGeometry(EdgeInsetsGeometry,ShapeBorder)", "ShapeBorder(ShapeBorder)", "String(ShapeBorder)", "~(String?)", "DiagnosticsNode(InlineSpan)", "~(int,SemanticsAction,ByteData?)", "String(double,double,String)", "Size()", "double?()", "~(String,bool?)", "MouseCursor0(MouseTrackerAnnotation)", "~(MouseTrackerAnnotation,Matrix4)", "bool(MouseTrackerAnnotation)", "~(Event?)", "~({curve:Curve,descendant:RenderObject?,duration:Duration,rect:Rect?})", "~(Timer)", "bool(InlineSpanSemanticsInformation)", "HitTestResult(Offset)", "String/(@)", "~(FrameTiming)", "~(int,_FrameCallbackEntry)", "String(@)", "SemanticsNode(_TraversalSortNode)", "DiagnosticsNode(SemanticsNode)", "Future<ByteBuffer>(@)", "@(@,String)", "int(SemanticsNode)", "SemanticsNode(int)", "Stream<LicenseEntry>()", "Future<String?>(String?)", "Future<~>(MethodCall)", "Future<~>(ByteData?,~(ByteData?))", "Future<Map<String,@>>(@)", "~(RawKeyEvent)", "@(String)", "RawKeyEventData()", "bool(PhysicalKeyboardKey)", "Null(~())", "String?(String)", "Null(@,StackTrace)", "List<RestorationBucket>()", "List<RestorationBucket>(List<RestorationBucket>)", "~(int,@)", "_Future<@>?()", "~(Action<Intent>)", "Route<@>?(RouteSettings)", "Route<@>(RouteSettings)", "bool(NotoFont)", "HitTestResult()", "Future<double>()", "Future<~>(double)", "Future<~>(@)", "Future<@>(MethodCall)", "Future<Map<String,String>>(Map<String,Object>)", "Future<~>(bool)", "~(Object[StackTrace?])", "DiagnosticsNode(FocusNode)", "bool(KeyMessage)", "~(_FocusTraversalGroupInfo)", "bool(_DirectionalPolicyDataEntry)", "Null(Object,StackTrace)", "bool(TraversalDirection)", "Set<Directionality>(_ReadingOrderSortData)", "_Future<@>(@)", "List<Directionality>(BuildContext)", "Rect(_ReadingOrderSortData)", "int(_ReadingOrderDirectionalGroupData,_ReadingOrderDirectionalGroupData)", "List<_ReadingOrderSortData>(_ReadingOrderSortData,Iterable<_ReadingOrderSortData>)", "bool(_ReadingOrderSortData)", "String(String,String)", "Element?(Element)", "Object?(int,Element?)", "TapGestureRecognizer()", "~(TapGestureRecognizer)", "DoubleTapGestureRecognizer()", "~(DoubleTapGestureRecognizer)", "LongPressGestureRecognizer()", "~(LongPressGestureRecognizer)", "VerticalDragGestureRecognizer()", "~(VerticalDragGestureRecognizer)", "HorizontalDragGestureRecognizer()", "~(HorizontalDragGestureRecognizer)", "PanGestureRecognizer()", "~(PanGestureRecognizer)", "~(RenderSemanticsGestureHandler)", "~(StatefulElement,Object)", "Positioned(BuildContext,Widget?)", "~(_HeroFlight)", "Widget(BuildContext,Animation0<double>,HeroFlightDirection,BuildContext,BuildContext)", "bool(_HeroFlight)", "IconTheme(BuildContext)", "~(CanvasKit)", "TextStyleTween(@)", "BorderRadiusTween(@)", "Future<@>(_Pending)", "Map<Type,@>(List<@>)", "Map<Type,@>(Map<Type,@>)", "Null(Map<Type,@>)", "~(Symbol0,@)", "bool(Route<@>?)", "bool(OverlayEntry)", "~(int,bool(FlutterHtmlKeyboardEvent))", "~(String,int)", "_RouteEntry(Route<@>)", "String(Object?)", "MapEntry<String?,List<Object>>(@,@)", "Null(RestorationBucket?)", "~(RestorableProperty<Object?>)", "RestorationScope(BuildContext,Widget?)", "Actions(BuildContext)", "IgnorePointer(BuildContext,Widget?)", "bool(ScrollNotification)", "Null(List<~>)", "~(ShortcutActivator,Intent)", "List<_ActivatorIntentPair>()", "Future<~>(String,ByteData?,~(ByteData?)?)", "~(Map<@,@>)", "int(int,Object)", "int(@,@)", "~(String[@])", "int(int,int)", "bool(Object?,Object?)", "String(String)", "Object?(Object?)", "Object?(@)", "Size?(Size?,Size?,double)", "double?(num?,num?,double)", "Color?(Color?,Color?,double)", "~(FlutterErrorDetails{forceReport:bool})", "DiagnosticsNode(String)", "StackFrame?(String)", "VelocityTracker(PointerEvent0)", "EdgeInsetsGeometry?(EdgeInsetsGeometry?,EdgeInsetsGeometry?,double)", "TextStyle?(TextStyle?,TextStyle?,double)", "int(_TaskEntry<@>,_TaskEntry<@>)", "bool({priority!int,scheduler!SchedulerBinding})", "String(ByteData)", "List<LicenseEntry>(String)", "int(Element,Element)", "List<Route<@>>(NavigatorState,String)", "~(String?{wrapWidth:int?})", "Future<Object?>(MethodCall)"],
     interceptorsByTag: null,
     leafTags: null,
     arrayRti: Symbol("$ti")
   };
-  H._Universe_addRules(init.typeUniverse, JSON.parse('{"CanvasKit":"JavaScriptObject","SkFontWeight":"JavaScriptObject","SkTextDirection":"JavaScriptObject","SkTextAlign":"JavaScriptObject","SkTextHeightBehavior":"JavaScriptObject","SkRectHeightStyle":"JavaScriptObject","SkRectWidthStyle":"JavaScriptObject","SkClipOp":"JavaScriptObject","SkFillType":"JavaScriptObject","SkBlurStyle":"JavaScriptObject","SkStrokeCap":"JavaScriptObject","SkPaintStyle":"JavaScriptObject","SkBlendMode":"JavaScriptObject","SkStrokeJoin":"JavaScriptObject","SkTileMode":"JavaScriptObject","SkShader":"JavaScriptObject","SkPaint":"JavaScriptObject","SkMaskFilter":"JavaScriptObject","SkColorFilter":"JavaScriptObject","SkPath":"JavaScriptObject","SkPicture":"JavaScriptObject","SkTextStyle":"JavaScriptObject","SkTextDecorationStyle":"JavaScriptObject","SkTextBaseline":"JavaScriptObject","SkTextShadow":"JavaScriptObject","SkFontFeature":"JavaScriptObject","SkFont":"JavaScriptObject","SkParagraph":"JavaScriptObject","SkDeletable":"JavaScriptObject","JsUrlStrategy":"JavaScriptObject","CanvasKitInitOptions":"JavaScriptObject","CanvasKitInitPromise":"JavaScriptObject","ColorSpace":"JavaScriptObject","SkWebGLContextOptions":"JavaScriptObject","SkSurface":"JavaScriptObject","SkGrContext":"JavaScriptObject","SkFontSlantEnum":"JavaScriptObject","SkFontSlant":"JavaScriptObject","SkFontWeightEnum":"JavaScriptObject","SkAffinityEnum":"JavaScriptObject","SkAffinity":"JavaScriptObject","SkTextDirectionEnum":"JavaScriptObject","SkTextAlignEnum":"JavaScriptObject","SkTextHeightBehaviorEnum":"JavaScriptObject","SkRectHeightStyleEnum":"JavaScriptObject","SkRectWidthStyleEnum":"JavaScriptObject","SkVertexModeEnum":"JavaScriptObject","SkVertexMode":"JavaScriptObject","SkPointModeEnum":"JavaScriptObject","SkPointMode":"JavaScriptObject","SkClipOpEnum":"JavaScriptObject","SkFillTypeEnum":"JavaScriptObject","SkPathOpEnum":"JavaScriptObject","SkPathOp":"JavaScriptObject","SkBlurStyleEnum":"JavaScriptObject","SkStrokeCapEnum":"JavaScriptObject","SkPaintStyleEnum":"JavaScriptObject","SkBlendModeEnum":"JavaScriptObject","SkStrokeJoinEnum":"JavaScriptObject","SkFilterQualityEnum":"JavaScriptObject","SkFilterQuality":"JavaScriptObject","SkTileModeEnum":"JavaScriptObject","SkFilterModeEnum":"JavaScriptObject","SkFilterMode":"JavaScriptObject","SkMipmapModeEnum":"JavaScriptObject","SkMipmapMode":"JavaScriptObject","SkAlphaTypeEnum":"JavaScriptObject","SkAlphaType":"JavaScriptObject","SkColorTypeEnum":"JavaScriptObject","SkColorType":"JavaScriptObject","SkAnimatedImage":"JavaScriptObject","SkImage":"JavaScriptObject","SkShaderNamespace":"JavaScriptObject","SkMaskFilterNamespace":"JavaScriptObject","SkColorFilterNamespace":"JavaScriptObject","SkImageFilterNamespace":"JavaScriptObject","SkImageFilter":"JavaScriptObject","SkPathNamespace":"JavaScriptObject","_NativeFloat32ArrayType":"JavaScriptObject","SkFloat32List":"JavaScriptObject","SkContourMeasureIter":"JavaScriptObject","SkContourMeasure":"JavaScriptObject","SkPictureRecorder":"JavaScriptObject","SkCanvas":"JavaScriptObject","SkParagraphBuilderNamespace":"JavaScriptObject","SkParagraphBuilder":"JavaScriptObject","SkParagraphStyle":"JavaScriptObject","SkParagraphStyleProperties":"JavaScriptObject","SkTextDecorationStyleEnum":"JavaScriptObject","SkTextBaselineEnum":"JavaScriptObject","SkPlaceholderAlignmentEnum":"JavaScriptObject","SkPlaceholderAlignment":"JavaScriptObject","SkTextStyleProperties":"JavaScriptObject","SkStrutStyleProperties":"JavaScriptObject","SkFontStyle":"JavaScriptObject","SkTypeface":"JavaScriptObject","SkFontMgr":"JavaScriptObject","TypefaceFontProvider":"JavaScriptObject","SkLineMetrics":"JavaScriptObject","SkTextPosition":"JavaScriptObject","SkTextRange":"JavaScriptObject","SkVertices":"JavaScriptObject","SkTonalColors":"JavaScriptObject","SkFontMgrNamespace":"JavaScriptObject","TypefaceFontProviderNamespace":"JavaScriptObject","JsConstructor":"JavaScriptObject","SkObjectFinalizationRegistry":"JavaScriptObject","SkData":"JavaScriptObject","SkImageInfo":"JavaScriptObject","PlainJavaScriptObject":"JavaScriptObject","UnknownJavaScriptObject":"JavaScriptObject","JavaScriptFunction":"JavaScriptObject","JsUrlStrategy0":"JavaScriptObject","AbortPaymentEvent":"Event","ExtendableEvent":"Event","AElement":"SvgElement","GraphicsElement":"SvgElement","_ResourceProgressEvent":"ProgressEvent","AudioElement":"HtmlElement","MediaElement":"HtmlElement","ShadowRoot":"Node","DocumentFragment":"Node","HtmlDocument":"Document","CompositionEvent":"UIEvent","DedicatedWorkerGlobalScope":"WorkerGlobalScope","CDataSection":"CharacterData","Text0":"CharacterData","HtmlFormControlsCollection":"HtmlCollection","CssCharsetRule":"CssRule","ManagedSkiaObject":{"SkiaObject":["1"]},"PersistedContainerSurface":{"PersistedSurface":[]},"Checkable":{"RoleManager":[]},"ImageRoleManager":{"RoleManager":[]},"Incrementable":{"RoleManager":[]},"LabelAndValue":{"RoleManager":[]},"LiveRegion":{"RoleManager":[]},"Scrollable":{"RoleManager":[]},"Tappable":{"RoleManager":[]},"TextField":{"RoleManager":[]},"AssetManagerException":{"Exception":[]},"RecordingCkCanvas":{"CkCanvas":[]},"CkClearCommand":{"CkPaintCommand":[]},"CkSaveCommand":{"CkPaintCommand":[]},"CkRestoreCommand":{"CkPaintCommand":[]},"CkRestoreToCountCommand":{"CkPaintCommand":[]},"CkTranslateCommand":{"CkPaintCommand":[]},"CkScaleCommand":{"CkPaintCommand":[]},"CkTransformCommand":{"CkPaintCommand":[]},"CkClipRectCommand":{"CkPaintCommand":[]},"CkClipRRectCommand":{"CkPaintCommand":[]},"CkClipPathCommand":{"CkPaintCommand":[]},"CkDrawPaintCommand":{"CkPaintCommand":[]},"CkDrawRectCommand":{"CkPaintCommand":[]},"CkDrawRRectCommand":{"CkPaintCommand":[]},"CkDrawDRRectCommand":{"CkPaintCommand":[]},"CkDrawCircleCommand":{"CkPaintCommand":[]},"CkDrawPathCommand":{"CkPaintCommand":[]},"CkDrawShadowCommand":{"CkPaintCommand":[]},"CkDrawImageRectCommand":{"CkPaintCommand":[]},"CkDrawParagraphCommand":{"CkPaintCommand":[]},"CkDrawPictureCommand":{"CkPaintCommand":[]},"CkSaveLayerCommand":{"CkPaintCommand":[]},"SkiaObjectCollectionError":{"Error":[]},"ManagedSkColorFilter":{"ManagedSkiaObject":["SkColorFilter"],"SkiaObject":["SkColorFilter"]},"MutatorsStack":{"Iterable":["Mutator"],"Iterable.E":"Mutator"},"ContainerLayer":{"Layer":[]},"RootLayer":{"Layer":[]},"ClipPathEngineLayer":{"Layer":[],"ClipPathEngineLayer0":[]},"ClipRectEngineLayer":{"Layer":[],"ClipRectEngineLayer0":[]},"OpacityEngineLayer":{"Layer":[],"OpacityEngineLayer0":[]},"TransformEngineLayer":{"Layer":[],"TransformEngineLayer0":[]},"OffsetEngineLayer":{"Layer":[],"TransformEngineLayer0":[],"OffsetEngineLayer0":[]},"PictureLayer0":{"Layer":[]},"PhysicalShapeEngineLayer":{"Layer":[],"PhysicalShapeEngineLayer0":[]},"CkMaskFilter":{"ManagedSkiaObject":["SkMaskFilter"],"SkiaObject":["SkMaskFilter"]},"CkPaint":{"ManagedSkiaObject":["SkPaint"],"SkiaObject":["SkPaint"],"Paint":[]},"CkPath":{"ManagedSkiaObject":["SkPath"],"SkiaObject":["SkPath"],"Path":[]},"CkPicture":{"ManagedSkiaObject":["SkPicture"],"SkiaObject":["SkPicture"]},"CkShader":{"ManagedSkiaObject":["SkShader"],"SkiaObject":["SkShader"]},"CkGradientLinear":{"CkShader":[],"ManagedSkiaObject":["SkShader"],"SkiaObject":["SkShader"]},"CkParagraph":{"SkiaObject":["SkParagraph"]},"CanvasKitError":{"Error":[]},"_TypedDataBuffer":{"ListMixin":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_IntBuffer":{"_TypedDataBuffer":["int"],"ListMixin":["int"],"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"]},"Uint8Buffer0":{"_TypedDataBuffer":["int"],"ListMixin":["int"],"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"ListMixin.E":"int","_TypedDataBuffer.E":"int"},"EngineFlutterWindow":{"FlutterWindow":[]},"EngineSingletonFlutterWindow":{"FlutterWindow":[]},"JSBool":{"bool":[]},"JSNull":{"Null":[]},"JavaScriptObject":{"JSObject":[],"CanvasKit":[],"SkFontWeight":[],"SkTextDirection":[],"SkTextAlign":[],"SkTextHeightBehavior":[],"SkRectHeightStyle":[],"SkRectWidthStyle":[],"SkClipOp":[],"SkFillType":[],"SkBlurStyle":[],"SkStrokeCap":[],"SkPaintStyle":[],"SkBlendMode":[],"SkStrokeJoin":[],"SkTileMode":[],"SkShader":[],"SkPaint":[],"SkMaskFilter":[],"SkColorFilter":[],"SkPath":[],"SkPicture":[],"SkTextStyle":[],"SkTextDecorationStyle":[],"SkTextBaseline":[],"SkTextShadow":[],"SkFontFeature":[],"SkFont":[],"SkParagraph":[],"SkDeletable":[],"JsUrlStrategy":[]},"JSArray":{"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"JSIndexable":["1"]},"JSUnmodifiableArray":{"JSArray":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"JSIndexable":["1"]},"JSNumber":{"double":[],"num":[]},"JSInt":{"double":[],"int":[],"num":[]},"JSNumNotInt":{"double":[],"num":[]},"JSString":{"String":[],"JSIndexable":["@"]},"_CastIterableBase":{"Iterable":["2"]},"CastIterable":{"_CastIterableBase":["1","2"],"Iterable":["2"],"Iterable.E":"2"},"_EfficientLengthCastIterable":{"CastIterable":["1","2"],"_CastIterableBase":["1","2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2"},"_CastListBase":{"ListMixin":["2"],"List":["2"],"_CastIterableBase":["1","2"],"EfficientLengthIterable":["2"],"Iterable":["2"]},"CastList":{"_CastListBase":["1","2"],"ListMixin":["2"],"List":["2"],"_CastIterableBase":["1","2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2","ListMixin.E":"2"},"CastMap":{"MapMixin":["3","4"],"Map":["3","4"],"MapMixin.V":"4","MapMixin.K":"3"},"LateError":{"Error":[]},"CodeUnits":{"ListMixin":["int"],"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"ListMixin.E":"int"},"EfficientLengthIterable":{"Iterable":["1"]},"ListIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"SubListIterable":{"ListIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1","ListIterable.E":"1"},"MappedIterable":{"Iterable":["2"],"Iterable.E":"2"},"EfficientLengthMappedIterable":{"MappedIterable":["1","2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2"},"MappedListIterable":{"ListIterable":["2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2","ListIterable.E":"2"},"WhereIterable":{"Iterable":["1"],"Iterable.E":"1"},"ExpandIterable":{"Iterable":["2"],"Iterable.E":"2"},"TakeIterable":{"Iterable":["1"],"Iterable.E":"1"},"EfficientLengthTakeIterable":{"TakeIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"SkipIterable":{"Iterable":["1"],"Iterable.E":"1"},"EfficientLengthSkipIterable":{"SkipIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"SkipWhileIterable":{"Iterable":["1"],"Iterable.E":"1"},"EmptyIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"FollowedByIterable":{"Iterable":["1"],"Iterable.E":"1"},"WhereTypeIterable":{"Iterable":["1"],"Iterable.E":"1"},"UnmodifiableListBase":{"ListMixin":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"ReversedListIterable":{"ListIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1","ListIterable.E":"1"},"Symbol":{"Symbol0":[]},"ConstantMapView":{"UnmodifiableMapView":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"ConstantMap":{"Map":["1","2"]},"ConstantStringMap":{"ConstantMap":["1","2"],"Map":["1","2"]},"_ConstantMapKeyIterable":{"Iterable":["1"],"Iterable.E":"1"},"GeneralConstantMap":{"ConstantMap":["1","2"],"Map":["1","2"]},"NullError":{"TypeError":[],"NoSuchMethodError":[],"Error":[]},"JsNoSuchMethodError":{"NoSuchMethodError":[],"Error":[]},"UnknownJsTypeError":{"Error":[]},"NullThrownFromJavaScriptException":{"Exception":[]},"_StackTrace":{"StackTrace":[]},"Closure":{"Function":[]},"Closure0Args":{"Function":[]},"Closure2Args":{"Function":[]},"TearOffClosure":{"Function":[]},"StaticClosure":{"Function":[]},"BoundClosure":{"Function":[]},"RuntimeError":{"Error":[]},"JsLinkedHashMap":{"MapMixin":["1","2"],"LinkedHashMap":["1","2"],"Map":["1","2"],"MapMixin.V":"2","MapMixin.K":"1"},"LinkedHashMapKeyIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"JSSyntaxRegExp":{"RegExp":[]},"_MatchImplementation":{"Match":[]},"StringMatch":{"Match":[]},"_StringAllMatchesIterable":{"Iterable":["Match"],"Iterable.E":"Match"},"NativeByteBuffer":{"ByteBuffer":[]},"NativeTypedData":{"TypedData":[]},"NativeByteData":{"NativeTypedData":[],"ByteData":[],"TypedData":[]},"NativeTypedArray":{"JavaScriptIndexingBehavior":["1"],"NativeTypedData":[],"TypedData":[],"JSIndexable":["1"]},"NativeTypedArrayOfDouble":{"ListMixin":["double"],"JavaScriptIndexingBehavior":["double"],"List":["double"],"NativeTypedData":[],"EfficientLengthIterable":["double"],"TypedData":[],"JSIndexable":["double"],"Iterable":["double"]},"NativeTypedArrayOfInt":{"ListMixin":["int"],"JavaScriptIndexingBehavior":["int"],"List":["int"],"NativeTypedData":[],"EfficientLengthIterable":["int"],"TypedData":[],"JSIndexable":["int"],"Iterable":["int"]},"NativeFloat32List":{"ListMixin":["double"],"Float32List":[],"JavaScriptIndexingBehavior":["double"],"List":["double"],"NativeTypedData":[],"EfficientLengthIterable":["double"],"TypedData":[],"JSIndexable":["double"],"Iterable":["double"],"ListMixin.E":"double"},"NativeFloat64List":{"ListMixin":["double"],"Float64List":[],"JavaScriptIndexingBehavior":["double"],"List":["double"],"NativeTypedData":[],"EfficientLengthIterable":["double"],"TypedData":[],"JSIndexable":["double"],"Iterable":["double"],"ListMixin.E":"double"},"NativeInt16List":{"NativeTypedArrayOfInt":[],"ListMixin":["int"],"JavaScriptIndexingBehavior":["int"],"List":["int"],"NativeTypedData":[],"EfficientLengthIterable":["int"],"TypedData":[],"JSIndexable":["int"],"Iterable":["int"],"ListMixin.E":"int"},"NativeInt32List":{"NativeTypedArrayOfInt":[],"ListMixin":["int"],"Int32List":[],"JavaScriptIndexingBehavior":["int"],"List":["int"],"NativeTypedData":[],"EfficientLengthIterable":["int"],"TypedData":[],"JSIndexable":["int"],"Iterable":["int"],"ListMixin.E":"int"},"NativeInt8List":{"NativeTypedArrayOfInt":[],"ListMixin":["int"],"JavaScriptIndexingBehavior":["int"],"List":["int"],"NativeTypedData":[],"EfficientLengthIterable":["int"],"TypedData":[],"JSIndexable":["int"],"Iterable":["int"],"ListMixin.E":"int"},"NativeUint16List":{"NativeTypedArrayOfInt":[],"ListMixin":["int"],"JavaScriptIndexingBehavior":["int"],"List":["int"],"NativeTypedData":[],"EfficientLengthIterable":["int"],"TypedData":[],"JSIndexable":["int"],"Iterable":["int"],"ListMixin.E":"int"},"NativeUint32List":{"NativeTypedArrayOfInt":[],"ListMixin":["int"],"JavaScriptIndexingBehavior":["int"],"List":["int"],"NativeTypedData":[],"EfficientLengthIterable":["int"],"TypedData":[],"JSIndexable":["int"],"Iterable":["int"],"ListMixin.E":"int"},"NativeUint8ClampedList":{"NativeTypedArrayOfInt":[],"ListMixin":["int"],"JavaScriptIndexingBehavior":["int"],"List":["int"],"NativeTypedData":[],"EfficientLengthIterable":["int"],"TypedData":[],"JSIndexable":["int"],"Iterable":["int"],"ListMixin.E":"int"},"NativeUint8List":{"NativeTypedArrayOfInt":[],"ListMixin":["int"],"Uint8List":[],"JavaScriptIndexingBehavior":["int"],"List":["int"],"NativeTypedData":[],"EfficientLengthIterable":["int"],"TypedData":[],"JSIndexable":["int"],"Iterable":["int"],"ListMixin.E":"int"},"_Type":{"Type":[]},"_Error":{"Error":[]},"_TypeError":{"TypeError":[],"Error":[]},"AsyncError":{"Error":[]},"_Future":{"Future":["1"]},"_TimerImpl":{"Timer":[]},"_SyncStarIterable":{"Iterable":["1"],"Iterable.E":"1"},"_AsyncCompleter":{"_Completer":["1"]},"_AsyncStreamController":{"_StreamController":["1"]},"_ControllerStream":{"_StreamImpl":["1"],"Stream":["1"]},"_ControllerSubscription":{"_BufferingStreamSubscription":["1"],"StreamSubscription":["1"]},"_BufferingStreamSubscription":{"StreamSubscription":["1"]},"_StreamImpl":{"Stream":["1"]},"_GeneratedStreamImpl":{"_StreamImpl":["1"],"Stream":["1"]},"_ZoneSpecification":{"ZoneSpecification":[]},"_ZoneDelegate":{"ZoneDelegate":[]},"_Zone":{"Zone":[]},"_CustomZone":{"Zone":[]},"_RootZone":{"Zone":[]},"DoubleLinkedQueueEntry":{"_DoubleLink":["DoubleLinkedQueueEntry<1>"]},"_HashMap":{"MapMixin":["1","2"],"Map":["1","2"],"MapMixin.V":"2","MapMixin.K":"1"},"_IdentityHashMap":{"_HashMap":["1","2"],"MapMixin":["1","2"],"Map":["1","2"],"MapMixin.V":"2","MapMixin.K":"1"},"_HashMapKeyIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"_LinkedIdentityHashMap":{"JsLinkedHashMap":["1","2"],"MapMixin":["1","2"],"LinkedHashMap":["1","2"],"Map":["1","2"],"MapMixin.V":"2","MapMixin.K":"1"},"_LinkedCustomHashMap":{"JsLinkedHashMap":["1","2"],"MapMixin":["1","2"],"LinkedHashMap":["1","2"],"Map":["1","2"],"MapMixin.V":"2","MapMixin.K":"1"},"_HashSet":{"_SetBase":["1"],"SetMixin":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"SetMixin.E":"1"},"_LinkedHashSet":{"_SetBase":["1"],"SetMixin":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"SetMixin.E":"1"},"IterableBase":{"Iterable":["1"]},"LinkedList":{"Iterable":["1"],"Iterable.E":"1"},"ListBase":{"ListMixin":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"MapBase":{"MapMixin":["1","2"],"Map":["1","2"]},"MapMixin":{"Map":["1","2"]},"_MapBaseValueIterable":{"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2"},"MapView":{"Map":["1","2"]},"UnmodifiableMapView":{"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"_DoubleLinkedQueueEntry":{"DoubleLinkedQueueEntry":["1"],"_DoubleLink":["DoubleLinkedQueueEntry<1>"]},"_DoubleLinkedQueueElement":{"_DoubleLinkedQueueEntry":["1"],"DoubleLinkedQueueEntry":["1"],"_DoubleLink":["DoubleLinkedQueueEntry<1>"],"_DoubleLink.0":"DoubleLinkedQueueEntry<1>"},"_DoubleLinkedQueueSentinel":{"_DoubleLinkedQueueEntry":["1"],"DoubleLinkedQueueEntry":["1"],"_DoubleLink":["DoubleLinkedQueueEntry<1>"],"_DoubleLink.0":"DoubleLinkedQueueEntry<1>"},"DoubleLinkedQueue":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"ListQueue":{"ListIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1","ListIterable.E":"1"},"_SetBase":{"SetMixin":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_UnmodifiableSet":{"_SetBase":["1"],"SetMixin":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"SetMixin.E":"1"},"_JsonMap":{"MapMixin":["String","@"],"Map":["String","@"],"MapMixin.V":"@","MapMixin.K":"String"},"_JsonMapKeyIterable":{"ListIterable":["String"],"EfficientLengthIterable":["String"],"Iterable":["String"],"Iterable.E":"String","ListIterable.E":"String"},"JsonUnsupportedObjectError":{"Error":[]},"JsonCyclicError":{"Error":[]},"double":{"num":[]},"int":{"num":[]},"List":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"Set":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"AssertionError":{"Error":[]},"TypeError":{"Error":[]},"NullThrownError":{"Error":[]},"ArgumentError":{"Error":[]},"RangeError":{"Error":[]},"IndexError":{"Error":[]},"NoSuchMethodError":{"Error":[]},"UnsupportedError":{"Error":[]},"UnimplementedError":{"Error":[]},"StateError":{"Error":[]},"ConcurrentModificationError":{"Error":[]},"OutOfMemoryError":{"Error":[]},"StackOverflowError":{"Error":[]},"CyclicInitializationError":{"Error":[]},"_Exception":{"Exception":[]},"FormatException":{"Exception":[]},"_StringStackTrace":{"StackTrace":[]},"_Uri":{"Uri":[]},"_SimpleUri":{"Uri":[]},"_DataUri":{"Uri":[]},"HtmlElement":{"Element0":[],"Node":[]},"Element0":{"Node":[]},"File":{"Blob":[]},"FormElement":{"HtmlElement":[],"Element0":[],"Node":[]},"KeyboardEvent":{"Event":[]},"MetaElement":{"HtmlElement":[],"Element0":[],"Node":[]},"MouseEvent":{"Event":[]},"PointerEvent":{"MouseEvent":[],"Event":[]},"ProgressEvent":{"Event":[]},"TouchEvent":{"Event":[]},"AnchorElement":{"HtmlElement":[],"Element0":[],"Node":[]},"AreaElement":{"HtmlElement":[],"Element0":[],"Node":[]},"ButtonElement":{"HtmlElement":[],"Element0":[],"Node":[]},"CanvasElement":{"HtmlElement":[],"Element0":[],"Node":[]},"CharacterData":{"Node":[]},"CssKeyframesRule":{"CssRule":[]},"CssStyleSheet":{"StyleSheet":[]},"DivElement":{"HtmlElement":[],"Element0":[],"Node":[]},"Document":{"Node":[]},"DomRectList":{"ListMixin":["Rectangle<num>"],"List":["Rectangle<num>"],"JavaScriptIndexingBehavior":["Rectangle<num>"],"EfficientLengthIterable":["Rectangle<num>"],"Iterable":["Rectangle<num>"],"JSIndexable":["Rectangle<num>"],"ListMixin.E":"Rectangle<num>"},"DomRectReadOnly":{"Rectangle":["num"]},"DomStringList":{"ListMixin":["String"],"List":["String"],"JavaScriptIndexingBehavior":["String"],"EfficientLengthIterable":["String"],"Iterable":["String"],"JSIndexable":["String"],"ListMixin.E":"String"},"_ChildrenElementList":{"ListMixin":["Element0"],"List":["Element0"],"EfficientLengthIterable":["Element0"],"Iterable":["Element0"],"ListMixin.E":"Element0"},"_FrozenElementList":{"ListMixin":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"ListMixin.E":"1"},"EmbedElement":{"HtmlElement":[],"Element0":[],"Node":[]},"FieldSetElement":{"HtmlElement":[],"Element0":[],"Node":[]},"FileList":{"ListMixin":["File"],"List":["File"],"JavaScriptIndexingBehavior":["File"],"EfficientLengthIterable":["File"],"Iterable":["File"],"JSIndexable":["File"],"ListMixin.E":"File"},"HtmlCollection":{"ListMixin":["Node"],"List":["Node"],"JavaScriptIndexingBehavior":["Node"],"EfficientLengthIterable":["Node"],"Iterable":["Node"],"JSIndexable":["Node"],"ListMixin.E":"Node"},"IFrameElement":{"HtmlElement":[],"Element0":[],"Node":[]},"InputElement":{"HtmlElement":[],"Element0":[],"Node":[]},"LabelElement":{"HtmlElement":[],"Element0":[],"Node":[]},"MapElement":{"HtmlElement":[],"Element0":[],"Node":[]},"MediaQueryListEvent":{"Event":[]},"MidiInputMap":{"MapMixin":["String","@"],"Map":["String","@"],"MapMixin.V":"@","MapMixin.K":"String"},"MidiOutputMap":{"MapMixin":["String","@"],"Map":["String","@"],"MapMixin.V":"@","MapMixin.K":"String"},"MimeTypeArray":{"ListMixin":["MimeType"],"List":["MimeType"],"JavaScriptIndexingBehavior":["MimeType"],"EfficientLengthIterable":["MimeType"],"Iterable":["MimeType"],"JSIndexable":["MimeType"],"ListMixin.E":"MimeType"},"_ChildNodeListLazy":{"ListMixin":["Node"],"List":["Node"],"EfficientLengthIterable":["Node"],"Iterable":["Node"],"ListMixin.E":"Node"},"NodeList":{"ListMixin":["Node"],"List":["Node"],"JavaScriptIndexingBehavior":["Node"],"EfficientLengthIterable":["Node"],"Iterable":["Node"],"JSIndexable":["Node"],"ListMixin.E":"Node"},"ObjectElement":{"HtmlElement":[],"Element0":[],"Node":[]},"OutputElement":{"HtmlElement":[],"Element0":[],"Node":[]},"ParamElement":{"HtmlElement":[],"Element0":[],"Node":[]},"PluginArray":{"ListMixin":["Plugin"],"List":["Plugin"],"JavaScriptIndexingBehavior":["Plugin"],"EfficientLengthIterable":["Plugin"],"Iterable":["Plugin"],"JSIndexable":["Plugin"],"ListMixin.E":"Plugin"},"RtcStatsReport":{"MapMixin":["String","@"],"Map":["String","@"],"MapMixin.V":"@","MapMixin.K":"String"},"ScriptElement":{"HtmlElement":[],"Element0":[],"Node":[]},"SelectElement":{"HtmlElement":[],"Element0":[],"Node":[]},"SharedWorkerGlobalScope":{"WorkerGlobalScope":[]},"SlotElement":{"HtmlElement":[],"Element0":[],"Node":[]},"SourceBufferList":{"ListMixin":["SourceBuffer"],"List":["SourceBuffer"],"JavaScriptIndexingBehavior":["SourceBuffer"],"EfficientLengthIterable":["SourceBuffer"],"Iterable":["SourceBuffer"],"JSIndexable":["SourceBuffer"],"ListMixin.E":"SourceBuffer"},"SpeechGrammarList":{"ListMixin":["SpeechGrammar"],"List":["SpeechGrammar"],"JavaScriptIndexingBehavior":["SpeechGrammar"],"EfficientLengthIterable":["SpeechGrammar"],"Iterable":["SpeechGrammar"],"JSIndexable":["SpeechGrammar"],"ListMixin.E":"SpeechGrammar"},"SpeechSynthesisEvent":{"Event":[]},"Storage":{"MapMixin":["String","String"],"Map":["String","String"],"MapMixin.V":"String","MapMixin.K":"String"},"StyleElement":{"HtmlElement":[],"Element0":[],"Node":[]},"TextAreaElement":{"HtmlElement":[],"Element0":[],"Node":[]},"TextTrackCueList":{"ListMixin":["TextTrackCue"],"List":["TextTrackCue"],"JavaScriptIndexingBehavior":["TextTrackCue"],"EfficientLengthIterable":["TextTrackCue"],"Iterable":["TextTrackCue"],"JSIndexable":["TextTrackCue"],"ListMixin.E":"TextTrackCue"},"TextTrackList":{"ListMixin":["TextTrack"],"List":["TextTrack"],"JavaScriptIndexingBehavior":["TextTrack"],"EfficientLengthIterable":["TextTrack"],"Iterable":["TextTrack"],"JSIndexable":["TextTrack"],"ListMixin.E":"TextTrack"},"TouchList":{"ListMixin":["Touch"],"List":["Touch"],"JavaScriptIndexingBehavior":["Touch"],"EfficientLengthIterable":["Touch"],"Iterable":["Touch"],"JSIndexable":["Touch"],"ListMixin.E":"Touch"},"UIEvent":{"Event":[]},"VttCue":{"TextTrackCue":[]},"WheelEvent":{"MouseEvent":[],"Event":[]},"_Attr":{"Node":[]},"_CssRuleList":{"ListMixin":["CssRule"],"List":["CssRule"],"JavaScriptIndexingBehavior":["CssRule"],"EfficientLengthIterable":["CssRule"],"Iterable":["CssRule"],"JSIndexable":["CssRule"],"ListMixin.E":"CssRule"},"_DomRect":{"Rectangle":["num"]},"_GamepadList":{"ListMixin":["Gamepad?"],"List":["Gamepad?"],"JavaScriptIndexingBehavior":["Gamepad?"],"EfficientLengthIterable":["Gamepad?"],"Iterable":["Gamepad?"],"JSIndexable":["Gamepad?"],"ListMixin.E":"Gamepad?"},"_NamedNodeMap":{"ListMixin":["Node"],"List":["Node"],"JavaScriptIndexingBehavior":["Node"],"EfficientLengthIterable":["Node"],"Iterable":["Node"],"JSIndexable":["Node"],"ListMixin.E":"Node"},"_SpeechRecognitionResultList":{"ListMixin":["SpeechRecognitionResult"],"List":["SpeechRecognitionResult"],"JavaScriptIndexingBehavior":["SpeechRecognitionResult"],"EfficientLengthIterable":["SpeechRecognitionResult"],"Iterable":["SpeechRecognitionResult"],"JSIndexable":["SpeechRecognitionResult"],"ListMixin.E":"SpeechRecognitionResult"},"_StyleSheetList":{"ListMixin":["StyleSheet"],"List":["StyleSheet"],"JavaScriptIndexingBehavior":["StyleSheet"],"EfficientLengthIterable":["StyleSheet"],"Iterable":["StyleSheet"],"JSIndexable":["StyleSheet"],"ListMixin.E":"StyleSheet"},"_EventStream":{"Stream":["1"]},"_ElementEventStreamImpl":{"_EventStream":["1"],"Stream":["1"]},"_EventStreamSubscription":{"StreamSubscription":["1"]},"FilteredElementList":{"ListMixin":["Element0"],"List":["Element0"],"EfficientLengthIterable":["Element0"],"Iterable":["Element0"],"ListMixin.E":"Element0"},"VersionChangeEvent":{"Event":[]},"JsArray":{"ListMixin":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"ListMixin.E":"1"},"NullRejectionException":{"Exception":[]},"Rectangle":{"_RectangleBase":["1"]},"LengthList":{"ListMixin":["Length"],"List":["Length"],"EfficientLengthIterable":["Length"],"Iterable":["Length"],"ListMixin.E":"Length"},"NumberList":{"ListMixin":["Number"],"List":["Number"],"EfficientLengthIterable":["Number"],"Iterable":["Number"],"ListMixin.E":"Number"},"StringList":{"ListMixin":["String"],"List":["String"],"EfficientLengthIterable":["String"],"Iterable":["String"],"ListMixin.E":"String"},"SvgElement":{"Element0":[],"Node":[]},"TransformList":{"ListMixin":["Transform0"],"List":["Transform0"],"EfficientLengthIterable":["Transform0"],"Iterable":["Transform0"],"ListMixin.E":"Transform0"},"ByteData":{"TypedData":[]},"Int8List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"TypedData":[]},"Uint8List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"TypedData":[]},"Uint8ClampedList":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"TypedData":[]},"Int16List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"TypedData":[]},"Uint16List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"TypedData":[]},"Int32List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"TypedData":[]},"Uint32List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"TypedData":[]},"Float32List":{"List":["double"],"EfficientLengthIterable":["double"],"Iterable":["double"],"TypedData":[]},"Float64List":{"List":["double"],"EfficientLengthIterable":["double"],"Iterable":["double"],"TypedData":[]},"SingletonFlutterWindow":{"FlutterWindow":[]},"AudioParamMap":{"MapMixin":["String","@"],"Map":["String","@"],"MapMixin.V":"@","MapMixin.K":"String"},"SqlResultSetRowList":{"ListMixin":["Map<@,@>"],"List":["Map<@,@>"],"EfficientLengthIterable":["Map<@,@>"],"Iterable":["Map<@,@>"],"ListMixin.E":"Map<@,@>"},"Animation0":{"Listenable":[]},"AnimationController":{"Animation0":["double"],"Listenable":[]},"_AlwaysCompleteAnimation":{"Animation0":["double"],"Listenable":[]},"_AlwaysDismissedAnimation":{"Animation0":["double"],"Listenable":[]},"ProxyAnimation":{"Animation0":["double"],"Listenable":[]},"ReverseAnimation":{"Animation0":["double"],"Listenable":[]},"CurvedAnimation":{"Animation0":["double"],"Listenable":[]},"TrainHoppingAnimation":{"Animation0":["double"],"Listenable":[]},"CompoundAnimation":{"Animation0":["1"],"Listenable":[]},"AnimationMin":{"Animation0":["1"],"Listenable":[]},"_Linear":{"Curve":[]},"Interval":{"Curve":[]},"Threshold":{"Curve":[]},"Cubic":{"Curve":[]},"FlippedCurve":{"Curve":[]},"Tween":{"Animatable":["1"],"Tween.T":"1","Animatable.T":"1"},"ColorTween":{"Tween":["Color?"],"Animatable":["Color?"],"Tween.T":"Color?","Animatable.T":"Color?"},"_AnimatedEvaluation":{"Animation0":["1"],"Listenable":[]},"_ChainedEvaluation":{"Animatable":["1"],"Animatable.T":"1"},"ReverseTween":{"Tween":["1"],"Animatable":["1"],"Tween.T":"1","Animatable.T":"1"},"RectTween":{"Tween":["Rect?"],"Animatable":["Rect?"],"Tween.T":"Rect?","Animatable.T":"Rect?"},"IntTween":{"Tween":["int"],"Animatable":["int"],"Tween.T":"int","Animatable.T":"int"},"CurveTween":{"Animatable":["double"],"Animatable.T":"double"},"CupertinoDynamicColor":{"Color":[]},"CupertinoUserInterfaceLevel":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"_CupertinoLocalizationsDelegate":{"LocalizationsDelegate":["CupertinoLocalizations"],"LocalizationsDelegate.T":"CupertinoLocalizations"},"DefaultCupertinoLocalizations":{"CupertinoLocalizations":[]},"_CupertinoBackGestureDetector":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"CupertinoPageTransition":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"_CupertinoBackGestureDetectorState":{"State":["_CupertinoBackGestureDetector<1>"]},"_CupertinoEdgeShadowDecoration":{"Decoration":[]},"_InheritedCupertinoTheme":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"CupertinoTheme":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"_ErrorDiagnostic":{"DiagnosticsProperty":["List<Object>"],"DiagnosticsNode":[]},"ErrorDescription":{"_ErrorDiagnostic":[],"DiagnosticsProperty":["List<Object>"],"DiagnosticsNode":[]},"ErrorSummary":{"_ErrorDiagnostic":[],"DiagnosticsProperty":["List<Object>"],"DiagnosticsNode":[]},"ErrorHint":{"_ErrorDiagnostic":[],"DiagnosticsProperty":["List<Object>"],"DiagnosticsNode":[]},"ErrorSpacer":{"DiagnosticsProperty":["~"],"DiagnosticsNode":[]},"FlutterError":{"DiagnosticableTree":[],"AssertionError":[],"Error":[]},"DiagnosticsStackTrace":{"DiagnosticsNode":[]},"_FlutterErrorDetailsNode":{"DiagnosticsNode":[]},"ChangeNotifier":{"Listenable":[]},"ValueListenable":{"Listenable":[]},"_MergingListenable":{"Listenable":[]},"ValueNotifier":{"Listenable":[]},"DiagnosticsProperty":{"DiagnosticsNode":[]},"DiagnosticableNode":{"DiagnosticsNode":[]},"DiagnosticableTreeNode":{"DiagnosticsNode":[]},"DiagnosticsBlock":{"DiagnosticsNode":[]},"ValueKey":{"Key":[]},"LocalKey":{"Key":[]},"LicenseEntryWithLineBreaks":{"LicenseEntry":[]},"ObserverList":{"Iterable":["1"],"Iterable.E":"1"},"HashedObserverList":{"Iterable":["1"],"Iterable.E":"1"},"SynchronousFuture":{"Future":["1"]},"FlutterErrorDetailsForPointerEventDispatcher":{"FlutterErrorDetails":[]},"PointerEnterEvent":{"PointerEvent0":[]},"PointerExitEvent":{"PointerEvent0":[]},"PointerDownEvent":{"PointerEvent0":[]},"_AbstractPointerEvent":{"PointerEvent0":[]},"_TransformedPointerEvent":{"PointerEvent0":[]},"PointerAddedEvent":{"PointerEvent0":[]},"_TransformedPointerAddedEvent":{"PointerAddedEvent":[],"PointerEvent0":[]},"PointerRemovedEvent":{"PointerEvent0":[]},"_TransformedPointerRemovedEvent":{"PointerRemovedEvent":[],"PointerEvent0":[]},"PointerHoverEvent":{"PointerEvent0":[]},"_TransformedPointerHoverEvent":{"PointerHoverEvent":[],"PointerEvent0":[]},"_TransformedPointerEnterEvent":{"PointerEnterEvent":[],"PointerEvent0":[]},"_TransformedPointerExitEvent":{"PointerExitEvent":[],"PointerEvent0":[]},"_TransformedPointerDownEvent":{"PointerDownEvent":[],"PointerEvent0":[]},"PointerMoveEvent":{"PointerEvent0":[]},"_TransformedPointerMoveEvent":{"PointerMoveEvent":[],"PointerEvent0":[]},"PointerUpEvent":{"PointerEvent0":[]},"_TransformedPointerUpEvent":{"PointerUpEvent":[],"PointerEvent0":[]},"PointerSignalEvent":{"PointerEvent0":[]},"PointerScrollEvent":{"PointerSignalEvent":[],"PointerEvent0":[]},"_TransformedPointerScrollEvent":{"PointerSignalEvent":[],"PointerEvent0":[]},"PointerCancelEvent":{"PointerEvent0":[]},"_TransformedPointerCancelEvent":{"PointerCancelEvent":[],"PointerEvent0":[]},"_MatrixTransformPart":{"_TransformPart":[]},"_OffsetTransformPart":{"_TransformPart":[]},"LongPressGestureRecognizer":{"GestureRecognizer":[],"DiagnosticableTree":[],"GestureArenaMember":[]},"VerticalDragGestureRecognizer":{"GestureRecognizer":[],"DiagnosticableTree":[],"GestureArenaMember":[]},"HorizontalDragGestureRecognizer":{"GestureRecognizer":[],"DiagnosticableTree":[],"GestureArenaMember":[]},"PanGestureRecognizer":{"GestureRecognizer":[],"DiagnosticableTree":[],"GestureArenaMember":[]},"DragGestureRecognizer":{"GestureRecognizer":[],"DiagnosticableTree":[],"GestureArenaMember":[]},"DoubleTapGestureRecognizer":{"GestureRecognizer":[],"DiagnosticableTree":[],"GestureArenaMember":[]},"GestureRecognizer":{"DiagnosticableTree":[],"GestureArenaMember":[]},"OneSequenceGestureRecognizer":{"GestureRecognizer":[],"DiagnosticableTree":[],"GestureArenaMember":[]},"PrimaryPointerGestureRecognizer":{"GestureRecognizer":[],"DiagnosticableTree":[],"GestureArenaMember":[]},"TapGestureRecognizer":{"GestureRecognizer":[],"DiagnosticableTree":[],"GestureArenaMember":[]},"BaseTapGestureRecognizer":{"GestureRecognizer":[],"DiagnosticableTree":[],"GestureArenaMember":[]},"MaterialApp":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_MaterialAppState":{"State":["MaterialApp"]},"AppBar":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_PreferredAppBarSize":{"Size":[]},"_AppBarState":{"State":["AppBar"]},"_AppBarTitleBox":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"_RenderAppBarTitleBox":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"MaterialRectArcTween":{"Tween":["Rect?"],"Animatable":["Rect?"],"Tween.T":"Rect?","Animatable.T":"Rect?"},"MaterialPointArcTween":{"Tween":["Offset"],"Animatable":["Offset"],"Tween.T":"Offset","Animatable.T":"Offset"},"BackButtonIcon":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"BackButton":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"RawMaterialButton":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_RawMaterialButtonState":{"State":["RawMaterialButton"]},"_InputPadding":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"_RenderInputPadding":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"_LerpProperties3":{"MaterialStateProperty":["1?"]},"_LerpSides":{"MaterialStateProperty":["BorderSide?"]},"_LerpShapes":{"MaterialStateProperty":["OutlinedBorder?"]},"_LerpProperties1":{"MaterialStateProperty":["1"]},"MaterialColor":{"ColorSwatch":["int"],"Color":[],"ColorSwatch.T":"int"},"_LerpProperties2":{"MaterialStateProperty":["1"]},"FlexibleSpaceBarSettings":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"FloatingActionButton":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"_ChildOverflowBox":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"_RenderChildOverflowBox":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"_AnimationSwap":{"Animation0":["1"],"Listenable":[]},"IconButton":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"InkHighlight":{"InteractiveInkFeature":[],"InkFeature":[]},"InkSplash":{"InteractiveInkFeature":[],"InkFeature":[]},"InteractiveInkFeature":{"InkFeature":[]},"_ParentInkResponseProvider":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"_InkResponseStateWidget":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"InkResponse":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"_InkResponseState":{"State":["_InkResponseStateWidget"],"_ParentInkResponseState":[]},"InkWell":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"Material":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_RenderInkFeatures":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"ShapeBorderTween":{"Tween":["ShapeBorder?"],"Animatable":["ShapeBorder?"],"Tween.T":"ShapeBorder?","Animatable.T":"ShapeBorder?"},"_MaterialInterior":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_MaterialState":{"State":["Material"]},"_InkFeatures":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"_MaterialInteriorState":{"State":["_MaterialInterior"]},"_ShapeBorderPaint":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"_ShapeBorderPainter":{"Listenable":[]},"_MaterialLocalizationsDelegate":{"LocalizationsDelegate":["MaterialLocalizations"],"LocalizationsDelegate.T":"MaterialLocalizations"},"DefaultMaterialLocalizations":{"MaterialLocalizations":[]},"MaterialStateMouseCursor":{"MouseCursor0":[],"MaterialStateProperty":["MouseCursor0"]},"_EnabledAndDisabledMouseCursor":{"MouseCursor0":[],"MaterialStateProperty":["MouseCursor0"]},"MaterialPageRoute":{"MaterialRouteTransitionMixin":["1"],"ModalRoute":["1"],"TransitionRoute":["1"],"Route":["1"]},"_FadeUpwardsPageTransition":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"FadeUpwardsPageTransitionsBuilder":{"PageTransitionsBuilder":[]},"CupertinoPageTransitionsBuilder":{"PageTransitionsBuilder":[]},"_LerpProperties0":{"MaterialStateProperty":["1"]},"ScaffoldMessenger":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_ScaffoldMessengerScope":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"_FloatingActionButtonTransition":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"Scaffold":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"ScaffoldState":{"State":["Scaffold"]},"_StandardBottomSheet":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"ScaffoldMessengerState":{"State":["ScaffoldMessenger"]},"_ScaffoldGeometryNotifier":{"Listenable":[]},"_BodyBoxConstraints":{"BoxConstraints":[]},"_BodyBuilder":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"_FloatingActionButtonTransitionState":{"State":["_FloatingActionButtonTransition"]},"_ScaffoldScope":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"_LerpProperties4":{"MaterialStateProperty":["1"]},"SnackBar":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_LerpProperties":{"MaterialStateProperty":["1"]},"_InheritedTheme":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"ThemeDataTween":{"Tween":["ThemeData"],"Animatable":["ThemeData"],"Tween.T":"ThemeData","Animatable.T":"ThemeData"},"AnimatedTheme":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"Theme":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"_AnimatedThemeState":{"State":["AnimatedTheme"]},"Tooltip":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_TooltipState":{"State":["Tooltip"]},"_TooltipOverlay":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"TooltipTheme":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"_SystemFontsNotifier":{"Listenable":[]},"OutlinedBorder":{"ShapeBorder":[]},"_CompoundBorder":{"ShapeBorder":[]},"BoxBorder":{"ShapeBorder":[]},"Border":{"ShapeBorder":[]},"BorderDirectional":{"ShapeBorder":[]},"BoxDecoration":{"Decoration":[]},"CircleBorder":{"OutlinedBorder":[],"ShapeBorder":[]},"ColorSwatch":{"Color":[]},"EdgeInsets":{"EdgeInsetsGeometry":[]},"EdgeInsetsDirectional":{"EdgeInsetsGeometry":[]},"_MixedEdgeInsets":{"EdgeInsetsGeometry":[]},"InlineSpan":{"DiagnosticableTree":[]},"RoundedRectangleBorder":{"OutlinedBorder":[],"ShapeBorder":[]},"_RoundedRectangleToCircleBorder":{"OutlinedBorder":[],"ShapeBorder":[]},"TextSpan":{"InlineSpan":[],"DiagnosticableTree":[],"MouseTrackerAnnotation":[],"HitTestTarget":[]},"BoxHitTestResult":{"HitTestResult":[]},"RenderBox":{"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"BoxHitTestEntry":{"HitTestEntry":[]},"ContainerBoxParentData":{"BoxParentData":[],"ContainerParentDataMixin":["1"]},"MultiChildLayoutParentData":{"BoxParentData":[],"ContainerParentDataMixin":["RenderBox"]},"RenderCustomMultiChildLayoutBox":{"RenderBoxContainerDefaultsMixin":["RenderBox","MultiChildLayoutParentData"],"RenderBox":[],"ContainerRenderObjectMixin":["RenderBox","MultiChildLayoutParentData"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[],"ContainerRenderObjectMixin.1":"MultiChildLayoutParentData","RenderBoxContainerDefaultsMixin.1":"MultiChildLayoutParentData"},"CustomPainter":{"Listenable":[]},"RenderCustomPaint":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderErrorBox":{"RenderBox":[],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"FlexParentData":{"BoxParentData":[],"ContainerParentDataMixin":["RenderBox"]},"RenderFlex":{"RenderBoxContainerDefaultsMixin":["RenderBox","FlexParentData"],"RenderBox":[],"ContainerRenderObjectMixin":["RenderBox","FlexParentData"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[],"ContainerRenderObjectMixin.1":"FlexParentData","RenderBoxContainerDefaultsMixin.1":"FlexParentData"},"Layer0":{"DiagnosticableTree":[],"AbstractNode":[]},"ContainerLayer0":{"DiagnosticableTree":[],"AbstractNode":[]},"ClipRectLayer":{"ContainerLayer0":[],"DiagnosticableTree":[],"AbstractNode":[]},"PictureLayer":{"DiagnosticableTree":[],"AbstractNode":[]},"PerformanceOverlayLayer":{"DiagnosticableTree":[],"AbstractNode":[]},"OffsetLayer":{"ContainerLayer0":[],"DiagnosticableTree":[],"AbstractNode":[]},"ClipPathLayer":{"ContainerLayer0":[],"DiagnosticableTree":[],"AbstractNode":[]},"TransformLayer":{"OffsetLayer":[],"ContainerLayer0":[],"DiagnosticableTree":[],"AbstractNode":[]},"OpacityLayer":{"ContainerLayer0":[],"DiagnosticableTree":[],"AbstractNode":[]},"PhysicalModelLayer":{"ContainerLayer0":[],"DiagnosticableTree":[],"AbstractNode":[]},"AnnotatedRegionLayer":{"ContainerLayer0":[],"DiagnosticableTree":[],"AbstractNode":[]},"MouseTracker":{"Listenable":[]},"RenderObject":{"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"_RootSemanticsFragment":{"_InterestingSemanticsFragment":[]},"_SwitchableSemanticsFragment":{"_InterestingSemanticsFragment":[]},"_AbortingSemanticsFragment":{"_InterestingSemanticsFragment":[]},"DiagnosticsDebugCreator":{"DiagnosticsProperty":["Object"],"DiagnosticsNode":[]},"TextParentData":{"BoxParentData":[],"ContainerParentDataMixin":["RenderBox"]},"RenderParagraph":{"RenderBoxContainerDefaultsMixin":["RenderBox","TextParentData"],"RenderBox":[],"ContainerRenderObjectMixin":["RenderBox","TextParentData"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[],"ContainerRenderObjectMixin.1":"TextParentData","RenderBoxContainerDefaultsMixin.1":"TextParentData"},"RenderPerformanceOverlay":{"RenderBox":[],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"ShapeBorderClipper":{"Listenable":[]},"RenderAbsorbPointer":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderSemanticsGestureHandler":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderProxyBox":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderProxyBoxWithHitTestBehavior":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderConstrainedBox":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderLimitedBox":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderOpacity":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderAnimatedOpacity":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"CustomClipper":{"Listenable":[]},"_RenderCustomClip":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderClipRect":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderClipPath":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"_RenderPhysicalModelBase":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderPhysicalModel":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderPhysicalShape":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderDecoratedBox":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderTransform":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderFractionalTranslation":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderPointerListener":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderMouseRegion":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"MouseTrackerAnnotation":[],"AbstractNode":[],"HitTestTarget":[]},"RenderRepaintBoundary":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderIgnorePointer":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderOffstage":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderSemanticsAnnotations":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderBlockSemantics":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderMergeSemantics":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderExcludeSemantics":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderAnnotatedRegion":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderShiftedBox":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderPadding":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderAligningShiftedBox":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderPositionedBox":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderCustomSingleChildLayoutBox":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"StackParentData":{"BoxParentData":[],"ContainerParentDataMixin":["RenderBox"]},"RenderStack":{"RenderBoxContainerDefaultsMixin":["RenderBox","StackParentData"],"RenderBox":[],"ContainerRenderObjectMixin":["RenderBox","StackParentData"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[],"ContainerRenderObjectMixin.1":"StackParentData","RenderBoxContainerDefaultsMixin.1":"StackParentData"},"RenderView":{"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"TickerFuture":{"Future":["~"]},"TickerCanceled":{"Exception":[]},"SemanticsNode":{"DiagnosticableTree":[],"AbstractNode":[]},"_SemanticsDiagnosticableNode":{"DiagnosticsNode":[]},"SemanticsProperties":{"DiagnosticableTree":[]},"SemanticsOwner":{"Listenable":[]},"KeyDownEvent":{"KeyEvent":[]},"KeyUpEvent":{"KeyEvent":[]},"KeyRepeatEvent":{"KeyEvent":[]},"PlatformException":{"Exception":[]},"MissingPluginException":{"Exception":[]},"_DeferringMouseCursor":{"MouseCursor0":[]},"_SystemMouseCursorSession":{"MouseCursorSession":[]},"SystemMouseCursor":{"MouseCursor0":[]},"RawKeyDownEvent":{"RawKeyEvent":[]},"RawKeyUpEvent":{"RawKeyEvent":[]},"RestorationManager":{"Listenable":[]},"Actions":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_ActionsMarker":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"DoNothingIntent":{"Intent":[]},"DoNothingAndStopPropagationIntent":{"Intent":[]},"ActivateIntent":{"Intent":[]},"ButtonActivateIntent":{"Intent":[]},"DismissIntent":{"Intent":[]},"PrioritizedIntents":{"Intent":[]},"ContextAction":{"Action":["1"]},"CallbackAction":{"Action":["1"]},"_ActionsState":{"State":["Actions"]},"DoNothingAction":{"Action":["Intent"]},"DismissAction":{"Action":["DismissIntent"]},"PrioritizedAction":{"Action":["PrioritizedIntents"]},"AnnotatedRegion":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"WidgetsApp":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_WidgetsAppState":{"State":["WidgetsApp"],"WidgetsBindingObserver":[]},"KeepAliveHandle":{"Listenable":[]},"_NullWidget0":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"Directionality":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"LayoutId":{"ParentDataWidget":["MultiChildLayoutParentData"],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[],"ParentDataWidget.T":"MultiChildLayoutParentData"},"CustomMultiChildLayout":{"MultiChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"Positioned":{"ParentDataWidget":["StackParentData"],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[],"ParentDataWidget.T":"StackParentData"},"DefaultAssetBundle":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"MouseRegion":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"IgnorePointer":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"Opacity":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"CustomPaint":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"ClipRect":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"ClipPath":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"PhysicalModel":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"PhysicalShape":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"Transform":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"FractionalTranslation":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"Padding":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"Align":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"Center":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"CustomSingleChildLayout":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"SizedBox":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"ConstrainedBox":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"LimitedBox":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"Offstage":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"_OffstageElement":{"RenderObjectElement":[],"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"Stack":{"MultiChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"PositionedDirectional":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"Flex":{"MultiChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"Row":{"MultiChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"RichText":{"MultiChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"Listener":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"_MouseRegionState":{"State":["MouseRegion"]},"_RawMouseRegion":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"RepaintBoundary":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"AbsorbPointer":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"Semantics":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"MergeSemantics":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"BlockSemantics":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"ExcludeSemantics":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"KeyedSubtree":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"Builder":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"ColoredBox":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"_RenderColoredBox":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderObjectToWidgetAdapter":{"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"RenderObjectToWidgetElement":{"RenderObjectElement":[],"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"WidgetsFlutterBinding":{"SchedulerBinding":[],"HitTestTarget":[]},"DecoratedBox":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"Container":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"DefaultTextEditingActions":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_DoNothingAndStopPropagationTextAction":{"ContextAction":["DoNothingAndStopPropagationTextIntent"],"Action":["DoNothingAndStopPropagationTextIntent"]},"_DeleteTextAction":{"ContextAction":["DeleteTextIntent"],"Action":["DeleteTextIntent"]},"_DeleteByWordTextAction":{"ContextAction":["DeleteByWordTextIntent"],"Action":["DeleteByWordTextIntent"]},"_DeleteByLineTextAction":{"ContextAction":["DeleteByLineTextIntent"],"Action":["DeleteByLineTextIntent"]},"_DeleteForwardTextAction":{"ContextAction":["DeleteForwardTextIntent"],"Action":["DeleteForwardTextIntent"]},"_DeleteForwardByWordTextAction":{"ContextAction":["DeleteForwardByWordTextIntent"],"Action":["DeleteForwardByWordTextIntent"]},"_DeleteForwardByLineTextAction":{"ContextAction":["DeleteForwardByLineTextIntent"],"Action":["DeleteForwardByLineTextIntent"]},"_ExpandSelectionLeftByLineTextAction":{"ContextAction":["ExpandSelectionLeftByLineTextIntent"],"Action":["ExpandSelectionLeftByLineTextIntent"]},"_ExpandSelectionRightByLineTextAction":{"ContextAction":["ExpandSelectionRightByLineTextIntent"],"Action":["ExpandSelectionRightByLineTextIntent"]},"_ExpandSelectionToEndTextAction":{"ContextAction":["ExpandSelectionToEndTextIntent"],"Action":["ExpandSelectionToEndTextIntent"]},"_ExpandSelectionToStartTextAction":{"ContextAction":["ExpandSelectionToStartTextIntent"],"Action":["ExpandSelectionToStartTextIntent"]},"_ExtendSelectionDownTextAction":{"ContextAction":["ExtendSelectionDownTextIntent"],"Action":["ExtendSelectionDownTextIntent"]},"_ExtendSelectionLeftByLineTextAction":{"ContextAction":["ExtendSelectionLeftByLineTextIntent"],"Action":["ExtendSelectionLeftByLineTextIntent"]},"_ExtendSelectionLeftByWordAndStopAtReversalTextAction":{"ContextAction":["ExtendSelectionLeftByWordAndStopAtReversalTextIntent"],"Action":["ExtendSelectionLeftByWordAndStopAtReversalTextIntent"]},"_ExtendSelectionLeftByWordTextAction":{"ContextAction":["ExtendSelectionLeftByWordTextIntent"],"Action":["ExtendSelectionLeftByWordTextIntent"]},"_ExtendSelectionLeftTextAction":{"ContextAction":["ExtendSelectionLeftTextIntent"],"Action":["ExtendSelectionLeftTextIntent"]},"_ExtendSelectionRightByLineTextAction":{"ContextAction":["ExtendSelectionRightByLineTextIntent"],"Action":["ExtendSelectionRightByLineTextIntent"]},"_ExtendSelectionRightByWordAndStopAtReversalTextAction":{"ContextAction":["ExtendSelectionRightByWordAndStopAtReversalTextIntent"],"Action":["ExtendSelectionRightByWordAndStopAtReversalTextIntent"]},"_ExtendSelectionRightByWordTextAction":{"ContextAction":["ExtendSelectionRightByWordTextIntent"],"Action":["ExtendSelectionRightByWordTextIntent"]},"_ExtendSelectionRightTextAction":{"ContextAction":["ExtendSelectionRightTextIntent"],"Action":["ExtendSelectionRightTextIntent"]},"_ExtendSelectionUpTextAction":{"ContextAction":["ExtendSelectionUpTextIntent"],"Action":["ExtendSelectionUpTextIntent"]},"_MoveSelectionDownTextAction":{"ContextAction":["MoveSelectionDownTextIntent"],"Action":["MoveSelectionDownTextIntent"]},"_MoveSelectionLeftTextAction":{"ContextAction":["MoveSelectionLeftTextIntent"],"Action":["MoveSelectionLeftTextIntent"]},"_MoveSelectionRightTextAction":{"ContextAction":["MoveSelectionRightTextIntent"],"Action":["MoveSelectionRightTextIntent"]},"_MoveSelectionUpTextAction":{"ContextAction":["MoveSelectionUpTextIntent"],"Action":["MoveSelectionUpTextIntent"]},"_MoveSelectionLeftByLineTextAction":{"ContextAction":["MoveSelectionLeftByLineTextIntent"],"Action":["MoveSelectionLeftByLineTextIntent"]},"_MoveSelectionLeftByWordTextAction":{"ContextAction":["MoveSelectionLeftByWordTextIntent"],"Action":["MoveSelectionLeftByWordTextIntent"]},"_MoveSelectionRightByLineTextAction":{"ContextAction":["MoveSelectionRightByLineTextIntent"],"Action":["MoveSelectionRightByLineTextIntent"]},"_MoveSelectionRightByWordTextAction":{"ContextAction":["MoveSelectionRightByWordTextIntent"],"Action":["MoveSelectionRightByWordTextIntent"]},"_MoveSelectionToEndTextAction":{"ContextAction":["MoveSelectionToEndTextIntent"],"Action":["MoveSelectionToEndTextIntent"]},"_MoveSelectionToStartTextAction":{"ContextAction":["MoveSelectionToStartTextIntent"],"Action":["MoveSelectionToStartTextIntent"]},"_SelectAllTextAction":{"ContextAction":["SelectAllTextIntent"],"Action":["SelectAllTextIntent"]},"_CopySelectionTextAction":{"ContextAction":["CopySelectionTextIntent"],"Action":["CopySelectionTextIntent"]},"_CutSelectionTextAction":{"ContextAction":["CutSelectionTextIntent"],"Action":["CutSelectionTextIntent"]},"_PasteTextAction":{"ContextAction":["PasteTextIntent"],"Action":["PasteTextIntent"]},"DefaultTextEditingShortcuts":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"FocusNode":{"DiagnosticableTree":[],"Listenable":[]},"FocusScopeNode":{"FocusNode":[],"DiagnosticableTree":[],"Listenable":[]},"FocusManager":{"DiagnosticableTree":[],"Listenable":[]},"Focus":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_FocusMarker":{"InheritedNotifier":["FocusNode"],"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[],"InheritedNotifier.T":"FocusNode"},"_FocusState":{"State":["Focus"]},"FocusScope":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_FocusScopeState":{"State":["Focus"]},"FocusTraversalGroup":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_FocusTraversalGroupMarker":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"RequestFocusIntent":{"Intent":[]},"NextFocusIntent":{"Intent":[]},"PreviousFocusIntent":{"Intent":[]},"DirectionalFocusIntent":{"Intent":[]},"_FocusTraversalGroupState":{"State":["FocusTraversalGroup"]},"RequestFocusAction":{"Action":["RequestFocusIntent"]},"NextFocusAction":{"Action":["NextFocusIntent"]},"PreviousFocusAction":{"Action":["PreviousFocusIntent"]},"DirectionalFocusAction":{"Action":["DirectionalFocusIntent"]},"GlobalKey":{"Key":[]},"LabeledGlobalKey":{"GlobalKey":["1"],"Key":[]},"Widget":{"DiagnosticableTree":[]},"StatefulWidget":{"Widget":[],"DiagnosticableTree":[]},"Element":{"DiagnosticableTree":[],"BuildContext":[]},"StatefulElement":{"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"InheritedElement":{"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"UniqueKey":{"Key":[]},"GlobalObjectKey":{"GlobalKey":["1"],"Key":[]},"StatelessWidget":{"Widget":[],"DiagnosticableTree":[]},"ProxyWidget":{"Widget":[],"DiagnosticableTree":[]},"ParentDataWidget":{"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"InheritedWidget":{"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"RenderObjectWidget":{"Widget":[],"DiagnosticableTree":[]},"LeafRenderObjectWidget":{"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"SingleChildRenderObjectWidget":{"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"MultiChildRenderObjectWidget":{"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"_ElementDiagnosticableTreeNode":{"DiagnosticsNode":[]},"ErrorWidget":{"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"ComponentElement":{"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"StatelessElement":{"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"ProxyElement":{"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"ParentDataElement":{"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"RenderObjectElement":{"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"RootRenderObjectElement":{"RenderObjectElement":[],"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"LeafRenderObjectElement":{"RenderObjectElement":[],"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"SingleChildRenderObjectElement":{"RenderObjectElement":[],"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"MultiChildRenderObjectElement":{"RenderObjectElement":[],"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"_NullElement":{"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"_NullWidget":{"Widget":[],"DiagnosticableTree":[]},"RawGestureDetector":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"GestureRecognizerFactoryWithHandlers":{"GestureRecognizerFactory":["1"]},"GestureDetector":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"RawGestureDetectorState":{"State":["RawGestureDetector"]},"_GestureSemantics":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"Hero":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_HeroState":{"State":["Hero"]},"HeroController":{"NavigatorObserver":[]},"Icon":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"IconTheme":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"BorderRadiusTween":{"Tween":["BorderRadius?"],"Animatable":["BorderRadius?"],"Tween.T":"BorderRadius?","Animatable.T":"BorderRadius?"},"TextStyleTween":{"Tween":["TextStyle"],"Animatable":["TextStyle"],"Tween.T":"TextStyle","Animatable.T":"TextStyle"},"AnimatedDefaultTextStyle":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"AnimatedPhysicalModel":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"DecorationTween":{"Tween":["Decoration"],"Animatable":["Decoration"],"Tween.T":"Decoration","Animatable.T":"Decoration"},"ImplicitlyAnimatedWidget":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"ImplicitlyAnimatedWidgetState":{"State":["1"]},"AnimatedWidgetBaseState":{"State":["1"]},"_AnimatedDefaultTextStyleState":{"State":["AnimatedDefaultTextStyle"]},"_AnimatedPhysicalModelState":{"State":["AnimatedPhysicalModel"]},"InheritedNotifier":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"_InheritedNotifierElement":{"InheritedElement":[],"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"InheritedTheme":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"_LocalizationsScope":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"Localizations":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_WidgetsLocalizationsDelegate":{"LocalizationsDelegate":["WidgetsLocalizations"],"LocalizationsDelegate.T":"WidgetsLocalizations"},"DefaultWidgetsLocalizations":{"WidgetsLocalizations":[]},"_LocalizationsState":{"State":["Localizations"]},"MediaQuery":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"_MediaQueryFromWindow":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_MediaQueryFromWindowState":{"State":["_MediaQueryFromWindow"],"WidgetsBindingObserver":[]},"_AnyTapGestureRecognizer":{"GestureRecognizer":[],"DiagnosticableTree":[],"GestureArenaMember":[]},"ModalBarrier":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"_AnyTapGestureRecognizerFactory":{"GestureRecognizerFactory":["_AnyTapGestureRecognizer"]},"_ModalBarrierGestureDetector":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"NavigationToolbar":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"Page":{"RouteSettings":[]},"HeroControllerScope":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"Navigator":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"NavigatorState":{"State":["Navigator"]},"_NotAnnounced":{"Route":["~"]},"_NavigatorPushObservation":{"_NavigatorObservation":[]},"_NavigatorPopObservation":{"_NavigatorObservation":[]},"_NavigatorRemoveObservation":{"_NavigatorObservation":[]},"_NavigatorReplaceObservation":{"_NavigatorObservation":[]},"_HistoryProperty":{"RestorableProperty":["Map<String?,List<Object>>?"],"Listenable":[]},"NotificationListener":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"OverlayEntry":{"Listenable":[]},"_OverlayEntryWidget":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_OverlayEntryWidgetState":{"State":["_OverlayEntryWidget"]},"Overlay":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"OverlayState":{"State":["Overlay"]},"_Theatre":{"MultiChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"_TheatreElement":{"RenderObjectElement":[],"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"_RenderTheatre":{"RenderBox":[],"ContainerRenderObjectMixin":["RenderBox","StackParentData"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[],"ContainerRenderObjectMixin.1":"StackParentData"},"PageStorage":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"PageRoute":{"ModalRoute":["1"],"TransitionRoute":["1"],"Route":["1"]},"PerformanceOverlay":{"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"PrimaryScrollController":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"RestorationScope":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"UnmanagedRestorationScope":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"RootRestorationScope":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"RestorableProperty":{"Listenable":[]},"_RestorationScopeState":{"State":["RestorationScope"]},"_RootRestorationScopeState":{"State":["RootRestorationScope"]},"RestorableValue":{"RestorableProperty":["1"],"Listenable":[]},"_RestorablePrimitiveValueN":{"RestorableProperty":["1"],"Listenable":[]},"_RestorablePrimitiveValue":{"_RestorablePrimitiveValueN":["1"],"RestorableProperty":["1"],"Listenable":[]},"RestorableNum":{"_RestorablePrimitiveValueN":["1"],"RestorableProperty":["1"],"Listenable":[],"_RestorablePrimitiveValueN.T":"1","RestorableValue.T":"1"},"RestorableBool":{"_RestorablePrimitiveValueN":["bool"],"RestorableProperty":["bool"],"Listenable":[],"_RestorablePrimitiveValueN.T":"bool","RestorableValue.T":"bool"},"RouteInformationProvider":{"Listenable":[]},"PlatformRouteInformationProvider":{"Listenable":[],"WidgetsBindingObserver":[]},"_ModalScopeStatus":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"_ModalScope":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_ModalScopeState":{"State":["_ModalScope<1>"]},"OverlayRoute":{"Route":["1"]},"TransitionRoute":{"Route":["1"]},"_DismissModalAction":{"Action":["DismissIntent"]},"ModalRoute":{"TransitionRoute":["1"],"Route":["1"]},"FocusTrap":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"_RenderFocusTrap":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"SafeArea":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"ScrollConfiguration":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"ScrollController":{"Listenable":[]},"_ScrollNotificationObserverScope":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"_ListenerEntry":{"LinkedListEntry":["_ListenerEntry"],"LinkedListEntry.E":"_ListenerEntry"},"ScrollNotificationObserver":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"ScrollNotificationObserverState":{"State":["ScrollNotificationObserver"]},"ScrollPosition":{"Listenable":[]},"_ScrollableScope":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"ScrollIntent":{"Intent":[]},"ScrollAction":{"Action":["ScrollIntent"]},"ShortcutManager":{"Listenable":[]},"Shortcuts":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"SingleActivator":{"ShortcutActivator":[]},"_ShortcutsState":{"State":["Shortcuts"]},"_ShortcutsMarker":{"InheritedNotifier":["ShortcutManager"],"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[],"InheritedNotifier.T":"ShortcutManager"},"DefaultTextStyle":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"DefaultTextHeightBehavior":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"_NullWidget1":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"Text":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"TextEditingAction":{"ContextAction":["1"],"Action":["1"]},"DeleteTextIntent":{"Intent":[]},"DeleteByWordTextIntent":{"Intent":[]},"DeleteByLineTextIntent":{"Intent":[]},"DeleteForwardTextIntent":{"Intent":[]},"DeleteForwardByWordTextIntent":{"Intent":[]},"DeleteForwardByLineTextIntent":{"Intent":[]},"DoNothingAndStopPropagationTextIntent":{"Intent":[]},"ExpandSelectionLeftByLineTextIntent":{"Intent":[]},"ExpandSelectionRightByLineTextIntent":{"Intent":[]},"ExpandSelectionToEndTextIntent":{"Intent":[]},"ExpandSelectionToStartTextIntent":{"Intent":[]},"ExtendSelectionDownTextIntent":{"Intent":[]},"ExtendSelectionLeftByLineTextIntent":{"Intent":[]},"ExtendSelectionLeftByWordAndStopAtReversalTextIntent":{"Intent":[]},"ExtendSelectionLeftByWordTextIntent":{"Intent":[]},"ExtendSelectionLeftTextIntent":{"Intent":[]},"ExtendSelectionRightByLineTextIntent":{"Intent":[]},"ExtendSelectionRightByWordAndStopAtReversalTextIntent":{"Intent":[]},"ExtendSelectionRightByWordTextIntent":{"Intent":[]},"ExtendSelectionRightTextIntent":{"Intent":[]},"ExtendSelectionUpTextIntent":{"Intent":[]},"MoveSelectionDownTextIntent":{"Intent":[]},"MoveSelectionLeftByLineTextIntent":{"Intent":[]},"MoveSelectionLeftByWordTextIntent":{"Intent":[]},"MoveSelectionLeftTextIntent":{"Intent":[]},"MoveSelectionToStartTextIntent":{"Intent":[]},"MoveSelectionRightByLineTextIntent":{"Intent":[]},"MoveSelectionRightByWordTextIntent":{"Intent":[]},"MoveSelectionRightTextIntent":{"Intent":[]},"MoveSelectionToEndTextIntent":{"Intent":[]},"MoveSelectionUpTextIntent":{"Intent":[]},"SelectAllTextIntent":{"Intent":[]},"CopySelectionTextIntent":{"Intent":[]},"CutSelectionTextIntent":{"Intent":[]},"PasteTextIntent":{"Intent":[]},"_EffectiveTickerMode":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"TickerMode":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"Title":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"AnimatedWidget":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_AnimatedState":{"State":["AnimatedWidget"]},"SlideTransition":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"ScaleTransition":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"RotationTransition":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"FadeTransition":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"DecoratedBoxTransition":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"AnimatedBuilder":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"TypedDataBuffer":{"ListMixin":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_IntBuffer0":{"TypedDataBuffer":["int"],"ListMixin":["int"],"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"]},"Uint8Buffer":{"TypedDataBuffer":["int"],"ListMixin":["int"],"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"ListMixin.E":"int"},"MyApp":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"MineHomePage":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_MineHomePageState":{"State":["MineHomePage"]},"MaterialBanner":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"DrawerController":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"DrawerControllerState":{"State":["DrawerController"]},"PlaceholderSpan":{"InlineSpan":[],"DiagnosticableTree":[]},"ScrollNotification":{"LayoutChangedNotification":[]}}'));
-  H._Universe_addErasedTypes(init.typeUniverse, JSON.parse('{"FrameReference":1,"ArrayIterator":1,"ListIterator":1,"MappedIterator":2,"WhereIterator":1,"ExpandIterator":2,"TakeIterator":1,"SkipIterator":1,"SkipWhileIterator":1,"EmptyIterator":1,"FollowedByIterator":1,"FixedLengthListMixin":1,"UnmodifiableListMixin":1,"UnmodifiableListBase":1,"__CastListBase__CastIterableBase_ListMixin":2,"LinkedHashMapKeyIterator":1,"NativeTypedArray":1,"_IterablePendingEvents":1,"_SyncStarIterator":1,"StreamTransformerBase":2,"_AsyncStreamControllerDispatch":1,"_AddStreamState":1,"_StreamControllerAddStreamState":1,"_DelayedEvent":1,"_DelayedData":1,"_PendingEvents":1,"_StreamImplEvents":1,"_StreamIterator":1,"_ZoneFunction":1,"_HashMapKeyIterator":1,"_HashSetIterator":1,"_LinkedHashSetIterator":1,"IterableBase":1,"_LinkedListIterator":1,"ListBase":1,"MapBase":2,"_MapBaseValueIterator":2,"_ListQueueIterator":1,"_UnmodifiableSetMixin":1,"_ListBase_Object_ListMixin":1,"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":2,"__SetBase_Object_SetMixin":1,"__UnmodifiableSet__SetBase__UnmodifiableSetMixin":1,"Codec":2,"Converter":2,"Comparable":1,"Expando":1,"Iterator":1,"ImmutableListMixin":1,"FixedSizeListIterator":1,"_JsArray_JsObject_ListMixin":1,"AnimationWithParentMixin":1,"CompoundAnimation":1,"_CompoundAnimation_Animation_AnimationLazyListenerMixin":1,"_CompoundAnimation_Animation_AnimationLazyListenerMixin_AnimationLocalListenersMixin":1,"_CompoundAnimation_Animation_AnimationLazyListenerMixin_AnimationLocalListenersMixin_AnimationLocalStatusListenersMixin":1,"ParametricCurve":1,"__AnimatedEvaluation_Animation_AnimationWithParentMixin":1,"_CupertinoBackGestureController":1,"ValueListenable":1,"ValueNotifier":1,"DiagnosticableNode":1,"MaterialStateMixin":1,"_MaterialPageRoute_PageRoute_MaterialRouteTransitionMixin":1,"ContainerBoxParentData":1,"_ContainerBoxParentData_BoxParentData_ContainerParentDataMixin":1,"LayerHandle":1,"ContainerParentDataMixin":1,"RenderProxyBoxMixin":1,"RenderAnimatedOpacityMixin":1,"CustomClipper":1,"_RenderCustomClip":1,"_RenderPhysicalModelBase":1,"AutomaticKeepAliveClientMixin":1,"ImplicitlyAnimatedWidgetState":1,"AnimatedWidgetBaseState":1,"_ImplicitlyAnimatedWidgetState_State_SingleTickerProviderStateMixin":1,"Page":1,"TransitionDelegate":1,"DefaultTransitionDelegate":1,"PageRoute":1,"RestorableProperty":1,"RestorationMixin":1,"RestorableValue":1,"_RestorablePrimitiveValue":1,"OverlayRoute":1,"LocalHistoryRoute":1,"_ModalRoute_TransitionRoute_LocalHistoryRoute":1,"TextEditingAction":1,"SingleTickerProviderStateMixin":1,"TickerProviderStateMixin":1}'));
+  H._Universe_addRules(init.typeUniverse, JSON.parse('{"CanvasKit":"JavaScriptObject","SkFontWeight":"JavaScriptObject","SkTextDirection":"JavaScriptObject","SkTextAlign":"JavaScriptObject","SkTextHeightBehavior":"JavaScriptObject","SkRectHeightStyle":"JavaScriptObject","SkRectWidthStyle":"JavaScriptObject","SkClipOp":"JavaScriptObject","SkFillType":"JavaScriptObject","SkBlurStyle":"JavaScriptObject","SkStrokeCap":"JavaScriptObject","SkPaintStyle":"JavaScriptObject","SkBlendMode":"JavaScriptObject","SkStrokeJoin":"JavaScriptObject","SkTileMode":"JavaScriptObject","SkShader":"JavaScriptObject","SkPaint":"JavaScriptObject","SkMaskFilter":"JavaScriptObject","SkPath":"JavaScriptObject","SkPicture":"JavaScriptObject","SkTextStyle":"JavaScriptObject","SkTextDecorationStyle":"JavaScriptObject","SkTextBaseline":"JavaScriptObject","SkTextShadow":"JavaScriptObject","SkFontFeature":"JavaScriptObject","SkFont":"JavaScriptObject","SkParagraph":"JavaScriptObject","SkDeletable":"JavaScriptObject","JsUrlStrategy":"JavaScriptObject","CanvasKitInitOptions":"JavaScriptObject","CanvasKitInitPromise":"JavaScriptObject","ColorSpace":"JavaScriptObject","SkWebGLContextOptions":"JavaScriptObject","SkSurface":"JavaScriptObject","SkGrContext":"JavaScriptObject","SkFontSlantEnum":"JavaScriptObject","SkFontSlant":"JavaScriptObject","SkFontWeightEnum":"JavaScriptObject","SkAffinityEnum":"JavaScriptObject","SkAffinity":"JavaScriptObject","SkTextDirectionEnum":"JavaScriptObject","SkTextAlignEnum":"JavaScriptObject","SkTextHeightBehaviorEnum":"JavaScriptObject","SkRectHeightStyleEnum":"JavaScriptObject","SkRectWidthStyleEnum":"JavaScriptObject","SkVertexModeEnum":"JavaScriptObject","SkVertexMode":"JavaScriptObject","SkPointModeEnum":"JavaScriptObject","SkPointMode":"JavaScriptObject","SkClipOpEnum":"JavaScriptObject","SkFillTypeEnum":"JavaScriptObject","SkPathOpEnum":"JavaScriptObject","SkPathOp":"JavaScriptObject","SkBlurStyleEnum":"JavaScriptObject","SkStrokeCapEnum":"JavaScriptObject","SkPaintStyleEnum":"JavaScriptObject","SkBlendModeEnum":"JavaScriptObject","SkStrokeJoinEnum":"JavaScriptObject","SkFilterQualityEnum":"JavaScriptObject","SkFilterQuality":"JavaScriptObject","SkTileModeEnum":"JavaScriptObject","SkFilterModeEnum":"JavaScriptObject","SkFilterMode":"JavaScriptObject","SkMipmapModeEnum":"JavaScriptObject","SkMipmapMode":"JavaScriptObject","SkAlphaTypeEnum":"JavaScriptObject","SkAlphaType":"JavaScriptObject","SkColorTypeEnum":"JavaScriptObject","SkColorType":"JavaScriptObject","SkAnimatedImage":"JavaScriptObject","SkImage":"JavaScriptObject","SkShaderNamespace":"JavaScriptObject","SkMaskFilterNamespace":"JavaScriptObject","SkColorFilterNamespace":"JavaScriptObject","SkColorFilter":"JavaScriptObject","SkImageFilterNamespace":"JavaScriptObject","SkImageFilter":"JavaScriptObject","SkPathNamespace":"JavaScriptObject","_NativeFloat32ArrayType":"JavaScriptObject","SkFloat32List":"JavaScriptObject","SkContourMeasureIter":"JavaScriptObject","SkContourMeasure":"JavaScriptObject","SkPictureRecorder":"JavaScriptObject","SkCanvas":"JavaScriptObject","SkParagraphBuilderNamespace":"JavaScriptObject","SkParagraphBuilder":"JavaScriptObject","SkParagraphStyle":"JavaScriptObject","SkParagraphStyleProperties":"JavaScriptObject","SkTextDecorationStyleEnum":"JavaScriptObject","SkTextBaselineEnum":"JavaScriptObject","SkPlaceholderAlignmentEnum":"JavaScriptObject","SkPlaceholderAlignment":"JavaScriptObject","SkTextStyleProperties":"JavaScriptObject","SkStrutStyleProperties":"JavaScriptObject","SkFontStyle":"JavaScriptObject","SkTypeface":"JavaScriptObject","SkFontMgr":"JavaScriptObject","TypefaceFontProvider":"JavaScriptObject","SkLineMetrics":"JavaScriptObject","SkTextPosition":"JavaScriptObject","SkTextRange":"JavaScriptObject","SkVertices":"JavaScriptObject","SkTonalColors":"JavaScriptObject","SkFontMgrNamespace":"JavaScriptObject","TypefaceFontProviderNamespace":"JavaScriptObject","JsConstructor":"JavaScriptObject","SkObjectFinalizationRegistry":"JavaScriptObject","SkData":"JavaScriptObject","SkImageInfo":"JavaScriptObject","PlainJavaScriptObject":"JavaScriptObject","UnknownJavaScriptObject":"JavaScriptObject","JavaScriptFunction":"JavaScriptObject","JsUrlStrategy0":"JavaScriptObject","AbortPaymentEvent":"Event","ExtendableEvent":"Event","AElement":"SvgElement","GraphicsElement":"SvgElement","_ResourceProgressEvent":"ProgressEvent","AudioElement":"HtmlElement","MediaElement":"HtmlElement","ShadowRoot":"Node","DocumentFragment":"Node","HtmlDocument":"Document","CompositionEvent":"UIEvent","DedicatedWorkerGlobalScope":"WorkerGlobalScope","CDataSection":"CharacterData","Text0":"CharacterData","HtmlFormControlsCollection":"HtmlCollection","CssCharsetRule":"CssRule","ManagedSkiaObject":{"SkiaObject":["1"]},"PersistedContainerSurface":{"PersistedSurface":[]},"Checkable":{"RoleManager":[]},"ImageRoleManager":{"RoleManager":[]},"Incrementable":{"RoleManager":[]},"LabelAndValue":{"RoleManager":[]},"LiveRegion":{"RoleManager":[]},"Scrollable":{"RoleManager":[]},"Tappable":{"RoleManager":[]},"TextField":{"RoleManager":[]},"AssetManagerException":{"Exception":[]},"RecordingCkCanvas":{"CkCanvas":[]},"CkClearCommand":{"CkPaintCommand":[]},"CkSaveCommand":{"CkPaintCommand":[]},"CkRestoreCommand":{"CkPaintCommand":[]},"CkRestoreToCountCommand":{"CkPaintCommand":[]},"CkTranslateCommand":{"CkPaintCommand":[]},"CkTransformCommand":{"CkPaintCommand":[]},"CkClipRectCommand":{"CkPaintCommand":[]},"CkClipRRectCommand":{"CkPaintCommand":[]},"CkClipPathCommand":{"CkPaintCommand":[]},"CkDrawPaintCommand":{"CkPaintCommand":[]},"CkDrawRectCommand":{"CkPaintCommand":[]},"CkDrawRRectCommand":{"CkPaintCommand":[]},"CkDrawDRRectCommand":{"CkPaintCommand":[]},"CkDrawCircleCommand":{"CkPaintCommand":[]},"CkDrawPathCommand":{"CkPaintCommand":[]},"CkDrawShadowCommand":{"CkPaintCommand":[]},"CkDrawParagraphCommand":{"CkPaintCommand":[]},"CkDrawPictureCommand":{"CkPaintCommand":[]},"CkSaveLayerCommand":{"CkPaintCommand":[]},"SkiaObjectCollectionError":{"Error":[]},"MutatorsStack":{"Iterable":["Mutator"],"Iterable.E":"Mutator"},"ContainerLayer":{"Layer":[]},"RootLayer":{"Layer":[]},"ClipPathEngineLayer":{"Layer":[],"ClipPathEngineLayer0":[]},"ClipRectEngineLayer":{"Layer":[],"ClipRectEngineLayer0":[]},"OpacityEngineLayer":{"Layer":[],"OpacityEngineLayer0":[]},"TransformEngineLayer":{"Layer":[],"TransformEngineLayer0":[]},"OffsetEngineLayer":{"Layer":[],"TransformEngineLayer0":[],"OffsetEngineLayer0":[]},"PictureLayer0":{"Layer":[]},"PhysicalShapeEngineLayer":{"Layer":[],"PhysicalShapeEngineLayer0":[]},"CkMaskFilter":{"ManagedSkiaObject":["SkMaskFilter"],"SkiaObject":["SkMaskFilter"]},"CkPaint":{"ManagedSkiaObject":["SkPaint"],"SkiaObject":["SkPaint"],"Paint":[]},"CkPath":{"ManagedSkiaObject":["SkPath"],"SkiaObject":["SkPath"],"Path":[]},"CkPicture":{"ManagedSkiaObject":["SkPicture"],"SkiaObject":["SkPicture"]},"CkShader":{"ManagedSkiaObject":["SkShader"],"SkiaObject":["SkShader"]},"CkGradientLinear":{"CkShader":[],"ManagedSkiaObject":["SkShader"],"SkiaObject":["SkShader"]},"CkParagraph":{"SkiaObject":["SkParagraph"]},"CanvasKitError":{"Error":[]},"_TypedDataBuffer":{"ListMixin":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_IntBuffer":{"_TypedDataBuffer":["int"],"ListMixin":["int"],"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"]},"Uint8Buffer0":{"_TypedDataBuffer":["int"],"ListMixin":["int"],"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"ListMixin.E":"int","_TypedDataBuffer.E":"int"},"EngineFlutterWindow":{"FlutterWindow":[]},"EngineSingletonFlutterWindow":{"FlutterWindow":[]},"JSBool":{"bool":[]},"JSNull":{"Null":[]},"JavaScriptObject":{"JSObject":[],"CanvasKit":[],"SkFontWeight":[],"SkTextDirection":[],"SkTextAlign":[],"SkTextHeightBehavior":[],"SkRectHeightStyle":[],"SkRectWidthStyle":[],"SkClipOp":[],"SkFillType":[],"SkBlurStyle":[],"SkStrokeCap":[],"SkPaintStyle":[],"SkBlendMode":[],"SkStrokeJoin":[],"SkTileMode":[],"SkShader":[],"SkPaint":[],"SkMaskFilter":[],"SkPath":[],"SkPicture":[],"SkTextStyle":[],"SkTextDecorationStyle":[],"SkTextBaseline":[],"SkTextShadow":[],"SkFontFeature":[],"SkFont":[],"SkParagraph":[],"SkDeletable":[],"JsUrlStrategy":[]},"JSArray":{"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"JSIndexable":["1"]},"JSUnmodifiableArray":{"JSArray":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"JSIndexable":["1"]},"JSNumber":{"double":[],"num":[]},"JSInt":{"double":[],"int":[],"num":[]},"JSNumNotInt":{"double":[],"num":[]},"JSString":{"String":[],"JSIndexable":["@"]},"_CastIterableBase":{"Iterable":["2"]},"CastIterable":{"_CastIterableBase":["1","2"],"Iterable":["2"],"Iterable.E":"2"},"_EfficientLengthCastIterable":{"CastIterable":["1","2"],"_CastIterableBase":["1","2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2"},"_CastListBase":{"ListMixin":["2"],"List":["2"],"_CastIterableBase":["1","2"],"EfficientLengthIterable":["2"],"Iterable":["2"]},"CastList":{"_CastListBase":["1","2"],"ListMixin":["2"],"List":["2"],"_CastIterableBase":["1","2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2","ListMixin.E":"2"},"CastMap":{"MapMixin":["3","4"],"Map":["3","4"],"MapMixin.V":"4","MapMixin.K":"3"},"LateError":{"Error":[]},"CodeUnits":{"ListMixin":["int"],"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"ListMixin.E":"int"},"EfficientLengthIterable":{"Iterable":["1"]},"ListIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"SubListIterable":{"ListIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1","ListIterable.E":"1"},"MappedIterable":{"Iterable":["2"],"Iterable.E":"2"},"EfficientLengthMappedIterable":{"MappedIterable":["1","2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2"},"MappedListIterable":{"ListIterable":["2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2","ListIterable.E":"2"},"WhereIterable":{"Iterable":["1"],"Iterable.E":"1"},"ExpandIterable":{"Iterable":["2"],"Iterable.E":"2"},"TakeIterable":{"Iterable":["1"],"Iterable.E":"1"},"EfficientLengthTakeIterable":{"TakeIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"SkipIterable":{"Iterable":["1"],"Iterable.E":"1"},"EfficientLengthSkipIterable":{"SkipIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"SkipWhileIterable":{"Iterable":["1"],"Iterable.E":"1"},"EmptyIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"FollowedByIterable":{"Iterable":["1"],"Iterable.E":"1"},"WhereTypeIterable":{"Iterable":["1"],"Iterable.E":"1"},"UnmodifiableListBase":{"ListMixin":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"ReversedListIterable":{"ListIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1","ListIterable.E":"1"},"Symbol":{"Symbol0":[]},"ConstantMapView":{"UnmodifiableMapView":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"ConstantMap":{"Map":["1","2"]},"ConstantStringMap":{"ConstantMap":["1","2"],"Map":["1","2"]},"_ConstantMapKeyIterable":{"Iterable":["1"],"Iterable.E":"1"},"GeneralConstantMap":{"ConstantMap":["1","2"],"Map":["1","2"]},"NullError":{"TypeError":[],"NoSuchMethodError":[],"Error":[]},"JsNoSuchMethodError":{"NoSuchMethodError":[],"Error":[]},"UnknownJsTypeError":{"Error":[]},"NullThrownFromJavaScriptException":{"Exception":[]},"_StackTrace":{"StackTrace":[]},"Closure":{"Function":[]},"Closure0Args":{"Function":[]},"Closure2Args":{"Function":[]},"TearOffClosure":{"Function":[]},"StaticClosure":{"Function":[]},"BoundClosure":{"Function":[]},"RuntimeError":{"Error":[]},"JsLinkedHashMap":{"MapMixin":["1","2"],"LinkedHashMap":["1","2"],"Map":["1","2"],"MapMixin.V":"2","MapMixin.K":"1"},"LinkedHashMapKeyIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"JSSyntaxRegExp":{"RegExp":[]},"_MatchImplementation":{"Match":[]},"StringMatch":{"Match":[]},"_StringAllMatchesIterable":{"Iterable":["Match"],"Iterable.E":"Match"},"NativeByteBuffer":{"ByteBuffer":[]},"NativeTypedData":{"TypedData":[]},"NativeByteData":{"NativeTypedData":[],"ByteData":[],"TypedData":[]},"NativeTypedArray":{"JavaScriptIndexingBehavior":["1"],"NativeTypedData":[],"TypedData":[],"JSIndexable":["1"]},"NativeTypedArrayOfDouble":{"ListMixin":["double"],"JavaScriptIndexingBehavior":["double"],"List":["double"],"NativeTypedData":[],"EfficientLengthIterable":["double"],"TypedData":[],"JSIndexable":["double"],"Iterable":["double"]},"NativeTypedArrayOfInt":{"ListMixin":["int"],"JavaScriptIndexingBehavior":["int"],"List":["int"],"NativeTypedData":[],"EfficientLengthIterable":["int"],"TypedData":[],"JSIndexable":["int"],"Iterable":["int"]},"NativeFloat32List":{"ListMixin":["double"],"Float32List":[],"JavaScriptIndexingBehavior":["double"],"List":["double"],"NativeTypedData":[],"EfficientLengthIterable":["double"],"TypedData":[],"JSIndexable":["double"],"Iterable":["double"],"ListMixin.E":"double"},"NativeFloat64List":{"ListMixin":["double"],"Float64List":[],"JavaScriptIndexingBehavior":["double"],"List":["double"],"NativeTypedData":[],"EfficientLengthIterable":["double"],"TypedData":[],"JSIndexable":["double"],"Iterable":["double"],"ListMixin.E":"double"},"NativeInt16List":{"NativeTypedArrayOfInt":[],"ListMixin":["int"],"JavaScriptIndexingBehavior":["int"],"List":["int"],"NativeTypedData":[],"EfficientLengthIterable":["int"],"TypedData":[],"JSIndexable":["int"],"Iterable":["int"],"ListMixin.E":"int"},"NativeInt32List":{"NativeTypedArrayOfInt":[],"ListMixin":["int"],"Int32List":[],"JavaScriptIndexingBehavior":["int"],"List":["int"],"NativeTypedData":[],"EfficientLengthIterable":["int"],"TypedData":[],"JSIndexable":["int"],"Iterable":["int"],"ListMixin.E":"int"},"NativeInt8List":{"NativeTypedArrayOfInt":[],"ListMixin":["int"],"JavaScriptIndexingBehavior":["int"],"List":["int"],"NativeTypedData":[],"EfficientLengthIterable":["int"],"TypedData":[],"JSIndexable":["int"],"Iterable":["int"],"ListMixin.E":"int"},"NativeUint16List":{"NativeTypedArrayOfInt":[],"ListMixin":["int"],"JavaScriptIndexingBehavior":["int"],"List":["int"],"NativeTypedData":[],"EfficientLengthIterable":["int"],"TypedData":[],"JSIndexable":["int"],"Iterable":["int"],"ListMixin.E":"int"},"NativeUint32List":{"NativeTypedArrayOfInt":[],"ListMixin":["int"],"JavaScriptIndexingBehavior":["int"],"List":["int"],"NativeTypedData":[],"EfficientLengthIterable":["int"],"TypedData":[],"JSIndexable":["int"],"Iterable":["int"],"ListMixin.E":"int"},"NativeUint8ClampedList":{"NativeTypedArrayOfInt":[],"ListMixin":["int"],"JavaScriptIndexingBehavior":["int"],"List":["int"],"NativeTypedData":[],"EfficientLengthIterable":["int"],"TypedData":[],"JSIndexable":["int"],"Iterable":["int"],"ListMixin.E":"int"},"NativeUint8List":{"NativeTypedArrayOfInt":[],"ListMixin":["int"],"Uint8List":[],"JavaScriptIndexingBehavior":["int"],"List":["int"],"NativeTypedData":[],"EfficientLengthIterable":["int"],"TypedData":[],"JSIndexable":["int"],"Iterable":["int"],"ListMixin.E":"int"},"_Type":{"Type":[]},"_Error":{"Error":[]},"_TypeError":{"TypeError":[],"Error":[]},"_Future":{"Future":["1"]},"_TimerImpl":{"Timer":[]},"_SyncStarIterable":{"Iterable":["1"],"Iterable.E":"1"},"AsyncError":{"Error":[]},"_AsyncCompleter":{"_Completer":["1"]},"_AsyncStreamController":{"_StreamController":["1"]},"_ControllerStream":{"_StreamImpl":["1"],"Stream":["1"]},"_ControllerSubscription":{"_BufferingStreamSubscription":["1"],"StreamSubscription":["1"]},"_BufferingStreamSubscription":{"StreamSubscription":["1"]},"_StreamImpl":{"Stream":["1"]},"_GeneratedStreamImpl":{"_StreamImpl":["1"],"Stream":["1"]},"DoubleLinkedQueueEntry":{"_DoubleLink":["DoubleLinkedQueueEntry<1>"]},"_HashMap":{"MapMixin":["1","2"],"Map":["1","2"],"MapMixin.V":"2","MapMixin.K":"1"},"_IdentityHashMap":{"_HashMap":["1","2"],"MapMixin":["1","2"],"Map":["1","2"],"MapMixin.V":"2","MapMixin.K":"1"},"_HashMapKeyIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"_LinkedIdentityHashMap":{"JsLinkedHashMap":["1","2"],"MapMixin":["1","2"],"LinkedHashMap":["1","2"],"Map":["1","2"],"MapMixin.V":"2","MapMixin.K":"1"},"_LinkedCustomHashMap":{"JsLinkedHashMap":["1","2"],"MapMixin":["1","2"],"LinkedHashMap":["1","2"],"Map":["1","2"],"MapMixin.V":"2","MapMixin.K":"1"},"_HashSet":{"_SetBase":["1"],"SetMixin":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"SetMixin.E":"1"},"_LinkedHashSet":{"_SetBase":["1"],"SetMixin":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"SetMixin.E":"1"},"IterableBase":{"Iterable":["1"]},"LinkedList":{"Iterable":["1"],"Iterable.E":"1"},"ListBase":{"ListMixin":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"MapBase":{"MapMixin":["1","2"],"Map":["1","2"]},"MapMixin":{"Map":["1","2"]},"_MapBaseValueIterable":{"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2"},"MapView":{"Map":["1","2"]},"UnmodifiableMapView":{"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"_DoubleLinkedQueueEntry":{"DoubleLinkedQueueEntry":["1"],"_DoubleLink":["DoubleLinkedQueueEntry<1>"]},"_DoubleLinkedQueueElement":{"_DoubleLinkedQueueEntry":["1"],"DoubleLinkedQueueEntry":["1"],"_DoubleLink":["DoubleLinkedQueueEntry<1>"],"_DoubleLink.0":"DoubleLinkedQueueEntry<1>"},"_DoubleLinkedQueueSentinel":{"_DoubleLinkedQueueEntry":["1"],"DoubleLinkedQueueEntry":["1"],"_DoubleLink":["DoubleLinkedQueueEntry<1>"],"_DoubleLink.0":"DoubleLinkedQueueEntry<1>"},"DoubleLinkedQueue":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"ListQueue":{"ListIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1","ListIterable.E":"1"},"_SetBase":{"SetMixin":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_UnmodifiableSet":{"_SetBase":["1"],"SetMixin":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"SetMixin.E":"1"},"_JsonMap":{"MapMixin":["String","@"],"Map":["String","@"],"MapMixin.V":"@","MapMixin.K":"String"},"_JsonMapKeyIterable":{"ListIterable":["String"],"EfficientLengthIterable":["String"],"Iterable":["String"],"Iterable.E":"String","ListIterable.E":"String"},"JsonUnsupportedObjectError":{"Error":[]},"JsonCyclicError":{"Error":[]},"double":{"num":[]},"int":{"num":[]},"List":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"Set":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"AssertionError":{"Error":[]},"TypeError":{"Error":[]},"NullThrownError":{"Error":[]},"ArgumentError":{"Error":[]},"RangeError":{"Error":[]},"IndexError":{"Error":[]},"NoSuchMethodError":{"Error":[]},"UnsupportedError":{"Error":[]},"UnimplementedError":{"Error":[]},"StateError":{"Error":[]},"ConcurrentModificationError":{"Error":[]},"OutOfMemoryError":{"Error":[]},"StackOverflowError":{"Error":[]},"CyclicInitializationError":{"Error":[]},"_Exception":{"Exception":[]},"FormatException":{"Exception":[]},"_StringStackTrace":{"StackTrace":[]},"_Uri":{"Uri":[]},"_SimpleUri":{"Uri":[]},"_DataUri":{"Uri":[]},"HtmlElement":{"Element0":[],"Node":[]},"Element0":{"Node":[]},"File":{"Blob":[]},"FormElement":{"HtmlElement":[],"Element0":[],"Node":[]},"KeyboardEvent":{"Event":[]},"MetaElement":{"HtmlElement":[],"Element0":[],"Node":[]},"MouseEvent":{"Event":[]},"PointerEvent":{"MouseEvent":[],"Event":[]},"ProgressEvent":{"Event":[]},"TouchEvent":{"Event":[]},"AnchorElement":{"HtmlElement":[],"Element0":[],"Node":[]},"AreaElement":{"HtmlElement":[],"Element0":[],"Node":[]},"ButtonElement":{"HtmlElement":[],"Element0":[],"Node":[]},"CanvasElement":{"HtmlElement":[],"Element0":[],"Node":[]},"CharacterData":{"Node":[]},"CssKeyframesRule":{"CssRule":[]},"CssStyleSheet":{"StyleSheet":[]},"DivElement":{"HtmlElement":[],"Element0":[],"Node":[]},"Document":{"Node":[]},"DomRectList":{"ListMixin":["Rectangle<num>"],"List":["Rectangle<num>"],"JavaScriptIndexingBehavior":["Rectangle<num>"],"EfficientLengthIterable":["Rectangle<num>"],"Iterable":["Rectangle<num>"],"JSIndexable":["Rectangle<num>"],"ListMixin.E":"Rectangle<num>"},"DomRectReadOnly":{"Rectangle":["num"]},"DomStringList":{"ListMixin":["String"],"List":["String"],"JavaScriptIndexingBehavior":["String"],"EfficientLengthIterable":["String"],"Iterable":["String"],"JSIndexable":["String"],"ListMixin.E":"String"},"_ChildrenElementList":{"ListMixin":["Element0"],"List":["Element0"],"EfficientLengthIterable":["Element0"],"Iterable":["Element0"],"ListMixin.E":"Element0"},"_FrozenElementList":{"ListMixin":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"ListMixin.E":"1"},"EmbedElement":{"HtmlElement":[],"Element0":[],"Node":[]},"FieldSetElement":{"HtmlElement":[],"Element0":[],"Node":[]},"FileList":{"ListMixin":["File"],"List":["File"],"JavaScriptIndexingBehavior":["File"],"EfficientLengthIterable":["File"],"Iterable":["File"],"JSIndexable":["File"],"ListMixin.E":"File"},"HtmlCollection":{"ListMixin":["Node"],"List":["Node"],"JavaScriptIndexingBehavior":["Node"],"EfficientLengthIterable":["Node"],"Iterable":["Node"],"JSIndexable":["Node"],"ListMixin.E":"Node"},"IFrameElement":{"HtmlElement":[],"Element0":[],"Node":[]},"InputElement":{"HtmlElement":[],"Element0":[],"Node":[]},"LabelElement":{"HtmlElement":[],"Element0":[],"Node":[]},"MapElement":{"HtmlElement":[],"Element0":[],"Node":[]},"MediaQueryListEvent":{"Event":[]},"MidiInputMap":{"MapMixin":["String","@"],"Map":["String","@"],"MapMixin.V":"@","MapMixin.K":"String"},"MidiOutputMap":{"MapMixin":["String","@"],"Map":["String","@"],"MapMixin.V":"@","MapMixin.K":"String"},"MimeTypeArray":{"ListMixin":["MimeType"],"List":["MimeType"],"JavaScriptIndexingBehavior":["MimeType"],"EfficientLengthIterable":["MimeType"],"Iterable":["MimeType"],"JSIndexable":["MimeType"],"ListMixin.E":"MimeType"},"_ChildNodeListLazy":{"ListMixin":["Node"],"List":["Node"],"EfficientLengthIterable":["Node"],"Iterable":["Node"],"ListMixin.E":"Node"},"NodeList":{"ListMixin":["Node"],"List":["Node"],"JavaScriptIndexingBehavior":["Node"],"EfficientLengthIterable":["Node"],"Iterable":["Node"],"JSIndexable":["Node"],"ListMixin.E":"Node"},"ObjectElement":{"HtmlElement":[],"Element0":[],"Node":[]},"OutputElement":{"HtmlElement":[],"Element0":[],"Node":[]},"ParamElement":{"HtmlElement":[],"Element0":[],"Node":[]},"PluginArray":{"ListMixin":["Plugin"],"List":["Plugin"],"JavaScriptIndexingBehavior":["Plugin"],"EfficientLengthIterable":["Plugin"],"Iterable":["Plugin"],"JSIndexable":["Plugin"],"ListMixin.E":"Plugin"},"RtcStatsReport":{"MapMixin":["String","@"],"Map":["String","@"],"MapMixin.V":"@","MapMixin.K":"String"},"ScriptElement":{"HtmlElement":[],"Element0":[],"Node":[]},"SelectElement":{"HtmlElement":[],"Element0":[],"Node":[]},"SharedWorkerGlobalScope":{"WorkerGlobalScope":[]},"SlotElement":{"HtmlElement":[],"Element0":[],"Node":[]},"SourceBufferList":{"ListMixin":["SourceBuffer"],"List":["SourceBuffer"],"JavaScriptIndexingBehavior":["SourceBuffer"],"EfficientLengthIterable":["SourceBuffer"],"Iterable":["SourceBuffer"],"JSIndexable":["SourceBuffer"],"ListMixin.E":"SourceBuffer"},"SpeechGrammarList":{"ListMixin":["SpeechGrammar"],"List":["SpeechGrammar"],"JavaScriptIndexingBehavior":["SpeechGrammar"],"EfficientLengthIterable":["SpeechGrammar"],"Iterable":["SpeechGrammar"],"JSIndexable":["SpeechGrammar"],"ListMixin.E":"SpeechGrammar"},"SpeechSynthesisEvent":{"Event":[]},"Storage":{"MapMixin":["String","String"],"Map":["String","String"],"MapMixin.V":"String","MapMixin.K":"String"},"StyleElement":{"HtmlElement":[],"Element0":[],"Node":[]},"TextAreaElement":{"HtmlElement":[],"Element0":[],"Node":[]},"TextTrackCueList":{"ListMixin":["TextTrackCue"],"List":["TextTrackCue"],"JavaScriptIndexingBehavior":["TextTrackCue"],"EfficientLengthIterable":["TextTrackCue"],"Iterable":["TextTrackCue"],"JSIndexable":["TextTrackCue"],"ListMixin.E":"TextTrackCue"},"TextTrackList":{"ListMixin":["TextTrack"],"List":["TextTrack"],"JavaScriptIndexingBehavior":["TextTrack"],"EfficientLengthIterable":["TextTrack"],"Iterable":["TextTrack"],"JSIndexable":["TextTrack"],"ListMixin.E":"TextTrack"},"TouchList":{"ListMixin":["Touch"],"List":["Touch"],"JavaScriptIndexingBehavior":["Touch"],"EfficientLengthIterable":["Touch"],"Iterable":["Touch"],"JSIndexable":["Touch"],"ListMixin.E":"Touch"},"UIEvent":{"Event":[]},"VttCue":{"TextTrackCue":[]},"WheelEvent":{"MouseEvent":[],"Event":[]},"_Attr":{"Node":[]},"_CssRuleList":{"ListMixin":["CssRule"],"List":["CssRule"],"JavaScriptIndexingBehavior":["CssRule"],"EfficientLengthIterable":["CssRule"],"Iterable":["CssRule"],"JSIndexable":["CssRule"],"ListMixin.E":"CssRule"},"_DomRect":{"Rectangle":["num"]},"_GamepadList":{"ListMixin":["Gamepad?"],"List":["Gamepad?"],"JavaScriptIndexingBehavior":["Gamepad?"],"EfficientLengthIterable":["Gamepad?"],"Iterable":["Gamepad?"],"JSIndexable":["Gamepad?"],"ListMixin.E":"Gamepad?"},"_NamedNodeMap":{"ListMixin":["Node"],"List":["Node"],"JavaScriptIndexingBehavior":["Node"],"EfficientLengthIterable":["Node"],"Iterable":["Node"],"JSIndexable":["Node"],"ListMixin.E":"Node"},"_SpeechRecognitionResultList":{"ListMixin":["SpeechRecognitionResult"],"List":["SpeechRecognitionResult"],"JavaScriptIndexingBehavior":["SpeechRecognitionResult"],"EfficientLengthIterable":["SpeechRecognitionResult"],"Iterable":["SpeechRecognitionResult"],"JSIndexable":["SpeechRecognitionResult"],"ListMixin.E":"SpeechRecognitionResult"},"_StyleSheetList":{"ListMixin":["StyleSheet"],"List":["StyleSheet"],"JavaScriptIndexingBehavior":["StyleSheet"],"EfficientLengthIterable":["StyleSheet"],"Iterable":["StyleSheet"],"JSIndexable":["StyleSheet"],"ListMixin.E":"StyleSheet"},"_EventStream":{"Stream":["1"]},"_ElementEventStreamImpl":{"_EventStream":["1"],"Stream":["1"]},"_EventStreamSubscription":{"StreamSubscription":["1"]},"FilteredElementList":{"ListMixin":["Element0"],"List":["Element0"],"EfficientLengthIterable":["Element0"],"Iterable":["Element0"],"ListMixin.E":"Element0"},"VersionChangeEvent":{"Event":[]},"JsArray":{"ListMixin":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"ListMixin.E":"1"},"NullRejectionException":{"Exception":[]},"Rectangle":{"_RectangleBase":["1"]},"LengthList":{"ListMixin":["Length"],"List":["Length"],"EfficientLengthIterable":["Length"],"Iterable":["Length"],"ListMixin.E":"Length"},"NumberList":{"ListMixin":["Number"],"List":["Number"],"EfficientLengthIterable":["Number"],"Iterable":["Number"],"ListMixin.E":"Number"},"StringList":{"ListMixin":["String"],"List":["String"],"EfficientLengthIterable":["String"],"Iterable":["String"],"ListMixin.E":"String"},"SvgElement":{"Element0":[],"Node":[]},"TransformList":{"ListMixin":["Transform0"],"List":["Transform0"],"EfficientLengthIterable":["Transform0"],"Iterable":["Transform0"],"ListMixin.E":"Transform0"},"ByteData":{"TypedData":[]},"Int8List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"TypedData":[]},"Uint8List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"TypedData":[]},"Uint8ClampedList":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"TypedData":[]},"Int16List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"TypedData":[]},"Uint16List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"TypedData":[]},"Int32List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"TypedData":[]},"Uint32List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"TypedData":[]},"Float32List":{"List":["double"],"EfficientLengthIterable":["double"],"Iterable":["double"],"TypedData":[]},"Float64List":{"List":["double"],"EfficientLengthIterable":["double"],"Iterable":["double"],"TypedData":[]},"SingletonFlutterWindow":{"FlutterWindow":[]},"AudioParamMap":{"MapMixin":["String","@"],"Map":["String","@"],"MapMixin.V":"@","MapMixin.K":"String"},"SqlResultSetRowList":{"ListMixin":["Map<@,@>"],"List":["Map<@,@>"],"EfficientLengthIterable":["Map<@,@>"],"Iterable":["Map<@,@>"],"ListMixin.E":"Map<@,@>"},"Animation0":{"Listenable":[]},"AnimationController":{"Animation0":["double"],"Listenable":[]},"_AlwaysCompleteAnimation":{"Animation0":["double"],"Listenable":[]},"_AlwaysDismissedAnimation":{"Animation0":["double"],"Listenable":[]},"ProxyAnimation":{"Animation0":["double"],"Listenable":[]},"ReverseAnimation":{"Animation0":["double"],"Listenable":[]},"CurvedAnimation":{"Animation0":["double"],"Listenable":[]},"TrainHoppingAnimation":{"Animation0":["double"],"Listenable":[]},"CompoundAnimation":{"Animation0":["1"],"Listenable":[]},"AnimationMin":{"Animation0":["1"],"Listenable":[]},"_Linear":{"Curve":[]},"Interval":{"Curve":[]},"Threshold":{"Curve":[]},"Cubic":{"Curve":[]},"FlippedCurve":{"Curve":[]},"Tween":{"Animatable":["1"],"Tween.T":"1","Animatable.T":"1"},"ColorTween":{"Tween":["Color?"],"Animatable":["Color?"],"Tween.T":"Color?","Animatable.T":"Color?"},"_AnimatedEvaluation":{"Animation0":["1"],"Listenable":[]},"_ChainedEvaluation":{"Animatable":["1"],"Animatable.T":"1"},"ReverseTween":{"Tween":["1"],"Animatable":["1"],"Tween.T":"1","Animatable.T":"1"},"RectTween":{"Tween":["Rect?"],"Animatable":["Rect?"],"Tween.T":"Rect?","Animatable.T":"Rect?"},"IntTween":{"Tween":["int"],"Animatable":["int"],"Tween.T":"int","Animatable.T":"int"},"CurveTween":{"Animatable":["double"],"Animatable.T":"double"},"CupertinoDynamicColor":{"Color":[]},"CupertinoUserInterfaceLevel":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"_CupertinoLocalizationsDelegate":{"LocalizationsDelegate":["CupertinoLocalizations"],"LocalizationsDelegate.T":"CupertinoLocalizations"},"DefaultCupertinoLocalizations":{"CupertinoLocalizations":[]},"_CupertinoBackGestureDetector":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"CupertinoPageTransition":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"_CupertinoBackGestureDetectorState":{"State":["_CupertinoBackGestureDetector<1>"]},"_CupertinoEdgeShadowDecoration":{"Decoration":[]},"_InheritedCupertinoTheme":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"CupertinoTheme":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"_ErrorDiagnostic":{"DiagnosticsProperty":["List<Object>"],"DiagnosticsNode":[]},"ErrorDescription":{"_ErrorDiagnostic":[],"DiagnosticsProperty":["List<Object>"],"DiagnosticsNode":[]},"ErrorSummary":{"_ErrorDiagnostic":[],"DiagnosticsProperty":["List<Object>"],"DiagnosticsNode":[]},"ErrorHint":{"_ErrorDiagnostic":[],"DiagnosticsProperty":["List<Object>"],"DiagnosticsNode":[]},"ErrorSpacer":{"DiagnosticsProperty":["~"],"DiagnosticsNode":[]},"FlutterError":{"DiagnosticableTree":[],"AssertionError":[],"Error":[]},"DiagnosticsStackTrace":{"DiagnosticsNode":[]},"_FlutterErrorDetailsNode":{"DiagnosticsNode":[]},"ChangeNotifier":{"Listenable":[]},"ValueListenable":{"Listenable":[]},"_MergingListenable":{"Listenable":[]},"ValueNotifier":{"Listenable":[]},"DiagnosticsProperty":{"DiagnosticsNode":[]},"DiagnosticableNode":{"DiagnosticsNode":[]},"DiagnosticableTreeNode":{"DiagnosticsNode":[]},"DiagnosticsBlock":{"DiagnosticsNode":[]},"ValueKey":{"Key":[]},"LocalKey":{"Key":[]},"LicenseEntryWithLineBreaks":{"LicenseEntry":[]},"ObserverList":{"Iterable":["1"],"Iterable.E":"1"},"HashedObserverList":{"Iterable":["1"],"Iterable.E":"1"},"SynchronousFuture":{"Future":["1"]},"FlutterErrorDetailsForPointerEventDispatcher":{"FlutterErrorDetails":[]},"PointerEnterEvent":{"PointerEvent0":[]},"PointerExitEvent":{"PointerEvent0":[]},"PointerDownEvent":{"PointerEvent0":[]},"_AbstractPointerEvent":{"PointerEvent0":[]},"_TransformedPointerEvent":{"PointerEvent0":[]},"PointerAddedEvent":{"PointerEvent0":[]},"_TransformedPointerAddedEvent":{"PointerAddedEvent":[],"PointerEvent0":[]},"PointerRemovedEvent":{"PointerEvent0":[]},"_TransformedPointerRemovedEvent":{"PointerRemovedEvent":[],"PointerEvent0":[]},"PointerHoverEvent":{"PointerEvent0":[]},"_TransformedPointerHoverEvent":{"PointerHoverEvent":[],"PointerEvent0":[]},"_TransformedPointerEnterEvent":{"PointerEnterEvent":[],"PointerEvent0":[]},"_TransformedPointerExitEvent":{"PointerExitEvent":[],"PointerEvent0":[]},"_TransformedPointerDownEvent":{"PointerDownEvent":[],"PointerEvent0":[]},"PointerMoveEvent":{"PointerEvent0":[]},"_TransformedPointerMoveEvent":{"PointerMoveEvent":[],"PointerEvent0":[]},"PointerUpEvent":{"PointerEvent0":[]},"_TransformedPointerUpEvent":{"PointerUpEvent":[],"PointerEvent0":[]},"PointerSignalEvent":{"PointerEvent0":[]},"PointerScrollEvent":{"PointerSignalEvent":[],"PointerEvent0":[]},"_TransformedPointerScrollEvent":{"PointerSignalEvent":[],"PointerEvent0":[]},"PointerCancelEvent":{"PointerEvent0":[]},"_TransformedPointerCancelEvent":{"PointerCancelEvent":[],"PointerEvent0":[]},"_MatrixTransformPart":{"_TransformPart":[]},"_OffsetTransformPart":{"_TransformPart":[]},"LongPressGestureRecognizer":{"GestureRecognizer":[],"DiagnosticableTree":[],"GestureArenaMember":[]},"VerticalDragGestureRecognizer":{"GestureRecognizer":[],"DiagnosticableTree":[],"GestureArenaMember":[]},"HorizontalDragGestureRecognizer":{"GestureRecognizer":[],"DiagnosticableTree":[],"GestureArenaMember":[]},"PanGestureRecognizer":{"GestureRecognizer":[],"DiagnosticableTree":[],"GestureArenaMember":[]},"DragGestureRecognizer":{"GestureRecognizer":[],"DiagnosticableTree":[],"GestureArenaMember":[]},"DoubleTapGestureRecognizer":{"GestureRecognizer":[],"DiagnosticableTree":[],"GestureArenaMember":[]},"GestureRecognizer":{"DiagnosticableTree":[],"GestureArenaMember":[]},"OneSequenceGestureRecognizer":{"GestureRecognizer":[],"DiagnosticableTree":[],"GestureArenaMember":[]},"PrimaryPointerGestureRecognizer":{"GestureRecognizer":[],"DiagnosticableTree":[],"GestureArenaMember":[]},"TapGestureRecognizer":{"GestureRecognizer":[],"DiagnosticableTree":[],"GestureArenaMember":[]},"BaseTapGestureRecognizer":{"GestureRecognizer":[],"DiagnosticableTree":[],"GestureArenaMember":[]},"MaterialApp":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_MaterialAppState":{"State":["MaterialApp"]},"AppBar":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_PreferredAppBarSize":{"Size":[]},"_AppBarState":{"State":["AppBar"]},"_AppBarTitleBox":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"_RenderAppBarTitleBox":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"MaterialRectArcTween":{"Tween":["Rect?"],"Animatable":["Rect?"],"Tween.T":"Rect?","Animatable.T":"Rect?"},"MaterialPointArcTween":{"Tween":["Offset"],"Animatable":["Offset"],"Tween.T":"Offset","Animatable.T":"Offset"},"BackButtonIcon":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"BackButton":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"RawMaterialButton":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_RawMaterialButtonState":{"State":["RawMaterialButton"]},"_InputPadding":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"_RenderInputPadding":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"_LerpProperties3":{"MaterialStateProperty":["1?"]},"_LerpSides":{"MaterialStateProperty":["BorderSide?"]},"_LerpShapes":{"MaterialStateProperty":["OutlinedBorder?"]},"_LerpProperties1":{"MaterialStateProperty":["1"]},"MaterialColor":{"ColorSwatch":["int"],"Color":[],"ColorSwatch.T":"int"},"_LerpProperties2":{"MaterialStateProperty":["1"]},"FlexibleSpaceBarSettings":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"FloatingActionButton":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"_ChildOverflowBox":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"_RenderChildOverflowBox":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"_AnimationSwap":{"Animation0":["1"],"Listenable":[]},"IconButton":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"InkHighlight":{"InteractiveInkFeature":[],"InkFeature":[]},"InkSplash":{"InteractiveInkFeature":[],"InkFeature":[]},"InteractiveInkFeature":{"InkFeature":[]},"_ParentInkResponseProvider":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"_InkResponseStateWidget":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"InkResponse":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"_InkResponseState":{"State":["_InkResponseStateWidget"],"_ParentInkResponseState":[]},"InkWell":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"Material":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_RenderInkFeatures":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"ShapeBorderTween":{"Tween":["ShapeBorder?"],"Animatable":["ShapeBorder?"],"Tween.T":"ShapeBorder?","Animatable.T":"ShapeBorder?"},"_MaterialInterior":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_MaterialState":{"State":["Material"]},"_InkFeatures":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"_MaterialInteriorState":{"State":["_MaterialInterior"]},"_ShapeBorderPaint":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"_ShapeBorderPainter":{"Listenable":[]},"_MaterialLocalizationsDelegate":{"LocalizationsDelegate":["MaterialLocalizations"],"LocalizationsDelegate.T":"MaterialLocalizations"},"DefaultMaterialLocalizations":{"MaterialLocalizations":[]},"MaterialStateMouseCursor":{"MouseCursor0":[],"MaterialStateProperty":["MouseCursor0"]},"_EnabledAndDisabledMouseCursor":{"MouseCursor0":[],"MaterialStateProperty":["MouseCursor0"]},"MaterialPageRoute":{"MaterialRouteTransitionMixin":["1"],"ModalRoute":["1"],"TransitionRoute":["1"],"Route":["1"]},"_FadeUpwardsPageTransition":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"FadeUpwardsPageTransitionsBuilder":{"PageTransitionsBuilder":[]},"CupertinoPageTransitionsBuilder":{"PageTransitionsBuilder":[]},"_LerpProperties0":{"MaterialStateProperty":["1"]},"ScaffoldMessenger":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_ScaffoldMessengerScope":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"_FloatingActionButtonTransition":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"Scaffold":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"ScaffoldState":{"State":["Scaffold"]},"_StandardBottomSheet":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"ScaffoldMessengerState":{"State":["ScaffoldMessenger"]},"_ScaffoldGeometryNotifier":{"Listenable":[]},"_BodyBoxConstraints":{"BoxConstraints":[]},"_BodyBuilder":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"_FloatingActionButtonTransitionState":{"State":["_FloatingActionButtonTransition"]},"_ScaffoldScope":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"_LerpProperties4":{"MaterialStateProperty":["1"]},"SnackBar":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_LerpProperties":{"MaterialStateProperty":["1"]},"_InheritedTheme":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"ThemeDataTween":{"Tween":["ThemeData"],"Animatable":["ThemeData"],"Tween.T":"ThemeData","Animatable.T":"ThemeData"},"AnimatedTheme":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"Theme":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"_AnimatedThemeState":{"State":["AnimatedTheme"]},"Tooltip":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_TooltipState":{"State":["Tooltip"]},"_TooltipOverlay":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"TooltipTheme":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"_SystemFontsNotifier":{"Listenable":[]},"OutlinedBorder":{"ShapeBorder":[]},"_CompoundBorder":{"ShapeBorder":[]},"BoxBorder":{"ShapeBorder":[]},"Border":{"ShapeBorder":[]},"BorderDirectional":{"ShapeBorder":[]},"BoxDecoration":{"Decoration":[]},"CircleBorder":{"OutlinedBorder":[],"ShapeBorder":[]},"ColorSwatch":{"Color":[]},"EdgeInsets":{"EdgeInsetsGeometry":[]},"EdgeInsetsDirectional":{"EdgeInsetsGeometry":[]},"_MixedEdgeInsets":{"EdgeInsetsGeometry":[]},"InlineSpan":{"DiagnosticableTree":[]},"RoundedRectangleBorder":{"OutlinedBorder":[],"ShapeBorder":[]},"_RoundedRectangleToCircleBorder":{"OutlinedBorder":[],"ShapeBorder":[]},"TextSpan":{"InlineSpan":[],"DiagnosticableTree":[],"MouseTrackerAnnotation":[],"HitTestTarget":[]},"BoxHitTestResult":{"HitTestResult":[]},"RenderBox":{"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"BoxHitTestEntry":{"HitTestEntry":[]},"ContainerBoxParentData":{"BoxParentData":[],"ContainerParentDataMixin":["1"]},"MultiChildLayoutParentData":{"BoxParentData":[],"ContainerParentDataMixin":["RenderBox"]},"RenderCustomMultiChildLayoutBox":{"RenderBoxContainerDefaultsMixin":["RenderBox","MultiChildLayoutParentData"],"RenderBox":[],"ContainerRenderObjectMixin":["RenderBox","MultiChildLayoutParentData"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[],"ContainerRenderObjectMixin.1":"MultiChildLayoutParentData","RenderBoxContainerDefaultsMixin.1":"MultiChildLayoutParentData"},"CustomPainter":{"Listenable":[]},"RenderCustomPaint":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderErrorBox":{"RenderBox":[],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"FlexParentData":{"BoxParentData":[],"ContainerParentDataMixin":["RenderBox"]},"RenderFlex":{"RenderBoxContainerDefaultsMixin":["RenderBox","FlexParentData"],"RenderBox":[],"ContainerRenderObjectMixin":["RenderBox","FlexParentData"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[],"ContainerRenderObjectMixin.1":"FlexParentData","RenderBoxContainerDefaultsMixin.1":"FlexParentData"},"Layer0":{"DiagnosticableTree":[],"AbstractNode":[]},"ContainerLayer0":{"DiagnosticableTree":[],"AbstractNode":[]},"ClipRectLayer":{"ContainerLayer0":[],"DiagnosticableTree":[],"AbstractNode":[]},"PictureLayer":{"DiagnosticableTree":[],"AbstractNode":[]},"PerformanceOverlayLayer":{"DiagnosticableTree":[],"AbstractNode":[]},"OffsetLayer":{"ContainerLayer0":[],"DiagnosticableTree":[],"AbstractNode":[]},"ClipPathLayer":{"ContainerLayer0":[],"DiagnosticableTree":[],"AbstractNode":[]},"TransformLayer":{"OffsetLayer":[],"ContainerLayer0":[],"DiagnosticableTree":[],"AbstractNode":[]},"OpacityLayer":{"ContainerLayer0":[],"DiagnosticableTree":[],"AbstractNode":[]},"PhysicalModelLayer":{"ContainerLayer0":[],"DiagnosticableTree":[],"AbstractNode":[]},"AnnotatedRegionLayer":{"ContainerLayer0":[],"DiagnosticableTree":[],"AbstractNode":[]},"MouseTracker":{"Listenable":[]},"RenderObject":{"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"_RootSemanticsFragment":{"_InterestingSemanticsFragment":[]},"_SwitchableSemanticsFragment":{"_InterestingSemanticsFragment":[]},"_AbortingSemanticsFragment":{"_InterestingSemanticsFragment":[]},"DiagnosticsDebugCreator":{"DiagnosticsProperty":["Object"],"DiagnosticsNode":[]},"TextParentData":{"BoxParentData":[],"ContainerParentDataMixin":["RenderBox"]},"RenderParagraph":{"RenderBoxContainerDefaultsMixin":["RenderBox","TextParentData"],"RenderBox":[],"ContainerRenderObjectMixin":["RenderBox","TextParentData"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[],"ContainerRenderObjectMixin.1":"TextParentData","RenderBoxContainerDefaultsMixin.1":"TextParentData"},"RenderPerformanceOverlay":{"RenderBox":[],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"ShapeBorderClipper":{"Listenable":[]},"RenderAbsorbPointer":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderSemanticsGestureHandler":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderProxyBox":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderProxyBoxWithHitTestBehavior":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderConstrainedBox":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderLimitedBox":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderOpacity":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderAnimatedOpacity":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"CustomClipper":{"Listenable":[]},"_RenderCustomClip":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderClipRect":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderClipPath":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"_RenderPhysicalModelBase":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderPhysicalModel":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderPhysicalShape":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderDecoratedBox":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderTransform":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderFractionalTranslation":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderPointerListener":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderMouseRegion":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"MouseTrackerAnnotation":[],"AbstractNode":[],"HitTestTarget":[]},"RenderRepaintBoundary":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderIgnorePointer":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderOffstage":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderSemanticsAnnotations":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderBlockSemantics":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderMergeSemantics":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderExcludeSemantics":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderAnnotatedRegion":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderShiftedBox":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderPadding":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderAligningShiftedBox":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderPositionedBox":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderCustomSingleChildLayoutBox":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"StackParentData":{"BoxParentData":[],"ContainerParentDataMixin":["RenderBox"]},"RenderStack":{"RenderBoxContainerDefaultsMixin":["RenderBox","StackParentData"],"RenderBox":[],"ContainerRenderObjectMixin":["RenderBox","StackParentData"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[],"ContainerRenderObjectMixin.1":"StackParentData","RenderBoxContainerDefaultsMixin.1":"StackParentData"},"RenderView":{"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"TickerFuture":{"Future":["~"]},"TickerCanceled":{"Exception":[]},"SemanticsNode":{"DiagnosticableTree":[],"AbstractNode":[]},"_SemanticsDiagnosticableNode":{"DiagnosticsNode":[]},"SemanticsProperties":{"DiagnosticableTree":[]},"SemanticsOwner":{"Listenable":[]},"KeyDownEvent":{"KeyEvent":[]},"KeyUpEvent":{"KeyEvent":[]},"KeyRepeatEvent":{"KeyEvent":[]},"PlatformException":{"Exception":[]},"MissingPluginException":{"Exception":[]},"_DeferringMouseCursor":{"MouseCursor0":[]},"_SystemMouseCursorSession":{"MouseCursorSession":[]},"SystemMouseCursor":{"MouseCursor0":[]},"RawKeyDownEvent":{"RawKeyEvent":[]},"RawKeyUpEvent":{"RawKeyEvent":[]},"RestorationManager":{"Listenable":[]},"Actions":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_ActionsMarker":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"DoNothingIntent":{"Intent":[]},"DoNothingAndStopPropagationIntent":{"Intent":[]},"ActivateIntent":{"Intent":[]},"ButtonActivateIntent":{"Intent":[]},"DismissIntent":{"Intent":[]},"PrioritizedIntents":{"Intent":[]},"ContextAction":{"Action":["1"]},"CallbackAction":{"Action":["1"]},"_ActionsState":{"State":["Actions"]},"DoNothingAction":{"Action":["Intent"]},"DismissAction":{"Action":["DismissIntent"]},"PrioritizedAction":{"Action":["PrioritizedIntents"]},"AnnotatedRegion":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"WidgetsApp":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_WidgetsAppState":{"State":["WidgetsApp"],"WidgetsBindingObserver":[]},"KeepAliveHandle":{"Listenable":[]},"_NullWidget0":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"Directionality":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"LayoutId":{"ParentDataWidget":["MultiChildLayoutParentData"],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[],"ParentDataWidget.T":"MultiChildLayoutParentData"},"CustomMultiChildLayout":{"MultiChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"Positioned":{"ParentDataWidget":["StackParentData"],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[],"ParentDataWidget.T":"StackParentData"},"DefaultAssetBundle":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"MouseRegion":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"IgnorePointer":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"Opacity":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"CustomPaint":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"ClipRect":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"ClipPath":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"PhysicalModel":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"PhysicalShape":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"Transform":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"FractionalTranslation":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"Padding":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"Align":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"Center":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"CustomSingleChildLayout":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"SizedBox":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"ConstrainedBox":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"LimitedBox":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"Offstage":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"_OffstageElement":{"RenderObjectElement":[],"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"Stack":{"MultiChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"PositionedDirectional":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"Flex":{"MultiChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"Row":{"MultiChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"Column":{"MultiChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"RichText":{"MultiChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"Listener":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"_MouseRegionState":{"State":["MouseRegion"]},"_RawMouseRegion":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"RepaintBoundary":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"AbsorbPointer":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"Semantics":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"MergeSemantics":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"BlockSemantics":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"ExcludeSemantics":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"KeyedSubtree":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"Builder":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"ColoredBox":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"_RenderColoredBox":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"RenderObjectToWidgetAdapter":{"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"RenderObjectToWidgetElement":{"RenderObjectElement":[],"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"WidgetsFlutterBinding":{"SchedulerBinding":[],"HitTestTarget":[]},"DecoratedBox":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"Container":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"DefaultTextEditingActions":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_DoNothingAndStopPropagationTextAction":{"ContextAction":["DoNothingAndStopPropagationTextIntent"],"Action":["DoNothingAndStopPropagationTextIntent"]},"_DeleteTextAction":{"ContextAction":["DeleteTextIntent"],"Action":["DeleteTextIntent"]},"_DeleteByWordTextAction":{"ContextAction":["DeleteByWordTextIntent"],"Action":["DeleteByWordTextIntent"]},"_DeleteByLineTextAction":{"ContextAction":["DeleteByLineTextIntent"],"Action":["DeleteByLineTextIntent"]},"_DeleteForwardTextAction":{"ContextAction":["DeleteForwardTextIntent"],"Action":["DeleteForwardTextIntent"]},"_DeleteForwardByWordTextAction":{"ContextAction":["DeleteForwardByWordTextIntent"],"Action":["DeleteForwardByWordTextIntent"]},"_DeleteForwardByLineTextAction":{"ContextAction":["DeleteForwardByLineTextIntent"],"Action":["DeleteForwardByLineTextIntent"]},"_ExpandSelectionLeftByLineTextAction":{"ContextAction":["ExpandSelectionLeftByLineTextIntent"],"Action":["ExpandSelectionLeftByLineTextIntent"]},"_ExpandSelectionRightByLineTextAction":{"ContextAction":["ExpandSelectionRightByLineTextIntent"],"Action":["ExpandSelectionRightByLineTextIntent"]},"_ExpandSelectionToEndTextAction":{"ContextAction":["ExpandSelectionToEndTextIntent"],"Action":["ExpandSelectionToEndTextIntent"]},"_ExpandSelectionToStartTextAction":{"ContextAction":["ExpandSelectionToStartTextIntent"],"Action":["ExpandSelectionToStartTextIntent"]},"_ExtendSelectionDownTextAction":{"ContextAction":["ExtendSelectionDownTextIntent"],"Action":["ExtendSelectionDownTextIntent"]},"_ExtendSelectionLeftByLineTextAction":{"ContextAction":["ExtendSelectionLeftByLineTextIntent"],"Action":["ExtendSelectionLeftByLineTextIntent"]},"_ExtendSelectionLeftByWordAndStopAtReversalTextAction":{"ContextAction":["ExtendSelectionLeftByWordAndStopAtReversalTextIntent"],"Action":["ExtendSelectionLeftByWordAndStopAtReversalTextIntent"]},"_ExtendSelectionLeftByWordTextAction":{"ContextAction":["ExtendSelectionLeftByWordTextIntent"],"Action":["ExtendSelectionLeftByWordTextIntent"]},"_ExtendSelectionLeftTextAction":{"ContextAction":["ExtendSelectionLeftTextIntent"],"Action":["ExtendSelectionLeftTextIntent"]},"_ExtendSelectionRightByLineTextAction":{"ContextAction":["ExtendSelectionRightByLineTextIntent"],"Action":["ExtendSelectionRightByLineTextIntent"]},"_ExtendSelectionRightByWordAndStopAtReversalTextAction":{"ContextAction":["ExtendSelectionRightByWordAndStopAtReversalTextIntent"],"Action":["ExtendSelectionRightByWordAndStopAtReversalTextIntent"]},"_ExtendSelectionRightByWordTextAction":{"ContextAction":["ExtendSelectionRightByWordTextIntent"],"Action":["ExtendSelectionRightByWordTextIntent"]},"_ExtendSelectionRightTextAction":{"ContextAction":["ExtendSelectionRightTextIntent"],"Action":["ExtendSelectionRightTextIntent"]},"_ExtendSelectionUpTextAction":{"ContextAction":["ExtendSelectionUpTextIntent"],"Action":["ExtendSelectionUpTextIntent"]},"_MoveSelectionDownTextAction":{"ContextAction":["MoveSelectionDownTextIntent"],"Action":["MoveSelectionDownTextIntent"]},"_MoveSelectionLeftTextAction":{"ContextAction":["MoveSelectionLeftTextIntent"],"Action":["MoveSelectionLeftTextIntent"]},"_MoveSelectionRightTextAction":{"ContextAction":["MoveSelectionRightTextIntent"],"Action":["MoveSelectionRightTextIntent"]},"_MoveSelectionUpTextAction":{"ContextAction":["MoveSelectionUpTextIntent"],"Action":["MoveSelectionUpTextIntent"]},"_MoveSelectionLeftByLineTextAction":{"ContextAction":["MoveSelectionLeftByLineTextIntent"],"Action":["MoveSelectionLeftByLineTextIntent"]},"_MoveSelectionLeftByWordTextAction":{"ContextAction":["MoveSelectionLeftByWordTextIntent"],"Action":["MoveSelectionLeftByWordTextIntent"]},"_MoveSelectionRightByLineTextAction":{"ContextAction":["MoveSelectionRightByLineTextIntent"],"Action":["MoveSelectionRightByLineTextIntent"]},"_MoveSelectionRightByWordTextAction":{"ContextAction":["MoveSelectionRightByWordTextIntent"],"Action":["MoveSelectionRightByWordTextIntent"]},"_MoveSelectionToEndTextAction":{"ContextAction":["MoveSelectionToEndTextIntent"],"Action":["MoveSelectionToEndTextIntent"]},"_MoveSelectionToStartTextAction":{"ContextAction":["MoveSelectionToStartTextIntent"],"Action":["MoveSelectionToStartTextIntent"]},"_SelectAllTextAction":{"ContextAction":["SelectAllTextIntent"],"Action":["SelectAllTextIntent"]},"_CopySelectionTextAction":{"ContextAction":["CopySelectionTextIntent"],"Action":["CopySelectionTextIntent"]},"_CutSelectionTextAction":{"ContextAction":["CutSelectionTextIntent"],"Action":["CutSelectionTextIntent"]},"_PasteTextAction":{"ContextAction":["PasteTextIntent"],"Action":["PasteTextIntent"]},"DefaultTextEditingShortcuts":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"FocusNode":{"DiagnosticableTree":[],"Listenable":[]},"FocusScopeNode":{"FocusNode":[],"DiagnosticableTree":[],"Listenable":[]},"FocusManager":{"DiagnosticableTree":[],"Listenable":[]},"Focus":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_FocusMarker":{"InheritedNotifier":["FocusNode"],"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[],"InheritedNotifier.T":"FocusNode"},"_FocusState":{"State":["Focus"]},"FocusScope":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_FocusScopeState":{"State":["Focus"]},"FocusTraversalGroup":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_FocusTraversalGroupMarker":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"RequestFocusIntent":{"Intent":[]},"NextFocusIntent":{"Intent":[]},"PreviousFocusIntent":{"Intent":[]},"DirectionalFocusIntent":{"Intent":[]},"_FocusTraversalGroupState":{"State":["FocusTraversalGroup"]},"RequestFocusAction":{"Action":["RequestFocusIntent"]},"NextFocusAction":{"Action":["NextFocusIntent"]},"PreviousFocusAction":{"Action":["PreviousFocusIntent"]},"DirectionalFocusAction":{"Action":["DirectionalFocusIntent"]},"GlobalKey":{"Key":[]},"LabeledGlobalKey":{"GlobalKey":["1"],"Key":[]},"Widget":{"DiagnosticableTree":[]},"StatefulWidget":{"Widget":[],"DiagnosticableTree":[]},"Element":{"DiagnosticableTree":[],"BuildContext":[]},"StatefulElement":{"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"InheritedElement":{"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"UniqueKey":{"Key":[]},"GlobalObjectKey":{"GlobalKey":["1"],"Key":[]},"StatelessWidget":{"Widget":[],"DiagnosticableTree":[]},"ProxyWidget":{"Widget":[],"DiagnosticableTree":[]},"ParentDataWidget":{"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"InheritedWidget":{"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"RenderObjectWidget":{"Widget":[],"DiagnosticableTree":[]},"LeafRenderObjectWidget":{"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"SingleChildRenderObjectWidget":{"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"MultiChildRenderObjectWidget":{"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"_ElementDiagnosticableTreeNode":{"DiagnosticsNode":[]},"ErrorWidget":{"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"ComponentElement":{"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"StatelessElement":{"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"ProxyElement":{"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"ParentDataElement":{"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"RenderObjectElement":{"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"RootRenderObjectElement":{"RenderObjectElement":[],"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"LeafRenderObjectElement":{"RenderObjectElement":[],"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"SingleChildRenderObjectElement":{"RenderObjectElement":[],"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"MultiChildRenderObjectElement":{"RenderObjectElement":[],"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"_NullElement":{"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"_NullWidget":{"Widget":[],"DiagnosticableTree":[]},"RawGestureDetector":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"GestureRecognizerFactoryWithHandlers":{"GestureRecognizerFactory":["1"]},"GestureDetector":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"RawGestureDetectorState":{"State":["RawGestureDetector"]},"_GestureSemantics":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"Hero":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_HeroState":{"State":["Hero"]},"HeroController":{"NavigatorObserver":[]},"Icon":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"IconTheme":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"BorderRadiusTween":{"Tween":["BorderRadius?"],"Animatable":["BorderRadius?"],"Tween.T":"BorderRadius?","Animatable.T":"BorderRadius?"},"TextStyleTween":{"Tween":["TextStyle"],"Animatable":["TextStyle"],"Tween.T":"TextStyle","Animatable.T":"TextStyle"},"AnimatedDefaultTextStyle":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"AnimatedPhysicalModel":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"DecorationTween":{"Tween":["Decoration"],"Animatable":["Decoration"],"Tween.T":"Decoration","Animatable.T":"Decoration"},"ImplicitlyAnimatedWidget":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"ImplicitlyAnimatedWidgetState":{"State":["1"]},"AnimatedWidgetBaseState":{"State":["1"]},"_AnimatedDefaultTextStyleState":{"State":["AnimatedDefaultTextStyle"]},"_AnimatedPhysicalModelState":{"State":["AnimatedPhysicalModel"]},"InheritedNotifier":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"_InheritedNotifierElement":{"InheritedElement":[],"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"InheritedTheme":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"_LocalizationsScope":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"Localizations":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_WidgetsLocalizationsDelegate":{"LocalizationsDelegate":["WidgetsLocalizations"],"LocalizationsDelegate.T":"WidgetsLocalizations"},"DefaultWidgetsLocalizations":{"WidgetsLocalizations":[]},"_LocalizationsState":{"State":["Localizations"]},"MediaQuery":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"_MediaQueryFromWindow":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_MediaQueryFromWindowState":{"State":["_MediaQueryFromWindow"],"WidgetsBindingObserver":[]},"_AnyTapGestureRecognizer":{"GestureRecognizer":[],"DiagnosticableTree":[],"GestureArenaMember":[]},"ModalBarrier":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"_AnyTapGestureRecognizerFactory":{"GestureRecognizerFactory":["_AnyTapGestureRecognizer"]},"_ModalBarrierGestureDetector":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"NavigationToolbar":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"Page":{"RouteSettings":[]},"HeroControllerScope":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"Navigator":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"NavigatorState":{"State":["Navigator"]},"_NotAnnounced":{"Route":["~"]},"_NavigatorPushObservation":{"_NavigatorObservation":[]},"_NavigatorPopObservation":{"_NavigatorObservation":[]},"_NavigatorRemoveObservation":{"_NavigatorObservation":[]},"_NavigatorReplaceObservation":{"_NavigatorObservation":[]},"_HistoryProperty":{"RestorableProperty":["Map<String?,List<Object>>?"],"Listenable":[]},"NotificationListener":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"OverlayEntry":{"Listenable":[]},"_OverlayEntryWidget":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_OverlayEntryWidgetState":{"State":["_OverlayEntryWidget"]},"Overlay":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"OverlayState":{"State":["Overlay"]},"_Theatre":{"MultiChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"_TheatreElement":{"RenderObjectElement":[],"Element":[],"DiagnosticableTree":[],"BuildContext":[]},"_RenderTheatre":{"RenderBox":[],"ContainerRenderObjectMixin":["RenderBox","StackParentData"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[],"ContainerRenderObjectMixin.1":"StackParentData"},"PageStorage":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"PageRoute":{"ModalRoute":["1"],"TransitionRoute":["1"],"Route":["1"]},"PerformanceOverlay":{"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"PrimaryScrollController":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"RestorationScope":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"UnmanagedRestorationScope":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"RootRestorationScope":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"RestorableProperty":{"Listenable":[]},"_RestorationScopeState":{"State":["RestorationScope"]},"_RootRestorationScopeState":{"State":["RootRestorationScope"]},"RestorableValue":{"RestorableProperty":["1"],"Listenable":[]},"_RestorablePrimitiveValueN":{"RestorableProperty":["1"],"Listenable":[]},"_RestorablePrimitiveValue":{"_RestorablePrimitiveValueN":["1"],"RestorableProperty":["1"],"Listenable":[]},"RestorableNum":{"_RestorablePrimitiveValueN":["1"],"RestorableProperty":["1"],"Listenable":[],"_RestorablePrimitiveValueN.T":"1","RestorableValue.T":"1"},"RestorableBool":{"_RestorablePrimitiveValueN":["bool"],"RestorableProperty":["bool"],"Listenable":[],"_RestorablePrimitiveValueN.T":"bool","RestorableValue.T":"bool"},"RouteInformationProvider":{"Listenable":[]},"PlatformRouteInformationProvider":{"Listenable":[],"WidgetsBindingObserver":[]},"_ModalScopeStatus":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"_ModalScope":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_ModalScopeState":{"State":["_ModalScope<1>"]},"OverlayRoute":{"Route":["1"]},"TransitionRoute":{"Route":["1"]},"_DismissModalAction":{"Action":["DismissIntent"]},"ModalRoute":{"TransitionRoute":["1"],"Route":["1"]},"FocusTrap":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"_RenderFocusTrap":{"RenderBox":[],"RenderObjectWithChildMixin":["RenderBox"],"RenderObject":[],"DiagnosticableTree":[],"AbstractNode":[],"HitTestTarget":[]},"SafeArea":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"ScrollConfiguration":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"ScrollController":{"Listenable":[]},"_ScrollNotificationObserverScope":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"_ListenerEntry":{"LinkedListEntry":["_ListenerEntry"],"LinkedListEntry.E":"_ListenerEntry"},"ScrollNotificationObserver":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"ScrollNotificationObserverState":{"State":["ScrollNotificationObserver"]},"ScrollPosition":{"Listenable":[]},"_ScrollableScope":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"ScrollIntent":{"Intent":[]},"ScrollAction":{"Action":["ScrollIntent"]},"ShortcutManager":{"Listenable":[]},"Shortcuts":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"SingleActivator":{"ShortcutActivator":[]},"_ShortcutsState":{"State":["Shortcuts"]},"_ShortcutsMarker":{"InheritedNotifier":["ShortcutManager"],"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[],"InheritedNotifier.T":"ShortcutManager"},"DefaultTextStyle":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"DefaultTextHeightBehavior":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"_NullWidget1":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"Text":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"TextEditingAction":{"ContextAction":["1"],"Action":["1"]},"DeleteTextIntent":{"Intent":[]},"DeleteByWordTextIntent":{"Intent":[]},"DeleteByLineTextIntent":{"Intent":[]},"DeleteForwardTextIntent":{"Intent":[]},"DeleteForwardByWordTextIntent":{"Intent":[]},"DeleteForwardByLineTextIntent":{"Intent":[]},"DoNothingAndStopPropagationTextIntent":{"Intent":[]},"ExpandSelectionLeftByLineTextIntent":{"Intent":[]},"ExpandSelectionRightByLineTextIntent":{"Intent":[]},"ExpandSelectionToEndTextIntent":{"Intent":[]},"ExpandSelectionToStartTextIntent":{"Intent":[]},"ExtendSelectionDownTextIntent":{"Intent":[]},"ExtendSelectionLeftByLineTextIntent":{"Intent":[]},"ExtendSelectionLeftByWordAndStopAtReversalTextIntent":{"Intent":[]},"ExtendSelectionLeftByWordTextIntent":{"Intent":[]},"ExtendSelectionLeftTextIntent":{"Intent":[]},"ExtendSelectionRightByLineTextIntent":{"Intent":[]},"ExtendSelectionRightByWordAndStopAtReversalTextIntent":{"Intent":[]},"ExtendSelectionRightByWordTextIntent":{"Intent":[]},"ExtendSelectionRightTextIntent":{"Intent":[]},"ExtendSelectionUpTextIntent":{"Intent":[]},"MoveSelectionDownTextIntent":{"Intent":[]},"MoveSelectionLeftByLineTextIntent":{"Intent":[]},"MoveSelectionLeftByWordTextIntent":{"Intent":[]},"MoveSelectionLeftTextIntent":{"Intent":[]},"MoveSelectionToStartTextIntent":{"Intent":[]},"MoveSelectionRightByLineTextIntent":{"Intent":[]},"MoveSelectionRightByWordTextIntent":{"Intent":[]},"MoveSelectionRightTextIntent":{"Intent":[]},"MoveSelectionToEndTextIntent":{"Intent":[]},"MoveSelectionUpTextIntent":{"Intent":[]},"SelectAllTextIntent":{"Intent":[]},"CopySelectionTextIntent":{"Intent":[]},"CutSelectionTextIntent":{"Intent":[]},"PasteTextIntent":{"Intent":[]},"_EffectiveTickerMode":{"InheritedWidget":[],"ProxyWidget":[],"Widget":[],"DiagnosticableTree":[]},"TickerMode":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"Title":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"AnimatedWidget":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_AnimatedState":{"State":["AnimatedWidget"]},"SlideTransition":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"ScaleTransition":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"RotationTransition":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"FadeTransition":{"SingleChildRenderObjectWidget":[],"RenderObjectWidget":[],"Widget":[],"DiagnosticableTree":[]},"DecoratedBoxTransition":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"AnimatedBuilder":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"TypedDataBuffer":{"ListMixin":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_IntBuffer0":{"TypedDataBuffer":["int"],"ListMixin":["int"],"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"]},"Uint8Buffer":{"TypedDataBuffer":["int"],"ListMixin":["int"],"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"ListMixin.E":"int"},"MyApp":{"StatelessWidget":[],"Widget":[],"DiagnosticableTree":[]},"MineHomePage":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"_MineHomePageState":{"State":["MineHomePage"]},"MaterialBanner":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"DrawerController":{"StatefulWidget":[],"Widget":[],"DiagnosticableTree":[]},"DrawerControllerState":{"State":["DrawerController"]},"PlaceholderSpan":{"InlineSpan":[],"DiagnosticableTree":[]},"ScrollNotification":{"LayoutChangedNotification":[]}}'));
+  H._Universe_addErasedTypes(init.typeUniverse, JSON.parse('{"FrameReference":1,"ArrayIterator":1,"ListIterator":1,"MappedIterator":2,"WhereIterator":1,"ExpandIterator":2,"TakeIterator":1,"SkipIterator":1,"SkipWhileIterator":1,"EmptyIterator":1,"FollowedByIterator":1,"FixedLengthListMixin":1,"UnmodifiableListMixin":1,"UnmodifiableListBase":1,"__CastListBase__CastIterableBase_ListMixin":2,"LinkedHashMapKeyIterator":1,"NativeTypedArray":1,"_IterablePendingEvents":1,"_SyncStarIterator":1,"StreamTransformerBase":2,"_AsyncStreamControllerDispatch":1,"_AddStreamState":1,"_StreamControllerAddStreamState":1,"_DelayedEvent":1,"_DelayedData":1,"_PendingEvents":1,"_StreamImplEvents":1,"_StreamIterator":1,"_HashMapKeyIterator":1,"_HashSetIterator":1,"_LinkedHashSetIterator":1,"IterableBase":1,"_LinkedListIterator":1,"ListBase":1,"MapBase":2,"_MapBaseValueIterator":2,"_ListQueueIterator":1,"_UnmodifiableSetMixin":1,"_ListBase_Object_ListMixin":1,"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":2,"__SetBase_Object_SetMixin":1,"__UnmodifiableSet__SetBase__UnmodifiableSetMixin":1,"Codec":2,"Converter":2,"Comparable":1,"Expando":1,"Iterator":1,"ImmutableListMixin":1,"FixedSizeListIterator":1,"_JsArray_JsObject_ListMixin":1,"AnimationWithParentMixin":1,"CompoundAnimation":1,"_CompoundAnimation_Animation_AnimationLazyListenerMixin":1,"_CompoundAnimation_Animation_AnimationLazyListenerMixin_AnimationLocalListenersMixin":1,"_CompoundAnimation_Animation_AnimationLazyListenerMixin_AnimationLocalListenersMixin_AnimationLocalStatusListenersMixin":1,"ParametricCurve":1,"__AnimatedEvaluation_Animation_AnimationWithParentMixin":1,"_CupertinoBackGestureController":1,"ValueListenable":1,"ValueNotifier":1,"DiagnosticableNode":1,"MaterialStateMixin":1,"_MaterialPageRoute_PageRoute_MaterialRouteTransitionMixin":1,"ContainerBoxParentData":1,"_ContainerBoxParentData_BoxParentData_ContainerParentDataMixin":1,"LayerHandle":1,"ContainerParentDataMixin":1,"RenderProxyBoxMixin":1,"RenderAnimatedOpacityMixin":1,"CustomClipper":1,"_RenderCustomClip":1,"_RenderPhysicalModelBase":1,"AutomaticKeepAliveClientMixin":1,"ImplicitlyAnimatedWidgetState":1,"AnimatedWidgetBaseState":1,"_ImplicitlyAnimatedWidgetState_State_SingleTickerProviderStateMixin":1,"Page":1,"TransitionDelegate":1,"DefaultTransitionDelegate":1,"PageRoute":1,"RestorableProperty":1,"RestorationMixin":1,"RestorableValue":1,"_RestorablePrimitiveValue":1,"OverlayRoute":1,"LocalHistoryRoute":1,"_ModalRoute_TransitionRoute_LocalHistoryRoute":1,"TextEditingAction":1,"SingleTickerProviderStateMixin":1,"TickerProviderStateMixin":1}'));
   var string$ = {
     Error_: "Error handler must accept one Object or one Object and a StackTrace as arguments, and return a value of the returned future's type",
     Expand: "Expandos are not allowed on strings, numbers, booleans or null",
-    Stream: "Stream has been disposed.\nAn ImageStream is considered disposed once at least one listener has been added and subsequently all listeners have been removed and no handles are outstanding from the keepAlive method.\nTo resolve this error, maintain at least one listener on the stream, or create an ImageStreamCompleterHandle from the keepAlive method, or create a new stream for the image.",
     System: "SystemChrome.setApplicationSwitcherDescription",
     The_el: "The element being rebuilt at the time was index "
   };
@@ -82466,7 +80678,6 @@
       CastList_of_nullable_Route_dynamic_and_Route_dynamic: findType("CastList<Route<@>?,Route<@>>"),
       ChangeNotifier: findType("ChangeNotifier"),
       CkCanvas: findType("CkCanvas"),
-      CkImage: findType("CkImage"),
       CkPaint: findType("CkPaint"),
       CkParagraph: findType("CkParagraph"),
       CkParagraphStyle: findType("CkParagraphStyle"),
@@ -82493,7 +80704,6 @@
       DiagnosticsNode: findType("DiagnosticsNode"),
       Directionality: findType("Directionality"),
       Document: findType("Document"),
-      Duration: findType("Duration"),
       EfficientLengthIterable_dynamic: findType("EfficientLengthIterable<@>"),
       Element: findType("Element0"),
       Element_2: findType("Element"),
@@ -82517,7 +80727,6 @@
       Future_void: findType("Future<~>"),
       GeneralConstantMap_ShortcutActivator_Intent: findType("GeneralConstantMap<ShortcutActivator,Intent>"),
       GeneralConstantMap_int_Color: findType("GeneralConstantMap<int,Color>"),
-      GeneralConstantMap_int_String: findType("GeneralConstantMap<int,String>"),
       GestureArenaEntry: findType("GestureArenaEntry"),
       GestureRecognizer: findType("GestureRecognizer"),
       GestureRecognizerFactoryWithHandlers_DoubleTapGestureRecognizer: findType("GestureRecognizerFactoryWithHandlers<DoubleTapGestureRecognizer>"),
@@ -82541,7 +80750,6 @@
       HttpRequest: findType("HttpRequest"),
       IconTheme: findType("IconTheme"),
       ImageData: findType("ImageData"),
-      ImageSizeInfo: findType("ImageSizeInfo"),
       IndexedSlot_nullable_Element: findType("IndexedSlot<Element?>"),
       InheritedElement: findType("InheritedElement"),
       InheritedWidget: findType("InheritedWidget"),
@@ -82567,9 +80775,7 @@
       JSArray_Future_void: findType("JSArray<Future<~>>"),
       JSArray_GestureArenaMember: findType("JSArray<GestureArenaMember>"),
       JSArray_HitTestEntry: findType("JSArray<HitTestEntry>"),
-      JSArray_ImageStreamListener: findType("JSArray<ImageStreamListener>"),
       JSArray_InkFeature: findType("JSArray<InkFeature>"),
-      JSArray_InlineSpan: findType("JSArray<InlineSpan>"),
       JSArray_InlineSpanSemanticsInformation: findType("JSArray<InlineSpanSemanticsInformation>"),
       JSArray_KeyEvent: findType("JSArray<KeyEvent>"),
       JSArray_KeyEventResult: findType("JSArray<KeyEventResult>"),
@@ -82600,7 +80806,6 @@
       JSArray_ShapeBorder: findType("JSArray<ShapeBorder>"),
       JSArray_SkDeletable: findType("JSArray<SkDeletable>"),
       JSArray_SkFont: findType("JSArray<SkFont>"),
-      JSArray_SkTextShadow: findType("JSArray<SkTextShadow>"),
       JSArray_StreamSubscription_Event: findType("JSArray<StreamSubscription<Event>>"),
       JSArray_String: findType("JSArray<String>"),
       JSArray_StringAttribute: findType("JSArray<StringAttribute>"),
@@ -82665,7 +80870,6 @@
       LinkedHashMap_MouseTrackerAnnotation_Matrix4: findType("LinkedHashMap<MouseTrackerAnnotation,Matrix4>"),
       LinkedList__ListenerEntry: findType("LinkedList<_ListenerEntry>"),
       List_CodeunitRange: findType("List<CodeunitRange>"),
-      List_FrameTiming: findType("List<FrameTiming>"),
       List_LicenseEntry: findType("List<LicenseEntry>"),
       List_Object: findType("List<Object>"),
       List_RestorationBucket: findType("List<RestorationBucket>"),
@@ -82732,7 +80936,6 @@
       Point_num: findType("Point<num>"),
       PointerAddedEvent: findType("PointerAddedEvent"),
       PointerCancelEvent: findType("PointerCancelEvent"),
-      PointerDataPacket: findType("PointerDataPacket"),
       PointerDeviceKind: findType("PointerDeviceKind"),
       PointerDownEvent: findType("PointerDownEvent"),
       PointerEvent: findType("PointerEvent"),
@@ -82746,7 +80949,6 @@
       PrimaryScrollController: findType("PrimaryScrollController"),
       ProgressEvent: findType("ProgressEvent"),
       ProxyWidget: findType("ProxyWidget"),
-      Rect: findType("Rect"),
       Rectangle_num: findType("Rectangle<num>"),
       RegExp: findType("RegExp"),
       RenderAbsorbPointer: findType("RenderAbsorbPointer"),
@@ -82777,7 +80979,6 @@
       ShapeBorderClipper: findType("ShapeBorderClipper"),
       SingleChildRenderObjectWidget: findType("SingleChildRenderObjectWidget"),
       Size: findType("Size"),
-      SkColorFilter: findType("SkColorFilter"),
       SkDeletable: findType("SkDeletable"),
       SkMaskFilter: findType("SkMaskFilter"),
       SkPaint: findType("SkPaint"),
@@ -82786,7 +80987,6 @@
       SkShader: findType("SkShader"),
       SkipWhileIterable_String: findType("SkipWhileIterable<String>"),
       StackParentData: findType("StackParentData"),
-      StackTrace: findType("StackTrace"),
       StatefulElement: findType("StatefulElement"),
       StatefulWidget: findType("StatefulWidget"),
       StatelessWidget: findType("StatelessWidget"),
@@ -82825,7 +81025,6 @@
       WhereIterable_String: findType("WhereIterable<String>"),
       WhereTypeIterable_StackFrame: findType("WhereTypeIterable<StackFrame>"),
       WhereTypeIterable_nullable_MetaElement: findType("WhereTypeIterable<MetaElement?>"),
-      WhereTypeIterable_of_void_Function_2_Object_and_nullable_StackTrace: findType("WhereTypeIterable<~(Object,StackTrace?)>"),
       WhereTypeIterator_FocusScopeNode: findType("WhereTypeIterator<FocusScopeNode>"),
       Widget: findType("Widget"),
       WidgetsBindingObserver: findType("WidgetsBindingObserver"),
@@ -83066,13 +81265,6 @@
     C.BoxConstraints_CWG = new S.BoxConstraints(0, 1 / 0, 48, 48);
     C.BoxConstraints_mlX0 = new S.BoxConstraints(0, 1 / 0, 0, 1 / 0);
     C.BoxConstraints_mlX = new S.BoxConstraints(48, 1 / 0, 48, 1 / 0);
-    C.BoxFit_0 = new U.BoxFit("BoxFit.fill");
-    C.BoxFit_1 = new U.BoxFit("BoxFit.contain");
-    C.BoxFit_2 = new U.BoxFit("BoxFit.cover");
-    C.BoxFit_3 = new U.BoxFit("BoxFit.fitWidth");
-    C.BoxFit_4 = new U.BoxFit("BoxFit.fitHeight");
-    C.BoxFit_5 = new U.BoxFit("BoxFit.none");
-    C.BoxFit_6 = new U.BoxFit("BoxFit.scaleDown");
     C.BoxHeightStyle_0 = new P.BoxHeightStyle();
     C.BoxShape_0 = new F.BoxShape("BoxShape.rectangle");
     C.BoxShape_1 = new F.BoxShape("BoxShape.circle");
@@ -83435,7 +81627,6 @@
     C.Color_2583691263 = new P.Color(2583691263);
     C.Color_3019898879 = new P.Color(3019898879);
     C.Color_4039164096 = new P.Color(4039164096);
-    C.Color_4278228675 = new P.Color(4278228675);
     C.Color_4278240168 = new P.Color(4278240168);
     C.Color_4281348144 = new P.Color(4281348144);
     C.Color_4282549748 = new P.Color(4282549748);
@@ -83447,8 +81638,8 @@
     C.CrossAxisAlignment_3 = new F.CrossAxisAlignment("CrossAxisAlignment.stretch");
     C.CrossAxisAlignment_4 = new F.CrossAxisAlignment("CrossAxisAlignment.baseline");
     C.Cubic_2Vk = new Z.Cubic(0.18, 1, 0.04, 1);
-    C.Cubic_JUR = new Z.Cubic(0.25, 0.1, 0.25, 1);
-    C.Cubic_JUR0 = new Z.Cubic(0.42, 0, 1, 1);
+    C.Cubic_JUR0 = new Z.Cubic(0.25, 0.1, 0.25, 1);
+    C.Cubic_JUR = new Z.Cubic(0.42, 0, 1, 1);
     C.Cubic_OcD = new Z.Cubic(0.67, 0.03, 0.65, 0.09);
     C.Cubic_ifx = new Z.Cubic(0.4, 0, 0.2, 1);
     C.Cubic_izR = new Z.Cubic(0.35, 0.91, 0.33, 0.97);
@@ -83516,11 +81707,6 @@
     C.EnabledState_1 = new H.EnabledState("EnabledState.enabled");
     C.EnabledState_2 = new H.EnabledState("EnabledState.disabled");
     C.FilterQuality_0 = new P.FilterQuality(0, "FilterQuality.none");
-    C.FilterQuality_1 = new P.FilterQuality(1, "FilterQuality.low");
-    C.FilterQuality_2 = new P.FilterQuality(2, "FilterQuality.medium");
-    C.FilterQuality_3 = new P.FilterQuality(3, "FilterQuality.high");
-    C.Size_0_0 = new P.Size(0, 0);
-    C.FittedSizes_46c = new U.FittedSizes(C.Size_0_0, C.Size_0_0);
     C.FlexFit_0 = new F.FlexFit("FlexFit.tight");
     C.FlexFit_1 = new F.FlexFit("FlexFit.loose");
     C.FloatingActionButtonThemeData_ebz = new S.FloatingActionButtonThemeData(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
@@ -83553,16 +81739,14 @@
     C.IconThemeData_Color_4278190080_null_null = new T.IconThemeData(C.Color_4278190080, null, null);
     C.IconThemeData_Color_4294967295_null_null = new T.IconThemeData(C.Color_4294967295, null, null);
     C.IconThemeData_null_null_36 = new T.IconThemeData(null, null, 36);
+    C.IconData_57415_false = new X.IconData(57415, false);
+    C.Icon_IconData_57415_false_null = new L.Icon(C.IconData_57415_false, null);
     C.IconData_58332_false = new X.IconData(58332, false);
     C.Icon_IconData_58332_false_null = new L.Icon(C.IconData_58332_false, null);
     C.IconData_58727_false = new X.IconData(58727, false);
     C.Icon_IconData_58727_false_null = new L.Icon(C.IconData_58727_false, null);
-    C.ImageRepeat_0 = new X.ImageRepeat("ImageRepeat.repeat");
-    C.ImageRepeat_1 = new X.ImageRepeat("ImageRepeat.repeatX");
-    C.ImageRepeat_2 = new X.ImageRepeat("ImageRepeat.repeatY");
-    C.ImageRepeat_3 = new X.ImageRepeat("ImageRepeat.noRepeat");
     C.Interval_75R = new Z.Interval(0, 0.1, C.C__Linear);
-    C.Interval_E4y = new Z.Interval(0.5, 1, C.Cubic_JUR);
+    C.Interval_E4y = new Z.Interval(0.5, 1, C.Cubic_JUR0);
     C.JsonDecoder_null = new P.JsonDecoder(null);
     C.JsonEncoder_null = new P.JsonEncoder(null);
     C.KeyDataTransitMode_0 = new Q.KeyDataTransitMode("KeyDataTransitMode.rawKeyData");
@@ -83631,7 +81815,7 @@
     C.List_ato = H._setArrayType(makeConstList([C._RouteRestorationType_0, C._RouteRestorationType_1]), H.findType("JSArray<_RouteRestorationType>"));
     C.List_click_scroll = H._setArrayType(makeConstList(["click", "scroll"]), type$.JSArray_String);
     C.List_empty2 = H._setArrayType(makeConstList([]), type$.JSArray_CodeunitRange);
-    C.List_empty10 = H._setArrayType(makeConstList([]), H.findType("JSArray<CustomPainterSemantics>"));
+    C.List_empty9 = H._setArrayType(makeConstList([]), H.findType("JSArray<CustomPainterSemantics>"));
     C.List_empty = H._setArrayType(makeConstList([]), type$.JSArray_DiagnosticsNode);
     C.List_empty11 = H._setArrayType(makeConstList([]), type$.JSArray_Locale);
     C.List_empty4 = H._setArrayType(makeConstList([]), type$.JSArray_NavigatorObserver);
@@ -83641,7 +81825,7 @@
     C.List_empty8 = H._setArrayType(makeConstList([]), type$.JSArray_SemanticsNode);
     C.List_empty0 = H._setArrayType(makeConstList([]), type$.JSArray_String);
     C.List_empty3 = H._setArrayType(makeConstList([]), type$.JSArray_StringAttribute);
-    C.List_empty9 = H._setArrayType(makeConstList([]), type$.JSArray_TextBox);
+    C.List_empty10 = H._setArrayType(makeConstList([]), type$.JSArray_TextBox);
     C.List_empty12 = H._setArrayType(makeConstList([]), type$.JSArray_Widget);
     C.List_empty1 = H._setArrayType(makeConstList([]), type$.JSArray_dynamic);
     C.List_gRj = H._setArrayType(makeConstList([0, 0, 32722, 12287, 65534, 34815, 65534, 18431]), type$.JSArray_int);
@@ -84595,8 +82779,7 @@
     C.LogicalKeyboardKey_8589935390 = new G.LogicalKeyboardKey(8589935390);
     C.LogicalKeyboardKey_8589935391 = new G.LogicalKeyboardKey(8589935391);
     C.Map_mUsBb = new H.GeneralConstantMap([32, C.LogicalKeyboardKey_32, 33, C.LogicalKeyboardKey_33, 34, C.LogicalKeyboardKey_34, 35, C.LogicalKeyboardKey_35, 36, C.LogicalKeyboardKey_36, 37, C.LogicalKeyboardKey_37, 38, C.LogicalKeyboardKey_38, 39, C.LogicalKeyboardKey_39, 40, C.LogicalKeyboardKey_40, 41, C.LogicalKeyboardKey_41, 42, C.LogicalKeyboardKey_42, 43, C.LogicalKeyboardKey_43, 44, C.LogicalKeyboardKey_44, 45, C.LogicalKeyboardKey_45, 46, C.LogicalKeyboardKey_46, 47, C.LogicalKeyboardKey_47, 48, C.LogicalKeyboardKey_48, 49, C.LogicalKeyboardKey_49, 50, C.LogicalKeyboardKey_50, 51, C.LogicalKeyboardKey_51, 52, C.LogicalKeyboardKey_52, 53, C.LogicalKeyboardKey_53, 54, C.LogicalKeyboardKey_54, 55, C.LogicalKeyboardKey_55, 56, C.LogicalKeyboardKey_56, 57, C.LogicalKeyboardKey_57, 58, C.LogicalKeyboardKey_58, 59, C.LogicalKeyboardKey_59, 60, C.LogicalKeyboardKey_60, 61, C.LogicalKeyboardKey_61, 62, C.LogicalKeyboardKey_62, 63, C.LogicalKeyboardKey_63, 64, C.LogicalKeyboardKey_64, 91, C.LogicalKeyboardKey_91, 92, C.LogicalKeyboardKey_92, 93, C.LogicalKeyboardKey_93, 94, C.LogicalKeyboardKey_94, 95, C.LogicalKeyboardKey_95, 96, C.LogicalKeyboardKey_96, 97, C.LogicalKeyboardKey_97, 98, C.LogicalKeyboardKey_98, 99, C.LogicalKeyboardKey_99, 100, C.LogicalKeyboardKey_100, 101, C.LogicalKeyboardKey_101, 102, C.LogicalKeyboardKey_102, 103, C.LogicalKeyboardKey_103, 104, C.LogicalKeyboardKey_104, 105, C.LogicalKeyboardKey_105, 106, C.LogicalKeyboardKey_106, 107, C.LogicalKeyboardKey_107, 108, C.LogicalKeyboardKey_108, 109, C.LogicalKeyboardKey_109, 110, C.LogicalKeyboardKey_110, 111, C.LogicalKeyboardKey_111, 112, C.LogicalKeyboardKey_112, 113, C.LogicalKeyboardKey_113, 114, C.LogicalKeyboardKey_114, 115, C.LogicalKeyboardKey_115, 116, C.LogicalKeyboardKey_116, 117, C.LogicalKeyboardKey_117, 118, C.LogicalKeyboardKey_118, 119, C.LogicalKeyboardKey_119, 120, C.LogicalKeyboardKey_120, 121, C.LogicalKeyboardKey_121, 122, C.LogicalKeyboardKey_122, 123, C.LogicalKeyboardKey_123, 124, C.LogicalKeyboardKey_124, 125, C.LogicalKeyboardKey_125, 126, C.LogicalKeyboardKey_126, 4294967297, C.LogicalKeyboardKey_4294967297, 4294967304, C.LogicalKeyboardKey_4294967304, 4294967305, C.LogicalKeyboardKey_4294967305, 4294967309, C.LogicalKeyboardKey_4294967309, 4294967323, C.LogicalKeyboardKey_4294967323, 4294967423, C.LogicalKeyboardKey_4294967423, 4294967553, C.LogicalKeyboardKey_4294967553, 4294967555, C.LogicalKeyboardKey_4294967555, 4294967556, C.LogicalKeyboardKey_4294967556, 4294967558, C.LogicalKeyboardKey_4294967558, 4294967559, C.LogicalKeyboardKey_4294967559, 4294967560, C.LogicalKeyboardKey_4294967560, 4294967562, C.LogicalKeyboardKey_4294967562, 4294967564, C.LogicalKeyboardKey_4294967564, 4294967566, C.LogicalKeyboardKey_4294967566, 4294967567, C.LogicalKeyboardKey_4294967567, 4294967568, C.LogicalKeyboardKey_4294967568, 4294967569, C.LogicalKeyboardKey_4294967569, 4294968065, C.LogicalKeyboardKey_4294968065, 4294968066, C.LogicalKeyboardKey_4294968066, 4294968067, C.LogicalKeyboardKey_4294968067, 4294968068, C.LogicalKeyboardKey_4294968068, 4294968069, C.LogicalKeyboardKey_4294968069, 4294968070, C.LogicalKeyboardKey_4294968070, 4294968071, C.LogicalKeyboardKey_4294968071, 4294968072, C.LogicalKeyboardKey_4294968072, 4294968321, C.LogicalKeyboardKey_4294968321, 4294968322, C.LogicalKeyboardKey_4294968322, 4294968323, C.LogicalKeyboardKey_4294968323, 4294968324, C.LogicalKeyboardKey_4294968324, 4294968325, C.LogicalKeyboardKey_4294968325, 4294968326, C.LogicalKeyboardKey_4294968326, 4294968327, C.LogicalKeyboardKey_4294968327, 4294968328, C.LogicalKeyboardKey_4294968328, 4294968329, C.LogicalKeyboardKey_4294968329, 4294968330, C.LogicalKeyboardKey_4294968330, 4294968577, C.LogicalKeyboardKey_4294968577, 4294968578, C.LogicalKeyboardKey_4294968578, 4294968579, C.LogicalKeyboardKey_4294968579, 4294968580, C.LogicalKeyboardKey_4294968580, 4294968581, C.LogicalKeyboardKey_4294968581, 4294968582, C.LogicalKeyboardKey_4294968582, 4294968583, C.LogicalKeyboardKey_4294968583, 4294968584, C.LogicalKeyboardKey_4294968584, 4294968585, C.LogicalKeyboardKey_4294968585, 4294968586, C.LogicalKeyboardKey_4294968586, 4294968587, C.LogicalKeyboardKey_4294968587, 4294968588, C.LogicalKeyboardKey_4294968588, 4294968589, C.LogicalKeyboardKey_4294968589, 4294968590, C.LogicalKeyboardKey_4294968590, 4294968833, C.LogicalKeyboardKey_4294968833, 4294968834, C.LogicalKeyboardKey_4294968834, 4294968835, C.LogicalKeyboardKey_4294968835, 4294968836, C.LogicalKeyboardKey_4294968836, 4294968837, C.LogicalKeyboardKey_4294968837, 4294968838, C.LogicalKeyboardKey_4294968838, 4294968839, C.LogicalKeyboardKey_4294968839, 4294968840, C.LogicalKeyboardKey_4294968840, 4294968841, C.LogicalKeyboardKey_4294968841, 4294968842, C.LogicalKeyboardKey_4294968842, 4294968843, C.LogicalKeyboardKey_4294968843, 4294969089, C.LogicalKeyboardKey_4294969089, 4294969090, C.LogicalKeyboardKey_4294969090, 4294969091, C.LogicalKeyboardKey_4294969091, 4294969092, C.LogicalKeyboardKey_4294969092, 4294969093, C.LogicalKeyboardKey_4294969093, 4294969094, C.LogicalKeyboardKey_4294969094, 4294969095, C.LogicalKeyboardKey_4294969095, 4294969096, C.LogicalKeyboardKey_4294969096, 4294969097, C.LogicalKeyboardKey_4294969097, 4294969098, C.LogicalKeyboardKey_4294969098, 4294969099, C.LogicalKeyboardKey_4294969099, 4294969100, C.LogicalKeyboardKey_4294969100, 4294969101, C.LogicalKeyboardKey_4294969101, 4294969102, C.LogicalKeyboardKey_4294969102, 4294969103, C.LogicalKeyboardKey_4294969103, 4294969104, C.LogicalKeyboardKey_4294969104, 4294969105, C.LogicalKeyboardKey_4294969105, 4294969106, C.LogicalKeyboardKey_4294969106, 4294969107, C.LogicalKeyboardKey_4294969107, 4294969108, C.LogicalKeyboardKey_4294969108, 4294969109, C.LogicalKeyboardKey_4294969109, 4294969110, C.LogicalKeyboardKey_4294969110, 4294969111, C.LogicalKeyboardKey_4294969111, 4294969112, C.LogicalKeyboardKey_4294969112, 4294969113, C.LogicalKeyboardKey_4294969113, 4294969114, C.LogicalKeyboardKey_4294969114, 4294969115, C.LogicalKeyboardKey_4294969115, 4294969116, C.LogicalKeyboardKey_4294969116, 4294969117, C.LogicalKeyboardKey_4294969117, 4294969345, C.LogicalKeyboardKey_4294969345, 4294969346, C.LogicalKeyboardKey_4294969346, 4294969347, C.LogicalKeyboardKey_4294969347, 4294969348, C.LogicalKeyboardKey_4294969348, 4294969349, C.LogicalKeyboardKey_4294969349, 4294969350, C.LogicalKeyboardKey_4294969350, 4294969351, C.LogicalKeyboardKey_4294969351, 4294969352, C.LogicalKeyboardKey_4294969352, 4294969353, C.LogicalKeyboardKey_4294969353, 4294969354, C.LogicalKeyboardKey_4294969354, 4294969355, C.LogicalKeyboardKey_4294969355, 4294969356, C.LogicalKeyboardKey_4294969356, 4294969357, C.LogicalKeyboardKey_4294969357, 4294969358, C.LogicalKeyboardKey_4294969358, 4294969359, C.LogicalKeyboardKey_4294969359, 4294969360, C.LogicalKeyboardKey_4294969360, 4294969361, C.LogicalKeyboardKey_4294969361, 4294969362, C.LogicalKeyboardKey_4294969362, 4294969363, C.LogicalKeyboardKey_4294969363, 4294969364, C.LogicalKeyboardKey_4294969364, 4294969365, C.LogicalKeyboardKey_4294969365, 4294969366, C.LogicalKeyboardKey_4294969366, 4294969367, C.LogicalKeyboardKey_4294969367, 4294969368, C.LogicalKeyboardKey_4294969368, 4294969601, C.LogicalKeyboardKey_4294969601, 4294969602, C.LogicalKeyboardKey_4294969602, 4294969603, C.LogicalKeyboardKey_4294969603, 4294969604, C.LogicalKeyboardKey_4294969604, 4294969605, C.LogicalKeyboardKey_4294969605, 4294969606, C.LogicalKeyboardKey_4294969606, 4294969607, C.LogicalKeyboardKey_4294969607, 4294969608, C.LogicalKeyboardKey_4294969608, 4294969857, C.LogicalKeyboardKey_4294969857, 4294969858, C.LogicalKeyboardKey_4294969858, 4294969859, C.LogicalKeyboardKey_4294969859, 4294969860, C.LogicalKeyboardKey_4294969860, 4294969861, C.LogicalKeyboardKey_4294969861, 4294969863, C.LogicalKeyboardKey_4294969863, 4294969864, C.LogicalKeyboardKey_4294969864, 4294969865, C.LogicalKeyboardKey_4294969865, 4294969866, C.LogicalKeyboardKey_4294969866, 4294969867, C.LogicalKeyboardKey_4294969867, 4294969868, C.LogicalKeyboardKey_4294969868, 4294969869, C.LogicalKeyboardKey_4294969869, 4294969870, C.LogicalKeyboardKey_4294969870, 4294969871, C.LogicalKeyboardKey_4294969871, 4294969872, C.LogicalKeyboardKey_4294969872, 4294969873, C.LogicalKeyboardKey_4294969873, 4294970113, C.LogicalKeyboardKey_4294970113, 4294970114, C.LogicalKeyboardKey_4294970114, 4294970115, C.LogicalKeyboardKey_4294970115, 4294970116, C.LogicalKeyboardKey_4294970116, 4294970117, C.LogicalKeyboardKey_4294970117, 4294970118, C.LogicalKeyboardKey_4294970118, 4294970119, C.LogicalKeyboardKey_4294970119, 4294970120, C.LogicalKeyboardKey_4294970120, 4294970121, C.LogicalKeyboardKey_4294970121, 4294970122, C.LogicalKeyboardKey_4294970122, 4294970123, C.LogicalKeyboardKey_4294970123, 4294970124, C.LogicalKeyboardKey_4294970124, 4294970125, C.LogicalKeyboardKey_4294970125, 4294970126, C.LogicalKeyboardKey_4294970126, 4294970127, C.LogicalKeyboardKey_4294970127, 4294970369, C.LogicalKeyboardKey_4294970369, 4294970370, C.LogicalKeyboardKey_4294970370, 4294970371, C.LogicalKeyboardKey_4294970371, 4294970372, C.LogicalKeyboardKey_4294970372, 4294970373, C.LogicalKeyboardKey_4294970373, 4294970374, C.LogicalKeyboardKey_4294970374, 4294970375, C.LogicalKeyboardKey_4294970375, 4294970625, C.LogicalKeyboardKey_4294970625, 4294970626, C.LogicalKeyboardKey_4294970626, 4294970627, C.LogicalKeyboardKey_4294970627, 4294970628, C.LogicalKeyboardKey_4294970628, 4294970629, C.LogicalKeyboardKey_4294970629, 4294970630, C.LogicalKeyboardKey_4294970630, 4294970631, C.LogicalKeyboardKey_4294970631, 4294970632, C.LogicalKeyboardKey_4294970632, 4294970633, C.LogicalKeyboardKey_4294970633, 4294970634, C.LogicalKeyboardKey_4294970634, 4294970635, C.LogicalKeyboardKey_4294970635, 4294970636, C.LogicalKeyboardKey_4294970636, 4294970637, C.LogicalKeyboardKey_4294970637, 4294970638, C.LogicalKeyboardKey_4294970638, 4294970639, C.LogicalKeyboardKey_4294970639, 4294970640, C.LogicalKeyboardKey_4294970640, 4294970641, C.LogicalKeyboardKey_4294970641, 4294970642, C.LogicalKeyboardKey_4294970642, 4294970643, C.LogicalKeyboardKey_4294970643, 4294970644, C.LogicalKeyboardKey_4294970644, 4294970645, C.LogicalKeyboardKey_4294970645, 4294970646, C.LogicalKeyboardKey_4294970646, 4294970647, C.LogicalKeyboardKey_4294970647, 4294970648, C.LogicalKeyboardKey_4294970648, 4294970649, C.LogicalKeyboardKey_4294970649, 4294970650, C.LogicalKeyboardKey_4294970650, 4294970651, C.LogicalKeyboardKey_4294970651, 4294970652, C.LogicalKeyboardKey_4294970652, 4294970653, C.LogicalKeyboardKey_4294970653, 4294970654, C.LogicalKeyboardKey_4294970654, 4294970655, C.LogicalKeyboardKey_4294970655, 4294970656, C.LogicalKeyboardKey_4294970656, 4294970657, C.LogicalKeyboardKey_4294970657, 4294970658, C.LogicalKeyboardKey_4294970658, 4294970659, C.LogicalKeyboardKey_4294970659, 4294970660, C.LogicalKeyboardKey_4294970660, 4294970661, C.LogicalKeyboardKey_4294970661, 4294970662, C.LogicalKeyboardKey_4294970662, 4294970663, C.LogicalKeyboardKey_4294970663, 4294970664, C.LogicalKeyboardKey_4294970664, 4294970665, C.LogicalKeyboardKey_4294970665, 4294970666, C.LogicalKeyboardKey_4294970666, 4294970667, C.LogicalKeyboardKey_4294970667, 4294970668, C.LogicalKeyboardKey_4294970668, 4294970669, C.LogicalKeyboardKey_4294970669, 4294970670, C.LogicalKeyboardKey_4294970670, 4294970671, C.LogicalKeyboardKey_4294970671, 4294970672, C.LogicalKeyboardKey_4294970672, 4294970673, C.LogicalKeyboardKey_4294970673, 4294970674, C.LogicalKeyboardKey_4294970674, 4294970675, C.LogicalKeyboardKey_4294970675, 4294970676, C.LogicalKeyboardKey_4294970676, 4294970677, C.LogicalKeyboardKey_4294970677, 4294970678, C.LogicalKeyboardKey_4294970678, 4294970679, C.LogicalKeyboardKey_4294970679, 4294970680, C.LogicalKeyboardKey_4294970680, 4294970681, C.LogicalKeyboardKey_4294970681, 4294970682, C.LogicalKeyboardKey_4294970682, 4294970683, C.LogicalKeyboardKey_4294970683, 4294970684, C.LogicalKeyboardKey_4294970684, 4294970685, C.LogicalKeyboardKey_4294970685, 4294970686, C.LogicalKeyboardKey_4294970686, 4294970687, C.LogicalKeyboardKey_4294970687, 4294970688, C.LogicalKeyboardKey_4294970688, 4294970689, C.LogicalKeyboardKey_4294970689, 4294970690, C.LogicalKeyboardKey_4294970690, 4294970691, C.LogicalKeyboardKey_4294970691, 4294970692, C.LogicalKeyboardKey_4294970692, 4294970693, C.LogicalKeyboardKey_4294970693, 4294970694, C.LogicalKeyboardKey_4294970694, 4294970695, C.LogicalKeyboardKey_4294970695, 4294970696, C.LogicalKeyboardKey_4294970696, 4294970697, C.LogicalKeyboardKey_4294970697, 4294970698, C.LogicalKeyboardKey_4294970698, 4294970699, C.LogicalKeyboardKey_4294970699, 4294970700, C.LogicalKeyboardKey_4294970700, 4294970701, C.LogicalKeyboardKey_4294970701, 4294970702, C.LogicalKeyboardKey_4294970702, 4294970703, C.LogicalKeyboardKey_4294970703, 4294970704, C.LogicalKeyboardKey_4294970704, 4294970705, C.LogicalKeyboardKey_4294970705, 4294970706, C.LogicalKeyboardKey_4294970706, 4294970707, C.LogicalKeyboardKey_4294970707, 4294970708, C.LogicalKeyboardKey_4294970708, 4294970709, C.LogicalKeyboardKey_4294970709, 4294970710, C.LogicalKeyboardKey_4294970710, 4294970711, C.LogicalKeyboardKey_4294970711, 4294970712, C.LogicalKeyboardKey_4294970712, 4294970713, C.LogicalKeyboardKey_4294970713, 4294970714, C.LogicalKeyboardKey_4294970714, 4294970715, C.LogicalKeyboardKey_4294970715, 4294970882, C.LogicalKeyboardKey_4294970882, 4294970884, C.LogicalKeyboardKey_4294970884, 4294970885, C.LogicalKeyboardKey_4294970885, 4294970886, C.LogicalKeyboardKey_4294970886, 4294970887, C.LogicalKeyboardKey_4294970887, 4294970888, C.LogicalKeyboardKey_4294970888, 4294970889, C.LogicalKeyboardKey_4294970889, 4294971137, C.LogicalKeyboardKey_4294971137, 4294971138, C.LogicalKeyboardKey_4294971138, 4294971393, C.LogicalKeyboardKey_4294971393, 4294971394, C.LogicalKeyboardKey_4294971394, 4294971395, C.LogicalKeyboardKey_4294971395, 4294971396, C.LogicalKeyboardKey_4294971396, 4294971397, C.LogicalKeyboardKey_4294971397, 4294971398, C.LogicalKeyboardKey_4294971398, 4294971399, C.LogicalKeyboardKey_4294971399, 4294971400, C.LogicalKeyboardKey_4294971400, 4294971401, C.LogicalKeyboardKey_4294971401, 4294971402, C.LogicalKeyboardKey_4294971402, 4294971403, C.LogicalKeyboardKey_4294971403, 4294971649, C.LogicalKeyboardKey_4294971649, 4294971650, C.LogicalKeyboardKey_4294971650, 4294971651, C.LogicalKeyboardKey_4294971651, 4294971652, C.LogicalKeyboardKey_4294971652, 4294971653, C.LogicalKeyboardKey_4294971653, 4294971654, C.LogicalKeyboardKey_4294971654, 4294971655, C.LogicalKeyboardKey_4294971655, 4294971656, C.LogicalKeyboardKey_4294971656, 4294971657, C.LogicalKeyboardKey_4294971657, 4294971658, C.LogicalKeyboardKey_4294971658, 4294971659, C.LogicalKeyboardKey_4294971659, 4294971660, C.LogicalKeyboardKey_4294971660, 4294971661, C.LogicalKeyboardKey_4294971661, 4294971662, C.LogicalKeyboardKey_4294971662, 4294971663, C.LogicalKeyboardKey_4294971663, 4294971664, C.LogicalKeyboardKey_4294971664, 4294971665, C.LogicalKeyboardKey_4294971665, 4294971666, C.LogicalKeyboardKey_4294971666, 4294971667, C.LogicalKeyboardKey_4294971667, 4294971668, C.LogicalKeyboardKey_4294971668, 4294971669, C.LogicalKeyboardKey_4294971669, 4294971670, C.LogicalKeyboardKey_4294971670, 4294971671, C.LogicalKeyboardKey_4294971671, 4294971672, C.LogicalKeyboardKey_4294971672, 4294971673, C.LogicalKeyboardKey_4294971673, 4294971674, C.LogicalKeyboardKey_4294971674, 4294971675, C.LogicalKeyboardKey_4294971675, 4294971905, C.LogicalKeyboardKey_4294971905, 4294971906, C.LogicalKeyboardKey_4294971906, 8589934592, C.LogicalKeyboardKey_8589934592, 8589934593, C.LogicalKeyboardKey_8589934593, 8589934594, C.LogicalKeyboardKey_8589934594, 8589934595, C.LogicalKeyboardKey_8589934595, 8589934608, C.LogicalKeyboardKey_8589934608, 8589934609, C.LogicalKeyboardKey_8589934609, 8589934610, C.LogicalKeyboardKey_8589934610, 8589934611, C.LogicalKeyboardKey_8589934611, 8589934612, C.LogicalKeyboardKey_8589934612, 8589934624, C.LogicalKeyboardKey_8589934624, 8589934625, C.LogicalKeyboardKey_8589934625, 8589934626, C.LogicalKeyboardKey_8589934626, 8589934848, C.LogicalKeyboardKey_8589934848, 8589934849, C.LogicalKeyboardKey_8589934849, 8589934850, C.LogicalKeyboardKey_8589934850, 8589934851, C.LogicalKeyboardKey_8589934851, 8589934852, C.LogicalKeyboardKey_8589934852, 8589934853, C.LogicalKeyboardKey_8589934853, 8589934854, C.LogicalKeyboardKey_8589934854, 8589934855, C.LogicalKeyboardKey_8589934855, 8589935088, C.LogicalKeyboardKey_8589935088, 8589935090, C.LogicalKeyboardKey_8589935090, 8589935092, C.LogicalKeyboardKey_8589935092, 8589935094, C.LogicalKeyboardKey_8589935094, 8589935117, C.LogicalKeyboardKey_8589935117, 8589935144, C.LogicalKeyboardKey_8589935144, 8589935145, C.LogicalKeyboardKey_8589935145, 8589935146, C.LogicalKeyboardKey_8589935146, 8589935147, C.LogicalKeyboardKey_8589935147, 8589935148, C.LogicalKeyboardKey_8589935148, 8589935149, C.LogicalKeyboardKey_8589935149, 8589935150, C.LogicalKeyboardKey_8589935150, 8589935151, C.LogicalKeyboardKey_8589935151, 8589935152, C.LogicalKeyboardKey_8589935152, 8589935153, C.LogicalKeyboardKey_8589935153, 8589935154, C.LogicalKeyboardKey_8589935154, 8589935155, C.LogicalKeyboardKey_8589935155, 8589935156, C.LogicalKeyboardKey_8589935156, 8589935157, C.LogicalKeyboardKey_8589935157, 8589935158, C.LogicalKeyboardKey_8589935158, 8589935159, C.LogicalKeyboardKey_8589935159, 8589935160, C.LogicalKeyboardKey_8589935160, 8589935161, C.LogicalKeyboardKey_8589935161, 8589935165, C.LogicalKeyboardKey_8589935165, 8589935361, C.LogicalKeyboardKey_8589935361, 8589935362, C.LogicalKeyboardKey_8589935362, 8589935363, C.LogicalKeyboardKey_8589935363, 8589935364, C.LogicalKeyboardKey_8589935364, 8589935365, C.LogicalKeyboardKey_8589935365, 8589935366, C.LogicalKeyboardKey_8589935366, 8589935367, C.LogicalKeyboardKey_8589935367, 8589935368, C.LogicalKeyboardKey_8589935368, 8589935369, C.LogicalKeyboardKey_8589935369, 8589935370, C.LogicalKeyboardKey_8589935370, 8589935371, C.LogicalKeyboardKey_8589935371, 8589935372, C.LogicalKeyboardKey_8589935372, 8589935373, C.LogicalKeyboardKey_8589935373, 8589935374, C.LogicalKeyboardKey_8589935374, 8589935375, C.LogicalKeyboardKey_8589935375, 8589935376, C.LogicalKeyboardKey_8589935376, 8589935377, C.LogicalKeyboardKey_8589935377, 8589935378, C.LogicalKeyboardKey_8589935378, 8589935379, C.LogicalKeyboardKey_8589935379, 8589935380, C.LogicalKeyboardKey_8589935380, 8589935381, C.LogicalKeyboardKey_8589935381, 8589935382, C.LogicalKeyboardKey_8589935382, 8589935383, C.LogicalKeyboardKey_8589935383, 8589935384, C.LogicalKeyboardKey_8589935384, 8589935385, C.LogicalKeyboardKey_8589935385, 8589935386, C.LogicalKeyboardKey_8589935386, 8589935387, C.LogicalKeyboardKey_8589935387, 8589935388, C.LogicalKeyboardKey_8589935388, 8589935389, C.LogicalKeyboardKey_8589935389, 8589935390, C.LogicalKeyboardKey_8589935390, 8589935391, C.LogicalKeyboardKey_8589935391], H.findType("GeneralConstantMap<int,LogicalKeyboardKey>"));
-    C.Map_wwENd = new H.GeneralConstantMap([0, "assets/images/img_aunt_level_new.png", 1, "assets/images/img_aunt_level_abcd.png", 2, "assets/images/img_aunt_level_abcd.png", 3, "assets/images/img_aunt_level_abcd.png", 4, "assets/images/img_aunt_level_abcd.png", 5, "assets/images/img_aunt_level_s.png"], type$.GeneralConstantMap_int_String);
-    C.Map_yXAeS = new H.GeneralConstantMap([0, "FontWeight.w100", 1, "FontWeight.w200", 2, "FontWeight.w300", 3, "FontWeight.w400", 4, "FontWeight.w500", 5, "FontWeight.w600", 6, "FontWeight.w700", 7, "FontWeight.w800", 8, "FontWeight.w900"], type$.GeneralConstantMap_int_String);
+    C.Map_yXAeS = new H.GeneralConstantMap([0, "FontWeight.w100", 1, "FontWeight.w200", 2, "FontWeight.w300", 3, "FontWeight.w400", 4, "FontWeight.w500", 5, "FontWeight.w600", 6, "FontWeight.w700", 7, "FontWeight.w800", 8, "FontWeight.w900"], H.findType("GeneralConstantMap<int,String>"));
     C.SingleActivator_gc63 = new X.SingleActivator(C.LogicalKeyboardKey_4294967309, false, false, false, false);
     C.SingleActivator_soA = new X.SingleActivator(C.LogicalKeyboardKey_8589935117, false, false, false, false);
     C.SingleActivator_Qwp = new X.SingleActivator(C.LogicalKeyboardKey_4294967323, false, false, false, false);
@@ -84674,6 +82857,7 @@
     C.PlaceholderAlignment_3 = new P.PlaceholderAlignment("PlaceholderAlignment.top");
     C.PlaceholderAlignment_4 = new P.PlaceholderAlignment("PlaceholderAlignment.bottom");
     C.PlaceholderAlignment_5 = new P.PlaceholderAlignment("PlaceholderAlignment.middle");
+    C.Size_0_0 = new P.Size(0, 0);
     C.PlaceholderDimensions_Size_0_0_null = new U.PlaceholderDimensions(C.Size_0_0, null);
     C.PointerChange_0 = new P.PointerChange("PointerChange.cancel");
     C.PointerChange_1 = new P.PointerChange("PointerChange.add");
@@ -85014,7 +83198,7 @@
     C.TextStyle_8FR = new A.TextStyle(false, null, null, null, null, null, 10, C.FontWeight_3, null, 1.5, null, C.TextBaseline_0, null, null, null, null, null, null, null, null, null, "englishLike overline 2014", null, null, null);
     C.TextTheme_wEV = new R.TextTheme(C.TextStyle_OfO, C.TextStyle_OfO0, C.TextStyle_OfO1, C.TextStyle_OfO2, C.TextStyle_Ohn, C.TextStyle_O98, C.TextStyle_KHW, C.TextStyle_cQL, C.TextStyle_dcb, C.TextStyle_dcb0, C.TextStyle_Ejg, C.TextStyle_XZV, C.TextStyle_8FR);
     C.TextWidthBasis_1 = new U.TextWidthBasis("TextWidthBasis.longestLine");
-    C.Text_RoU = new L.Text("web", null, null, null, null, null);
+    C.Text_flutter_web_mine_null_null = new L.Text("flutter_web_mine", null, null);
     C.ThemeMode_0 = new S.ThemeMode("ThemeMode.system");
     C.TickerCanceled_null = new M.TickerCanceled(null);
     C.TileMode_0 = new P.TileMode(0, "TileMode.clamp");
@@ -85171,9 +83355,6 @@
     C._ParagraphCommandType_2 = new H._ParagraphCommandType("_ParagraphCommandType.pushStyle");
     C._ParagraphCommandType_3 = new H._ParagraphCommandType("_ParagraphCommandType.addPlaceholder");
     C._ParagraphCommand_rx2 = new H._ParagraphCommand(C._ParagraphCommandType_1, null, null, null);
-    C._RegisterBinaryZoneFunction_kGu = new P._RegisterBinaryZoneFunction(C.C__RootZone, P.async___rootRegisterBinaryCallback$closure());
-    C._RegisterNullaryZoneFunction__RootZone__rootRegisterCallback = new P._RegisterNullaryZoneFunction(C.C__RootZone, P.async___rootRegisterCallback$closure());
-    C._RegisterUnaryZoneFunction_Bqo = new P._RegisterUnaryZoneFunction(C.C__RootZone, P.async___rootRegisterUnaryCallback$closure());
     C._RouteLifecycle_0 = new K._RouteLifecycle(0, "_RouteLifecycle.staging");
     C._RouteLifecycle_1 = new K._RouteLifecycle(1, "_RouteLifecycle.add");
     C._RouteLifecycle_10 = new K._RouteLifecycle(10, "_RouteLifecycle.popping");
@@ -85188,9 +83369,6 @@
     C._RouteLifecycle_7 = new K._RouteLifecycle(7, "_RouteLifecycle.idle");
     C._RouteLifecycle_8 = new K._RouteLifecycle(8, "_RouteLifecycle.pop");
     C._RouteLifecycle_9 = new K._RouteLifecycle(9, "_RouteLifecycle.remove");
-    C._RunBinaryZoneFunction__RootZone__rootRunBinary = new P._RunBinaryZoneFunction(C.C__RootZone, P.async___rootRunBinary$closure());
-    C._RunNullaryZoneFunction__RootZone__rootRun = new P._RunNullaryZoneFunction(C.C__RootZone, P.async___rootRun$closure());
-    C._RunUnaryZoneFunction__RootZone__rootRunUnary = new P._RunUnaryZoneFunction(C.C__RootZone, P.async___rootRunUnary$closure());
     C._ScaffoldSlot_0 = new M._ScaffoldSlot("_ScaffoldSlot.body");
     C._ScaffoldSlot_1 = new M._ScaffoldSlot("_ScaffoldSlot.appBar");
     C._ScaffoldSlot_10 = new M._ScaffoldSlot("_ScaffoldSlot.endDrawer");
@@ -85212,13 +83390,6 @@
     C._WordWrapParseMode_0 = new Y._WordWrapParseMode("_WordWrapParseMode.inSpace");
     C._WordWrapParseMode_1 = new Y._WordWrapParseMode("_WordWrapParseMode.inWord");
     C._WordWrapParseMode_2 = new Y._WordWrapParseMode("_WordWrapParseMode.atBreak");
-    C._ZoneFunction_3bB = new P._ZoneFunction(C.C__RootZone, P.async___rootCreatePeriodicTimer$closure());
-    C._ZoneFunction_NMc = new P._ZoneFunction(C.C__RootZone, P.async___rootHandleUncaughtError$closure());
-    C._ZoneFunction__RootZone__rootCreateTimer = new P._ZoneFunction(C.C__RootZone, P.async___rootCreateTimer$closure());
-    C._ZoneFunction__RootZone__rootErrorCallback = new P._ZoneFunction(C.C__RootZone, P.async___rootErrorCallback$closure());
-    C._ZoneFunction__RootZone__rootFork = new P._ZoneFunction(C.C__RootZone, P.async___rootFork$closure());
-    C._ZoneFunction__RootZone__rootPrint = new P._ZoneFunction(C.C__RootZone, P.async___rootPrint$closure());
-    C._ZoneFunction__RootZone__rootScheduleMicrotask = new P._ZoneFunction(C.C__RootZone, P.async___rootScheduleMicrotask$closure());
   })();
   (function staticFields() {
     $._engineInitialized = false;
@@ -85263,7 +83434,6 @@
     $._isUrlStrategySet = false;
     $._customUrlStrategy = null;
     $._JS_INTEROP_INTERCEPTOR_TAG = null;
-    $.printToZone = null;
     $.Primitives_timerFrequency = 0;
     $.Primitives_timerTicks = H._js_helper_Primitives_dateNow$closure();
     $.Closure_functionCounter = 0;
@@ -85280,7 +83450,6 @@
     $._lastPriorityCallback = null;
     $._isInCallbackLoop = false;
     $.Zone__current = C.C__RootZone;
-    $._RootZone__rootDelegate = null;
     $._toStringVisiting = H._setArrayType([], type$.JSArray_Object);
     $._extensions = P.LinkedHashMap_LinkedHashMap$_empty(type$.String, H.findType("Future<ServiceExtensionResponse>(String,Map<String,String>)"));
     $._FakeUserTag__instances = P.LinkedHashMap_LinkedHashMap$_empty(type$.String, H.findType("_FakeUserTag"));
@@ -85300,8 +83469,6 @@
     $.GestureBinding__instance = null;
     $.Tooltip__openedToolTips = P.LinkedHashSet_LinkedHashSet$_empty(type$._TooltipState);
     $.PaintingBinding__instance = null;
-    $._pendingImageSizeInfo = P.LinkedHashMap_LinkedHashMap$_empty(type$.String, type$.ImageSizeInfo);
-    $._lastFrameImageSizeInfo = P.LinkedHashSet_LinkedHashSet$_empty(type$.ImageSizeInfo);
     $.RendererBinding__instance = null;
     $._timeDilation = 1;
     $.SchedulerBinding__instance = null;
@@ -85553,7 +83720,7 @@
       return H.getIsolateAffinityTag("_$dart_dartClosure");
     });
     _lazyFinal($, "nullFuture", "$get$nullFuture", function() {
-      return C.C__RootZone.run$1$1(new H.nullFuture_closure(), type$.Future_Null);
+      return C.C__RootZone.run$1(new H.nullFuture_closure());
     });
     _lazyFinal($, "TypeErrorDecoder_noSuchMethodPattern", "$get$TypeErrorDecoder_noSuchMethodPattern", function() {
       return H.TypeErrorDecoder_extractPattern(H.TypeErrorDecoder_provokeCallErrorOn({
@@ -85624,10 +83791,6 @@
     });
     _lazyFinal($, "Future__nullFuture", "$get$Future__nullFuture", function() {
       return H.findType("_Future<Null>")._as($.$get$nullFuture());
-    });
-    _lazyFinal($, "_RootZone__rootMap", "$get$_RootZone__rootMap", function() {
-      var t1 = type$.dynamic;
-      return P.HashMap_HashMap(t1, t1);
     });
     _lazyFinal($, "Utf8Decoder__decoder", "$get$Utf8Decoder__decoder", function() {
       return new P.Utf8Decoder__decoder_closure().call$0();
@@ -85777,10 +83940,10 @@
       return R.CurveTween$(C.Cubic_ifx);
     });
     _lazyFinal($, "_FadeUpwardsPageTransition__easeInTween", "$get$_FadeUpwardsPageTransition__easeInTween", function() {
-      return R.CurveTween$(C.Cubic_JUR0);
+      return R.CurveTween$(C.Cubic_JUR);
     });
     _lazyFinal($, "_FloatingActionButtonTransitionState__entranceTurnTween", "$get$_FloatingActionButtonTransitionState__entranceTurnTween", function() {
-      return R.Tween$(0.875, 1, type$.double).chain$1(R.CurveTween$(C.Cubic_JUR0));
+      return R.Tween$(0.875, 1, type$.double).chain$1(R.CurveTween$(C.Cubic_JUR));
     });
     _lazyFinal($, "Theme__kFallbackTheme", "$get$Theme__kFallbackTheme", function() {
       return X.ThemeData_ThemeData$fallback();
@@ -85834,7 +83997,7 @@
       t1.$indexSet(0, C.PhysicalKeyboardKey_18, C.LogicalKeyboardKey_4294967558);
       for (t2 = $.RawKeyboard__allModifiersExceptFn.get$entries($.RawKeyboard__allModifiersExceptFn), t2 = t2.get$iterator(t2); t2.moveNext$0();) {
         t3 = t2.get$current(t2);
-        t1.$indexSet(0, t3.get$key(t3), t3.get$value(t3));
+        t1.$indexSet(0, t3.key, t3.value);
       }
       return t1;
     });
@@ -85861,12 +84024,6 @@
     });
     _lazyFinal($, "webPluginRegistrar", "$get$webPluginRegistrar", function() {
       return new D.PluginRegistry(P.LinkedHashMap_LinkedHashMap$_empty(type$.String, H.findType("Future<ByteData?>?(ByteData?)")));
-    });
-    _lazy($, "EventBus__singleton", "$get$EventBus__singleton", function() {
-      return new Y.EventBus(H.JsLinkedHashMap_JsLinkedHashMap$es6(type$.Object, H.findType("Map<String,~(@)>")));
-    });
-    _lazy($, "bus", "$get$bus", function() {
-      return $.$get$EventBus__singleton();
     });
   })();
   (function nativeSupport() {
@@ -85915,29 +84072,14 @@
   Function.prototype.call$2 = function(a, b) {
     return this(a, b);
   };
-  Function.prototype.call$3$1 = function(a) {
-    return this(a);
-  };
-  Function.prototype.call$2$1 = function(a) {
-    return this(a);
-  };
-  Function.prototype.call$1$1 = function(a) {
-    return this(a);
-  };
   Function.prototype.call$3 = function(a, b, c) {
     return this(a, b, c);
   };
   Function.prototype.call$4 = function(a, b, c, d) {
     return this(a, b, c, d);
   };
-  Function.prototype.call$3$3 = function(a, b, c) {
-    return this(a, b, c);
-  };
-  Function.prototype.call$2$2 = function(a, b) {
-    return this(a, b);
-  };
-  Function.prototype.call$1$2 = function(a, b) {
-    return this(a, b);
+  Function.prototype.call$1$1 = function(a) {
+    return this(a);
   };
   Function.prototype.call$1$0 = function() {
     return this();
@@ -85945,14 +84087,17 @@
   Function.prototype.call$5 = function(a, b, c, d, e) {
     return this(a, b, c, d, e);
   };
+  Function.prototype.call$2$1 = function(a) {
+    return this(a);
+  };
+  Function.prototype.call$1$2 = function(a, b) {
+    return this(a, b);
+  };
   Function.prototype.call$1$5 = function(a, b, c, d, e) {
     return this(a, b, c, d, e);
   };
   Function.prototype.call$2$0 = function() {
     return this();
-  };
-  Function.prototype.call$6 = function(a, b, c, d, e, f) {
-    return this(a, b, c, d, e, f);
   };
   Function.prototype.call$9 = function(a, b, c, d, e, f, g, h, i) {
     return this(a, b, c, d, e, f, g, h, i);
@@ -85960,8 +84105,8 @@
   Function.prototype.call$7 = function(a, b, c, d, e, f, g) {
     return this(a, b, c, d, e, f, g);
   };
-  Function.prototype.call$2$3 = function(a, b, c) {
-    return this(a, b, c);
+  Function.prototype.call$6 = function(a, b, c, d, e, f) {
+    return this(a, b, c, d, e, f);
   };
   convertAllToFastObject(holders);
   convertToFastObject($);
