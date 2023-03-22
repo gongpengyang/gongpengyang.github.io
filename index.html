@@ -107,7 +107,7 @@
             // js侧弹窗
             alert("js侧弹窗 -->  js侧接收到数据: " + response)
             // 数据转 json String
-            const originalResponse = JSON.stringify(response);
+            const originalResponse = response;//JSON.stringify(response);
             // js侧将数据传到Flutter侧  该方法需要flutter提前注册
             window.flutterFunc(originalResponse);
         }
