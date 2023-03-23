@@ -14734,7 +14734,7 @@
     UltimateChannel_nativeCommunication$body(msg, flutterRouteMap, webResponse) {
       var $async$goto = 0,
         $async$completer = P._makeAsyncAwaitCompleter(type$.nullable_String),
-        $async$returnValue, requestId, pathAction, data;
+        $async$returnValue, requestId, data;
       var $async$UltimateChannel_nativeCommunication = P._wrapJsFunctionForAsync(function($async$errorCode, $async$result) {
         if ($async$errorCode === 1)
           return P._asyncRethrow($async$result, $async$completer);
@@ -14748,8 +14748,7 @@
               flutterRouteMap.$indexSet(0, "requestId", "" + requestId);
               if (webResponse != null)
                 $.FlutterWebAppChannel_funcMapping.$indexSet(0, "" + requestId, webResponse);
-              pathAction = M.APageRouter_buildPathForNativeCommunication(msg, flutterRouteMap);
-              window.location.href = pathAction;
+              T.FlutterWebAppChannel_request(M.APageRouter_buildPathForNativeCommunication(msg, flutterRouteMap));
               $async$returnValue = null;
               // goto return
               $async$goto = 1;
@@ -21604,6 +21603,23 @@
           }
       });
       return P._asyncStartSync($async$FlutterWebAppChannel_registerJavaScript, $async$completer);
+    },
+    FlutterWebAppChannel_request(path) {
+      var $async$goto = 0,
+        $async$completer = P._makeAsyncAwaitCompleter(type$.dynamic);
+      var $async$FlutterWebAppChannel_request = P._wrapJsFunctionForAsync(function($async$errorCode, $async$result) {
+        if ($async$errorCode === 1)
+          return P._asyncRethrow($async$result, $async$completer);
+        while (true)
+          switch ($async$goto) {
+            case 0:
+              // Function start
+              window.location.href = path;
+              // implicit return
+              return P._asyncReturn(null, $async$completer);
+          }
+      });
+      return P._asyncStartSync($async$FlutterWebAppChannel_request, $async$completer);
     },
     FlutterWebAppChannel_registerJavaScript_closure: function FlutterWebAppChannel_registerJavaScript_closure() {
     },
