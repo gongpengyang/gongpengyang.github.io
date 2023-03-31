@@ -51576,7 +51576,7 @@ if(p!=null){p.$1(s)
 $.a2G.w(0,q)}}else P.oZ("_registerJavaScript99999")},
 $S:3}
 T.Nc.prototype={
-$0(){window.location.assign(this.a)},
+$0(){window.location.href=this.a},
 $S:6}
 E.CY.prototype={
 np(a,b,c,d){return this.GM(0,b,c,d)},
