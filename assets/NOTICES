@@ -6364,15 +6364,6 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 --------------------------------------------------------------------------------
-flutter_page_indicator
-transformer_page_view
-wuba_work_redux
-wuba_work_redux_base
-wuba_work_router
-
-TODO: Add your license here.
-
---------------------------------------------------------------------------------
 flutter_redux
 
 The MIT License (MIT)
@@ -6435,7 +6426,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 --------------------------------------------------------------------------------
-flutter_swiper
+flutter_swiper_null_safety
 
 MIT License
 
@@ -16742,6 +16733,13 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
 THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+--------------------------------------------------------------------------------
+wuba_work_redux
+wuba_work_redux_base
+wuba_work_router
+
+TODO: Add your license here.
+
 --------------------------------------------------------------------------------
 wuffs
 
