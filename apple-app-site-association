@@ -1,0 +1,15 @@
+{
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "33CV2CKQK9.com.wuba.vshow",
+                "paths": [ "/58VShow/*"]
+            },
+                        {
+                "appID": "3636HA7ZQT.com.wuba.vshowfirm",
+                "paths": [ "/58VShow/*"]
+            }
+        ]
+    }
+}
